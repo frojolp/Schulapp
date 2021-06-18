@@ -73,7 +73,7 @@ class TodoApp extends StatelessWidget {
                 child: Center(
                     child: CupertinoButton(
                   minSize: 250,
-                  onPressed: () => navigateToGradesApp(context),
+                  onTap: () => navigateToGradesApp(context),
                   color: esssblau,
                   child: Text("Noten",
                       textAlign: TextAlign.center,
