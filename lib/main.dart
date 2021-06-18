@@ -73,13 +73,7 @@ class TodoApp extends StatelessWidget {
                 child: Center(
                     child: CupertinoButton(
                   minSize: 250,
-                  onPressed: () => {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (BuildContext context) => runApp(GradesMain),
-                        ))
-                  },
+                  onPressed: () => navigateToGradesApp(context),
                   color: esssblau,
                   child: Text("Noten",
                       textAlign: TextAlign.center,
@@ -94,13 +88,7 @@ class TodoApp extends StatelessWidget {
                 child: Center(
                     child: CupertinoButton(
                   minSize: 250,
-                  onPressed: () => {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (BuildContext context) => runApp(GradesMain),
-                        ))
-                  },
+                  onPressed: () => navigateToGradesApp(context),
                   color: esssblau,
                   child: Text("Lehrerliste",
                       textAlign: TextAlign.center,
@@ -115,13 +103,7 @@ class TodoApp extends StatelessWidget {
                 child: Center(
                     child: CupertinoButton(
                   minSize: 250,
-                  onPressed: () => {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (BuildContext context) => runApp(GradesMain),
-                        ))
-                  },
+                  onPressed: () => navigateToGradesApp(context),
                   color: esssblau,
                   child: Text("Linkliste",
                       textAlign: TextAlign.center,
@@ -136,14 +118,7 @@ class TodoApp extends StatelessWidget {
               child: Center(
                   child: CupertinoButton(
                       minSize: 250,
-                      onPressed: () => {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (BuildContext context) =>
-                                      runApp(GradesMain),
-                                ))
-                          },
+                      onPressed: () => navigateToGradesApp(context),
                       color: esssblau,
                       child: Text(
                         "To-Do Liste",
@@ -188,13 +163,7 @@ class TodoApp extends StatelessWidget {
                 Icons.keyboard_arrow_right,
                 color: esssrot,
               ),
-              onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (BuildContext context) => runApp(GradesMain),
-                    ));
-              },
+              onPressed: () => navigateToGradesApp(context),
             ),
             Divider(
               thickness: (1.5),
@@ -212,13 +181,7 @@ class TodoApp extends StatelessWidget {
                 Icons.keyboard_arrow_right,
                 color: esssrot,
               ),
-              onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (BuildContext context) => runApp(GradesMain),
-                    ));
-              },
+              onPressed: () => navigateToGradesApp(context),
             ),
             Divider(
               thickness: (1.5),
@@ -236,13 +199,7 @@ class TodoApp extends StatelessWidget {
                 Icons.keyboard_arrow_right,
                 color: esssrot,
               ),
-              onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (BuildContext context) => runApp(GradesMain),
-                    ));
-              },
+              onPressed: () => navigateToGradesApp(context),
             ),
             Divider(
               thickness: (1.5),
@@ -260,13 +217,7 @@ class TodoApp extends StatelessWidget {
                 Icons.keyboard_arrow_right,
                 color: esssrot,
               ),
-              onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (BuildContext context) => runApp(GradesMain),
-                    ));
-              },
+              onPressed: () => navigateToGradesApp(context),
             ),
             Divider(
               thickness: (1.5),
@@ -276,4 +227,9 @@ class TodoApp extends StatelessWidget {
       ),
     ));
   }
+  void navigateToGradesApp(BuildContext context) {
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => new GradeApp()));
+  }
+}
 }
