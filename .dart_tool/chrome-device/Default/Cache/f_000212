@@ -1,0 +1,710 @@
+define(['dart_sdk'], (function load__packages__pointycastle__src__ufixnum_dart(dart_sdk) {
+  'use strict';
+  const core = dart_sdk.core;
+  const _internal = dart_sdk._internal;
+  const typed_data = dart_sdk.typed_data;
+  const _interceptors = dart_sdk._interceptors;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  var ufixnum = Object.create(dart.library);
+  var $truncate = dartx.truncate;
+  var $rightShift = dartx['>>'];
+  var $toRadixString = dartx.toRadixString;
+  var $hashCode = dartx.hashCode;
+  var $length = dartx.length;
+  var $_get = dartx._get;
+  var $leftShift = dartx['<<'];
+  var $setUint16 = dartx.setUint16;
+  var $getUint16 = dartx.getUint16;
+  var $setUint32 = dartx.setUint32;
+  var $getUint32 = dartx.getUint32;
+  dart._checkModuleNullSafetyMode(false);
+  var T = {
+    ListOfRegister64: () => (T.ListOfRegister64 = dart.constFn(core.List$(ufixnum.Register64)))(),
+    intToRegister64: () => (T.intToRegister64 = dart.constFn(dart.fnType(ufixnum.Register64, [core.int])))(),
+    intN: () => (T.intN = dart.constFn(dart.nullable(core.int)))(),
+    JSArrayOfint: () => (T.JSArrayOfint = dart.constFn(_interceptors.JSArray$(core.int)))()
+  };
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  dart.defineLazy(CT, {
+    get C0() {
+      return C[0] = dart.const({
+        __proto__: typed_data.Endian.prototype,
+        [Endian__littleEndian]: false
+      });
+    },
+    get C1() {
+      return C[1] = dart.const({
+        __proto__: typed_data.Endian.prototype,
+        [Endian__littleEndian]: true
+      });
+    }
+  }, false);
+  var C = Array(2).fill(void 0);
+  var I = [
+    "file:///E:/OneDrive/_Marius/OneDrive/Dokumente%20Marius/Flutter/flutter/.pub-cache/hosted/pub.dartlang.org/pointycastle-3.0.1/lib/src/ufixnum.dart",
+    "package:pointycastle/src/ufixnum.dart"
+  ];
+  var __Register64__hi32 = dart.privateName(ufixnum, "_#Register64#_hi32");
+  var __Register64__hi32_isSet = dart.privateName(ufixnum, "_#Register64#_hi32#isSet");
+  var __Register64__lo32 = dart.privateName(ufixnum, "_#Register64#_lo32");
+  var __Register64__lo32_isSet = dart.privateName(ufixnum, "_#Register64#_lo32#isSet");
+  var _hi32 = dart.privateName(ufixnum, "_hi32");
+  var _lo32 = dart.privateName(ufixnum, "_lo32");
+  var Endian__littleEndian = dart.privateName(typed_data, "Endian._littleEndian");
+  var _padWrite = dart.privateName(ufixnum, "_padWrite");
+  ufixnum.Register64 = class Register64 extends core.Object {
+    get [_hi32]() {
+      let t0;
+      return dart.test(this[__Register64__hi32_isSet]) ? (t0 = this[__Register64__hi32], t0) : dart.throw(new _internal.LateError.fieldNI("_hi32"));
+    }
+    set [_hi32](t0) {
+      if (t0 == null) dart.nullFailed(I[0], 221, 12, "null");
+      this[__Register64__hi32_isSet] = true;
+      this[__Register64__hi32] = t0;
+    }
+    get [_lo32]() {
+      let t1;
+      return dart.test(this[__Register64__lo32_isSet]) ? (t1 = this[__Register64__lo32], t1) : dart.throw(new _internal.LateError.fieldNI("_lo32"));
+    }
+    set [_lo32](t1) {
+      if (t1 == null) dart.nullFailed(I[0], 222, 12, "null");
+      this[__Register64__lo32_isSet] = true;
+      this[__Register64__lo32] = t1;
+    }
+    get lo32() {
+      return this[_lo32];
+    }
+    get hi32() {
+      return this[_hi32];
+    }
+    _equals(y) {
+      if (y == null) return false;
+      return ufixnum.Register64.is(y) ? this[_hi32] == y[_hi32] && this[_lo32] == y[_lo32] : false;
+    }
+    ['<'](y) {
+      if (y == null) dart.nullFailed(I[0], 234, 30, "y");
+      return dart.notNull(this[_hi32]) < dart.notNull(y[_hi32]) || this[_hi32] == y[_hi32] && dart.notNull(this[_lo32]) < dart.notNull(y[_lo32]);
+    }
+    ['<='](y) {
+      if (y == null) dart.nullFailed(I[0], 236, 31, "y");
+      return dart.test(this['<'](y)) || this._equals(y);
+    }
+    ['>'](y) {
+      if (y == null) dart.nullFailed(I[0], 237, 30, "y");
+      return dart.notNull(this[_hi32]) > dart.notNull(y[_hi32]) || this[_hi32] == y[_hi32] && dart.notNull(this[_lo32]) > dart.notNull(y[_lo32]);
+    }
+    ['>='](y) {
+      if (y == null) dart.nullFailed(I[0], 239, 31, "y");
+      return dart.test(this['>'](y)) || this._equals(y);
+    }
+    set(hiOrLo32OrY, lo32 = null) {
+      if (lo32 == null) {
+        if (ufixnum.Register64.is(hiOrLo32OrY)) {
+          this[_hi32] = hiOrLo32OrY[_hi32];
+          this[_lo32] = hiOrLo32OrY[_lo32];
+        } else {
+          if (!dart.test(core.bool.as(dart.dsend(hiOrLo32OrY, '<=', [4294967295.0])))) dart.assertFailed(null, I[0], 247, 16, "hiOrLo32OrY <= _MASK_32");
+          this[_hi32] = 0;
+          this[_lo32] = core.int.as(hiOrLo32OrY);
+        }
+      } else {
+        if (!dart.test(core.bool.as(dart.dsend(hiOrLo32OrY, '<=', [4294967295.0])))) dart.assertFailed(null, I[0], 252, 14, "hiOrLo32OrY <= _MASK_32");
+        if (!(dart.notNull(lo32) <= 4294967295.0)) dart.assertFailed(null, I[0], 253, 14, "lo32 <= _MASK_32");
+        this[_hi32] = core.int.as(hiOrLo32OrY);
+        this[_lo32] = lo32;
+      }
+    }
+    sum(y) {
+      if (core.int.is(y)) {
+        y = (dart.notNull(y) & 4294967295.0) >>> 0;
+        let slo32 = dart.notNull(this[_lo32]) + dart.notNull(y);
+        this[_lo32] = (slo32 & 4294967295.0) >>> 0;
+        if (slo32 !== this[_lo32]) {
+          this[_hi32] = dart.notNull(this[_hi32]) + 1;
+          this[_hi32] = (dart.notNull(this[_hi32]) & 4294967295.0) >>> 0;
+        }
+      } else {
+        let slo32 = dart.asInt(dart.notNull(this[_lo32]) + dart.notNull(core.num.as(dart.dload(y, _lo32))));
+        this[_lo32] = (slo32 & 4294967295.0) >>> 0;
+        let carry = slo32 !== this[_lo32] ? 1 : 0;
+        this[_hi32] = (dart.asInt(dart.notNull(this[_hi32]) + dart.notNull(core.num.as(dart.dload(y, _hi32))) + carry) & 4294967295.0) >>> 0;
+      }
+    }
+    sumReg(y) {
+      if (y == null) dart.nullFailed(I[0], 276, 26, "y");
+      let slo32 = dart.notNull(this[_lo32]) + dart.notNull(y[_lo32]);
+      this[_lo32] = (slo32 & 4294967295.0) >>> 0;
+      let carry = slo32 !== this[_lo32] ? 1 : 0;
+      this[_hi32] = (dart.notNull(this[_hi32]) + dart.notNull(y[_hi32]) + carry & 4294967295.0) >>> 0;
+    }
+    sub(y) {
+      let t2;
+      this.sum((t2 = new ufixnum.Register64.new(y), (() => {
+        t2.neg();
+        return t2;
+      })()));
+    }
+    mul(y) {
+      if (core.int.is(y)) {
+        let lo32 = dart.notNull(this[_lo32]) * dart.notNull(y);
+        let carry = (lo32 / 4294967296)[$truncate]();
+        let hi32 = dart.notNull(ufixnum.clip32(dart.notNull(this[_hi32]) * dart.notNull(y))) + carry;
+        this[_hi32] = ufixnum.clip32(hi32);
+        this[_lo32] = ufixnum.clip32(lo32);
+      } else {
+        let lo32 = dart.notNull(this[_lo32]) * dart.notNull(core.num.as(dart.dload(y, _lo32)));
+        let carry = (lo32 / 4294967296)[$truncate]();
+        let hi32 = dart.notNull(ufixnum.clip32(dart.asInt(dart.notNull(this[_hi32]) * dart.notNull(core.num.as(dart.dload(y, _lo32)))))) + dart.notNull(ufixnum.clip32(dart.asInt(dart.notNull(this[_lo32]) * dart.notNull(core.num.as(dart.dload(y, _hi32)))))) + carry;
+        this[_hi32] = ufixnum.clip32(hi32);
+        this[_lo32] = ufixnum.clip32(dart.asInt(lo32));
+      }
+    }
+    neg() {
+      this.not();
+      this.sum(1);
+    }
+    not() {
+      this[_hi32] = (~dart.notNull(this[_hi32]) & 4294967295.0) >>> 0;
+      this[_lo32] = (~dart.notNull(this[_lo32]) & 4294967295.0) >>> 0;
+    }
+    and(y) {
+      if (y == null) dart.nullFailed(I[0], 320, 23, "y");
+      this[_hi32] = (dart.notNull(this[_hi32]) & dart.notNull(y[_hi32])) >>> 0;
+      this[_lo32] = (dart.notNull(this[_lo32]) & dart.notNull(y[_lo32])) >>> 0;
+    }
+    or(y) {
+      if (y == null) dart.nullFailed(I[0], 325, 22, "y");
+      this[_hi32] = (dart.notNull(this[_hi32]) | dart.notNull(y[_hi32])) >>> 0;
+      this[_lo32] = (dart.notNull(this[_lo32]) | dart.notNull(y[_lo32])) >>> 0;
+    }
+    xor(y) {
+      if (y == null) dart.nullFailed(I[0], 330, 23, "y");
+      this[_hi32] = (dart.notNull(this[_hi32]) ^ dart.notNull(y[_hi32])) >>> 0;
+      this[_lo32] = (dart.notNull(this[_lo32]) ^ dart.notNull(y[_lo32])) >>> 0;
+    }
+    shiftl(n) {
+      if (n == null) dart.nullFailed(I[0], 335, 19, "n");
+      n = (dart.notNull(n) & 63) >>> 0;
+      if (n === 0) {
+      } else if (dart.notNull(n) >= 32) {
+        this[_hi32] = ufixnum.shiftl32(this[_lo32], dart.notNull(n) - 32);
+        this[_lo32] = 0;
+      } else {
+        this[_hi32] = ufixnum.shiftl32(this[_hi32], n);
+        this[_hi32] = (dart.notNull(this[_hi32]) | this[_lo32][$rightShift](32 - dart.notNull(n))) >>> 0;
+        this[_lo32] = ufixnum.shiftl32(this[_lo32], n);
+      }
+    }
+    shiftr(n) {
+      if (n == null) dart.nullFailed(I[0], 349, 19, "n");
+      n = (dart.notNull(n) & 63) >>> 0;
+      if (n === 0) {
+      } else if (dart.notNull(n) >= 32) {
+        this[_lo32] = this[_hi32][$rightShift](dart.notNull(n) - 32);
+        this[_hi32] = 0;
+      } else {
+        this[_lo32] = this[_lo32][$rightShift](n);
+        this[_lo32] = (dart.notNull(this[_lo32]) | dart.notNull(ufixnum.shiftl32(this[_hi32], 32 - dart.notNull(n)))) >>> 0;
+        this[_hi32] = this[_hi32][$rightShift](n);
+      }
+    }
+    rotl(n) {
+      if (n == null) dart.nullFailed(I[0], 363, 17, "n");
+      n = (dart.notNull(n) & 63) >>> 0;
+      if (n === 0) {
+      } else {
+        if (dart.notNull(n) >= 32) {
+          let swap = this[_hi32];
+          this[_hi32] = this[_lo32];
+          this[_lo32] = swap;
+          n = dart.notNull(n) - 32;
+        }
+        if (n === 0) {
+        } else {
+          let hi32 = this[_hi32];
+          this[_hi32] = ufixnum.shiftl32(this[_hi32], n);
+          this[_hi32] = (dart.notNull(this[_hi32]) | this[_lo32][$rightShift](32 - dart.notNull(n))) >>> 0;
+          this[_lo32] = ufixnum.shiftl32(this[_lo32], n);
+          this[_lo32] = (dart.notNull(this[_lo32]) | hi32[$rightShift](32 - dart.notNull(n))) >>> 0;
+        }
+      }
+    }
+    rotr(n) {
+      if (n == null) dart.nullFailed(I[0], 387, 17, "n");
+      n = (dart.notNull(n) & 63) >>> 0;
+      if (n === 0) {
+      } else {
+        if (dart.notNull(n) >= 32) {
+          let swap = this[_hi32];
+          this[_hi32] = this[_lo32];
+          this[_lo32] = swap;
+          n = dart.notNull(n) - 32;
+        }
+        if (n === 0) {
+        } else {
+          let hi32 = this[_hi32];
+          this[_hi32] = this[_hi32][$rightShift](n);
+          this[_hi32] = (dart.notNull(this[_hi32]) | dart.notNull(ufixnum.shiftl32(this[_lo32], 32 - dart.notNull(n)))) >>> 0;
+          this[_lo32] = this[_lo32][$rightShift](n);
+          this[_lo32] = (dart.notNull(this[_lo32]) | dart.notNull(ufixnum.shiftl32(hi32, 32 - dart.notNull(n)))) >>> 0;
+        }
+      }
+    }
+    pack(out, offset, endian) {
+      if (offset == null) dart.nullFailed(I[0], 413, 30, "offset");
+      if (endian == null) dart.nullFailed(I[0], 413, 45, "endian");
+      switch (endian) {
+        case C[0] || CT.C0:
+        {
+          ufixnum.pack32(this.hi32, out, offset, endian);
+          ufixnum.pack32(this.lo32, out, dart.notNull(offset) + 4, endian);
+          break;
+        }
+        case C[1] || CT.C1:
+        {
+          ufixnum.pack32(this.hi32, out, dart.notNull(offset) + 4, endian);
+          ufixnum.pack32(this.lo32, out, offset, endian);
+          break;
+        }
+        default:
+        {
+          dart.throw(new core.UnsupportedError.new("Invalid endianness: " + dart.str(endian)));
+        }
+      }
+    }
+    unpack(inp, offset, endian) {
+      if (offset == null) dart.nullFailed(I[0], 432, 32, "offset");
+      if (endian == null) dart.nullFailed(I[0], 432, 47, "endian");
+      switch (endian) {
+        case C[0] || CT.C0:
+        {
+          this[_hi32] = ufixnum.unpack32(inp, offset, endian);
+          this[_lo32] = ufixnum.unpack32(inp, dart.notNull(offset) + 4, endian);
+          break;
+        }
+        case C[1] || CT.C1:
+        {
+          this[_hi32] = ufixnum.unpack32(inp, dart.notNull(offset) + 4, endian);
+          this[_lo32] = ufixnum.unpack32(inp, offset, endian);
+          break;
+        }
+        default:
+        {
+          dart.throw(new core.UnsupportedError.new("Invalid endianness: " + dart.str(endian)));
+        }
+      }
+    }
+    toString() {
+      let sb = new core.StringBuffer.new();
+      this[_padWrite](sb, this[_hi32]);
+      this[_padWrite](sb, this[_lo32]);
+      return sb.toString();
+    }
+    [_padWrite](sb, value) {
+      if (sb == null) dart.nullFailed(I[0], 457, 31, "sb");
+      if (value == null) dart.nullFailed(I[0], 457, 39, "value");
+      let str = value[$toRadixString](16);
+      for (let i = 8 - str.length; i > 0; i = i - 1) {
+        sb.write("0");
+      }
+      sb.write(str);
+    }
+    get hashCode() {
+      return super[$hashCode];
+    }
+  };
+  (ufixnum.Register64.new = function(hiOrLo32OrY = 0, lo32 = null) {
+    this[__Register64__hi32] = null;
+    this[__Register64__hi32_isSet] = false;
+    this[__Register64__lo32] = null;
+    this[__Register64__lo32_isSet] = false;
+    this.set(hiOrLo32OrY, lo32);
+  }).prototype = ufixnum.Register64.prototype;
+  dart.addTypeTests(ufixnum.Register64);
+  dart.addTypeCaches(ufixnum.Register64);
+  dart.setMethodSignature(ufixnum.Register64, () => ({
+    __proto__: dart.getMethods(ufixnum.Register64.__proto__),
+    '<': dart.fnType(core.bool, [ufixnum.Register64]),
+    '<=': dart.fnType(core.bool, [ufixnum.Register64]),
+    '>': dart.fnType(core.bool, [ufixnum.Register64]),
+    '>=': dart.fnType(core.bool, [ufixnum.Register64]),
+    set: dart.fnType(dart.void, [dart.dynamic], [dart.nullable(core.int)]),
+    sum: dart.fnType(dart.void, [dart.dynamic]),
+    sumReg: dart.fnType(dart.void, [ufixnum.Register64]),
+    sub: dart.fnType(dart.void, [dart.dynamic]),
+    mul: dart.fnType(dart.void, [dart.dynamic]),
+    neg: dart.fnType(dart.void, []),
+    not: dart.fnType(dart.void, []),
+    and: dart.fnType(dart.void, [ufixnum.Register64]),
+    or: dart.fnType(dart.void, [ufixnum.Register64]),
+    xor: dart.fnType(dart.void, [ufixnum.Register64]),
+    shiftl: dart.fnType(dart.void, [core.int]),
+    shiftr: dart.fnType(dart.void, [core.int]),
+    rotl: dart.fnType(dart.void, [core.int]),
+    rotr: dart.fnType(dart.void, [core.int]),
+    pack: dart.fnType(dart.void, [dart.dynamic, core.int, typed_data.Endian]),
+    unpack: dart.fnType(dart.void, [dart.dynamic, core.int, typed_data.Endian]),
+    [_padWrite]: dart.fnType(dart.void, [core.StringBuffer, core.int])
+  }));
+  dart.setGetterSignature(ufixnum.Register64, () => ({
+    __proto__: dart.getGetters(ufixnum.Register64.__proto__),
+    [_hi32]: core.int,
+    [_lo32]: core.int,
+    lo32: core.int,
+    hi32: core.int
+  }));
+  dart.setSetterSignature(ufixnum.Register64, () => ({
+    __proto__: dart.getSetters(ufixnum.Register64.__proto__),
+    [_hi32]: core.int,
+    [_lo32]: core.int
+  }));
+  dart.setLibraryUri(ufixnum.Register64, I[1]);
+  dart.setFieldSignature(ufixnum.Register64, () => ({
+    __proto__: dart.getFields(ufixnum.Register64.__proto__),
+    [__Register64__hi32]: dart.fieldType(dart.nullable(core.int)),
+    [__Register64__hi32_isSet]: dart.fieldType(core.bool),
+    [__Register64__lo32]: dart.fieldType(dart.nullable(core.int)),
+    [__Register64__lo32_isSet]: dart.fieldType(core.bool)
+  }));
+  dart.defineExtensionMethods(ufixnum.Register64, ['_equals', 'toString']);
+  dart.defineExtensionAccessors(ufixnum.Register64, ['hashCode']);
+  var _list = dart.privateName(ufixnum, "_list");
+  ufixnum.Register64List = class Register64List extends core.Object {
+    get length() {
+      return this[_list][$length];
+    }
+    _get(index) {
+      if (index == null) dart.nullFailed(I[0], 482, 30, "index");
+      return this[_list][$_get](index);
+    }
+    fillRange(start, end, hiOrLo32OrY, lo32 = null) {
+      if (start == null) dart.nullFailed(I[0], 484, 22, "start");
+      if (end == null) dart.nullFailed(I[0], 484, 33, "end");
+      for (let i = start; dart.notNull(i) < dart.notNull(end); i = dart.notNull(i) + 1) {
+        this[_list][$_get](i).set(hiOrLo32OrY, lo32);
+      }
+    }
+    setRange(start, end, list, skipCount = 0) {
+      if (start == null) dart.nullFailed(I[0], 490, 21, "start");
+      if (end == null) dart.nullFailed(I[0], 490, 32, "end");
+      if (list == null) dart.nullFailed(I[0], 490, 52, "list");
+      if (skipCount == null) dart.nullFailed(I[0], 490, 63, "skipCount");
+      let length = dart.notNull(end) - dart.notNull(start);
+      for (let i = 0; i < length; i = i + 1) {
+        this[_list][$_get](dart.notNull(start) + i).set(list._get(dart.notNull(skipCount) + i));
+      }
+    }
+    toString() {
+      let sb = new core.StringBuffer.new("(");
+      for (let i = 0; i < dart.notNull(this[_list][$length]); i = i + 1) {
+        if (i > 0) {
+          sb.write(", ");
+        }
+        sb.write(dart.toString(this[_list][$_get](i)));
+      }
+      sb.write(")");
+      return sb.toString();
+    }
+  };
+  (ufixnum.Register64List.from = function(values) {
+    if (values == null) dart.nullFailed(I[0], 473, 39, "values");
+    this[_list] = T.ListOfRegister64().generate(values[$length], dart.fn(i => {
+      if (i == null) dart.nullFailed(I[0], 475, 29, "i");
+      return new ufixnum.Register64.new(values[$_get](i)[$_get](0), values[$_get](i)[$_get](1));
+    }, T.intToRegister64()));
+    ;
+  }).prototype = ufixnum.Register64List.prototype;
+  (ufixnum.Register64List.new = function(length) {
+    if (length == null) dart.nullFailed(I[0], 477, 22, "length");
+    this[_list] = T.ListOfRegister64().generate(length, dart.fn(_ => {
+      if (_ == null) dart.nullFailed(I[0], 478, 52, "_");
+      return new ufixnum.Register64.new();
+    }, T.intToRegister64()));
+    ;
+  }).prototype = ufixnum.Register64List.prototype;
+  dart.addTypeTests(ufixnum.Register64List);
+  dart.addTypeCaches(ufixnum.Register64List);
+  dart.setMethodSignature(ufixnum.Register64List, () => ({
+    __proto__: dart.getMethods(ufixnum.Register64List.__proto__),
+    _get: dart.fnType(ufixnum.Register64, [core.int]),
+    fillRange: dart.fnType(dart.void, [core.int, core.int, dart.dynamic], [dart.nullable(core.int)]),
+    setRange: dart.fnType(dart.void, [core.int, core.int, ufixnum.Register64List], [core.int])
+  }));
+  dart.setGetterSignature(ufixnum.Register64List, () => ({
+    __proto__: dart.getGetters(ufixnum.Register64List.__proto__),
+    length: core.int
+  }));
+  dart.setLibraryUri(ufixnum.Register64List, I[1]);
+  dart.setFieldSignature(ufixnum.Register64List, () => ({
+    __proto__: dart.getFields(ufixnum.Register64List.__proto__),
+    [_list]: dart.finalFieldType(core.List$(ufixnum.Register64))
+  }));
+  dart.defineExtensionMethods(ufixnum.Register64List, ['toString']);
+  ufixnum.clip8 = function clip8(x) {
+    if (x == null) dart.nullFailed(I[0], 54, 15, "x");
+    return (dart.notNull(x) & 255) >>> 0;
+  };
+  ufixnum.csum8 = function csum8(x, y) {
+    if (x == null) dart.nullFailed(I[0], 56, 15, "x");
+    if (y == null) dart.nullFailed(I[0], 56, 22, "y");
+    return ufixnum.sum8(ufixnum.clip8(x), ufixnum.clip8(y));
+  };
+  ufixnum.sum8 = function sum8(x, y) {
+    if (x == null) dart.nullFailed(I[0], 57, 14, "x");
+    if (y == null) dart.nullFailed(I[0], 57, 21, "y");
+    if (!(dart.notNull(x) >= 0 && dart.notNull(x) <= 255)) dart.assertFailed(null, I[0], 58, 10, "(x >= 0) && (x <= _MASK_8)");
+    if (!(dart.notNull(y) >= 0 && dart.notNull(y) <= 255)) dart.assertFailed(null, I[0], 59, 10, "(y >= 0) && (y <= _MASK_8)");
+    return (dart.notNull(x) + dart.notNull(y) & 255) >>> 0;
+  };
+  ufixnum.csub8 = function csub8(x, y) {
+    if (x == null) dart.nullFailed(I[0], 63, 15, "x");
+    if (y == null) dart.nullFailed(I[0], 63, 22, "y");
+    return ufixnum.sub8(ufixnum.clip8(x), ufixnum.clip8(y));
+  };
+  ufixnum.sub8 = function sub8(x, y) {
+    if (x == null) dart.nullFailed(I[0], 64, 14, "x");
+    if (y == null) dart.nullFailed(I[0], 64, 21, "y");
+    if (!(dart.notNull(x) >= 0 && dart.notNull(x) <= 255)) dart.assertFailed(null, I[0], 65, 10, "(x >= 0) && (x <= _MASK_8)");
+    if (!(dart.notNull(y) >= 0 && dart.notNull(y) <= 255)) dart.assertFailed(null, I[0], 66, 10, "(y >= 0) && (y <= _MASK_8)");
+    return (dart.notNull(x) - dart.notNull(y) & 255) >>> 0;
+  };
+  ufixnum.cshiftl8 = function cshiftl8(x, n) {
+    if (x == null) dart.nullFailed(I[0], 70, 18, "x");
+    if (n == null) dart.nullFailed(I[0], 70, 25, "n");
+    return ufixnum.shiftl8(ufixnum.clip8(x), n);
+  };
+  ufixnum.shiftl8 = function shiftl8(x, n) {
+    if (x == null) dart.nullFailed(I[0], 71, 17, "x");
+    if (n == null) dart.nullFailed(I[0], 71, 24, "n");
+    if (!(dart.notNull(x) >= 0 && dart.notNull(x) <= 255)) dart.assertFailed(null, I[0], 72, 10, "(x >= 0) && (x <= _MASK_8)");
+    return (x[$leftShift]((dart.notNull(n) & 7) >>> 0) & 255) >>> 0;
+  };
+  ufixnum.cshiftr8 = function cshiftr8(x, n) {
+    if (x == null) dart.nullFailed(I[0], 76, 18, "x");
+    if (n == null) dart.nullFailed(I[0], 76, 25, "n");
+    return ufixnum.shiftr8(ufixnum.clip8(x), n);
+  };
+  ufixnum.shiftr8 = function shiftr8(x, n) {
+    if (x == null) dart.nullFailed(I[0], 77, 17, "x");
+    if (n == null) dart.nullFailed(I[0], 77, 24, "n");
+    if (!(dart.notNull(x) >= 0 && dart.notNull(x) <= 255)) dart.assertFailed(null, I[0], 78, 10, "(x >= 0) && (x <= _MASK_8)");
+    return x[$rightShift]((dart.notNull(n) & 7) >>> 0);
+  };
+  ufixnum.cneg8 = function cneg8(x) {
+    if (x == null) dart.nullFailed(I[0], 82, 15, "x");
+    return ufixnum.neg8(ufixnum.clip8(x));
+  };
+  ufixnum.neg8 = function neg8(x) {
+    if (x == null) dart.nullFailed(I[0], 83, 14, "x");
+    if (!(dart.notNull(x) >= 0 && dart.notNull(x) <= 255)) dart.assertFailed(null, I[0], 84, 10, "(x >= 0) && (x <= _MASK_8)");
+    return (-dart.notNull(x) & 255) >>> 0;
+  };
+  ufixnum.cnot8 = function cnot8(x) {
+    if (x == null) dart.nullFailed(I[0], 88, 15, "x");
+    return ufixnum.not8(ufixnum.clip8(x));
+  };
+  ufixnum.not8 = function not8(x) {
+    if (x == null) dart.nullFailed(I[0], 89, 14, "x");
+    if (!(dart.notNull(x) >= 0 && dart.notNull(x) <= 255)) dart.assertFailed(null, I[0], 90, 10, "(x >= 0) && (x <= _MASK_8)");
+    return (~dart.notNull(x) & 255) >>> 0;
+  };
+  ufixnum.crotl8 = function crotl8(x, n) {
+    if (x == null) dart.nullFailed(I[0], 94, 16, "x");
+    if (n == null) dart.nullFailed(I[0], 94, 23, "n");
+    return ufixnum.rotl8(ufixnum.clip8(x), n);
+  };
+  ufixnum.rotl8 = function rotl8(x, n) {
+    if (x == null) dart.nullFailed(I[0], 95, 15, "x");
+    if (n == null) dart.nullFailed(I[0], 95, 22, "n");
+    if (!(dart.notNull(n) >= 0)) dart.assertFailed(null, I[0], 96, 10, "n >= 0");
+    if (!(dart.notNull(x) >= 0 && dart.notNull(x) <= 255)) dart.assertFailed(null, I[0], 97, 10, "(x >= 0) && (x <= _MASK_8)");
+    n = (dart.notNull(n) & 7) >>> 0;
+    return (x[$leftShift](n) & 255 | x[$rightShift](8 - dart.notNull(n))) >>> 0;
+  };
+  ufixnum.crotr8 = function crotr8(x, n) {
+    if (x == null) dart.nullFailed(I[0], 102, 16, "x");
+    if (n == null) dart.nullFailed(I[0], 102, 23, "n");
+    return ufixnum.rotr8(ufixnum.clip8(x), n);
+  };
+  ufixnum.rotr8 = function rotr8(x, n) {
+    if (x == null) dart.nullFailed(I[0], 103, 15, "x");
+    if (n == null) dart.nullFailed(I[0], 103, 22, "n");
+    if (!(dart.notNull(n) >= 0)) dart.assertFailed(null, I[0], 104, 10, "n >= 0");
+    if (!(dart.notNull(x) >= 0 && dart.notNull(x) <= 255)) dart.assertFailed(null, I[0], 105, 10, "(x >= 0) && (x <= _MASK_8)");
+    n = (dart.notNull(n) & 7) >>> 0;
+    return (x[$rightShift](n) & 255 | (x[$leftShift](8 - dart.notNull(n)) & 255) >>> 0) >>> 0;
+  };
+  ufixnum.clip16 = function clip16(x) {
+    if (x == null) dart.nullFailed(I[0], 113, 16, "x");
+    return (dart.notNull(x) & 65535) >>> 0;
+  };
+  ufixnum.pack16 = function pack16(x, out, offset, endian) {
+    if (x == null) dart.nullFailed(I[0], 117, 17, "x");
+    if (offset == null) dart.nullFailed(I[0], 117, 37, "offset");
+    if (endian == null) dart.nullFailed(I[0], 117, 52, "endian");
+    if (!(dart.notNull(x) >= 0 && dart.notNull(x) <= 65535)) dart.assertFailed(null, I[0], 118, 10, "(x >= 0) && (x <= _MASK_16)");
+    if (!typed_data.ByteData.is(out)) {
+      out = typed_data.ByteData.view(typed_data.ByteBuffer.as(dart.dload(out, 'buffer')), core.int.as(dart.dload(out, 'offsetInBytes')), T.intN().as(dart.dload(out, 'length')));
+    }
+    out[$setUint16](offset, x, endian);
+  };
+  ufixnum.unpack16 = function unpack16(inp, offset, endian) {
+    if (offset == null) dart.nullFailed(I[0], 127, 31, "offset");
+    if (endian == null) dart.nullFailed(I[0], 127, 46, "endian");
+    if (!typed_data.ByteData.is(inp)) {
+      inp = typed_data.ByteData.view(typed_data.ByteBuffer.as(dart.dload(inp, 'buffer')), core.int.as(dart.dload(inp, 'offsetInBytes')), T.intN().as(dart.dload(inp, 'length')));
+    }
+    return inp[$getUint16](offset, endian);
+  };
+  ufixnum.clip32 = function clip32(x) {
+    if (x == null) dart.nullFailed(I[0], 138, 16, "x");
+    return (dart.notNull(x) & 4294967295.0) >>> 0;
+  };
+  ufixnum.csum32 = function csum32(x, y) {
+    if (x == null) dart.nullFailed(I[0], 140, 16, "x");
+    if (y == null) dart.nullFailed(I[0], 140, 23, "y");
+    return ufixnum.sum32(ufixnum.clip32(x), ufixnum.clip32(y));
+  };
+  ufixnum.sum32 = function sum32(x, y) {
+    if (x == null) dart.nullFailed(I[0], 141, 15, "x");
+    if (y == null) dart.nullFailed(I[0], 141, 22, "y");
+    if (!(dart.notNull(x) >= 0 && dart.notNull(x) <= 4294967295.0)) dart.assertFailed(null, I[0], 142, 10, "(x >= 0) && (x <= _MASK_32)");
+    if (!(dart.notNull(y) >= 0 && dart.notNull(y) <= 4294967295.0)) dart.assertFailed(null, I[0], 143, 10, "(y >= 0) && (y <= _MASK_32)");
+    return (dart.notNull(x) + dart.notNull(y) & 4294967295.0) >>> 0;
+  };
+  ufixnum.csub32 = function csub32(x, y) {
+    if (x == null) dart.nullFailed(I[0], 147, 16, "x");
+    if (y == null) dart.nullFailed(I[0], 147, 23, "y");
+    return ufixnum.sub32(ufixnum.clip32(x), ufixnum.clip32(y));
+  };
+  ufixnum.sub32 = function sub32(x, y) {
+    if (x == null) dart.nullFailed(I[0], 148, 15, "x");
+    if (y == null) dart.nullFailed(I[0], 148, 22, "y");
+    if (!(dart.notNull(x) >= 0 && dart.notNull(x) <= 4294967295.0)) dart.assertFailed(null, I[0], 149, 10, "(x >= 0) && (x <= _MASK_32)");
+    if (!(dart.notNull(y) >= 0 && dart.notNull(y) <= 4294967295.0)) dart.assertFailed(null, I[0], 150, 10, "(y >= 0) && (y <= _MASK_32)");
+    return (dart.notNull(x) - dart.notNull(y) & 4294967295.0) >>> 0;
+  };
+  ufixnum.cshiftl32 = function cshiftl32(x, n) {
+    if (x == null) dart.nullFailed(I[0], 154, 19, "x");
+    if (n == null) dart.nullFailed(I[0], 154, 26, "n");
+    return ufixnum.shiftl32(ufixnum.clip32(x), n);
+  };
+  ufixnum.shiftl32 = function shiftl32(x, n) {
+    if (x == null) dart.nullFailed(I[0], 155, 18, "x");
+    if (n == null) dart.nullFailed(I[0], 155, 25, "n");
+    if (!(dart.notNull(x) >= 0 && dart.notNull(x) <= 4294967295.0)) dart.assertFailed(null, I[0], 156, 10, "(x >= 0) && (x <= _MASK_32)");
+    n = (dart.notNull(n) & 31) >>> 0;
+    x = (dart.notNull(x) & dart.notNull(ufixnum._MASK32_HI_BITS[$_get](n))) >>> 0;
+    return (x[$leftShift](n) & 4294967295.0) >>> 0;
+  };
+  ufixnum.cshiftr32 = function cshiftr32(x, n) {
+    if (x == null) dart.nullFailed(I[0], 162, 19, "x");
+    if (n == null) dart.nullFailed(I[0], 162, 26, "n");
+    return ufixnum.shiftr32(ufixnum.clip32(x), n);
+  };
+  ufixnum.shiftr32 = function shiftr32(x, n) {
+    if (x == null) dart.nullFailed(I[0], 163, 18, "x");
+    if (n == null) dart.nullFailed(I[0], 163, 25, "n");
+    if (!(dart.notNull(x) >= 0 && dart.notNull(x) <= 4294967295.0)) dart.assertFailed(null, I[0], 164, 10, "(x >= 0) && (x <= _MASK_32)");
+    n = (dart.notNull(n) & 31) >>> 0;
+    return x[$rightShift](n);
+  };
+  ufixnum.cneg32 = function cneg32(x) {
+    if (x == null) dart.nullFailed(I[0], 169, 16, "x");
+    return ufixnum.neg32(ufixnum.clip32(x));
+  };
+  ufixnum.neg32 = function neg32(x) {
+    if (x == null) dart.nullFailed(I[0], 170, 15, "x");
+    if (!(dart.notNull(x) >= 0 && dart.notNull(x) <= 4294967295.0)) dart.assertFailed(null, I[0], 171, 10, "(x >= 0) && (x <= _MASK_32)");
+    return (-dart.notNull(x) & 4294967295.0) >>> 0;
+  };
+  ufixnum.cnot32 = function cnot32(x) {
+    if (x == null) dart.nullFailed(I[0], 175, 16, "x");
+    return ufixnum.not32(ufixnum.clip32(x));
+  };
+  ufixnum.not32 = function not32(x) {
+    if (x == null) dart.nullFailed(I[0], 176, 15, "x");
+    if (!(dart.notNull(x) >= 0 && dart.notNull(x) <= 4294967295.0)) dart.assertFailed(null, I[0], 177, 10, "(x >= 0) && (x <= _MASK_32)");
+    return (~dart.notNull(x) & 4294967295.0) >>> 0;
+  };
+  ufixnum.crotl32 = function crotl32(x, n) {
+    if (x == null) dart.nullFailed(I[0], 181, 17, "x");
+    if (n == null) dart.nullFailed(I[0], 181, 24, "n");
+    return ufixnum.rotl32(ufixnum.clip32(x), n);
+  };
+  ufixnum.rotl32 = function rotl32(x, n) {
+    if (x == null) dart.nullFailed(I[0], 182, 16, "x");
+    if (n == null) dart.nullFailed(I[0], 182, 23, "n");
+    if (!(dart.notNull(n) >= 0)) dart.assertFailed(null, I[0], 183, 10, "n >= 0");
+    if (!(dart.notNull(x) >= 0 && dart.notNull(x) <= 4294967295.0)) dart.assertFailed(null, I[0], 184, 10, "(x >= 0) && (x <= _MASK_32)");
+    n = (dart.notNull(n) & 31) >>> 0;
+    return (dart.notNull(ufixnum.shiftl32(x, n)) | x[$rightShift](32 - dart.notNull(n))) >>> 0;
+  };
+  ufixnum.crotr32 = function crotr32(x, n) {
+    if (x == null) dart.nullFailed(I[0], 189, 17, "x");
+    if (n == null) dart.nullFailed(I[0], 189, 24, "n");
+    return ufixnum.rotr32(ufixnum.clip32(x), n);
+  };
+  ufixnum.rotr32 = function rotr32(x, n) {
+    if (x == null) dart.nullFailed(I[0], 190, 16, "x");
+    if (n == null) dart.nullFailed(I[0], 190, 23, "n");
+    if (!(dart.notNull(n) >= 0)) dart.assertFailed(null, I[0], 191, 10, "n >= 0");
+    if (!(dart.notNull(x) >= 0 && dart.notNull(x) <= 4294967295.0)) dart.assertFailed(null, I[0], 192, 10, "(x >= 0) && (x <= _MASK_32)");
+    n = (dart.notNull(n) & 31) >>> 0;
+    return (x[$rightShift](n) | dart.notNull(ufixnum.shiftl32(x, 32 - dart.notNull(n)))) >>> 0;
+  };
+  ufixnum.pack32 = function pack32(x, out, offset, endian) {
+    if (x == null) dart.nullFailed(I[0], 199, 17, "x");
+    if (offset == null) dart.nullFailed(I[0], 199, 37, "offset");
+    if (endian == null) dart.nullFailed(I[0], 199, 52, "endian");
+    if (!(dart.notNull(x) >= 0 && dart.notNull(x) <= 4294967295.0)) dart.assertFailed(null, I[0], 200, 10, "(x >= 0) && (x <= _MASK_32)");
+    if (!typed_data.ByteData.is(out)) {
+      out = typed_data.ByteData.view(typed_data.ByteBuffer.as(dart.dload(out, 'buffer')), core.int.as(dart.dload(out, 'offsetInBytes')), T.intN().as(dart.dload(out, 'length')));
+    }
+    out[$setUint32](offset, x, endian);
+  };
+  ufixnum.unpack32 = function unpack32(inp, offset, endian) {
+    if (offset == null) dart.nullFailed(I[0], 210, 31, "offset");
+    if (endian == null) dart.nullFailed(I[0], 210, 46, "endian");
+    if (!typed_data.ByteData.is(inp)) {
+      inp = typed_data.ByteData.view(typed_data.ByteBuffer.as(dart.dload(inp, 'buffer')), core.int.as(dart.dload(inp, 'offsetInBytes')), T.intN().as(dart.dload(inp, 'length')));
+    }
+    return inp[$getUint32](offset, endian);
+  };
+  dart.defineLazy(ufixnum, {
+    /*ufixnum._MASK_3*/get _MASK_3() {
+      return 7;
+    },
+    /*ufixnum._MASK_5*/get _MASK_5() {
+      return 31;
+    },
+    /*ufixnum._MASK_6*/get _MASK_6() {
+      return 63;
+    },
+    /*ufixnum._MASK_8*/get _MASK_8() {
+      return 255;
+    },
+    /*ufixnum._MASK_16*/get _MASK_16() {
+      return 65535;
+    },
+    /*ufixnum._MASK_32*/get _MASK_32() {
+      return 4294967295.0;
+    },
+    /*ufixnum._MASK32_HI_BITS*/get _MASK32_HI_BITS() {
+      return T.JSArrayOfint().of([4294967295, 2147483647, 1073741823, 536870911, 268435455, 134217727, 67108863, 33554431, 16777215, 8388607, 4194303, 2097151, 1048575, 524287, 262143, 131071, 65535, 32767, 16383, 8191, 4095, 2047, 1023, 511, 255, 127, 63, 31, 15, 7, 3, 1, 0]);
+    }
+  }, false);
+  dart.trackLibraries("packages/pointycastle/src/ufixnum.dart", {
+    "package:pointycastle/src/ufixnum.dart": ufixnum
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["ufixnum.dart"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;AA4NW;IAAK;;;AAAL;;IAAK;;;AACL;IAAK;;;AAAL;;IAAK;;AAME;IAAK;;AACL;IAAK;;UAGG;AACpB,YAAE,uBAAF,CAAC,IAAoB,AAAM,AAAY,eAAT,AAAE,CAAD,WAAY,AAAM,eAAG,AAAE,CAAD,UAAY;IAAK;;UAC/C;AACvB,YAAQ,AAAW,cAAjB,4BAAQ,AAAE,CAAD,YAAa,AAAM,eAAG,AAAE,CAAD,WAAkB,aAAN,4BAAQ,AAAE,CAAD;IAAS;;UACxC;AAAM,YAAY,WAAV,AAAK,UAAE,CAAC,MAAM,AAAK,aAAG,CAAC;IAAE;;UAClC;AACvB,YAAQ,AAAW,cAAjB,4BAAQ,AAAE,CAAD,YAAa,AAAM,eAAG,AAAE,CAAD,WAAkB,aAAN,4BAAQ,AAAE,CAAD;IAAS;;UACxC;AAAM,YAAY,WAAV,AAAK,UAAE,CAAC,MAAM,AAAK,aAAG,CAAC;IAAE;QAE5C,aAAmB;AAClC,UAAI,AAAK,IAAD;AACN,YAAgB,sBAAZ,WAAW;AACY,UAAzB,cAAQ,AAAY,WAAD;AACM,UAAzB,cAAQ,AAAY,WAAD;;AAEnB,sCAAmB,WAAZ,WAAW;AACT,UAAT,cAAQ;AACW,wBAAnB,YAAQ,WAAW;;;AAGrB,oCAAmB,WAAZ,WAAW;AAClB,cAAY,aAAL,IAAI;AACQ,sBAAnB,YAAQ,WAAW;AACP,QAAZ,cAAQ,IAAI;;IAEhB;QAEiB;AACf,UAAM,YAAF,CAAC;AACU,QAAb,IAAE,cAAF,CAAC;AACG,oBAAe,aAAN,4BAAQ,CAAC;AACI,QAA1B,cAAe,CAAN,KAAK;AACd,YAAI,KAAK,KAAI;AACJ,UAAP,cAAK,aAAL,eAAK;AACY,UAAjB,cAAM,cAAN;;;AAGE,oBAAwB,WAAV,aAAN,wCAAU,WAAF,CAAC;AACK,QAA1B,cAAe,CAAN,KAAK;AACV,oBAAU,AAAM,KAAD,KAAI,cAAS,IAAI;AACmB,QAAvD,cAA4C,CAAR,WAAnB,AAAU,aAAhB,wCAAU,WAAF,CAAC,aAAS,KAAK;;IAEtC;;UAEuB;AACjB,kBAAe,aAAN,4BAAQ,AAAE,CAAD;AACI,MAA1B,cAAe,CAAN,KAAK;AACV,kBAAU,AAAM,KAAD,KAAI,cAAS,IAAI;AACU,MAA9C,cAAmC,CAAnB,AAAU,aAAhB,4BAAQ,AAAE,CAAD,WAAS,KAAK;IACnC;QAEiB;;AAEU,MAAzB,eAAI,2BAAW,CAAC,GAAZ;AAAe;;;IACrB;QAEiB;AACf,UAAM,YAAF,CAAC;AACG,mBAAa,aAAN,4BAAQ,CAAC;AAChB,oBAAc,CAAL,IAAI,GACf;AACE,mBAAyB,aAAlB,eAAa,aAAN,4BAAQ,CAAC,MAAI,KAAK;AAElB,QAApB,cAAQ,eAAO,IAAI;AACC,QAApB,cAAQ,eAAO,IAAI;;AAEb,mBAAa,aAAN,wCAAU,WAAF,CAAC;AAChB,oBAAc,CAAL,IAAI,GACf;AACE,mBAAsC,AACT,aADtB,eAAuB,WAAV,aAAN,wCAAU,WAAF,CAAC,6BACzB,eAAuB,WAAV,aAAN,wCAAU,WAAF,CAAC,gBAChB,KAAK;AAEW,QAApB,cAAQ,eAAO,IAAI;AACQ,QAA3B,cAAQ,eAAY,WAAL,IAAI;;IAEvB;;AAGO,MAAL;AACM,MAAN,SAAI;IACN;;AAG6B,MAA3B,cAAgB,CAAP,cAAC;AACiB,MAA3B,cAAgB,CAAP,cAAC;IACZ;;UAEoB;AACF,MAAhB,cAAM,cAAN,4BAAS,AAAE,CAAD;AACM,MAAhB,cAAM,cAAN,4BAAS,AAAE,CAAD;IACZ;;UAEmB;AACD,MAAhB,cAAM,cAAN,4BAAS,AAAE,CAAD;AACM,MAAhB,cAAM,cAAN,4BAAS,AAAE,CAAD;IACZ;;UAEoB;AACF,MAAhB,cAAM,cAAN,4BAAS,AAAE,CAAD;AACM,MAAhB,cAAM,cAAN,4BAAS,AAAE,CAAD;IACZ;;UAEgB;AACF,MAAZ,IAAE,cAAF,CAAC;AACD,UAAI,AAAE,CAAD,KAAI;YAEF,KAAM,aAAF,CAAC,KAAI;AACmB,QAAjC,cAAQ,iBAAS,aAAU,aAAF,CAAC,IAAG;AACpB,QAAT,cAAQ;;AAEkB,QAA1B,cAAQ,iBAAS,aAAO,CAAC;AACC,QAA1B,cAAM,cAAN,eAAS,AAAM,yBAAI,AAAG,kBAAE,CAAC;AACC,QAA1B,cAAQ,iBAAS,aAAO,CAAC;;IAE7B;;UAEgB;AACF,MAAZ,IAAE,cAAF,CAAC;AACD,UAAI,AAAE,CAAD,KAAI;YAEF,KAAM,aAAF,CAAC,KAAI;AACW,QAAzB,cAAQ,AAAM,yBAAM,aAAF,CAAC,IAAG;AACb,QAAT,cAAQ;;AAEU,QAAlB,cAAQ,AAAM,yBAAG,CAAC;AACc,QAAhC,cAAM,cAAN,4BAAS,iBAAS,aAAO,AAAG,kBAAE,CAAC;AACb,QAAlB,cAAQ,AAAM,yBAAG,CAAC;;IAEtB;;UAEc;AACA,MAAZ,IAAE,cAAF,CAAC;AACD,UAAI,AAAE,CAAD,KAAI;;AAGP,YAAM,aAAF,CAAC,KAAI;AACH,qBAAO;AACE,UAAb,cAAQ;AACI,UAAZ,cAAQ,IAAI;AACL,UAAP,IAAE,aAAF,CAAC,IAAI;;AAGP,YAAI,AAAE,CAAD,KAAI;;AAGH,qBAAO;AACe,UAA1B,cAAQ,iBAAS,aAAO,CAAC;AACC,UAA1B,cAAM,cAAN,eAAS,AAAM,yBAAI,AAAG,kBAAE,CAAC;AACC,UAA1B,cAAQ,iBAAS,aAAO,CAAC;AACA,UAAzB,cAAM,cAAN,eAAS,AAAK,IAAD,cAAK,AAAG,kBAAE,CAAC;;;IAG9B;;UAEc;AACA,MAAZ,IAAE,cAAF,CAAC;AACD,UAAI,AAAE,CAAD,KAAI;;AAGP,YAAM,aAAF,CAAC,KAAI;AACH,qBAAO;AACE,UAAb,cAAQ;AACI,UAAZ,cAAQ,IAAI;AACL,UAAP,IAAE,aAAF,CAAC,IAAI;;AAGP,YAAI,AAAE,CAAD,KAAI;;AAGH,qBAAO;AACO,UAAlB,cAAQ,AAAM,yBAAG,CAAC;AACgB,UAAlC,cAAM,cAAN,4BAAS,iBAAS,aAAQ,AAAG,kBAAE,CAAC;AACd,UAAlB,cAAQ,AAAM,yBAAG,CAAC;AACe,UAAjC,cAAM,cAAN,4BAAS,iBAAS,IAAI,EAAG,AAAG,kBAAE,CAAC;;;IAGrC;SAIkB,KAAS,QAAe;UAAf;UAAe;AACxC,cAAQ,MAAM;;;AAEuB,UAAjC,eAAO,WAAM,GAAG,EAAE,MAAM,EAAE,MAAM;AACK,UAArC,eAAO,WAAM,GAAG,EAAS,aAAP,MAAM,IAAG,GAAG,MAAM;AACpC;;;;AAGqC,UAArC,eAAO,WAAM,GAAG,EAAS,aAAP,MAAM,IAAG,GAAG,MAAM;AACH,UAAjC,eAAO,WAAM,GAAG,EAAE,MAAM,EAAE,MAAM;AAChC;;;;AAGqD,UAArD,WAAM,8BAAiB,AAA6B,kCAAP,MAAM;;;IAEzD;WAIoB,KAAS,QAAe;UAAf;UAAe;AAC1C,cAAQ,MAAM;;;AAE2B,UAArC,cAAQ,iBAAS,GAAG,EAAE,MAAM,EAAE,MAAM;AACK,UAAzC,cAAQ,iBAAS,GAAG,EAAS,aAAP,MAAM,IAAG,GAAG,MAAM;AACxC;;;;AAGyC,UAAzC,cAAQ,iBAAS,GAAG,EAAS,aAAP,MAAM,IAAG,GAAG,MAAM;AACH,UAArC,cAAQ,iBAAS,GAAG,EAAE,MAAM,EAAE,MAAM;AACpC;;;;AAGqD,UAArD,WAAM,8BAAiB,AAA6B,kCAAP,MAAM;;;IAEzD;;AAIM,eAAK;AACW,MAApB,gBAAU,EAAE,EAAE;AACM,MAApB,gBAAU,EAAE,EAAE;AACd,YAAO,AAAG,GAAD;IACX;gBAE4B,IAAQ;UAAR;UAAQ;AAC9B,gBAAM,AAAM,KAAD,iBAAe;AAC9B,eAAS,IAAK,AAAE,IAAE,AAAI,GAAD,SAAU,AAAE,CAAD,GAAG,GAAG,IAAA,AAAC,CAAA;AACxB,QAAb,AAAG,EAAD,OAAO;;AAEE,MAAb,AAAG,EAAD,OAAO,GAAG;IACd;;AAIoB,YAAM;IAAQ;;qCAnPd,iBAAsB;+BAHjC;;+BACA;;AAGe,IAAtB,SAAI,WAAW,EAAE,IAAI;EACvB;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;AA8PkB,YAAA,AAAM;IAAM;;UAEH;AAAU,YAAA,AAAK,oBAAC,KAAK;IAAC;cAE9B,OAAW,KAAa,aAAmB;UAA3C;UAAW;AAC5B,eAAS,IAAI,KAAK,EAAI,aAAF,CAAC,iBAAG,GAAG,GAAE,IAAC,aAAD,CAAC;AACG,QAA/B,AAAK,AAAI,mBAAH,CAAC,MAAM,WAAW,EAAE,IAAI;;IAElC;aAEkB,OAAW,KAAoB,MAAW;UAA1C;UAAW;UAAoB;UAAW;AACtD,mBAAa,aAAJ,GAAG,iBAAG,KAAK;AACxB,eAAS,IAAI,GAAG,AAAE,CAAD,GAAG,MAAM,EAAE,IAAA,AAAC,CAAA;AACc,QAAzC,AAAK,AAAY,mBAAL,aAAN,KAAK,IAAG,CAAC,MAAM,AAAI,IAAA,MAAW,aAAV,SAAS,IAAG,CAAC;;IAE3C;;AAIM,eAAK,0BAAa;AACtB,eAAS,IAAI,GAAG,AAAE,CAAD,gBAAG,AAAM,uBAAQ,IAAA,AAAC,CAAA;AACjC,YAAI,AAAE,CAAD,GAAG;AACQ,UAAd,AAAG,EAAD,OAAO;;AAEkB,QAA7B,AAAG,EAAD,OAAgB,cAAT,AAAK,mBAAC,CAAC;;AAEL,MAAb,AAAG,EAAD,OAAO;AACT,YAAO,AAAG,GAAD;IACX;;;QAnCoC;IACxB,cAAE,8BACJ,AAAO,MAAD,WAAS;UAAC;AAAM,wCAAW,AAAM,AAAG,MAAH,QAAC,CAAC,SAAE,IAAI,AAAM,AAAG,MAAH,QAAC,CAAC,SAAE;;;EAAI;;QAEpD;IACP,cAAE,8BAA0B,MAAM,EAAE;UAAC;AAAM;;;EAAa;;;;;;;;;;;;;;;;;;;;QAxaxD;AAAM,UAAG,eAAF,CAAC;EAAW;iCAEnB,GAAO;QAAP;QAAO;AAAM,wBAAK,cAAM,CAAC,GAAG,cAAM,CAAC;EAAE;+BACtC,GAAO;QAAP;QAAO;AAClB,UAAU,AAAM,aAAR,CAAC,KAAI,KAAS,aAAF,CAAC;AACrB,UAAU,AAAM,aAAR,CAAC,KAAI,KAAS,aAAF,CAAC;AACrB,UAAgB,EAAL,aAAF,CAAC,iBAAG,CAAC;EAChB;iCAEc,GAAO;QAAP;QAAO;AAAM,wBAAK,cAAM,CAAC,GAAG,cAAM,CAAC;EAAE;+BACtC,GAAO;QAAP;QAAO;AAClB,UAAU,AAAM,aAAR,CAAC,KAAI,KAAS,aAAF,CAAC;AACrB,UAAU,AAAM,aAAR,CAAC,KAAI,KAAS,aAAF,CAAC;AACrB,UAAgB,EAAL,aAAF,CAAC,iBAAG,CAAC;EAChB;uCAEiB,GAAO;QAAP;QAAO;AAAM,2BAAQ,cAAM,CAAC,GAAG,CAAC;EAAC;qCAClC,GAAO;QAAP;QAAO;AACrB,UAAU,AAAM,aAAR,CAAC,KAAI,KAAS,aAAF,CAAC;AACrB,UAA6B,EAApB,AAAE,CAAD,aAAO,cAAF,CAAC;EAClB;uCAEiB,GAAO;QAAP;QAAO;AAAM,2BAAQ,cAAM,CAAC,GAAG,CAAC;EAAC;qCAClC,GAAO;QAAP;QAAO;AACrB,UAAU,AAAM,aAAR,CAAC,KAAI,KAAS,aAAF,CAAC;AACrB,UAAQ,AAAE,EAAD,cAAO,cAAF,CAAC;EACjB;;QAEc;AAAM,wBAAK,cAAM,CAAC;EAAE;;QACrB;AACX,UAAU,AAAM,aAAR,CAAC,KAAI,KAAS,aAAF,CAAC;AACrB,UAAW,EAAH,cAAC,CAAC;EACZ;;QAEc;AAAM,wBAAK,cAAM,CAAC;EAAE;;QACrB;AACX,UAAU,AAAM,aAAR,CAAC,KAAI,KAAS,aAAF,CAAC;AACrB,UAAW,EAAH,cAAC,CAAC;EACZ;mCAEe,GAAO;QAAP;QAAO;AAAM,yBAAM,cAAM,CAAC,GAAG,CAAC;EAAC;iCAChC,GAAO;QAAP;QAAO;AACnB,UAAS,aAAF,CAAC,KAAI;AACZ,UAAU,AAAM,aAAR,CAAC,KAAI,KAAS,aAAF,CAAC;AACT,IAAZ,IAAE,cAAF,CAAC;AACD,UAA4B,EAAnB,AAAE,AAAM,CAAP,aAAI,CAAC,UAAgB,AAAE,CAAD,cAAK,AAAE,iBAAE,CAAC;EAC5C;mCAEe,GAAO;QAAP;QAAO;AAAM,yBAAM,cAAM,CAAC,GAAG,CAAC;EAAC;iCAChC,GAAO;QAAP;QAAO;AACnB,UAAS,aAAF,CAAC,KAAI;AACZ,UAAU,AAAM,aAAR,CAAC,KAAI,KAAS,aAAF,CAAC;AACT,IAAZ,IAAE,cAAF,CAAC;AACD,UAA4B,EAAnB,AAAE,AAAM,CAAP,cAAI,CAAC,UAA+B,CAAd,AAAE,CAAD,aAAK,AAAE,iBAAE,CAAC;EAC7C;;QAKe;AAAM,UAAG,eAAF,CAAC;EAAY;mCAInB,GAAW,KAAS,QAAe;QAAnC;QAAoB;QAAe;AACjD,UAAU,AAAM,aAAR,CAAC,KAAI,KAAS,aAAF,CAAC;AACrB,SAAQ,uBAAJ,GAAG;AACyD,MAA9D,MAAe,kDAAS,WAAJ,GAAG,0BAAa,WAAJ,GAAG,iCAAoB,WAAJ,GAAG;;AAExB,IAAhC,AAAI,GAAD,aAAW,MAAM,EAAE,CAAC,EAAE,MAAM;EACjC;uCAIqB,KAAS,QAAe;QAAf;QAAe;AAC3C,SAAQ,uBAAJ,GAAG;AAEsE,MAD3E,MAAe,yBACA,yBAAP,WAAJ,GAAG,cAAyC,YAAd,WAAJ,GAAG,qBAAkC,YAAP,WAAJ,GAAG;;AAE7D,UAAO,AAAI,IAAD,aAAW,MAAM,EAAE,MAAM;EACrC;;QAKe;AAAM,UAAG,eAAF,CAAC;EAAY;mCAEpB,GAAO;QAAP;QAAO;AAAM,yBAAM,eAAO,CAAC,GAAG,eAAO,CAAC;EAAE;iCACzC,GAAO;QAAP;QAAO;AACnB,UAAU,AAAM,aAAR,CAAC,KAAI,KAAS,aAAF,CAAC;AACrB,UAAU,AAAM,aAAR,CAAC,KAAI,KAAS,aAAF,CAAC;AACrB,UAAgB,EAAL,aAAF,CAAC,iBAAG,CAAC;EAChB;mCAEe,GAAO;QAAP;QAAO;AAAM,yBAAM,eAAO,CAAC,GAAG,eAAO,CAAC;EAAE;iCACzC,GAAO;QAAP;QAAO;AACnB,UAAU,AAAM,aAAR,CAAC,KAAI,KAAS,aAAF,CAAC;AACrB,UAAU,AAAM,aAAR,CAAC,KAAI,KAAS,aAAF,CAAC;AACrB,UAAgB,EAAL,aAAF,CAAC,iBAAG,CAAC;EAChB;yCAEkB,GAAO;QAAP;QAAO;AAAM,4BAAS,eAAO,CAAC,GAAG,CAAC;EAAC;uCACpC,GAAO;QAAP;QAAO;AACtB,UAAU,AAAM,aAAR,CAAC,KAAI,KAAS,aAAF,CAAC;AACT,IAAZ,IAAE,cAAF,CAAC;AACsB,IAAvB,IAAE,cAAF,CAAC,iBAAI,AAAe,+BAAC,CAAC;AACtB,UAAiB,EAAR,AAAE,CAAD,aAAI,CAAC;EACjB;yCAEkB,GAAO;QAAP;QAAO;AAAM,4BAAS,eAAO,CAAC,GAAG,CAAC;EAAC;uCACpC,GAAO;QAAP;QAAO;AACtB,UAAU,AAAM,aAAR,CAAC,KAAI,KAAS,aAAF,CAAC;AACT,IAAZ,IAAE,cAAF,CAAC;AACD,UAAQ,AAAE,EAAD,cAAI,CAAC;EAChB;;QAEe;AAAM,yBAAM,eAAO,CAAC;EAAE;;QACvB;AACZ,UAAU,AAAM,aAAR,CAAC,KAAI,KAAS,aAAF,CAAC;AACrB,UAAW,EAAH,cAAC,CAAC;EACZ;;QAEe;AAAM,yBAAM,eAAO,CAAC;EAAE;;QACvB;AACZ,UAAU,AAAM,aAAR,CAAC,KAAI,KAAS,aAAF,CAAC;AACrB,UAAW,EAAH,cAAC,CAAC;EACZ;qCAEgB,GAAO;QAAP;QAAO;AAAM,0BAAO,eAAO,CAAC,GAAG,CAAC;EAAC;mCAClC,GAAO;QAAP;QAAO;AACpB,UAAS,aAAF,CAAC,KAAI;AACZ,UAAU,AAAM,aAAR,CAAC,KAAI,KAAS,aAAF,CAAC;AACT,IAAZ,IAAE,cAAF,CAAC;AACD,UAAsB,eAAf,iBAAS,CAAC,EAAE,CAAC,KAAK,AAAE,CAAD,cAAK,AAAG,kBAAE,CAAC;EACvC;qCAEgB,GAAO;QAAP;QAAO;AAAM,0BAAO,eAAO,CAAC,GAAG,CAAC;EAAC;mCAClC,GAAO;QAAP;QAAO;AACpB,UAAS,aAAF,CAAC,KAAI;AACZ,UAAU,AAAM,aAAR,CAAC,KAAI,KAAS,aAAF,CAAC;AACT,IAAZ,IAAE,cAAF,CAAC;AACD,UAAgB,EAAR,AAAE,CAAD,cAAI,CAAC,iBAAI,iBAAS,CAAC,EAAG,AAAG,kBAAE,CAAC;EACvC;mCAIgB,GAAW,KAAS,QAAe;QAAnC;QAAoB;QAAe;AACjD,UAAU,AAAM,aAAR,CAAC,KAAI,KAAS,aAAF,CAAC;AACrB,SAAQ,uBAAJ,GAAG;AAEqE,MAD1E,MACa,yBAAgB,yBAAP,WAAJ,GAAG,0BAA2B,WAAJ,GAAG,iCAAoB,WAAJ,GAAG;;AAEpC,IAAhC,AAAI,GAAD,aAAW,MAAM,EAAE,CAAC,EAAE,MAAM;EACjC;uCAIqB,KAAS,QAAe;QAAf;QAAe;AAC3C,SAAQ,uBAAJ,GAAG;AACyD,MAA9D,MAAe,kDAAS,WAAJ,GAAG,0BAAa,WAAJ,GAAG,iCAAoB,WAAJ,GAAG;;AAExD,UAAO,AAAI,IAAD,aAAW,MAAM,EAAE,MAAM;EACrC;;MAhNM,eAAO;;;MACP,eAAO;;;MACP,eAAO;;;MACP,eAAO;;;MACP,gBAAQ;;;MACR,gBAAQ;;;MAGR,uBAAe;YAAG,sBACtB,YACA,YACA,YACA,WACA,WACA,WACA,UACA,UACA,UACA,SACA,SACA,SACA,SACA,QACA,QACA,QACA,OACA,OACA,OACA,MACA,MACA,MACA,MACA,KACA,KACA,KACA,IACA,IACA,IACA,GACA,GACA,GACA","file":"../../../../../../../../../../../../../C:/packages/pointycastle/src/ufixnum.dart.lib.js"}');
+  // Exports:
+  return {
+    src__ufixnum: ufixnum
+  };
+}));
+
+//# sourceMappingURL=ufixnum.dart.lib.js.map
