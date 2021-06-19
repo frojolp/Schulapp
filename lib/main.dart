@@ -228,7 +228,22 @@ class TodoApp extends StatelessWidget {
     ));
   }
 
+  void navigateToLehrerApp(BuildContext context) {
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => new GradeApp()));
+  }
+
   void navigateToGradesApp(BuildContext context) {
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => new GradeApp()));
+  }
+
+  void navigateToLinkApp(BuildContext context) {
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => new GradeApp()));
+  }
+
+  void navigateToTodoApp(BuildContext context) {
     Navigator.push(
         context, MaterialPageRoute(builder: (context) => new GradeApp()));
   }
