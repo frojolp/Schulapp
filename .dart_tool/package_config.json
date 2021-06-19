@@ -116,6 +116,12 @@
       "languageVersion": "2.9"
     },
     {
+      "name": "dio",
+      "rootUri": "file:///E:/OneDrive/_Marius/OneDrive/Dokumente%20Marius/Flutter/flutter/.pub-cache/hosted/pub.dartlang.org/dio-4.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "encrypt",
       "rootUri": "file:///E:/OneDrive/_Marius/OneDrive/Dokumente%20Marius/Flutter/flutter/.pub-cache/hosted/pub.dartlang.org/encrypt-5.0.0",
       "packageUri": "lib/",
@@ -154,6 +160,12 @@
     {
       "name": "flutter_web_plugins",
       "rootUri": "file:///E:/OneDrive/_Marius/OneDrive/Dokumente%20Marius/Flutter/flutter/packages/flutter_web_plugins",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "font_awesome_flutter",
+      "rootUri": "file:///E:/OneDrive/_Marius/OneDrive/Dokumente%20Marius/Flutter/flutter/.pub-cache/hosted/pub.dartlang.org/font_awesome_flutter-9.1.0",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -482,7 +494,7 @@
       "languageVersion": "2.7"
     }
   ],
-  "generated": "2021-06-18T20:38:39.442013Z",
+  "generated": "2021-06-19T10:05:12.139336Z",
   "generator": "pub",
   "generatorVersion": "2.13.3"
 }
