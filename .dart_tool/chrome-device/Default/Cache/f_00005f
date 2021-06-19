@@ -1,1416 +1,336 @@
-define(['dart_sdk', 'packages/flutter/src/rendering/platform_view.dart', 'packages/flutter/src/widgets/widget_span.dart', 'packages/flutter/src/foundation/basic_types.dart', 'packages/flutter/src/gestures/recognizer.dart', 'packages/flutter/src/services/system_channels.dart', 'packages/flutter/src/services/platform_views.dart', 'packages/flutter/src/gestures/events.dart', 'packages/flutter/src/rendering/layer.dart'], (function load__packages__flutter__src__widgets__platform_view_dart(dart_sdk, packages__flutter__src__rendering__platform_view$46dart, packages__flutter__src__widgets__widget_span$46dart, packages__flutter__src__foundation__basic_types$46dart, packages__flutter__src__gestures__recognizer$46dart, packages__flutter__src__services__system_channels$46dart, packages__flutter__src__services__platform_views$46dart, packages__flutter__src__gestures__events$46dart, packages__flutter__src__rendering__layer$46dart) {
+define(['dart_sdk', 'packages/flutter/src/rendering/layer.dart', 'packages/flutter/src/foundation/debug.dart', 'packages/flutter/src/foundation/object.dart', 'packages/flutter/src/foundation/change_notifier.dart'], (function load__packages__flutter__src__rendering__custom_layout_dart(dart_sdk, packages__flutter__src__rendering__layer$46dart, packages__flutter__src__foundation__debug$46dart, packages__flutter__src__foundation__object$46dart, packages__flutter__src__foundation__change_notifier$46dart) {
   'use strict';
   const core = dart_sdk.core;
-  const ui = dart_sdk.ui;
-  const _js_helper = dart_sdk._js_helper;
-  const async = dart_sdk.async;
-  const _internal = dart_sdk._internal;
+  const _interceptors = dart_sdk._interceptors;
   const collection = dart_sdk.collection;
+  const _js_helper = dart_sdk._js_helper;
+  const ui = dart_sdk.ui;
   const dart = dart_sdk.dart;
   const dartx = dart_sdk.dartx;
-  const platform_view = packages__flutter__src__rendering__platform_view$46dart.src__rendering__platform_view;
-  const framework = packages__flutter__src__widgets__widget_span$46dart.src__widgets__framework;
-  const widget_inspector = packages__flutter__src__widgets__widget_span$46dart.src__widgets__widget_inspector;
-  const focus_scope = packages__flutter__src__widgets__widget_span$46dart.src__widgets__focus_scope;
-  const focus_manager = packages__flutter__src__widgets__widget_span$46dart.src__widgets__focus_manager;
-  const debug = packages__flutter__src__widgets__widget_span$46dart.src__widgets__debug;
-  const basic = packages__flutter__src__widgets__widget_span$46dart.src__widgets__basic;
-  const basic_types = packages__flutter__src__foundation__basic_types$46dart.src__foundation__basic_types;
-  const recognizer = packages__flutter__src__gestures__recognizer$46dart.src__gestures__recognizer;
-  const message_codec = packages__flutter__src__services__system_channels$46dart.src__services__message_codec;
-  const system_channels = packages__flutter__src__services__system_channels$46dart.src__services__system_channels;
-  const platform_views = packages__flutter__src__services__platform_views$46dart.src__services__platform_views;
-  const events = packages__flutter__src__gestures__events$46dart.src__gestures__events;
+  const box = packages__flutter__src__rendering__layer$46dart.src__rendering__box;
   const object = packages__flutter__src__rendering__layer$46dart.src__rendering__object;
-  var platform_view$ = Object.create(dart.library);
+  const assertions = packages__flutter__src__foundation__debug$46dart.src__foundation__assertions;
+  const diagnostics = packages__flutter__src__foundation__debug$46dart.src__foundation__diagnostics;
+  const object$ = packages__flutter__src__foundation__object$46dart.src__foundation__object;
+  const change_notifier = packages__flutter__src__foundation__change_notifier$46dart.src__foundation__change_notifier;
+  var custom_layout = Object.create(dart.library);
+  var $_get = dartx._get;
+  var $_set = dartx._set;
+  var $isNotEmpty = dartx.isNotEmpty;
+  var $length = dartx.length;
+  var $map = dartx.map;
+  var $toList = dartx.toList;
+  var $runtimeType = dartx.runtimeType;
+  var $isFinite = dartx.isFinite;
   dart._checkModuleNullSafetyMode(false);
   var T = {
-    OneSequenceGestureRecognizerL: () => (T.OneSequenceGestureRecognizerL = dart.constFn(dart.legacy(recognizer.OneSequenceGestureRecognizer)))(),
-    FactoryOfOneSequenceGestureRecognizerL: () => (T.FactoryOfOneSequenceGestureRecognizerL = dart.constFn(basic_types.Factory$(T.OneSequenceGestureRecognizerL())))(),
-    FactoryLOfOneSequenceGestureRecognizerL: () => (T.FactoryLOfOneSequenceGestureRecognizerL = dart.constFn(dart.legacy(T.FactoryOfOneSequenceGestureRecognizerL())))(),
-    _LocationL: () => (T._LocationL = dart.constFn(dart.legacy(widget_inspector._Location)))(),
-    BuildContextAndPlatformViewControllerToPlatformViewSurface: () => (T.BuildContextAndPlatformViewControllerToPlatformViewSurface = dart.constFn(dart.fnType(platform_view$.PlatformViewSurface, [framework.BuildContext, platform_views.PlatformViewController])))(),
-    voidToNull: () => (T.voidToNull = dart.constFn(dart.fnType(core.Null, [dart.void])))(),
-    IdentityMapOfString$dynamic: () => (T.IdentityMapOfString$dynamic = dart.constFn(_js_helper.IdentityMap$(core.String, dart.dynamic)))(),
-    VoidTovoid: () => (T.VoidTovoid = dart.constFn(dart.fnType(dart.void, [])))(),
-    dynamicToNull: () => (T.dynamicToNull = dart.constFn(dart.fnType(core.Null, [dart.dynamic])))(),
-    FactoryOfOneSequenceGestureRecognizer: () => (T.FactoryOfOneSequenceGestureRecognizer = dart.constFn(basic_types.Factory$(recognizer.OneSequenceGestureRecognizer)))(),
-    LinkedHashSetOfFactoryOfOneSequenceGestureRecognizer: () => (T.LinkedHashSetOfFactoryOfOneSequenceGestureRecognizer = dart.constFn(collection.LinkedHashSet$(T.FactoryOfOneSequenceGestureRecognizer())))(),
-    OffsetToOffset: () => (T.OffsetToOffset = dart.constFn(dart.fnType(ui.Offset, [ui.Offset])))()
+    DiagnosticsPropertyOfAssertionError: () => (T.DiagnosticsPropertyOfAssertionError = dart.constFn(diagnostics.DiagnosticsProperty$(core.AssertionError)))(),
+    JSArrayOfDiagnosticsNode: () => (T.JSArrayOfDiagnosticsNode = dart.constFn(_interceptors.JSArray$(diagnostics.DiagnosticsNode)))(),
+    VoidTobool: () => (T.VoidTobool = dart.constFn(dart.fnType(core.bool, [])))(),
+    DiagnosticsPropertyOfRenderBox: () => (T.DiagnosticsPropertyOfRenderBox = dart.constFn(diagnostics.DiagnosticsProperty$(box.RenderBox)))(),
+    LinkedHashSetOfRenderBox: () => (T.LinkedHashSetOfRenderBox = dart.constFn(collection.LinkedHashSet$(box.RenderBox)))(),
+    LinkedMapOfObject$RenderBox: () => (T.LinkedMapOfObject$RenderBox = dart.constFn(_js_helper.LinkedMap$(core.Object, box.RenderBox)))()
   };
   const CT = Object.create({
     _: () => (C, CT)
   });
-  dart.defineLazy(CT, {
-    get C0() {
-      return C[0] = dart.const({
-        __proto__: platform_view.PlatformViewHitTestBehavior.prototype,
-        [_name]: "PlatformViewHitTestBehavior.opaque",
-        index: 0
-      });
-    },
-    get C1() {
-      return C[1] = dart.const({
-        __proto__: ui.Clip.prototype,
-        [_name$]: "Clip.hardEdge",
-        index: 1
-      });
-    },
-    get C2() {
-      return C[2] = dart.constSet(T.FactoryLOfOneSequenceGestureRecognizerL(), []);
-    },
-    get C5() {
-      return C[5] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "controller",
-        [_Location_column]: 11,
-        [_Location_line]: 364,
-        [_Location_file]: null
-      });
-    },
-    get C6() {
-      return C[6] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "gestureRecognizers",
-        [_Location_column]: 11,
-        [_Location_line]: 365,
-        [_Location_file]: null
-      });
-    },
-    get C7() {
-      return C[7] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "hitTestBehavior",
-        [_Location_column]: 11,
-        [_Location_line]: 366,
-        [_Location_file]: null
-      });
-    },
-    get C4() {
-      return C[4] = dart.constList([C[5] || CT.C5, C[6] || CT.C6, C[7] || CT.C7], T._LocationL());
-    },
-    get C3() {
-      return C[3] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[4] || CT.C4,
-        [_Location_name]: null,
-        [_Location_column]: 16,
-        [_Location_line]: 363,
-        [_Location_file]: "file:///E:/OneDrive/_Marius/OneDrive/Dokumente%20Marius/Flutter/flutter/packages/flutter/lib/src/widgets/platform_view.dart"
-      });
-    },
-    get C10() {
-      return C[10] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "viewType",
-        [_Location_column]: 7,
-        [_Location_line]: 360,
-        [_Location_file]: null
-      });
-    },
-    get C11() {
-      return C[11] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "onCreatePlatformView",
-        [_Location_column]: 7,
-        [_Location_line]: 361,
-        [_Location_file]: null
-      });
-    },
-    get C12() {
-      return C[12] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "surfaceFactory",
-        [_Location_column]: 7,
-        [_Location_line]: 362,
-        [_Location_file]: null
-      });
-    },
-    get C9() {
-      return C[9] = dart.constList([C[10] || CT.C10, C[11] || CT.C11, C[12] || CT.C12], T._LocationL());
-    },
-    get C8() {
-      return C[8] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[9] || CT.C9,
-        [_Location_name]: null,
-        [_Location_column]: 12,
-        [_Location_line]: 359,
-        [_Location_file]: "file:///E:/OneDrive/_Marius/OneDrive/Dokumente%20Marius/Flutter/flutter/packages/flutter/lib/src/widgets/platform_view.dart"
-      });
-    },
-    get C15() {
-      return C[15] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "controller",
-        [_Location_column]: 9,
-        [_Location_line]: 441,
-        [_Location_file]: null
-      });
-    },
-    get C16() {
-      return C[16] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "hitTestBehavior",
-        [_Location_column]: 9,
-        [_Location_line]: 442,
-        [_Location_file]: null
-      });
-    },
-    get C17() {
-      return C[17] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "gestureRecognizers",
-        [_Location_column]: 9,
-        [_Location_line]: 443,
-        [_Location_file]: null
-      });
-    },
-    get C18() {
-      return C[18] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "clipBehavior",
-        [_Location_column]: 9,
-        [_Location_line]: 444,
-        [_Location_file]: null
-      });
-    },
-    get C14() {
-      return C[14] = dart.constList([C[15] || CT.C15, C[16] || CT.C16, C[17] || CT.C17, C[18] || CT.C18], T._LocationL());
-    },
-    get C13() {
-      return C[13] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[14] || CT.C14,
-        [_Location_name]: null,
-        [_Location_column]: 14,
-        [_Location_line]: 440,
-        [_Location_file]: "file:///E:/OneDrive/_Marius/OneDrive/Dokumente%20Marius/Flutter/flutter/packages/flutter/lib/src/widgets/platform_view.dart"
-      });
-    },
-    get C21() {
-      return C[21] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "focusNode",
-        [_Location_column]: 7,
-        [_Location_line]: 438,
-        [_Location_file]: null
-      });
-    },
-    get C22() {
-      return C[22] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "onFocusChange",
-        [_Location_column]: 7,
-        [_Location_line]: 439,
-        [_Location_file]: null
-      });
-    },
-    get C23() {
-      return C[23] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "child",
-        [_Location_column]: 7,
-        [_Location_line]: 440,
-        [_Location_file]: null
-      });
-    },
-    get C20() {
-      return C[20] = dart.constList([C[21] || CT.C21, C[22] || CT.C22, C[23] || CT.C23], T._LocationL());
-    },
-    get C19() {
-      return C[19] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[20] || CT.C20,
-        [_Location_name]: null,
-        [_Location_column]: 12,
-        [_Location_line]: 437,
-        [_Location_file]: "file:///E:/OneDrive/_Marius/OneDrive/Dokumente%20Marius/Flutter/flutter/packages/flutter/lib/src/widgets/platform_view.dart"
-      });
-    },
-    get C26() {
-      return C[26] = dart.constList([], T._LocationL());
-    },
-    get C25() {
-      return C[25] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[26] || CT.C26,
-        [_Location_name]: null,
-        [_Location_column]: 20,
-        [_Location_line]: 566,
-        [_Location_file]: "file:///E:/OneDrive/_Marius/OneDrive/Dokumente%20Marius/Flutter/flutter/packages/flutter/lib/src/widgets/platform_view.dart"
-      });
-    },
-    get C24() {
-      return C[24] = dart.const({
-        __proto__: basic.SizedBox.prototype,
-        [Widget__location]: C[25] || CT.C25,
-        [Widget_key]: null,
-        [SingleChildRenderObjectWidget_child]: null,
-        [SizedBox_height]: 1 / 0,
-        [SizedBox_width]: 1 / 0
-      });
-    },
-    get C29() {
-      return C[29] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "controller",
-        [_Location_column]: 7,
-        [_Location_line]: 569,
-        [_Location_file]: null
-      });
-    },
-    get C30() {
-      return C[30] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "hitTestBehavior",
-        [_Location_column]: 7,
-        [_Location_line]: 570,
-        [_Location_file]: null
-      });
-    },
-    get C31() {
-      return C[31] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "gestureRecognizers",
-        [_Location_column]: 7,
-        [_Location_line]: 571,
-        [_Location_file]: null
-      });
-    },
-    get C28() {
-      return C[28] = dart.constList([C[29] || CT.C29, C[30] || CT.C30, C[31] || CT.C31], T._LocationL());
-    },
-    get C27() {
-      return C[27] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[28] || CT.C28,
-        [_Location_name]: null,
-        [_Location_column]: 12,
-        [_Location_line]: 568,
-        [_Location_file]: "file:///E:/OneDrive/_Marius/OneDrive/Dokumente%20Marius/Flutter/flutter/packages/flutter/lib/src/widgets/platform_view.dart"
-      });
-    },
-    get C33() {
-      return C[33] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[26] || CT.C26,
-        [_Location_name]: null,
-        [_Location_column]: 20,
-        [_Location_line]: 843,
-        [_Location_file]: "file:///E:/OneDrive/_Marius/OneDrive/Dokumente%20Marius/Flutter/flutter/packages/flutter/lib/src/widgets/platform_view.dart"
-      });
-    },
-    get C32() {
-      return C[32] = dart.const({
-        __proto__: basic.SizedBox.prototype,
-        [Widget__location]: C[33] || CT.C33,
-        [Widget_key]: null,
-        [SingleChildRenderObjectWidget_child]: null,
-        [SizedBox_height]: 1 / 0,
-        [SizedBox_width]: 1 / 0
-      });
-    },
-    get C36() {
-      return C[36] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "focusNode",
-        [_Location_column]: 7,
-        [_Location_line]: 847,
-        [_Location_file]: null
-      });
-    },
-    get C37() {
-      return C[37] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "onFocusChange",
-        [_Location_column]: 7,
-        [_Location_line]: 848,
-        [_Location_file]: null
-      });
-    },
-    get C38() {
-      return C[38] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "child",
-        [_Location_column]: 7,
-        [_Location_line]: 849,
-        [_Location_file]: null
-      });
-    },
-    get C35() {
-      return C[35] = dart.constList([C[36] || CT.C36, C[37] || CT.C37, C[38] || CT.C38], T._LocationL());
-    },
-    get C34() {
-      return C[34] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[35] || CT.C35,
-        [_Location_name]: null,
-        [_Location_column]: 12,
-        [_Location_line]: 846,
-        [_Location_file]: "file:///E:/OneDrive/_Marius/OneDrive/Dokumente%20Marius/Flutter/flutter/packages/flutter/lib/src/widgets/platform_view.dart"
-      });
-    }
-  }, false);
-  var C = Array(39).fill(void 0);
   var I = [
-    "file:///E:/OneDrive/_Marius/OneDrive/Dokumente%20Marius/Flutter/flutter/packages/flutter/lib/src/widgets/platform_view.dart",
-    "package:flutter/src/widgets/platform_view.dart"
+    "package:flutter/src/rendering/custom_layout.dart",
+    "file:///E:/OneDrive/_Marius/OneDrive/Dokumente%20Marius/Flutter/flutter/packages/flutter/lib/src/rendering/custom_layout.dart"
   ];
-  var viewType$ = dart.privateName(platform_view$, "AndroidView.viewType");
-  var onPlatformViewCreated$ = dart.privateName(platform_view$, "AndroidView.onPlatformViewCreated");
-  var hitTestBehavior$ = dart.privateName(platform_view$, "AndroidView.hitTestBehavior");
-  var layoutDirection$ = dart.privateName(platform_view$, "AndroidView.layoutDirection");
-  var gestureRecognizers$ = dart.privateName(platform_view$, "AndroidView.gestureRecognizers");
-  var creationParams$ = dart.privateName(platform_view$, "AndroidView.creationParams");
-  var creationParamsCodec$ = dart.privateName(platform_view$, "AndroidView.creationParamsCodec");
-  var clipBehavior$ = dart.privateName(platform_view$, "AndroidView.clipBehavior");
-  var _name = dart.privateName(platform_view, "_name");
-  var _name$ = dart.privateName(ui, "_name");
-  platform_view$.AndroidView = class AndroidView extends framework.StatefulWidget {
-    get viewType() {
-      return this[viewType$];
-    }
-    set viewType(value) {
-      super.viewType = value;
-    }
-    get onPlatformViewCreated() {
-      return this[onPlatformViewCreated$];
-    }
-    set onPlatformViewCreated(value) {
-      super.onPlatformViewCreated = value;
-    }
-    get hitTestBehavior() {
-      return this[hitTestBehavior$];
-    }
-    set hitTestBehavior(value) {
-      super.hitTestBehavior = value;
-    }
-    get layoutDirection() {
-      return this[layoutDirection$];
-    }
-    set layoutDirection(value) {
-      super.layoutDirection = value;
-    }
-    get gestureRecognizers() {
-      return this[gestureRecognizers$];
-    }
-    set gestureRecognizers(value) {
-      super.gestureRecognizers = value;
-    }
-    get creationParams() {
-      return this[creationParams$];
-    }
-    set creationParams(value) {
-      super.creationParams = value;
-    }
-    get creationParamsCodec() {
-      return this[creationParamsCodec$];
-    }
-    set creationParamsCodec(value) {
-      super.creationParamsCodec = value;
-    }
-    get clipBehavior() {
-      return this[clipBehavior$];
-    }
-    set clipBehavior(value) {
-      super.clipBehavior = value;
-    }
-    createState() {
-      return new platform_view$._AndroidViewState.new();
-    }
-  };
-  (platform_view$.AndroidView.new = function(opts) {
-    let key = opts && 'key' in opts ? opts.key : null;
-    let viewType = opts && 'viewType' in opts ? opts.viewType : null;
-    if (viewType == null) dart.nullFailed(I[0], 67, 19, "viewType");
-    let onPlatformViewCreated = opts && 'onPlatformViewCreated' in opts ? opts.onPlatformViewCreated : null;
-    let hitTestBehavior = opts && 'hitTestBehavior' in opts ? opts.hitTestBehavior : C[0] || CT.C0;
-    if (hitTestBehavior == null) dart.nullFailed(I[0], 69, 10, "hitTestBehavior");
-    let layoutDirection = opts && 'layoutDirection' in opts ? opts.layoutDirection : null;
-    let gestureRecognizers = opts && 'gestureRecognizers' in opts ? opts.gestureRecognizers : null;
-    let creationParams = opts && 'creationParams' in opts ? opts.creationParams : null;
-    let creationParamsCodec = opts && 'creationParamsCodec' in opts ? opts.creationParamsCodec : null;
-    let clipBehavior = opts && 'clipBehavior' in opts ? opts.clipBehavior : C[1] || CT.C1;
-    if (clipBehavior == null) dart.nullFailed(I[0], 74, 10, "clipBehavior");
-    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
-    this[viewType$] = viewType;
-    this[onPlatformViewCreated$] = onPlatformViewCreated;
-    this[hitTestBehavior$] = hitTestBehavior;
-    this[layoutDirection$] = layoutDirection;
-    this[gestureRecognizers$] = gestureRecognizers;
-    this[creationParams$] = creationParams;
-    this[creationParamsCodec$] = creationParamsCodec;
-    this[clipBehavior$] = clipBehavior;
-    if (!(viewType != null)) dart.assertFailed(null, I[0], 75, 15, "viewType != null");
-    if (!(hitTestBehavior != null)) dart.assertFailed(null, I[0], 76, 15, "hitTestBehavior != null");
-    if (!(creationParams == null || creationParamsCodec != null)) dart.assertFailed(null, I[0], 77, 15, "creationParams == null || creationParamsCodec != null");
-    if (!(clipBehavior != null)) dart.assertFailed(null, I[0], 78, 15, "clipBehavior != null");
-    platform_view$.AndroidView.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
-    ;
-  }).prototype = platform_view$.AndroidView.prototype;
-  dart.addTypeTests(platform_view$.AndroidView);
-  dart.addTypeCaches(platform_view$.AndroidView);
-  dart.setMethodSignature(platform_view$.AndroidView, () => ({
-    __proto__: dart.getMethods(platform_view$.AndroidView.__proto__),
-    createState: dart.fnType(framework.State$(platform_view$.AndroidView), [])
-  }));
-  dart.setLibraryUri(platform_view$.AndroidView, I[1]);
-  dart.setFieldSignature(platform_view$.AndroidView, () => ({
-    __proto__: dart.getFields(platform_view$.AndroidView.__proto__),
-    viewType: dart.finalFieldType(core.String),
-    onPlatformViewCreated: dart.finalFieldType(dart.nullable(dart.fnType(dart.void, [core.int]))),
-    hitTestBehavior: dart.finalFieldType(platform_view.PlatformViewHitTestBehavior),
-    layoutDirection: dart.finalFieldType(dart.nullable(ui.TextDirection)),
-    gestureRecognizers: dart.finalFieldType(dart.nullable(core.Set$(basic_types.Factory$(recognizer.OneSequenceGestureRecognizer)))),
-    creationParams: dart.finalFieldType(dart.dynamic),
-    creationParamsCodec: dart.finalFieldType(dart.nullable(message_codec.MessageCodec)),
-    clipBehavior: dart.finalFieldType(ui.Clip)
-  }));
-  var viewType$0 = dart.privateName(platform_view$, "UiKitView.viewType");
-  var onPlatformViewCreated$0 = dart.privateName(platform_view$, "UiKitView.onPlatformViewCreated");
-  var hitTestBehavior$0 = dart.privateName(platform_view$, "UiKitView.hitTestBehavior");
-  var layoutDirection$0 = dart.privateName(platform_view$, "UiKitView.layoutDirection");
-  var creationParams$0 = dart.privateName(platform_view$, "UiKitView.creationParams");
-  var creationParamsCodec$0 = dart.privateName(platform_view$, "UiKitView.creationParamsCodec");
-  var gestureRecognizers$0 = dart.privateName(platform_view$, "UiKitView.gestureRecognizers");
-  platform_view$.UiKitView = class UiKitView extends framework.StatefulWidget {
-    get viewType() {
-      return this[viewType$0];
-    }
-    set viewType(value) {
-      super.viewType = value;
-    }
-    get onPlatformViewCreated() {
-      return this[onPlatformViewCreated$0];
-    }
-    set onPlatformViewCreated(value) {
-      super.onPlatformViewCreated = value;
-    }
-    get hitTestBehavior() {
-      return this[hitTestBehavior$0];
-    }
-    set hitTestBehavior(value) {
-      super.hitTestBehavior = value;
-    }
-    get layoutDirection() {
-      return this[layoutDirection$0];
-    }
-    set layoutDirection(value) {
-      super.layoutDirection = value;
-    }
-    get creationParams() {
-      return this[creationParams$0];
-    }
-    set creationParams(value) {
-      super.creationParams = value;
-    }
-    get creationParamsCodec() {
-      return this[creationParamsCodec$0];
-    }
-    set creationParamsCodec(value) {
-      super.creationParamsCodec = value;
-    }
-    get gestureRecognizers() {
-      return this[gestureRecognizers$0];
-    }
-    set gestureRecognizers(value) {
-      super.gestureRecognizers = value;
-    }
-    createState() {
-      return new platform_view$._UiKitViewState.new();
-    }
-  };
-  (platform_view$.UiKitView.new = function(opts) {
-    let key = opts && 'key' in opts ? opts.key : null;
-    let viewType = opts && 'viewType' in opts ? opts.viewType : null;
-    if (viewType == null) dart.nullFailed(I[0], 221, 19, "viewType");
-    let onPlatformViewCreated = opts && 'onPlatformViewCreated' in opts ? opts.onPlatformViewCreated : null;
-    let hitTestBehavior = opts && 'hitTestBehavior' in opts ? opts.hitTestBehavior : C[0] || CT.C0;
-    if (hitTestBehavior == null) dart.nullFailed(I[0], 223, 10, "hitTestBehavior");
-    let layoutDirection = opts && 'layoutDirection' in opts ? opts.layoutDirection : null;
-    let creationParams = opts && 'creationParams' in opts ? opts.creationParams : null;
-    let creationParamsCodec = opts && 'creationParamsCodec' in opts ? opts.creationParamsCodec : null;
-    let gestureRecognizers = opts && 'gestureRecognizers' in opts ? opts.gestureRecognizers : null;
-    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
-    this[viewType$0] = viewType;
-    this[onPlatformViewCreated$0] = onPlatformViewCreated;
-    this[hitTestBehavior$0] = hitTestBehavior;
-    this[layoutDirection$0] = layoutDirection;
-    this[creationParams$0] = creationParams;
-    this[creationParamsCodec$0] = creationParamsCodec;
-    this[gestureRecognizers$0] = gestureRecognizers;
-    if (!(viewType != null)) dart.assertFailed(null, I[0], 228, 15, "viewType != null");
-    if (!(hitTestBehavior != null)) dart.assertFailed(null, I[0], 229, 15, "hitTestBehavior != null");
-    if (!(creationParams == null || creationParamsCodec != null)) dart.assertFailed(null, I[0], 230, 15, "creationParams == null || creationParamsCodec != null");
-    platform_view$.UiKitView.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
-    ;
-  }).prototype = platform_view$.UiKitView.prototype;
-  dart.addTypeTests(platform_view$.UiKitView);
-  dart.addTypeCaches(platform_view$.UiKitView);
-  dart.setMethodSignature(platform_view$.UiKitView, () => ({
-    __proto__: dart.getMethods(platform_view$.UiKitView.__proto__),
-    createState: dart.fnType(framework.State$(platform_view$.UiKitView), [])
-  }));
-  dart.setLibraryUri(platform_view$.UiKitView, I[1]);
-  dart.setFieldSignature(platform_view$.UiKitView, () => ({
-    __proto__: dart.getFields(platform_view$.UiKitView.__proto__),
-    viewType: dart.finalFieldType(core.String),
-    onPlatformViewCreated: dart.finalFieldType(dart.nullable(dart.fnType(dart.void, [core.int]))),
-    hitTestBehavior: dart.finalFieldType(platform_view.PlatformViewHitTestBehavior),
-    layoutDirection: dart.finalFieldType(dart.nullable(ui.TextDirection)),
-    creationParams: dart.finalFieldType(dart.dynamic),
-    creationParamsCodec: dart.finalFieldType(dart.nullable(message_codec.MessageCodec)),
-    gestureRecognizers: dart.finalFieldType(dart.nullable(core.Set$(basic_types.Factory$(recognizer.OneSequenceGestureRecognizer))))
-  }));
-  var viewType$1 = dart.privateName(platform_view$, "HtmlElementView.viewType");
-  var _createHtmlElementView = dart.privateName(platform_view$, "_createHtmlElementView");
-  var _Location_parameterLocations = dart.privateName(widget_inspector, "_Location.parameterLocations");
-  var _Location_name = dart.privateName(widget_inspector, "_Location.name");
-  var _Location_column = dart.privateName(widget_inspector, "_Location.column");
-  var _Location_line = dart.privateName(widget_inspector, "_Location.line");
-  var _Location_file = dart.privateName(widget_inspector, "_Location.file");
-  var _initialize = dart.privateName(platform_view$, "_initialize");
-  platform_view$.HtmlElementView = class HtmlElementView extends framework.StatelessWidget {
-    get viewType() {
-      return this[viewType$1];
-    }
-    set viewType(value) {
-      super.viewType = value;
-    }
-    build(context) {
-      if (context == null) dart.nullFailed(I[0], 358, 29, "context");
-      return new platform_view$.PlatformViewLink.new({viewType: this.viewType, onCreatePlatformView: dart.bind(this, _createHtmlElementView), surfaceFactory: dart.fn((context, controller) => {
-          if (context == null) dart.nullFailed(I[0], 362, 37, "context");
-          if (controller == null) dart.nullFailed(I[0], 362, 69, "controller");
-          return new platform_view$.PlatformViewSurface.new({controller: controller, gestureRecognizers: C[2] || CT.C2, hitTestBehavior: platform_view.PlatformViewHitTestBehavior.opaque, $creationLocationd_0dea112b090073317d4: C[3] || CT.C3});
-        }, T.BuildContextAndPlatformViewControllerToPlatformViewSurface()), $creationLocationd_0dea112b090073317d4: C[8] || CT.C8});
-    }
-    [_createHtmlElementView](params) {
-      if (params == null) dart.nullFailed(I[0], 373, 80, "params");
-      let controller = new platform_view$._HtmlElementViewController.new(params.id, this.viewType);
-      controller[_initialize]().then(core.Null, dart.fn(_ => {
-        let t1, t0;
-        t0 = params;
-        t1 = params.id;
-        t0.onPlatformViewCreated(t1);
-      }, T.voidToNull()));
-      return controller;
-    }
-  };
-  (platform_view$.HtmlElementView.new = function(opts) {
-    let key = opts && 'key' in opts ? opts.key : null;
-    let viewType = opts && 'viewType' in opts ? opts.viewType : null;
-    if (viewType == null) dart.nullFailed(I[0], 347, 19, "viewType");
-    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
-    this[viewType$1] = viewType;
-    if (!(viewType != null)) dart.assertFailed(null, I[0], 348, 15, "viewType != null");
-    if (!true) dart.assertFailed("HtmlElementView is only available on Flutter Web.", I[0], 349, 15, "kIsWeb");
-    platform_view$.HtmlElementView.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
-    ;
-  }).prototype = platform_view$.HtmlElementView.prototype;
-  dart.addTypeTests(platform_view$.HtmlElementView);
-  dart.addTypeCaches(platform_view$.HtmlElementView);
-  dart.setMethodSignature(platform_view$.HtmlElementView, () => ({
-    __proto__: dart.getMethods(platform_view$.HtmlElementView.__proto__),
-    build: dart.fnType(framework.Widget, [framework.BuildContext]),
-    [_createHtmlElementView]: dart.fnType(platform_view$._HtmlElementViewController, [platform_view$.PlatformViewCreationParams])
-  }));
-  dart.setLibraryUri(platform_view$.HtmlElementView, I[1]);
-  dart.setFieldSignature(platform_view$.HtmlElementView, () => ({
-    __proto__: dart.getFields(platform_view$.HtmlElementView.__proto__),
-    viewType: dart.finalFieldType(core.String)
-  }));
-  var viewId$ = dart.privateName(platform_view$, "_HtmlElementViewController.viewId");
-  var _initialized = dart.privateName(platform_view$, "_initialized");
-  platform_view$._HtmlElementViewController = class _HtmlElementViewController extends platform_views.PlatformViewController {
-    get viewId() {
-      return this[viewId$];
-    }
-    set viewId(value) {
-      super.viewId = value;
-    }
-    [_initialize]() {
-      return async.async(dart.void, (function* _initialize() {
-        let args = new (T.IdentityMapOfString$dynamic()).from(["id", this.viewId, "viewType", this.viewType]);
-        yield system_channels.SystemChannels.platform_views.invokeMethod(dart.void, "create", args);
-        this[_initialized] = true;
-      }).bind(this));
-    }
-    clearFocus() {
-      return async.async(dart.void, function* clearFocus() {
-      });
-    }
-    dispatchPointerEvent(event) {
-      if (event == null) dart.nullFailed(I[0], 412, 50, "event");
-      return async.async(dart.void, function* dispatchPointerEvent() {
-      });
-    }
-    dispose() {
-      return async.async(dart.void, (function* dispose() {
-        if (dart.test(this[_initialized])) {
-          yield system_channels.SystemChannels.platform_views.invokeMethod(dart.void, "dispose", this.viewId);
-        }
-      }).bind(this));
-    }
-  };
-  (platform_view$._HtmlElementViewController.new = function(viewId, viewType) {
-    if (viewId == null) dart.nullFailed(I[0], 382, 10, "viewId");
-    if (viewType == null) dart.nullFailed(I[0], 383, 10, "viewType");
-    this[_initialized] = false;
-    this[viewId$] = viewId;
-    this.viewType = viewType;
-    ;
-  }).prototype = platform_view$._HtmlElementViewController.prototype;
-  dart.addTypeTests(platform_view$._HtmlElementViewController);
-  dart.addTypeCaches(platform_view$._HtmlElementViewController);
-  dart.setMethodSignature(platform_view$._HtmlElementViewController, () => ({
-    __proto__: dart.getMethods(platform_view$._HtmlElementViewController.__proto__),
-    [_initialize]: dart.fnType(async.Future$(dart.void), []),
-    clearFocus: dart.fnType(async.Future$(dart.void), []),
-    dispatchPointerEvent: dart.fnType(async.Future$(dart.void), [events.PointerEvent]),
-    dispose: dart.fnType(async.Future$(dart.void), [])
-  }));
-  dart.setLibraryUri(platform_view$._HtmlElementViewController, I[1]);
-  dart.setFieldSignature(platform_view$._HtmlElementViewController, () => ({
-    __proto__: dart.getFields(platform_view$._HtmlElementViewController.__proto__),
-    viewId: dart.finalFieldType(core.int),
-    viewType: dart.finalFieldType(core.String),
-    [_initialized]: dart.fieldType(core.bool)
-  }));
-  var _id = dart.privateName(platform_view$, "_id");
-  var ___AndroidViewState__controller = dart.privateName(platform_view$, "_#_AndroidViewState#_controller");
-  var ___AndroidViewState__controller_isSet = dart.privateName(platform_view$, "_#_AndroidViewState#_controller#isSet");
-  var _layoutDirection = dart.privateName(platform_view$, "_layoutDirection");
-  var _focusNode = dart.privateName(platform_view$, "_focusNode");
-  var _controller = dart.privateName(platform_view$, "_controller");
-  var _onFocusChange = dart.privateName(platform_view$, "_onFocusChange");
-  var _createNewAndroidView = dart.privateName(platform_view$, "_createNewAndroidView");
-  var _initializeOnce = dart.privateName(platform_view$, "_initializeOnce");
-  var _findLayoutDirection = dart.privateName(platform_view$, "_findLayoutDirection");
-  platform_view$._AndroidViewState = class _AndroidViewState extends framework.State$(platform_view$.AndroidView) {
-    get [_controller]() {
-      let t0;
-      return dart.test(this[___AndroidViewState__controller_isSet]) ? (t0 = this[___AndroidViewState__controller], t0) : dart.throw(new _internal.LateError.fieldNI("_controller"));
-    }
-    set [_controller](t0) {
-      if (t0 == null) dart.nullFailed(I[0], 427, 30, "null");
-      this[___AndroidViewState__controller_isSet] = true;
-      this[___AndroidViewState__controller] = t0;
-    }
-    build(context) {
-      let t1;
-      if (context == null) dart.nullFailed(I[0], 436, 29, "context");
-      return new focus_scope.Focus.new({focusNode: this[_focusNode], onFocusChange: dart.bind(this, _onFocusChange), child: new platform_view$._AndroidPlatformView.new({controller: this[_controller], hitTestBehavior: this.widget.hitTestBehavior, gestureRecognizers: (t1 = this.widget.gestureRecognizers, t1 == null ? platform_view$._AndroidViewState._emptyRecognizersSet : t1), clipBehavior: this.widget.clipBehavior, $creationLocationd_0dea112b090073317d4: C[13] || CT.C13}), $creationLocationd_0dea112b090073317d4: C[19] || CT.C19});
-    }
-    [_initializeOnce]() {
-      if (dart.test(this[_initialized])) {
-        return;
-      }
-      this[_initialized] = true;
-      this[_createNewAndroidView]();
-      this[_focusNode] = new focus_manager.FocusNode.new({debugLabel: "AndroidView(id: " + dart.str(this[_id]) + ")"});
-    }
-    didChangeDependencies() {
-      super.didChangeDependencies();
-      let newLayoutDirection = this[_findLayoutDirection]();
-      let didChangeLayoutDirection = this[_layoutDirection] != newLayoutDirection;
-      this[_layoutDirection] = newLayoutDirection;
-      this[_initializeOnce]();
-      if (didChangeLayoutDirection) {
-        this[_controller].setLayoutDirection(dart.nullCheck(this[_layoutDirection]));
-      }
-    }
-    didUpdateWidget(oldWidget) {
-      platform_view$.AndroidView.as(oldWidget);
-      if (oldWidget == null) dart.nullFailed(I[0], 474, 36, "oldWidget");
-      super.didUpdateWidget(oldWidget);
-      let newLayoutDirection = this[_findLayoutDirection]();
-      let didChangeLayoutDirection = this[_layoutDirection] != newLayoutDirection;
-      this[_layoutDirection] = newLayoutDirection;
-      if (this.widget.viewType != oldWidget.viewType) {
-        this[_controller].dispose();
-        this[_createNewAndroidView]();
-        return;
-      }
-      if (didChangeLayoutDirection) {
-        this[_controller].setLayoutDirection(dart.nullCheck(this[_layoutDirection]));
-      }
-    }
-    [_findLayoutDirection]() {
-      let t1;
-      if (!(this.widget.layoutDirection != null || dart.test(debug.debugCheckHasDirectionality(this.context)))) dart.assertFailed(null, I[0], 493, 12, "widget.layoutDirection != null || debugCheckHasDirectionality(context)");
-      t1 = this.widget.layoutDirection;
-      return t1 == null ? basic.Directionality.of(this.context) : t1;
-    }
-    dispose() {
-      this[_controller].dispose();
-      super.dispose();
-    }
-    [_createNewAndroidView]() {
-      this[_id] = platform_views.platformViewsRegistry.getNextPlatformViewId();
-      this[_controller] = platform_views.PlatformViewsService.initAndroidView({id: dart.nullCheck(this[_id]), viewType: this.widget.viewType, layoutDirection: dart.nullCheck(this[_layoutDirection]), creationParams: this.widget.creationParams, creationParamsCodec: this.widget.creationParamsCodec, onFocus: dart.fn(() => {
-          dart.nullCheck(this[_focusNode]).requestFocus();
-        }, T.VoidTovoid())});
-      if (this.widget.onPlatformViewCreated != null) {
-        this[_controller].addOnPlatformViewCreatedListener(dart.nullCheck(this.widget.onPlatformViewCreated));
-      }
-    }
-    [_onFocusChange](isFocused) {
-      if (isFocused == null) dart.nullFailed(I[0], 520, 28, "isFocused");
-      if (!dart.test(this[_controller].isCreated)) {
-        return;
-      }
-      if (!dart.test(isFocused)) {
-        this[_controller].clearFocus().catchError(dart.fn(e => {
-          if (message_codec.MissingPluginException.is(e)) {
-            return;
-          }
-        }, T.dynamicToNull()));
-        return;
-      }
-      system_channels.SystemChannels.textInput.invokeMethod(dart.void, "TextInput.setPlatformViewClient", this[_id]).catchError(dart.fn(e => {
-        if (message_codec.MissingPluginException.is(e)) {
-          return;
-        }
-      }, T.dynamicToNull()));
-    }
-  };
-  (platform_view$._AndroidViewState.new = function() {
-    this[_id] = null;
-    this[___AndroidViewState__controller] = null;
-    this[___AndroidViewState__controller_isSet] = false;
-    this[_layoutDirection] = null;
-    this[_initialized] = false;
-    this[_focusNode] = null;
-    platform_view$._AndroidViewState.__proto__.new.call(this);
-    ;
-  }).prototype = platform_view$._AndroidViewState.prototype;
-  dart.addTypeTests(platform_view$._AndroidViewState);
-  dart.addTypeCaches(platform_view$._AndroidViewState);
-  dart.setMethodSignature(platform_view$._AndroidViewState, () => ({
-    __proto__: dart.getMethods(platform_view$._AndroidViewState.__proto__),
-    build: dart.fnType(framework.Widget, [framework.BuildContext]),
-    [_initializeOnce]: dart.fnType(dart.void, []),
-    [_findLayoutDirection]: dart.fnType(ui.TextDirection, []),
-    [_createNewAndroidView]: dart.fnType(dart.void, []),
-    [_onFocusChange]: dart.fnType(dart.void, [core.bool])
-  }));
-  dart.setGetterSignature(platform_view$._AndroidViewState, () => ({
-    __proto__: dart.getGetters(platform_view$._AndroidViewState.__proto__),
-    [_controller]: platform_views.AndroidViewController
-  }));
-  dart.setSetterSignature(platform_view$._AndroidViewState, () => ({
-    __proto__: dart.getSetters(platform_view$._AndroidViewState.__proto__),
-    [_controller]: platform_views.AndroidViewController
-  }));
-  dart.setLibraryUri(platform_view$._AndroidViewState, I[1]);
-  dart.setFieldSignature(platform_view$._AndroidViewState, () => ({
-    __proto__: dart.getFields(platform_view$._AndroidViewState.__proto__),
-    [_id]: dart.fieldType(dart.nullable(core.int)),
-    [___AndroidViewState__controller]: dart.fieldType(dart.nullable(platform_views.AndroidViewController)),
-    [___AndroidViewState__controller_isSet]: dart.fieldType(core.bool),
-    [_layoutDirection]: dart.fieldType(dart.nullable(ui.TextDirection)),
-    [_initialized]: dart.fieldType(core.bool),
-    [_focusNode]: dart.fieldType(dart.nullable(focus_manager.FocusNode))
-  }));
-  dart.defineLazy(platform_view$._AndroidViewState, {
-    /*platform_view$._AndroidViewState._emptyRecognizersSet*/get _emptyRecognizersSet() {
-      return T.LinkedHashSetOfFactoryOfOneSequenceGestureRecognizer().new();
-    }
-  }, false);
-  var Widget__location = dart.privateName(framework, "Widget._location");
-  var Widget_key = dart.privateName(framework, "Widget.key");
-  var SingleChildRenderObjectWidget_child = dart.privateName(framework, "SingleChildRenderObjectWidget.child");
-  var SizedBox_height = dart.privateName(basic, "SizedBox.height");
-  var SizedBox_width = dart.privateName(basic, "SizedBox.width");
-  var _createNewUiKitView = dart.privateName(platform_view$, "_createNewUiKitView");
-  platform_view$._UiKitViewState = class _UiKitViewState extends framework.State$(platform_view$.UiKitView) {
-    build(context) {
-      let t1;
-      if (context == null) dart.nullFailed(I[0], 564, 29, "context");
-      if (this[_controller] == null) {
-        return C[24] || CT.C24;
-      }
-      return new platform_view$._UiKitPlatformView.new({controller: dart.nullCheck(this[_controller]), hitTestBehavior: this.widget.hitTestBehavior, gestureRecognizers: (t1 = this.widget.gestureRecognizers, t1 == null ? platform_view$._UiKitViewState._emptyRecognizersSet : t1), $creationLocationd_0dea112b090073317d4: C[27] || CT.C27});
-    }
-    [_initializeOnce]() {
-      if (dart.test(this[_initialized])) {
-        return;
-      }
-      this[_initialized] = true;
-      this[_createNewUiKitView]();
-    }
-    didChangeDependencies() {
-      let t1;
-      super.didChangeDependencies();
-      let newLayoutDirection = this[_findLayoutDirection]();
-      let didChangeLayoutDirection = this[_layoutDirection] != newLayoutDirection;
-      this[_layoutDirection] = newLayoutDirection;
-      this[_initializeOnce]();
-      if (didChangeLayoutDirection) {
-        t1 = this[_controller];
-        t1 == null ? null : t1.setLayoutDirection(dart.nullCheck(this[_layoutDirection]));
-      }
-    }
-    didUpdateWidget(oldWidget) {
-      let t1, t1$;
-      platform_view$.UiKitView.as(oldWidget);
-      if (oldWidget == null) dart.nullFailed(I[0], 599, 34, "oldWidget");
-      super.didUpdateWidget(oldWidget);
-      let newLayoutDirection = this[_findLayoutDirection]();
-      let didChangeLayoutDirection = this[_layoutDirection] != newLayoutDirection;
-      this[_layoutDirection] = newLayoutDirection;
-      if (this.widget.viewType != oldWidget.viewType) {
-        t1 = this[_controller];
-        t1 == null ? null : t1.dispose();
-        this[_createNewUiKitView]();
-        return;
-      }
-      if (didChangeLayoutDirection) {
-        t1$ = this[_controller];
-        t1$ == null ? null : t1$.setLayoutDirection(dart.nullCheck(this[_layoutDirection]));
-      }
-    }
-    [_findLayoutDirection]() {
-      let t1;
-      if (!(this.widget.layoutDirection != null || dart.test(debug.debugCheckHasDirectionality(this.context)))) dart.assertFailed(null, I[0], 618, 12, "widget.layoutDirection != null || debugCheckHasDirectionality(context)");
-      t1 = this.widget.layoutDirection;
-      return t1 == null ? basic.Directionality.of(this.context) : t1;
-    }
-    dispose() {
-      let t1;
-      t1 = this[_controller];
-      t1 == null ? null : t1.dispose();
-      super.dispose();
-    }
-    [_createNewUiKitView]() {
-      return async.async(dart.void, (function* _createNewUiKitView() {
-        let t1;
-        let id = platform_views.platformViewsRegistry.getNextPlatformViewId();
-        let controller = (yield platform_views.PlatformViewsService.initUiKitView({id: id, viewType: this.widget.viewType, layoutDirection: dart.nullCheck(this[_layoutDirection]), creationParams: this.widget.creationParams, creationParamsCodec: this.widget.creationParamsCodec}));
-        if (!dart.test(this.mounted)) {
-          controller.dispose();
-          return;
-        }
-        t1 = this.widget.onPlatformViewCreated;
-        t1 == null ? null : t1(id);
-        this.setState(dart.fn(() => {
-          this[_controller] = controller;
-        }, T.VoidTovoid()));
-      }).bind(this));
-    }
-  };
-  (platform_view$._UiKitViewState.new = function() {
-    this[_controller] = null;
-    this[_layoutDirection] = null;
-    this[_initialized] = false;
-    platform_view$._UiKitViewState.__proto__.new.call(this);
-    ;
-  }).prototype = platform_view$._UiKitViewState.prototype;
-  dart.addTypeTests(platform_view$._UiKitViewState);
-  dart.addTypeCaches(platform_view$._UiKitViewState);
-  dart.setMethodSignature(platform_view$._UiKitViewState, () => ({
-    __proto__: dart.getMethods(platform_view$._UiKitViewState.__proto__),
-    build: dart.fnType(framework.Widget, [framework.BuildContext]),
-    [_initializeOnce]: dart.fnType(dart.void, []),
-    [_findLayoutDirection]: dart.fnType(ui.TextDirection, []),
-    [_createNewUiKitView]: dart.fnType(async.Future$(dart.void), [])
-  }));
-  dart.setLibraryUri(platform_view$._UiKitViewState, I[1]);
-  dart.setFieldSignature(platform_view$._UiKitViewState, () => ({
-    __proto__: dart.getFields(platform_view$._UiKitViewState.__proto__),
-    [_controller]: dart.fieldType(dart.nullable(platform_views.UiKitViewController)),
-    [_layoutDirection]: dart.fieldType(dart.nullable(ui.TextDirection)),
-    [_initialized]: dart.fieldType(core.bool)
-  }));
-  dart.defineLazy(platform_view$._UiKitViewState, {
-    /*platform_view$._UiKitViewState._emptyRecognizersSet*/get _emptyRecognizersSet() {
-      return T.LinkedHashSetOfFactoryOfOneSequenceGestureRecognizer().new();
-    }
-  }, false);
-  var controller$ = dart.privateName(platform_view$, "_AndroidPlatformView.controller");
-  var hitTestBehavior$1 = dart.privateName(platform_view$, "_AndroidPlatformView.hitTestBehavior");
-  var gestureRecognizers$1 = dart.privateName(platform_view$, "_AndroidPlatformView.gestureRecognizers");
-  var clipBehavior$0 = dart.privateName(platform_view$, "_AndroidPlatformView.clipBehavior");
-  platform_view$._AndroidPlatformView = class _AndroidPlatformView extends framework.LeafRenderObjectWidget {
-    get controller() {
-      return this[controller$];
-    }
-    set controller(value) {
-      super.controller = value;
-    }
-    get hitTestBehavior() {
-      return this[hitTestBehavior$1];
-    }
-    set hitTestBehavior(value) {
-      super.hitTestBehavior = value;
-    }
-    get gestureRecognizers() {
-      return this[gestureRecognizers$1];
-    }
-    set gestureRecognizers(value) {
-      super.gestureRecognizers = value;
-    }
-    get clipBehavior() {
-      return this[clipBehavior$0];
-    }
-    set clipBehavior(value) {
-      super.clipBehavior = value;
-    }
-    createRenderObject(context) {
-      if (context == null) dart.nullFailed(I[0], 665, 48, "context");
-      return new platform_view.RenderAndroidView.new({viewController: this.controller, hitTestBehavior: this.hitTestBehavior, gestureRecognizers: this.gestureRecognizers, clipBehavior: this.clipBehavior});
-    }
-    updateRenderObject(context, renderObject) {
-      if (context == null) dart.nullFailed(I[0], 674, 40, "context");
-      platform_view.RenderAndroidView.as(renderObject);
-      if (renderObject == null) dart.nullFailed(I[0], 674, 67, "renderObject");
-      renderObject.viewController = this.controller;
-      renderObject.hitTestBehavior = this.hitTestBehavior;
-      renderObject.updateGestureRecognizers(this.gestureRecognizers);
-      renderObject.clipBehavior = this.clipBehavior;
-    }
-  };
-  (platform_view$._AndroidPlatformView.new = function(opts) {
-    let key = opts && 'key' in opts ? opts.key : null;
-    let controller = opts && 'controller' in opts ? opts.controller : null;
-    if (controller == null) dart.nullFailed(I[0], 649, 19, "controller");
-    let hitTestBehavior = opts && 'hitTestBehavior' in opts ? opts.hitTestBehavior : null;
-    if (hitTestBehavior == null) dart.nullFailed(I[0], 650, 19, "hitTestBehavior");
-    let gestureRecognizers = opts && 'gestureRecognizers' in opts ? opts.gestureRecognizers : null;
-    if (gestureRecognizers == null) dart.nullFailed(I[0], 651, 19, "gestureRecognizers");
-    let clipBehavior = opts && 'clipBehavior' in opts ? opts.clipBehavior : C[1] || CT.C1;
-    if (clipBehavior == null) dart.nullFailed(I[0], 652, 10, "clipBehavior");
-    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
-    this[controller$] = controller;
-    this[hitTestBehavior$1] = hitTestBehavior;
-    this[gestureRecognizers$1] = gestureRecognizers;
-    this[clipBehavior$0] = clipBehavior;
-    if (!(controller != null)) dart.assertFailed(null, I[0], 653, 15, "controller != null");
-    if (!(hitTestBehavior != null)) dart.assertFailed(null, I[0], 654, 15, "hitTestBehavior != null");
-    if (!(gestureRecognizers != null)) dart.assertFailed(null, I[0], 655, 15, "gestureRecognizers != null");
-    if (!(clipBehavior != null)) dart.assertFailed(null, I[0], 656, 15, "clipBehavior != null");
-    platform_view$._AndroidPlatformView.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
-    ;
-  }).prototype = platform_view$._AndroidPlatformView.prototype;
-  dart.addTypeTests(platform_view$._AndroidPlatformView);
-  dart.addTypeCaches(platform_view$._AndroidPlatformView);
-  dart.setMethodSignature(platform_view$._AndroidPlatformView, () => ({
-    __proto__: dart.getMethods(platform_view$._AndroidPlatformView.__proto__),
-    createRenderObject: dart.fnType(object.RenderObject, [framework.BuildContext])
-  }));
-  dart.setLibraryUri(platform_view$._AndroidPlatformView, I[1]);
-  dart.setFieldSignature(platform_view$._AndroidPlatformView, () => ({
-    __proto__: dart.getFields(platform_view$._AndroidPlatformView.__proto__),
-    controller: dart.finalFieldType(platform_views.AndroidViewController),
-    hitTestBehavior: dart.finalFieldType(platform_view.PlatformViewHitTestBehavior),
-    gestureRecognizers: dart.finalFieldType(core.Set$(basic_types.Factory$(recognizer.OneSequenceGestureRecognizer))),
-    clipBehavior: dart.finalFieldType(ui.Clip)
-  }));
-  var controller$0 = dart.privateName(platform_view$, "_UiKitPlatformView.controller");
-  var hitTestBehavior$2 = dart.privateName(platform_view$, "_UiKitPlatformView.hitTestBehavior");
-  var gestureRecognizers$2 = dart.privateName(platform_view$, "_UiKitPlatformView.gestureRecognizers");
-  platform_view$._UiKitPlatformView = class _UiKitPlatformView extends framework.LeafRenderObjectWidget {
-    get controller() {
-      return this[controller$0];
-    }
-    set controller(value) {
-      super.controller = value;
-    }
-    get hitTestBehavior() {
-      return this[hitTestBehavior$2];
-    }
-    set hitTestBehavior(value) {
-      super.hitTestBehavior = value;
-    }
-    get gestureRecognizers() {
-      return this[gestureRecognizers$2];
-    }
-    set gestureRecognizers(value) {
-      super.gestureRecognizers = value;
-    }
-    createRenderObject(context) {
-      if (context == null) dart.nullFailed(I[0], 698, 48, "context");
-      return new platform_view.RenderUiKitView.new({viewController: this.controller, hitTestBehavior: this.hitTestBehavior, gestureRecognizers: this.gestureRecognizers});
-    }
-    updateRenderObject(context, renderObject) {
-      if (context == null) dart.nullFailed(I[0], 707, 40, "context");
-      platform_view.RenderUiKitView.as(renderObject);
-      if (renderObject == null) dart.nullFailed(I[0], 707, 65, "renderObject");
-      renderObject.viewController = this.controller;
-      renderObject.hitTestBehavior = this.hitTestBehavior;
-      renderObject.updateGestureRecognizers(this.gestureRecognizers);
-    }
-  };
-  (platform_view$._UiKitPlatformView.new = function(opts) {
-    let key = opts && 'key' in opts ? opts.key : null;
-    let controller = opts && 'controller' in opts ? opts.controller : null;
-    if (controller == null) dart.nullFailed(I[0], 685, 19, "controller");
-    let hitTestBehavior = opts && 'hitTestBehavior' in opts ? opts.hitTestBehavior : null;
-    if (hitTestBehavior == null) dart.nullFailed(I[0], 686, 19, "hitTestBehavior");
-    let gestureRecognizers = opts && 'gestureRecognizers' in opts ? opts.gestureRecognizers : null;
-    if (gestureRecognizers == null) dart.nullFailed(I[0], 687, 19, "gestureRecognizers");
-    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
-    this[controller$0] = controller;
-    this[hitTestBehavior$2] = hitTestBehavior;
-    this[gestureRecognizers$2] = gestureRecognizers;
-    if (!(controller != null)) dart.assertFailed(null, I[0], 688, 15, "controller != null");
-    if (!(hitTestBehavior != null)) dart.assertFailed(null, I[0], 689, 15, "hitTestBehavior != null");
-    if (!(gestureRecognizers != null)) dart.assertFailed(null, I[0], 690, 15, "gestureRecognizers != null");
-    platform_view$._UiKitPlatformView.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
-    ;
-  }).prototype = platform_view$._UiKitPlatformView.prototype;
-  dart.addTypeTests(platform_view$._UiKitPlatformView);
-  dart.addTypeCaches(platform_view$._UiKitPlatformView);
-  dart.setMethodSignature(platform_view$._UiKitPlatformView, () => ({
-    __proto__: dart.getMethods(platform_view$._UiKitPlatformView.__proto__),
-    createRenderObject: dart.fnType(object.RenderObject, [framework.BuildContext])
-  }));
-  dart.setLibraryUri(platform_view$._UiKitPlatformView, I[1]);
-  dart.setFieldSignature(platform_view$._UiKitPlatformView, () => ({
-    __proto__: dart.getFields(platform_view$._UiKitPlatformView.__proto__),
-    controller: dart.finalFieldType(platform_views.UiKitViewController),
-    hitTestBehavior: dart.finalFieldType(platform_view.PlatformViewHitTestBehavior),
-    gestureRecognizers: dart.finalFieldType(core.Set$(basic_types.Factory$(recognizer.OneSequenceGestureRecognizer)))
-  }));
-  var id$ = dart.privateName(platform_view$, "PlatformViewCreationParams.id");
-  var viewType$2 = dart.privateName(platform_view$, "PlatformViewCreationParams.viewType");
-  var onPlatformViewCreated$1 = dart.privateName(platform_view$, "PlatformViewCreationParams.onPlatformViewCreated");
-  var onFocusChanged$ = dart.privateName(platform_view$, "PlatformViewCreationParams.onFocusChanged");
-  platform_view$.PlatformViewCreationParams = class PlatformViewCreationParams extends core.Object {
+  var id = dart.privateName(custom_layout, "MultiChildLayoutParentData.id");
+  custom_layout.MultiChildLayoutParentData = class MultiChildLayoutParentData extends box.ContainerBoxParentData$(box.RenderBox) {
     get id() {
-      return this[id$];
+      return this[id];
     }
     set id(value) {
-      super.id = value;
+      this[id] = value;
     }
-    get viewType() {
-      return this[viewType$2];
-    }
-    set viewType(value) {
-      super.viewType = value;
-    }
-    get onPlatformViewCreated() {
-      return this[onPlatformViewCreated$1];
-    }
-    set onPlatformViewCreated(value) {
-      super.onPlatformViewCreated = value;
-    }
-    get onFocusChanged() {
-      return this[onFocusChanged$];
-    }
-    set onFocusChanged(value) {
-      super.onFocusChanged = value;
+    toString() {
+      return dart.str(super.toString()) + "; id=" + dart.str(this.id);
     }
   };
-  (platform_view$.PlatformViewCreationParams.__ = function(opts) {
-    let id = opts && 'id' in opts ? opts.id : null;
-    if (id == null) dart.nullFailed(I[0], 722, 19, "id");
-    let viewType = opts && 'viewType' in opts ? opts.viewType : null;
-    if (viewType == null) dart.nullFailed(I[0], 723, 19, "viewType");
-    let onPlatformViewCreated = opts && 'onPlatformViewCreated' in opts ? opts.onPlatformViewCreated : null;
-    if (onPlatformViewCreated == null) dart.nullFailed(I[0], 724, 19, "onPlatformViewCreated");
-    let onFocusChanged = opts && 'onFocusChanged' in opts ? opts.onFocusChanged : null;
-    if (onFocusChanged == null) dart.nullFailed(I[0], 725, 19, "onFocusChanged");
-    this[id$] = id;
-    this[viewType$2] = viewType;
-    this[onPlatformViewCreated$1] = onPlatformViewCreated;
-    this[onFocusChanged$] = onFocusChanged;
-    if (!(id != null)) dart.assertFailed(null, I[0], 726, 15, "id != null");
-    if (!(onPlatformViewCreated != null)) dart.assertFailed(null, I[0], 727, 15, "onPlatformViewCreated != null");
+  (custom_layout.MultiChildLayoutParentData.new = function() {
+    this[id] = null;
+    custom_layout.MultiChildLayoutParentData.__proto__.new.call(this);
     ;
-  }).prototype = platform_view$.PlatformViewCreationParams.prototype;
-  dart.addTypeTests(platform_view$.PlatformViewCreationParams);
-  dart.addTypeCaches(platform_view$.PlatformViewCreationParams);
-  dart.setLibraryUri(platform_view$.PlatformViewCreationParams, I[1]);
-  dart.setFieldSignature(platform_view$.PlatformViewCreationParams, () => ({
-    __proto__: dart.getFields(platform_view$.PlatformViewCreationParams.__proto__),
-    id: dart.finalFieldType(core.int),
-    viewType: dart.finalFieldType(core.String),
-    onPlatformViewCreated: dart.finalFieldType(dart.fnType(dart.void, [core.int])),
-    onFocusChanged: dart.finalFieldType(dart.fnType(dart.void, [core.bool]))
+  }).prototype = custom_layout.MultiChildLayoutParentData.prototype;
+  dart.addTypeTests(custom_layout.MultiChildLayoutParentData);
+  dart.addTypeCaches(custom_layout.MultiChildLayoutParentData);
+  dart.setLibraryUri(custom_layout.MultiChildLayoutParentData, I[0]);
+  dart.setFieldSignature(custom_layout.MultiChildLayoutParentData, () => ({
+    __proto__: dart.getFields(custom_layout.MultiChildLayoutParentData.__proto__),
+    id: dart.fieldType(dart.nullable(core.Object))
   }));
-  var _surfaceFactory = dart.privateName(platform_view$, "PlatformViewLink._surfaceFactory");
-  var _onCreatePlatformView = dart.privateName(platform_view$, "PlatformViewLink._onCreatePlatformView");
-  var viewType$3 = dart.privateName(platform_view$, "PlatformViewLink.viewType");
-  var _surfaceFactory$ = dart.privateName(platform_view$, "_surfaceFactory");
-  var _onCreatePlatformView$ = dart.privateName(platform_view$, "_onCreatePlatformView");
-  platform_view$.PlatformViewLink = class PlatformViewLink extends framework.StatefulWidget {
-    get [_surfaceFactory$]() {
-      return this[_surfaceFactory];
+  dart.defineExtensionMethods(custom_layout.MultiChildLayoutParentData, ['toString']);
+  var _idToChild = dart.privateName(custom_layout, "_idToChild");
+  var _debugChildrenNeedingLayout = dart.privateName(custom_layout, "_debugChildrenNeedingLayout");
+  var _relayout = dart.privateName(custom_layout, "_relayout");
+  var _debugDescribeChild = dart.privateName(custom_layout, "_debugDescribeChild");
+  var _callPerformLayout = dart.privateName(custom_layout, "_callPerformLayout");
+  custom_layout.MultiChildLayoutDelegate = class MultiChildLayoutDelegate extends core.Object {
+    hasChild(childId) {
+      if (childId == null) dart.nullFailed(I[1], 133, 24, "childId");
+      return dart.nullCheck(this[_idToChild])[$_get](childId) != null;
     }
-    set [_surfaceFactory$](value) {
-      super[_surfaceFactory$] = value;
+    layoutChild(childId, constraints) {
+      if (childId == null) dart.nullFailed(I[1], 141, 27, "childId");
+      if (constraints == null) dart.nullFailed(I[1], 141, 51, "constraints");
+      let child = dart.nullCheck(this[_idToChild])[$_get](childId);
+      if (!dart.test(dart.fn(() => {
+        if (child == null) {
+          dart.throw(assertions.FlutterError.new("The " + dart.str(this) + " custom multichild layout delegate tried to lay out a non-existent child.\n" + "There is no child with the id \"" + dart.str(childId) + "\"."));
+        }
+        if (!dart.test(dart.nullCheck(this[_debugChildrenNeedingLayout]).remove(child))) {
+          dart.throw(assertions.FlutterError.new("The " + dart.str(this) + " custom multichild layout delegate tried to lay out the child with id \"" + dart.str(childId) + "\" more than once.\n" + "Each child must be laid out exactly once."));
+        }
+        try {
+          if (!dart.test(constraints.debugAssertIsValid({isAppliedConstraint: true}))) dart.assertFailed(null, I[1], 157, 16, "constraints.debugAssertIsValid(isAppliedConstraint: true)");
+        } catch (e) {
+          let exception = dart.getThrown(e);
+          if (core.AssertionError.is(exception)) {
+            dart.throw(new assertions.FlutterError.fromParts(T.JSArrayOfDiagnosticsNode().of([new assertions.ErrorSummary.new("The " + dart.str(this) + " custom multichild layout delegate provided invalid box constraints for the child with id \"" + dart.str(childId) + "\"."), new (T.DiagnosticsPropertyOfAssertionError()).new("Exception", exception, {showName: false}), new assertions.ErrorDescription.new("The minimum width and height must be greater than or equal to zero.\n" + "The maximum width must be greater than or equal to the minimum width.\n" + "The maximum height must be greater than or equal to the minimum height.")])));
+          } else
+            throw e;
+        }
+        return true;
+      }, T.VoidTobool())())) dart.assertFailed(null, I[1], 143, 12, "() {\r\n      if (child == null) {\r\n        throw FlutterError(\r\n          'The $this custom multichild layout delegate tried to lay out a non-existent child.\\n'\r\n          'There is no child with the id \"$childId\".',\r\n        );\r\n      }\r\n      if (!_debugChildrenNeedingLayout!.remove(child)) {\r\n        throw FlutterError(\r\n          'The $this custom multichild layout delegate tried to lay out the child with id \"$childId\" more than once.\\n'\r\n          'Each child must be laid out exactly once.',\r\n        );\r\n      }\r\n      try {\r\n        assert(constraints.debugAssertIsValid(isAppliedConstraint: true));\r\n      } on AssertionError catch (exception) {\r\n        throw FlutterError.fromParts(<DiagnosticsNode>[\r\n          ErrorSummary('The $this custom multichild layout delegate provided invalid box constraints for the child with id \"$childId\".'),\r\n          DiagnosticsProperty<AssertionError>('Exception', exception, showName: false),\r\n          ErrorDescription(\r\n            'The minimum width and height must be greater than or equal to zero.\\n'\r\n            'The maximum width must be greater than or equal to the minimum width.\\n'\r\n            'The maximum height must be greater than or equal to the minimum height.',\r\n          ),\r\n        ]);\r\n      }\r\n      return true;\r\n    }()");
+      dart.nullCheck(child).layout(constraints, {parentUsesSize: true});
+      return child.size;
     }
-    get [_onCreatePlatformView$]() {
-      return this[_onCreatePlatformView];
+    positionChild(childId, offset) {
+      if (childId == null) dart.nullFailed(I[1], 181, 29, "childId");
+      if (offset == null) dart.nullFailed(I[1], 181, 45, "offset");
+      let child = dart.nullCheck(this[_idToChild])[$_get](childId);
+      if (!dart.test(dart.fn(() => {
+        if (child == null) {
+          dart.throw(assertions.FlutterError.new("The " + dart.str(this) + " custom multichild layout delegate tried to position out a non-existent child:\n" + "There is no child with the id \"" + dart.str(childId) + "\"."));
+        }
+        if (offset == null) {
+          dart.throw(assertions.FlutterError.new("The " + dart.str(this) + " custom multichild layout delegate provided a null position for the child with id \"" + dart.str(childId) + "\"."));
+        }
+        return true;
+      }, T.VoidTobool())())) dart.assertFailed(null, I[1], 183, 12, "() {\r\n      if (child == null) {\r\n        throw FlutterError(\r\n          'The $this custom multichild layout delegate tried to position out a non-existent child:\\n'\r\n          'There is no child with the id \"$childId\".',\r\n        );\r\n      }\r\n      if (offset == null) {\r\n        throw FlutterError(\r\n          'The $this custom multichild layout delegate provided a null position for the child with id \"$childId\".',\r\n        );\r\n      }\r\n      return true;\r\n    }()");
+      let childParentData = custom_layout.MultiChildLayoutParentData.as(dart.nullCheck(dart.nullCheck(child).parentData));
+      childParentData.offset = offset;
     }
-    set [_onCreatePlatformView$](value) {
-      super[_onCreatePlatformView$] = value;
+    [_debugDescribeChild](child) {
+      if (child == null) dart.nullFailed(I[1], 201, 49, "child");
+      let childParentData = custom_layout.MultiChildLayoutParentData.as(dart.nullCheck(child.parentData));
+      return new (T.DiagnosticsPropertyOfRenderBox()).new(dart.str(childParentData.id), child);
     }
-    get viewType() {
-      return this[viewType$3];
-    }
-    set viewType(value) {
-      super.viewType = value;
-    }
-    createState() {
-      return new platform_view$._PlatformViewLinkState.new();
-    }
-  };
-  (platform_view$.PlatformViewLink.new = function(opts) {
-    let key = opts && 'key' in opts ? opts.key : null;
-    let surfaceFactory = opts && 'surfaceFactory' in opts ? opts.surfaceFactory : null;
-    if (surfaceFactory == null) dart.nullFailed(I[0], 810, 41, "surfaceFactory");
-    let onCreatePlatformView = opts && 'onCreatePlatformView' in opts ? opts.onCreatePlatformView : null;
-    if (onCreatePlatformView == null) dart.nullFailed(I[0], 811, 41, "onCreatePlatformView");
-    let viewType = opts && 'viewType' in opts ? opts.viewType : null;
-    if (viewType == null) dart.nullFailed(I[0], 812, 19, "viewType");
-    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
-    this[viewType$3] = viewType;
-    if (!(surfaceFactory != null)) dart.assertFailed(null, I[0], 813, 17, "surfaceFactory != null");
-    if (!(onCreatePlatformView != null)) dart.assertFailed(null, I[0], 814, 17, "onCreatePlatformView != null");
-    if (!(viewType != null)) dart.assertFailed(null, I[0], 815, 17, "viewType != null");
-    this[_surfaceFactory] = surfaceFactory;
-    this[_onCreatePlatformView] = onCreatePlatformView;
-    platform_view$.PlatformViewLink.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
-    ;
-  }).prototype = platform_view$.PlatformViewLink.prototype;
-  dart.addTypeTests(platform_view$.PlatformViewLink);
-  dart.addTypeCaches(platform_view$.PlatformViewLink);
-  dart.setMethodSignature(platform_view$.PlatformViewLink, () => ({
-    __proto__: dart.getMethods(platform_view$.PlatformViewLink.__proto__),
-    createState: dart.fnType(framework.State$(framework.StatefulWidget), [])
-  }));
-  dart.setLibraryUri(platform_view$.PlatformViewLink, I[1]);
-  dart.setFieldSignature(platform_view$.PlatformViewLink, () => ({
-    __proto__: dart.getFields(platform_view$.PlatformViewLink.__proto__),
-    [_surfaceFactory$]: dart.finalFieldType(dart.fnType(framework.Widget, [framework.BuildContext, platform_views.PlatformViewController])),
-    [_onCreatePlatformView$]: dart.finalFieldType(dart.fnType(platform_views.PlatformViewController, [platform_view$.PlatformViewCreationParams])),
-    viewType: dart.finalFieldType(core.String)
-  }));
-  var _platformViewCreated = dart.privateName(platform_view$, "_platformViewCreated");
-  var _surface = dart.privateName(platform_view$, "_surface");
-  var _handleFrameworkFocusChanged = dart.privateName(platform_view$, "_handleFrameworkFocusChanged");
-  var _onPlatformViewCreated = dart.privateName(platform_view$, "_onPlatformViewCreated");
-  var _handlePlatformFocusChanged = dart.privateName(platform_view$, "_handlePlatformFocusChanged");
-  platform_view$._PlatformViewLinkState = class _PlatformViewLinkState extends framework.State$(platform_view$.PlatformViewLink) {
-    build(context) {
-      let t3, t2, t1;
-      if (context == null) dart.nullFailed(I[0], 841, 29, "context");
-      if (!dart.test(this[_platformViewCreated])) {
-        return C[32] || CT.C32;
-      }
-      this[_surface] == null ? this[_surface] = (t1 = this.widget, t2 = context, t3 = dart.nullCheck(this[_controller]), t1[_surfaceFactory$](t2, t3)) : null;
-      return new focus_scope.Focus.new({focusNode: this[_focusNode], onFocusChange: dart.bind(this, _handleFrameworkFocusChanged), child: dart.nullCheck(this[_surface]), $creationLocationd_0dea112b090073317d4: C[34] || CT.C34});
-    }
-    initState() {
-      this[_focusNode] = new focus_manager.FocusNode.new({debugLabel: "PlatformView(id: " + dart.str(this[_id]) + ")"});
-      this[_initialize]();
-      super.initState();
-    }
-    didUpdateWidget(oldWidget) {
-      let t1;
-      platform_view$.PlatformViewLink.as(oldWidget);
-      if (oldWidget == null) dart.nullFailed(I[0], 861, 41, "oldWidget");
-      super.didUpdateWidget(oldWidget);
-      if (this.widget.viewType != oldWidget.viewType) {
-        t1 = this[_controller];
-        t1 == null ? null : t1.dispose();
-        this[_surface] = null;
-        this[_platformViewCreated] = false;
-        this[_initialize]();
+    [_callPerformLayout](size, firstChild) {
+      if (size == null) dart.nullFailed(I[1], 206, 32, "size");
+      let previousIdToChild = this[_idToChild];
+      let debugPreviousChildrenNeedingLayout = null;
+      if (!dart.test(dart.fn(() => {
+        debugPreviousChildrenNeedingLayout = this[_debugChildrenNeedingLayout];
+        this[_debugChildrenNeedingLayout] = T.LinkedHashSetOfRenderBox().new();
+        return true;
+      }, T.VoidTobool())())) dart.assertFailed(null, I[1], 213, 12, "() {\r\n      debugPreviousChildrenNeedingLayout = _debugChildrenNeedingLayout;\r\n      _debugChildrenNeedingLayout = <RenderBox>{};\r\n      return true;\r\n    }()");
+      try {
+        this[_idToChild] = new (T.LinkedMapOfObject$RenderBox()).new();
+        let child = firstChild;
+        while (child != null) {
+          let childParentData = custom_layout.MultiChildLayoutParentData.as(dart.nullCheck(child.parentData));
+          if (!dart.test(dart.fn(() => {
+            if (childParentData.id == null) {
+              dart.throw(new assertions.FlutterError.fromParts(T.JSArrayOfDiagnosticsNode().of([new assertions.ErrorSummary.new("Every child of a RenderCustomMultiChildLayoutBox must have an ID in its parent data."), dart.nullCheck(child).describeForError("The following child has no ID")])));
+            }
+            return true;
+          }, T.VoidTobool())())) dart.assertFailed(null, I[1], 224, 16, "() {\r\n          if (childParentData.id == null) {\r\n            throw FlutterError.fromParts(<DiagnosticsNode>[\r\n              ErrorSummary('Every child of a RenderCustomMultiChildLayoutBox must have an ID in its parent data.'),\r\n              child!.describeForError('The following child has no ID'),\r\n            ]);\r\n          }\r\n          return true;\r\n        }()");
+          dart.nullCheck(this[_idToChild])[$_set](dart.nullCheck(childParentData.id), child);
+          if (!dart.test(dart.fn(() => {
+            dart.nullCheck(this[_debugChildrenNeedingLayout]).add(dart.nullCheck(child));
+            return true;
+          }, T.VoidTobool())())) dart.assertFailed(null, I[1], 234, 16, "() {\r\n          _debugChildrenNeedingLayout!.add(child!);\r\n          return true;\r\n        }()");
+          child = childParentData.nextSibling;
+        }
+        this.performLayout(size);
+        if (!dart.test(dart.fn(() => {
+          if (dart.test(dart.nullCheck(this[_debugChildrenNeedingLayout])[$isNotEmpty])) {
+            dart.throw(new assertions.FlutterError.fromParts(T.JSArrayOfDiagnosticsNode().of([new assertions.ErrorSummary.new("Each child must be laid out exactly once."), new diagnostics.DiagnosticsBlock.new({name: "The " + dart.str(this) + " custom multichild layout delegate forgot " + "to lay out the following " + (dart.notNull(dart.nullCheck(this[_debugChildrenNeedingLayout])[$length]) > 1 ? "children" : "child"), properties: dart.nullCheck(this[_debugChildrenNeedingLayout])[$map](diagnostics.DiagnosticsNode, dart.bind(this, _debugDescribeChild))[$toList](), style: diagnostics.DiagnosticsTreeStyle.whitespace})])));
+          }
+          return true;
+        }, T.VoidTobool())())) dart.assertFailed(null, I[1], 241, 14, "() {\r\n        if (_debugChildrenNeedingLayout!.isNotEmpty) {\r\n          throw FlutterError.fromParts(<DiagnosticsNode>[\r\n          ErrorSummary('Each child must be laid out exactly once.'),\r\n            DiagnosticsBlock(\r\n              name:\r\n                'The $this custom multichild layout delegate forgot '\r\n                'to lay out the following '\r\n                '${_debugChildrenNeedingLayout!.length > 1 ? 'children' : 'child'}',\r\n              properties: _debugChildrenNeedingLayout!.map<DiagnosticsNode>(_debugDescribeChild).toList(),\r\n              style: DiagnosticsTreeStyle.whitespace,\r\n            ),\r\n          ]);\r\n        }\r\n        return true;\r\n      }()");
+      } finally {
+        this[_idToChild] = previousIdToChild;
+        if (!dart.test(dart.fn(() => {
+          this[_debugChildrenNeedingLayout] = debugPreviousChildrenNeedingLayout;
+          return true;
+        }, T.VoidTobool())())) dart.assertFailed(null, I[1], 259, 14, "() {\r\n        _debugChildrenNeedingLayout = debugPreviousChildrenNeedingLayout;\r\n        return true;\r\n      }()");
       }
     }
-    [_initialize]() {
-      let t2, t1;
-      this[_id] = platform_views.platformViewsRegistry.getNextPlatformViewId();
-      this[_controller] = (t1 = this.widget, t2 = new platform_view$.PlatformViewCreationParams.__({id: dart.nullCheck(this[_id]), viewType: this.widget.viewType, onPlatformViewCreated: dart.bind(this, _onPlatformViewCreated), onFocusChanged: dart.bind(this, _handlePlatformFocusChanged)}), t1[_onCreatePlatformView$](t2));
+    getSize(constraints) {
+      if (constraints == null) dart.nullFailed(I[1], 275, 31, "constraints");
+      return constraints.biggest;
     }
-    [_onPlatformViewCreated](id) {
-      if (id == null) dart.nullFailed(I[0], 888, 35, "id");
-      this.setState(dart.fn(() => {
-        this[_platformViewCreated] = true;
-      }, T.VoidTovoid()));
+    toString() {
+      return object$.objectRuntimeType(this, "MultiChildLayoutDelegate");
     }
-    [_handleFrameworkFocusChanged](isFocused) {
-      let t1;
-      if (isFocused == null) dart.nullFailed(I[0], 892, 42, "isFocused");
-      if (!dart.test(isFocused)) {
-        t1 = this[_controller];
-        t1 == null ? null : t1.clearFocus();
+  };
+  (custom_layout.MultiChildLayoutDelegate.new = function(opts) {
+    let relayout = opts && 'relayout' in opts ? opts.relayout : null;
+    this[_idToChild] = null;
+    this[_debugChildrenNeedingLayout] = null;
+    this[_relayout] = relayout;
+    ;
+  }).prototype = custom_layout.MultiChildLayoutDelegate.prototype;
+  dart.addTypeTests(custom_layout.MultiChildLayoutDelegate);
+  dart.addTypeCaches(custom_layout.MultiChildLayoutDelegate);
+  dart.setMethodSignature(custom_layout.MultiChildLayoutDelegate, () => ({
+    __proto__: dart.getMethods(custom_layout.MultiChildLayoutDelegate.__proto__),
+    hasChild: dart.fnType(core.bool, [core.Object]),
+    layoutChild: dart.fnType(ui.Size, [core.Object, box.BoxConstraints]),
+    positionChild: dart.fnType(dart.void, [core.Object, ui.Offset]),
+    [_debugDescribeChild]: dart.fnType(diagnostics.DiagnosticsNode, [box.RenderBox]),
+    [_callPerformLayout]: dart.fnType(dart.void, [ui.Size, dart.nullable(box.RenderBox)]),
+    getSize: dart.fnType(ui.Size, [box.BoxConstraints])
+  }));
+  dart.setLibraryUri(custom_layout.MultiChildLayoutDelegate, I[0]);
+  dart.setFieldSignature(custom_layout.MultiChildLayoutDelegate, () => ({
+    __proto__: dart.getFields(custom_layout.MultiChildLayoutDelegate.__proto__),
+    [_relayout]: dart.finalFieldType(dart.nullable(change_notifier.Listenable)),
+    [_idToChild]: dart.fieldType(dart.nullable(core.Map$(core.Object, box.RenderBox))),
+    [_debugChildrenNeedingLayout]: dart.fieldType(dart.nullable(core.Set$(box.RenderBox)))
+  }));
+  dart.defineExtensionMethods(custom_layout.MultiChildLayoutDelegate, ['toString']);
+  var _delegate = dart.privateName(custom_layout, "_delegate");
+  var _getSize = dart.privateName(custom_layout, "_getSize");
+  const RenderBox_ContainerRenderObjectMixin$36 = class RenderBox_ContainerRenderObjectMixin extends box.RenderBox {};
+  (RenderBox_ContainerRenderObjectMixin$36.new = function() {
+    object.ContainerRenderObjectMixin$(box.RenderBox, custom_layout.MultiChildLayoutParentData)[dart.mixinNew].call(this);
+    RenderBox_ContainerRenderObjectMixin$36.__proto__.new.call(this);
+  }).prototype = RenderBox_ContainerRenderObjectMixin$36.prototype;
+  dart.applyMixin(RenderBox_ContainerRenderObjectMixin$36, object.ContainerRenderObjectMixin$(box.RenderBox, custom_layout.MultiChildLayoutParentData));
+  const RenderBox_RenderBoxContainerDefaultsMixin$36 = class RenderBox_RenderBoxContainerDefaultsMixin extends RenderBox_ContainerRenderObjectMixin$36 {};
+  (RenderBox_RenderBoxContainerDefaultsMixin$36.new = function() {
+    RenderBox_RenderBoxContainerDefaultsMixin$36.__proto__.new.call(this);
+  }).prototype = RenderBox_RenderBoxContainerDefaultsMixin$36.prototype;
+  dart.applyMixin(RenderBox_RenderBoxContainerDefaultsMixin$36, box.RenderBoxContainerDefaultsMixin$(box.RenderBox, custom_layout.MultiChildLayoutParentData));
+  custom_layout.RenderCustomMultiChildLayoutBox = class RenderCustomMultiChildLayoutBox extends RenderBox_RenderBoxContainerDefaultsMixin$36 {
+    setupParentData(child) {
+      box.RenderBox.as(child);
+      if (child == null) dart.nullFailed(I[1], 321, 34, "child");
+      if (!custom_layout.MultiChildLayoutParentData.is(child.parentData)) child.parentData = new custom_layout.MultiChildLayoutParentData.new();
+    }
+    get delegate() {
+      return this[_delegate];
+    }
+    set delegate(newDelegate) {
+      let t1, t1$;
+      if (newDelegate == null) dart.nullFailed(I[1], 329, 41, "newDelegate");
+      if (!(newDelegate != null)) dart.assertFailed(null, I[1], 330, 12, "newDelegate != null");
+      if (dart.equals(this[_delegate], newDelegate)) return;
+      let oldDelegate = this[_delegate];
+      if (!dart.equals(dart.runtimeType(newDelegate), dart.runtimeType(oldDelegate)) || dart.test(newDelegate.shouldRelayout(oldDelegate))) this.markNeedsLayout();
+      this[_delegate] = newDelegate;
+      if (dart.test(this.attached)) {
+        t1 = oldDelegate[_relayout];
+        t1 == null ? null : t1.removeListener(dart.bind(this, 'markNeedsLayout'));
+        t1$ = newDelegate[_relayout];
+        t1$ == null ? null : t1$.addListener(dart.bind(this, 'markNeedsLayout'));
       }
     }
-    [_handlePlatformFocusChanged](isFocused) {
-      if (isFocused == null) dart.nullFailed(I[0], 898, 41, "isFocused");
-      if (dart.test(isFocused)) {
-        dart.nullCheck(this[_focusNode]).requestFocus();
-      }
-    }
-    dispose() {
+    attach(owner) {
       let t1;
-      t1 = this[_controller];
-      t1 == null ? null : t1.dispose();
-      this[_controller] = null;
-      super.dispose();
+      object.PipelineOwner.as(owner);
+      if (owner == null) dart.nullFailed(I[1], 344, 29, "owner");
+      super.attach(owner);
+      t1 = this[_delegate][_relayout];
+      t1 == null ? null : t1.addListener(dart.bind(this, 'markNeedsLayout'));
     }
-  };
-  (platform_view$._PlatformViewLinkState.new = function() {
-    this[_id] = null;
-    this[_controller] = null;
-    this[_platformViewCreated] = false;
-    this[_surface] = null;
-    this[_focusNode] = null;
-    platform_view$._PlatformViewLinkState.__proto__.new.call(this);
-    ;
-  }).prototype = platform_view$._PlatformViewLinkState.prototype;
-  dart.addTypeTests(platform_view$._PlatformViewLinkState);
-  dart.addTypeCaches(platform_view$._PlatformViewLinkState);
-  dart.setMethodSignature(platform_view$._PlatformViewLinkState, () => ({
-    __proto__: dart.getMethods(platform_view$._PlatformViewLinkState.__proto__),
-    build: dart.fnType(framework.Widget, [framework.BuildContext]),
-    [_initialize]: dart.fnType(dart.void, []),
-    [_onPlatformViewCreated]: dart.fnType(dart.void, [core.int]),
-    [_handleFrameworkFocusChanged]: dart.fnType(dart.void, [core.bool]),
-    [_handlePlatformFocusChanged]: dart.fnType(dart.void, [core.bool])
-  }));
-  dart.setLibraryUri(platform_view$._PlatformViewLinkState, I[1]);
-  dart.setFieldSignature(platform_view$._PlatformViewLinkState, () => ({
-    __proto__: dart.getFields(platform_view$._PlatformViewLinkState.__proto__),
-    [_id]: dart.fieldType(dart.nullable(core.int)),
-    [_controller]: dart.fieldType(dart.nullable(platform_views.PlatformViewController)),
-    [_platformViewCreated]: dart.fieldType(core.bool),
-    [_surface]: dart.fieldType(dart.nullable(framework.Widget)),
-    [_focusNode]: dart.fieldType(dart.nullable(focus_manager.FocusNode))
-  }));
-  var controller$1 = dart.privateName(platform_view$, "PlatformViewSurface.controller");
-  var gestureRecognizers$3 = dart.privateName(platform_view$, "PlatformViewSurface.gestureRecognizers");
-  var hitTestBehavior$3 = dart.privateName(platform_view$, "PlatformViewSurface.hitTestBehavior");
-  platform_view$.PlatformViewSurface = class PlatformViewSurface extends framework.LeafRenderObjectWidget {
-    get controller() {
-      return this[controller$1];
-    }
-    set controller(value) {
-      super.controller = value;
-    }
-    get gestureRecognizers() {
-      return this[gestureRecognizers$3];
-    }
-    set gestureRecognizers(value) {
-      super.gestureRecognizers = value;
-    }
-    get hitTestBehavior() {
-      return this[hitTestBehavior$3];
-    }
-    set hitTestBehavior(value) {
-      super.hitTestBehavior = value;
-    }
-    createRenderObject(context) {
-      if (context == null) dart.nullFailed(I[0], 995, 48, "context");
-      return new platform_view.PlatformViewRenderBox.new({controller: this.controller, gestureRecognizers: this.gestureRecognizers, hitTestBehavior: this.hitTestBehavior});
-    }
-    updateRenderObject(context, renderObject) {
+    detach() {
       let t1;
-      if (context == null) dart.nullFailed(I[0], 1000, 40, "context");
-      platform_view.PlatformViewRenderBox.as(renderObject);
-      if (renderObject == null) dart.nullFailed(I[0], 1000, 71, "renderObject");
-      t1 = renderObject;
-      (() => {
-        t1.controller = this.controller;
-        t1.hitTestBehavior = this.hitTestBehavior;
-        t1.updateGestureRecognizers(this.gestureRecognizers);
-        return t1;
-      })();
+      t1 = this[_delegate][_relayout];
+      t1 == null ? null : t1.removeListener(dart.bind(this, 'markNeedsLayout'));
+      super.detach();
+    }
+    [_getSize](constraints) {
+      if (constraints == null) dart.nullFailed(I[1], 355, 32, "constraints");
+      if (!dart.test(constraints.debugAssertIsValid())) dart.assertFailed(null, I[1], 356, 12, "constraints.debugAssertIsValid()");
+      return constraints.constrain(this[_delegate].getSize(constraints));
+    }
+    computeMinIntrinsicWidth(height) {
+      if (height == null) dart.nullFailed(I[1], 365, 42, "height");
+      let width = this[_getSize](new box.BoxConstraints.tightForFinite({height: height})).width;
+      if (width[$isFinite]) return width;
+      return 0.0;
+    }
+    computeMaxIntrinsicWidth(height) {
+      if (height == null) dart.nullFailed(I[1], 373, 42, "height");
+      let width = this[_getSize](new box.BoxConstraints.tightForFinite({height: height})).width;
+      if (width[$isFinite]) return width;
+      return 0.0;
+    }
+    computeMinIntrinsicHeight(width) {
+      if (width == null) dart.nullFailed(I[1], 381, 43, "width");
+      let height = this[_getSize](new box.BoxConstraints.tightForFinite({width: width})).height;
+      if (height[$isFinite]) return height;
+      return 0.0;
+    }
+    computeMaxIntrinsicHeight(width) {
+      if (width == null) dart.nullFailed(I[1], 389, 43, "width");
+      let height = this[_getSize](new box.BoxConstraints.tightForFinite({width: width})).height;
+      if (height[$isFinite]) return height;
+      return 0.0;
+    }
+    computeDryLayout(constraints) {
+      if (constraints == null) dart.nullFailed(I[1], 397, 40, "constraints");
+      return this[_getSize](constraints);
+    }
+    performLayout() {
+      this.size = this[_getSize](this.constraints);
+      this.delegate[_callPerformLayout](this.size, this.firstChild);
+    }
+    paint(context, offset) {
+      if (context == null) dart.nullFailed(I[1], 408, 30, "context");
+      if (offset == null) dart.nullFailed(I[1], 408, 46, "offset");
+      this.defaultPaint(context, offset);
+    }
+    hitTestChildren(result, opts) {
+      if (result == null) dart.nullFailed(I[1], 413, 41, "result");
+      let position = opts && 'position' in opts ? opts.position : null;
+      if (position == null) dart.nullFailed(I[1], 413, 67, "position");
+      return this.defaultHitTestChildren(result, {position: position});
     }
   };
-  (platform_view$.PlatformViewSurface.new = function(opts) {
-    let key = opts && 'key' in opts ? opts.key : null;
-    let controller = opts && 'controller' in opts ? opts.controller : null;
-    if (controller == null) dart.nullFailed(I[0], 936, 19, "controller");
-    let hitTestBehavior = opts && 'hitTestBehavior' in opts ? opts.hitTestBehavior : null;
-    if (hitTestBehavior == null) dart.nullFailed(I[0], 937, 19, "hitTestBehavior");
-    let gestureRecognizers = opts && 'gestureRecognizers' in opts ? opts.gestureRecognizers : null;
-    if (gestureRecognizers == null) dart.nullFailed(I[0], 938, 19, "gestureRecognizers");
-    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
-    this[controller$1] = controller;
-    this[hitTestBehavior$3] = hitTestBehavior;
-    this[gestureRecognizers$3] = gestureRecognizers;
-    if (!(controller != null)) dart.assertFailed(null, I[0], 939, 15, "controller != null");
-    if (!(hitTestBehavior != null)) dart.assertFailed(null, I[0], 940, 15, "hitTestBehavior != null");
-    if (!(gestureRecognizers != null)) dart.assertFailed(null, I[0], 941, 15, "gestureRecognizers != null");
-    platform_view$.PlatformViewSurface.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
-    ;
-  }).prototype = platform_view$.PlatformViewSurface.prototype;
-  dart.addTypeTests(platform_view$.PlatformViewSurface);
-  dart.addTypeCaches(platform_view$.PlatformViewSurface);
-  dart.setMethodSignature(platform_view$.PlatformViewSurface, () => ({
-    __proto__: dart.getMethods(platform_view$.PlatformViewSurface.__proto__),
-    createRenderObject: dart.fnType(object.RenderObject, [framework.BuildContext])
+  (custom_layout.RenderCustomMultiChildLayoutBox.new = function(opts) {
+    let children = opts && 'children' in opts ? opts.children : null;
+    let delegate = opts && 'delegate' in opts ? opts.delegate : null;
+    if (delegate == null) dart.nullFailed(I[1], 314, 39, "delegate");
+    if (!(delegate != null)) dart.assertFailed(null, I[1], 315, 15, "delegate != null");
+    this[_delegate] = delegate;
+    custom_layout.RenderCustomMultiChildLayoutBox.__proto__.new.call(this);
+    this.addAll(children);
+  }).prototype = custom_layout.RenderCustomMultiChildLayoutBox.prototype;
+  dart.addTypeTests(custom_layout.RenderCustomMultiChildLayoutBox);
+  dart.addTypeCaches(custom_layout.RenderCustomMultiChildLayoutBox);
+  dart.setMethodSignature(custom_layout.RenderCustomMultiChildLayoutBox, () => ({
+    __proto__: dart.getMethods(custom_layout.RenderCustomMultiChildLayoutBox.__proto__),
+    [_getSize]: dart.fnType(ui.Size, [box.BoxConstraints])
   }));
-  dart.setLibraryUri(platform_view$.PlatformViewSurface, I[1]);
-  dart.setFieldSignature(platform_view$.PlatformViewSurface, () => ({
-    __proto__: dart.getFields(platform_view$.PlatformViewSurface.__proto__),
-    controller: dart.finalFieldType(platform_views.PlatformViewController),
-    gestureRecognizers: dart.finalFieldType(core.Set$(basic_types.Factory$(recognizer.OneSequenceGestureRecognizer))),
-    hitTestBehavior: dart.finalFieldType(platform_view.PlatformViewHitTestBehavior)
+  dart.setGetterSignature(custom_layout.RenderCustomMultiChildLayoutBox, () => ({
+    __proto__: dart.getGetters(custom_layout.RenderCustomMultiChildLayoutBox.__proto__),
+    delegate: custom_layout.MultiChildLayoutDelegate
   }));
-  platform_view$.AndroidViewSurface = class AndroidViewSurface extends platform_view$.PlatformViewSurface {
-    createRenderObject(context) {
-      if (context == null) dart.nullFailed(I[0], 1041, 48, "context");
-      let renderBox = platform_view.PlatformViewRenderBox.as(super.createRenderObject(context));
-      platform_views.AndroidViewController.as(this.controller).pointTransformer = dart.fn(position => {
-        if (position == null) dart.nullFailed(I[0], 1046, 17, "position");
-        return renderBox.globalToLocal(position);
-      }, T.OffsetToOffset());
-      return renderBox;
-    }
-  };
-  (platform_view$.AndroidViewSurface.new = function(opts) {
-    let key = opts && 'key' in opts ? opts.key : null;
-    let controller = opts && 'controller' in opts ? opts.controller : null;
-    if (controller == null) dart.nullFailed(I[0], 1027, 36, "controller");
-    let hitTestBehavior = opts && 'hitTestBehavior' in opts ? opts.hitTestBehavior : null;
-    if (hitTestBehavior == null) dart.nullFailed(I[0], 1028, 42, "hitTestBehavior");
-    let gestureRecognizers = opts && 'gestureRecognizers' in opts ? opts.gestureRecognizers : null;
-    if (gestureRecognizers == null) dart.nullFailed(I[0], 1029, 57, "gestureRecognizers");
-    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
-    if (!(controller != null)) dart.assertFailed(null, I[0], 1030, 15, "controller != null");
-    if (!(hitTestBehavior != null)) dart.assertFailed(null, I[0], 1031, 15, "hitTestBehavior != null");
-    if (!(gestureRecognizers != null)) dart.assertFailed(null, I[0], 1032, 15, "gestureRecognizers != null");
-    platform_view$.AndroidViewSurface.__proto__.new.call(this, {key: key, controller: controller, hitTestBehavior: hitTestBehavior, gestureRecognizers: gestureRecognizers, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
-    ;
-  }).prototype = platform_view$.AndroidViewSurface.prototype;
-  dart.addTypeTests(platform_view$.AndroidViewSurface);
-  dart.addTypeCaches(platform_view$.AndroidViewSurface);
-  dart.setLibraryUri(platform_view$.AndroidViewSurface, I[1]);
-  dart.trackLibraries("packages/flutter/src/widgets/platform_view.dart", {
-    "package:flutter/src/widgets/platform_view.dart": platform_view$
+  dart.setSetterSignature(custom_layout.RenderCustomMultiChildLayoutBox, () => ({
+    __proto__: dart.getSetters(custom_layout.RenderCustomMultiChildLayoutBox.__proto__),
+    delegate: custom_layout.MultiChildLayoutDelegate
+  }));
+  dart.setLibraryUri(custom_layout.RenderCustomMultiChildLayoutBox, I[0]);
+  dart.setFieldSignature(custom_layout.RenderCustomMultiChildLayoutBox, () => ({
+    __proto__: dart.getFields(custom_layout.RenderCustomMultiChildLayoutBox.__proto__),
+    [_delegate]: dart.fieldType(custom_layout.MultiChildLayoutDelegate)
+  }));
+  dart.trackLibraries("packages/flutter/src/rendering/custom_layout.dart", {
+    "package:flutter/src/rendering/custom_layout.dart": custom_layout
   }, {
-  }, '{"version":3,"sourceRoot":"","sources":["platform_view.dart"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;IAwFe;;;;;;IAOsB;;;;;;IAOD;;;;;;IAOb;;;;;;IA6D6B;;;;;;IAKpC;;;;;;IAQe;;;;;;IAKlB;;;;;;;AAGyB;IAAmB;;;QA9HhD;QACS;;QACT;QACA;;QACA;QACA;QACA;QACA;QACA;;;IAPS;IACT;IACA;IACA;IACA;IACA;IACA;IACA;UACK,AAAS,QAAD;UACR,AAAgB,eAAD;UACf,AAAe,AAAQ,cAAT,YAAY,mBAAmB;UAC7C,AAAa,YAAD;AACnB,8DAAW,GAAG;;EAAC;;;;;;;;;;;;;;;;;;;;;;;;;;;IA8JP;;;;;;IAGsB;;;;;;IAGD;;;;;;IAGb;;;;;;IAKP;;;;;;IAQe;;;;;;IA2CqB;;;;;;;AAGhB;IAAiB;;;QArF5C;QACS;;QACT;QACA;;QACA;QACA;QACA;QACA;;IANS;IACT;IACA;IACA;IACA;IACA;IACA;UACK,AAAS,QAAD;UACR,AAAgB,eAAD;UACf,AAAe,AAAQ,cAAT,YAAY,mBAAmB;AACpD,4DAAW,GAAG;;EAAC;;;;;;;;;;;;;;;;;;;;;;;;;;;IA4HP;;;;;;;UAGa;AACxB,YAAO,oDACK,+CACY,+CACN,SAAc,SAAgC;cAAhC;cAAgC;AAC5D,gBAAO,yDACO,UAAU,sDAEuB;;IAIrD;;UAG6E;AAC1C,uBAAa,kDAA2B,AAAO,MAAD,KAAK;AACL,MAA/E,AAAW,AAAc,UAAf,gCAAoB,QAAC;;AAA4C,aAAvC,MAAM;aAAuB,AAAO,MAAD;QAAP;;AAChE,YAAO,WAAU;IACnB;;;QA/BO;QACS;;;;UACJ,AAAS,QAAD;iCACA;AACf,kEAAW,GAAG;;EAAC;;;;;;;;;;;;;;;;IAqCV;;;;;;;AASc;AACK,mBAAwB,4CACjD,MAAM,aACN,YAAY;AAEwD,QAAtE,MAAqB,AAAe,sEAAmB,UAAU,IAAI;AAClD,QAAnB,qBAAe;MACjB;;;AAGuB;MAGvB;;;UAG+C;AAAd;MAGjC;;;AAGoB;AAClB,sBAAI;AACuE,UAAzE,MAAqB,AAAe,sEAAmB,WAAW;;MAEtE;;;4DAxCO,QACA;QADA;QACA;IAWF,qBAAe;IAZb;IACA;;EACN;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;AA2C0B;IAAW;;;AAAX;;IAAW;UASZ;;;AACxB,YAAO,uCACM,2CACI,8BACR,yDACO,oCACK,AAAO,kDACsB,KAA1B,AAAO,gCAAA,aAAsB,2EACnC,AAAO;IAG3B;;AAGE,oBAAI;AACF;;AAEiB,MAAnB,qBAAe;AACQ,MAAvB;AAC2D,MAA3D,mBAAa,6CAAsB,AAAuB,8BAAL,aAAG;IAC1D;;AAI+B,MAAvB;AACc,+BAAqB;AAC9B,qCAA2B,AAAiB,0BAAG,kBAAkB;AACvC,MAArC,yBAAmB,kBAAkB;AAEpB,MAAjB;AACA,UAAI,wBAAwB;AAGuB,QAAjD,AAAY,qCAAmC,eAAhB;;IAEnC;;oCAGiC;;AACC,MAA1B,sBAAgB,SAAS;AAEX,+BAAqB;AAC9B,qCAA2B,AAAiB,0BAAG,kBAAkB;AACvC,MAArC,yBAAmB,kBAAkB;AAErC,UAAI,AAAO,wBAAY,AAAU,SAAD;AACT,QAArB,AAAY;AACW,QAAvB;AACA;;AAGF,UAAI,wBAAwB;AACuB,QAAjD,AAAY,qCAAmC,eAAhB;;IAEnC;;;AAGE,YAAO,AAAO,AAAwB,iDAAG,kCAA4B;AACrE,WAAO,AAAO;YAAA,cAAkC,wBAAG;IACrD;;AAIuB,MAArB,AAAY;AACG,MAAT;IACR;;AAGqD,MAAnD,YAAM,AAAsB;AAU3B,MATD,oBAAmC,yDAC1B,eAAH,sBACM,AAAO,uCACgB,eAAhB,yCACD,AAAO,iDACF,AAAO,0CACnB;AACmB,UAAhB,AAAE,eAAZ;;AAGJ,UAAI,AAAO;AACkE,QAA3E,AAAY,mDAA6D,eAA5B,AAAO;;IAExD;;UAEyB;AACvB,qBAAK,AAAY;AACf;;AAEF,qBAAK,SAAS;AAWV,QAVF,AAAY,AAAa,0CAAW,QAAS;AAC3C,cAAM,wCAAF,CAAC;AAOH;;;AAGJ;;AAeA,MAba,AAAU,AAGvB,iEAFA,mCACA,sBACW,QAAS;AACpB,YAAM,wCAAF,CAAC;AAOH;;;IAGN;;;IA9HK;4CACsB;;IACZ;IACV,qBAAe;IACT;;;EA2Hb;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;MAzH0D,qDAAoB;YACnC;;;;;;;;;;UAmIf;;;AACxB,UAAI,AAAY;AACd;;AAEF,YAAO,wDACkB,eAAX,qCACK,AAAO,kDACsB,KAA1B,AAAO,gCAAA,aAAsB;IAErD;;AAGE,oBAAI;AACF;;AAEiB,MAAnB,qBAAe;AACM,MAArB;IACF;;;AAI+B,MAAvB;AACc,+BAAqB;AAC9B,qCAA2B,AAAiB,0BAAG,kBAAkB;AACvC,MAArC,yBAAmB,kBAAkB;AAEpB,MAAjB;AACA,UAAI,wBAAwB;AAGwB,aAAlD;4BAAa,sBAAmC,eAAhB;;IAEpC;oBAG+B;;;;AACG,MAA1B,sBAAgB,SAAS;AAEX,+BAAqB;AAC9B,qCAA2B,AAAiB,0BAAG,kBAAkB;AACvC,MAArC,yBAAmB,kBAAkB;AAErC,UAAI,AAAO,wBAAY,AAAU,SAAD;AACR,aAAtB;4BAAa;AACQ,QAArB;AACA;;AAGF,UAAI,wBAAwB;AACwB,cAAlD;6BAAa,uBAAmC,eAAhB;;IAEpC;;;AAGE,YAAO,AAAO,AAAwB,iDAAG,kCAA4B;AACrE,WAAO,AAAO;YAAA,cAAkC,wBAAG;IACrD;;;AAIwB,WAAtB;0BAAa;AACE,MAAT;IACR;;AAEgC;;AACpB,iBAAK,AAAsB;AACX,0BAAa,MAA2B,uDAC5D,EAAE,YACI,AAAO,uCACgB,eAAhB,yCACD,AAAO,iDACF,AAAO;AAE9B,uBAAK;AACiB,UAApB,AAAW,UAAD;AACV;;AAEoC,aAAtC,AAAO;qBAAA,OAAuB,GAAK,EAAE;AACK,QAA1C,cAAS;AAA6B,UAAxB,oBAAc,UAAU;;MACxC;;;;IAvFqB;IACN;IACV,qBAAe;;;EAsFtB;;;;;;;;;;;;;;;;;;MApF0D,mDAAoB;YACnC;;;;;;;;IAkGb;;;;;;IACM;;;;;;IACe;;;;;;IACtC;;;;;;;UAGkC;AACzC,sEACkB,kCACC,0CACG,uCACN;IACf;uBAGgC,SAA2B;UAA3B;yCAA2B;;AACtB,MAAxC,AAAa,YAAD,kBAAkB;AACgB,MAA9C,AAAa,YAAD,mBAAmB;AAC0B,MAAzD,AAAa,YAAD,0BAA0B;AACE,MAAxC,AAAa,YAAD,gBAAgB;IAC9B;;;QA/BO;QACS;;QACA;;QACA;;QACT;;;IAHS;IACA;IACA;IACT;UACK,AAAW,UAAD;UACV,AAAgB,eAAD;UACf,AAAmB,kBAAD;UAClB,AAAa,YAAD;AACnB,uEAAW,GAAG;;EAAC;;;;;;;;;;;;;;;;;;;IAoCM;;;;;;IACQ;;;;;;IACe;;;;;;;UAGJ;AAC3C,YAAO,wDACW,kCACC,0CACG;IAExB;uBAGqC,SAAyB;UAAzB;uCAAyB;;AACpB,MAAxC,AAAa,YAAD,kBAAkB;AACgB,MAA9C,AAAa,YAAD,mBAAmB;AAC0B,MAAzD,AAAa,YAAD,0BAA0B;IACxC;;;QA3BO;QACS;;QACA;;QACA;;;IAFA;IACA;IACA;UACJ,AAAW,UAAD;UACV,AAAgB,eAAD;UACf,AAAmB,kBAAD;AACzB,qEAAW,GAAG;;EAAC;;;;;;;;;;;;;;;;;;;IAyCV;;;;;;IAMG;;;;;;IAGqB;;;;;;IAKT;;;;;;;;QAxBT;;QACA;;QACA;;QACA;;IAHA;IACA;IACA;IACA;UACJ,AAAG,EAAD;UACF,AAAsB,qBAAD;;EAAS;;;;;;;;;;;;;;;;;IA8FT;;;;;;IACA;;;;;;IAKpB;;;;;;;AAG0B;IAAwB;;;QArBxD;QAC+B;;QACA;;QACtB;;;;UACF,AAAe,cAAD;UACd,AAAqB,oBAAD;UACpB,AAAS,QAAD;IACC,wBAAE,cAAc;IACV,8BAAE,oBAAoB;AAC5C,mEAAW,GAAG;;EAAC;;;;;;;;;;;;;;;;;;;;UAuBI;;;AACxB,qBAAK;AACH;;AAEwD,MAAjD,yBAAT,uBAAa,kBAAuB,OAAO,OAAa,eAAX,oBAAV,gCAA1B;AACT,YAAO,uCACM,2CACI,4CACA,eAAR;IAEX;;AAI8D,MAA5D,mBAAa,6CAAsB,AAAwB,+BAAL,aAAG;AAC5C,MAAb;AACiB,MAAX;IACR;oBAGsC;;;;AACJ,MAA1B,sBAAgB,SAAS;AAE/B,UAAI,AAAO,wBAAY,AAAU,SAAD;AACR,aAAtB;4BAAa;AAGE,QAAf,iBAAW;AAGiB,QAA5B,6BAAuB;AACV,QAAb;;IAEJ;;;AAGqD,MAAnD,YAAM,AAAsB;AAQ3B,MAPD,0BAAc,kBACe,sDAClB,eAAH,sBACM,AAAO,uDACM,yDACP,sCALsB;IAQ5C;;UAEgC;AACe,MAA7C,cAAS;AAAgC,QAA3B,6BAAuB;;IACvC;mCAEuC;;;AACrC,qBAAK,SAAS;AACa,aAAzB;4BAAa;;IAEjB;;UAEsC;AACpC,oBAAI,SAAS;AACe,QAAhB,AAAE,eAAZ;;IAEJ;;;AAIwB,WAAtB;0BAAa;AACK,MAAlB,oBAAc;AACC,MAAT;IACR;;;IA3EK;IACmB;IACnB,6BAAuB;IACpB;IACG;;;EAwEb;;;;;;;;;;;;;;;;;;;;;;;;IAsC+B;;;;;;IAyCoB;;;;;;IAGf;;;;;;;UAGW;AAC3C,YAAO,0DAAkC,qCAAgC,0CAAqC;IAChH;uBAGqC,SAA+B;;UAA/B;6CAA+B;;AAIlB,WAHhD,YAAY;MAAZ;AACI,wBAAa;AACb,6BAAkB;AAClB,oCAAyB;;;IAC/B;;;QAtEO;QACS;;QACA;;QACA;;;IAFA;IACA;IACA;UACJ,AAAW,UAAD;UACV,AAAgB,eAAD;UACf,AAAmB,kBAAD;AACzB,sEAAW,GAAG;;EAAC;;;;;;;;;;;;;;;;UAmGyB;AACf,sBACU,uCAA5B,yBAAmB,OAAO;AAGsB,MAD9C,AAA0B,wCAArC,oCACG;YAAQ;AAAa,cAAA,AAAU,UAAD,eAAe,QAAQ;;AAEzD,YAAO,UAAS;IAClB;;;QAvBO;QAC0B;;QACM;;QACe;;;UAC1C,AAAW,UAAD;UACV,AAAgB,eAAD;UACf,AAAmB,kBAAD;AACzB,qEACO,GAAG,cACI,UAAU,mBACL,eAAe,sBACZ,kBAAkB;;EACvC","file":"../../../../../../../../../../../../C:/packages/flutter/src/widgets/platform_view.dart.lib.js"}');
+  }, '{"version":3,"sourceRoot":"","sources":["custom_layout.dart"],"names":[],"mappings":"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","file":"../../../../../../../../../../../../C:/packages/flutter/src/rendering/custom_layout.dart.lib.js"}');
   // Exports:
   return {
-    src__widgets__platform_view: platform_view$
+    src__rendering__custom_layout: custom_layout
   };
 }));
 
-//# sourceMappingURL=platform_view.dart.lib.js.map
+//# sourceMappingURL=custom_layout.dart.lib.js.map

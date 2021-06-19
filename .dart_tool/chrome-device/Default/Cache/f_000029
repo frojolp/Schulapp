@@ -1,776 +1,747 @@
-define(['dart_sdk', 'packages/flutter/src/foundation/debug.dart', 'packages/flutter/src/scheduler/binding.dart'], (function load__packages__flutter__src__painting__image_stream_dart(dart_sdk, packages__flutter__src__foundation__debug$46dart, packages__flutter__src__scheduler__binding$46dart) {
+define(['dart_sdk', 'packages/flutter/src/painting/borders.dart', 'packages/flutter/src/foundation/debug.dart', 'packages/flutter/src/painting/edge_insets.dart', 'packages/flutter/src/foundation/object.dart', 'packages/flutter/src/painting/border_radius.dart'], (function load__packages__flutter__src__painting__box_border_dart(dart_sdk, packages__flutter__src__painting__borders$46dart, packages__flutter__src__foundation__debug$46dart, packages__flutter__src__painting__edge_insets$46dart, packages__flutter__src__foundation__object$46dart, packages__flutter__src__painting__border_radius$46dart) {
   'use strict';
   const core = dart_sdk.core;
-  const ui = dart_sdk.ui;
   const _interceptors = dart_sdk._interceptors;
+  const ui = dart_sdk.ui;
   const _internal = dart_sdk._internal;
-  const async = dart_sdk.async;
   const dart = dart_sdk.dart;
   const dartx = dart_sdk.dartx;
-  const debug = packages__flutter__src__foundation__debug$46dart.src__foundation__debug;
-  const diagnostics = packages__flutter__src__foundation__debug$46dart.src__foundation__diagnostics;
+  const borders = packages__flutter__src__painting__borders$46dart.src__painting__borders;
   const assertions = packages__flutter__src__foundation__debug$46dart.src__foundation__assertions;
-  const binding = packages__flutter__src__scheduler__binding$46dart.src__scheduler__binding;
-  var image_stream = Object.create(dart.library);
-  var $length = dartx.length;
+  const diagnostics = packages__flutter__src__foundation__debug$46dart.src__foundation__diagnostics;
+  const edge_insets = packages__flutter__src__painting__edge_insets$46dart.src__painting__edge_insets;
+  const object = packages__flutter__src__foundation__object$46dart.src__foundation__object;
+  const border_radius = packages__flutter__src__painting__border_radius$46dart.src__painting__border_radius;
+  var box_border = Object.create(dart.library);
   var $runtimeType = dartx.runtimeType;
-  var $forEach = dartx.forEach;
   var $add = dartx.add;
-  var $_get = dartx._get;
-  var $removeAt = dartx.removeAt;
-  var $isNotEmpty = dartx.isNotEmpty;
-  var $isEmpty = dartx.isEmpty;
-  var $toList = dartx.toList;
-  var $clear = dartx.clear;
-  var $remove = dartx.remove;
-  var $map = dartx.map;
-  var $whereType = dartx.whereType;
-  var $truncate = dartx.truncate;
+  var $join = dartx.join;
   dart._checkModuleNullSafetyMode(false);
   var T = {
-    JSArrayOfImageStreamListener: () => (T.JSArrayOfImageStreamListener = dart.constFn(_interceptors.JSArray$(image_stream.ImageStreamListener)))(),
-    ObjectFlagPropertyOfImageStreamCompleter: () => (T.ObjectFlagPropertyOfImageStreamCompleter = dart.constFn(diagnostics.ObjectFlagProperty$(image_stream.ImageStreamCompleter)))(),
-    ListOfImageStreamListener: () => (T.ListOfImageStreamListener = dart.constFn(core.List$(image_stream.ImageStreamListener)))(),
-    ObjectFlagPropertyOfListOfImageStreamListener: () => (T.ObjectFlagPropertyOfListOfImageStreamListener = dart.constFn(diagnostics.ObjectFlagProperty$(T.ListOfImageStreamListener())))(),
-    VoidTovoid: () => (T.VoidTovoid = dart.constFn(dart.fnType(dart.void, [])))(),
-    JSArrayOfVoidTovoid: () => (T.JSArrayOfVoidTovoid = dart.constFn(_interceptors.JSArray$(T.VoidTovoid())))(),
-    StackTraceN: () => (T.StackTraceN = dart.constFn(dart.nullable(core.StackTrace)))(),
-    ObjectAndStackTraceNTovoid: () => (T.ObjectAndStackTraceNTovoid = dart.constFn(dart.fnType(dart.void, [core.Object, T.StackTraceN()])))(),
-    ObjectAndStackTraceNToNvoid: () => (T.ObjectAndStackTraceNToNvoid = dart.constFn(dart.nullable(T.ObjectAndStackTraceNTovoid())))(),
-    ImageStreamListenerToFn: () => (T.ImageStreamListenerToFn = dart.constFn(dart.fnType(T.ObjectAndStackTraceNToNvoid(), [image_stream.ImageStreamListener])))(),
-    ImageChunkEventTovoid: () => (T.ImageChunkEventTovoid = dart.constFn(dart.fnType(dart.void, [image_stream.ImageChunkEvent])))(),
-    ImageChunkEventToNvoid: () => (T.ImageChunkEventToNvoid = dart.constFn(dart.nullable(T.ImageChunkEventTovoid())))(),
-    ImageStreamListenerToFn$1: () => (T.ImageStreamListenerToFn$1 = dart.constFn(dart.fnType(T.ImageChunkEventToNvoid(), [image_stream.ImageStreamListener])))(),
-    DiagnosticsPropertyOfImageInfo: () => (T.DiagnosticsPropertyOfImageInfo = dart.constFn(diagnostics.DiagnosticsProperty$(image_stream.ImageInfo)))(),
-    ObjectAndStackTraceToNull: () => (T.ObjectAndStackTraceToNull = dart.constFn(dart.fnType(core.Null, [core.Object, core.StackTrace])))()
+    BoxShapeL: () => (T.BoxShapeL = dart.constFn(dart.legacy(box_border.BoxShape)))(),
+    BorderN: () => (T.BorderN = dart.constFn(dart.nullable(box_border.Border)))(),
+    BorderDirectionalN: () => (T.BorderDirectionalN = dart.constFn(dart.nullable(box_border.BorderDirectional)))(),
+    JSArrayOfDiagnosticsNode: () => (T.JSArrayOfDiagnosticsNode = dart.constFn(_interceptors.JSArray$(diagnostics.DiagnosticsNode)))(),
+    VoidTobool: () => (T.VoidTobool = dart.constFn(dart.fnType(core.bool, [])))(),
+    JSArrayOfString: () => (T.JSArrayOfString = dart.constFn(_interceptors.JSArray$(core.String)))()
   };
   const CT = Object.create({
     _: () => (C, CT)
   });
+  dart.defineLazy(CT, {
+    get C0() {
+      return C[0] = dart.const({
+        __proto__: box_border.BoxShape.prototype,
+        [_name$]: "BoxShape.rectangle",
+        index: 0
+      });
+    },
+    get C1() {
+      return C[1] = dart.const({
+        __proto__: box_border.BoxShape.prototype,
+        [_name$]: "BoxShape.circle",
+        index: 1
+      });
+    },
+    get C2() {
+      return C[2] = dart.constList([C[0] || CT.C0, C[1] || CT.C1], T.BoxShapeL());
+    },
+    get C4() {
+      return C[4] = dart.const({
+        __proto__: borders.BorderStyle.prototype,
+        [_name]: "BorderStyle.none",
+        index: 0
+      });
+    },
+    get C5() {
+      return C[5] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4278190080.0
+      });
+    },
+    get C3() {
+      return C[3] = dart.const({
+        __proto__: borders.BorderSide.prototype,
+        [BorderSide_style]: C[4] || CT.C4,
+        [BorderSide_width]: 0,
+        [BorderSide_color]: C[5] || CT.C5
+      });
+    },
+    get C6() {
+      return C[6] = dart.const({
+        __proto__: borders.BorderStyle.prototype,
+        [_name]: "BorderStyle.solid",
+        index: 1
+      });
+    },
+    get C7() {
+      return C[7] = dart.const({
+        __proto__: ui.TextDirection.prototype,
+        [_name$0]: "TextDirection.rtl",
+        index: 0
+      });
+    },
+    get C8() {
+      return C[8] = dart.const({
+        __proto__: ui.TextDirection.prototype,
+        [_name$0]: "TextDirection.ltr",
+        index: 1
+      });
+    }
+  }, false);
+  var C = Array(9).fill(void 0);
   var I = [
-    "file:///E:/OneDrive/_Marius/OneDrive/Dokumente%20Marius/Flutter/flutter/packages/flutter/lib/src/painting/image_stream.dart",
-    "package:flutter/src/painting/image_stream.dart"
+    "file:///E:/OneDrive/_Marius/OneDrive/Dokumente%20Marius/Flutter/flutter/packages/flutter/lib/src/painting/box_border.dart",
+    "package:flutter/src/painting/box_border.dart"
   ];
-  var image$ = dart.privateName(image_stream, "ImageInfo.image");
-  var scale$ = dart.privateName(image_stream, "ImageInfo.scale");
-  var debugLabel$ = dart.privateName(image_stream, "ImageInfo.debugLabel");
-  image_stream.ImageInfo = class ImageInfo extends core.Object {
-    get image() {
-      return this[image$];
-    }
-    set image(value) {
-      super.image = value;
-    }
-    get scale() {
-      return this[scale$];
-    }
-    set scale(value) {
-      super.scale = value;
-    }
-    get debugLabel() {
-      return this[debugLabel$];
-    }
-    set debugLabel(value) {
-      super.debugLabel = value;
-    }
-    clone() {
-      return new image_stream.ImageInfo.new({image: this.image.clone(), scale: this.scale, debugLabel: this.debugLabel});
-    }
-    isCloneOf(other) {
-      if (other == null) dart.nullFailed(I[0], 88, 28, "other");
-      return dart.test(other.image.isCloneOf(this.image)) && this.scale == this.scale && other.debugLabel == this.debugLabel;
-    }
-    dispose() {
-      let t0, t0$;
-      if (!(dart.notNull((t0$ = (t0 = this.image.debugGetOpenHandleStackTraces(), t0 == null ? null : t0[$length]), t0$ == null ? 1 : t0$)) > 0)) dart.assertFailed(null, I[0], 122, 12, "(image.debugGetOpenHandleStackTraces()?.length ?? 1) > 0");
-      this.image.dispose();
-    }
+  var _name$ = dart.privateName(box_border, "_name");
+  box_border.BoxShape = class BoxShape extends core.Object {
     toString() {
-      return (this.debugLabel != null ? dart.str(this.debugLabel) + " " : "") + dart.str(this.image) + " @ " + dart.str(debug.debugFormatDouble(this.scale)) + "x";
-    }
-    get hashCode() {
-      return ui.hashValues(this.image, this.scale, this.debugLabel);
-    }
-    _equals(other) {
-      if (other == null) return false;
-      if (!dart.equals(dart.runtimeType(other), this[$runtimeType])) return false;
-      return image_stream.ImageInfo.is(other) && dart.equals(other.image, this.image) && other.scale == this.scale && other.debugLabel == this.debugLabel;
+      return this[_name$];
     }
   };
-  (image_stream.ImageInfo.new = function(opts) {
-    let image = opts && 'image' in opts ? opts.image : null;
-    if (image == null) dart.nullFailed(I[0], 27, 35, "image");
-    let scale = opts && 'scale' in opts ? opts.scale : 1;
-    if (scale == null) dart.nullFailed(I[0], 27, 47, "scale");
-    let debugLabel = opts && 'debugLabel' in opts ? opts.debugLabel : null;
-    this[image$] = image;
-    this[scale$] = scale;
-    this[debugLabel$] = debugLabel;
-    if (!(image != null)) dart.assertFailed(null, I[0], 28, 14, "image != null");
-    if (!(scale != null)) dart.assertFailed(null, I[0], 29, 14, "scale != null");
+  (box_border.BoxShape.new = function(index, _name) {
+    if (index == null) dart.nullFailed(I[0], 21, 6, "index");
+    if (_name == null) dart.nullFailed(I[0], 21, 6, "_name");
+    this.index = index;
+    this[_name$] = _name;
     ;
-  }).prototype = image_stream.ImageInfo.prototype;
-  dart.addTypeTests(image_stream.ImageInfo);
-  dart.addTypeCaches(image_stream.ImageInfo);
-  dart.setMethodSignature(image_stream.ImageInfo, () => ({
-    __proto__: dart.getMethods(image_stream.ImageInfo.__proto__),
-    clone: dart.fnType(image_stream.ImageInfo, []),
-    isCloneOf: dart.fnType(core.bool, [image_stream.ImageInfo]),
-    dispose: dart.fnType(dart.void, [])
+  }).prototype = box_border.BoxShape.prototype;
+  dart.addTypeTests(box_border.BoxShape);
+  dart.addTypeCaches(box_border.BoxShape);
+  dart.setLibraryUri(box_border.BoxShape, I[1]);
+  dart.setFieldSignature(box_border.BoxShape, () => ({
+    __proto__: dart.getFields(box_border.BoxShape.__proto__),
+    index: dart.finalFieldType(core.int),
+    [_name$]: dart.finalFieldType(core.String)
   }));
-  dart.setLibraryUri(image_stream.ImageInfo, I[1]);
-  dart.setFieldSignature(image_stream.ImageInfo, () => ({
-    __proto__: dart.getFields(image_stream.ImageInfo.__proto__),
-    image: dart.finalFieldType(ui.Image),
-    scale: dart.finalFieldType(core.double),
-    debugLabel: dart.finalFieldType(dart.nullable(core.String))
-  }));
-  dart.defineExtensionMethods(image_stream.ImageInfo, ['toString', '_equals']);
-  dart.defineExtensionAccessors(image_stream.ImageInfo, ['hashCode']);
-  var onImage$ = dart.privateName(image_stream, "ImageStreamListener.onImage");
-  var onChunk$ = dart.privateName(image_stream, "ImageStreamListener.onChunk");
-  var onError$ = dart.privateName(image_stream, "ImageStreamListener.onError");
-  image_stream.ImageStreamListener = class ImageStreamListener extends core.Object {
-    get onImage() {
-      return this[onImage$];
+  dart.defineExtensionMethods(box_border.BoxShape, ['toString']);
+  box_border.BoxShape.rectangle = C[0] || CT.C0;
+  box_border.BoxShape.circle = C[1] || CT.C1;
+  box_border.BoxShape.values = C[2] || CT.C2;
+  box_border.BoxBorder = class BoxBorder extends borders.ShapeBorder {
+    add(other, opts) {
+      if (other == null) dart.nullFailed(I[0], 86, 30, "other");
+      let reversed = opts && 'reversed' in opts ? opts.reversed : false;
+      if (reversed == null) dart.nullFailed(I[0], 86, 44, "reversed");
+      return null;
     }
-    set onImage(value) {
-      super.onImage = value;
-    }
-    get onChunk() {
-      return this[onChunk$];
-    }
-    set onChunk(value) {
-      super.onChunk = value;
-    }
-    get onError() {
-      return this[onError$];
-    }
-    set onError(value) {
-      super.onError = value;
-    }
-    get hashCode() {
-      return ui.hashValues(this.onImage, this.onChunk, this.onError);
-    }
-    _equals(other) {
-      if (other == null) return false;
-      if (!dart.equals(dart.runtimeType(other), this[$runtimeType])) return false;
-      return image_stream.ImageStreamListener.is(other) && dart.equals(other.onImage, this.onImage) && dart.equals(other.onChunk, this.onChunk) && dart.equals(other.onError, this.onError);
-    }
-  };
-  (image_stream.ImageStreamListener.new = function(onImage, opts) {
-    if (onImage == null) dart.nullFailed(I[0], 159, 10, "onImage");
-    let onChunk = opts && 'onChunk' in opts ? opts.onChunk : null;
-    let onError = opts && 'onError' in opts ? opts.onError : null;
-    this[onImage$] = onImage;
-    this[onChunk$] = onChunk;
-    this[onError$] = onError;
-    if (!(onImage != null)) dart.assertFailed(null, I[0], 162, 15, "onImage != null");
-    ;
-  }).prototype = image_stream.ImageStreamListener.prototype;
-  dart.addTypeTests(image_stream.ImageStreamListener);
-  dart.addTypeCaches(image_stream.ImageStreamListener);
-  dart.setLibraryUri(image_stream.ImageStreamListener, I[1]);
-  dart.setFieldSignature(image_stream.ImageStreamListener, () => ({
-    __proto__: dart.getFields(image_stream.ImageStreamListener.__proto__),
-    onImage: dart.finalFieldType(dart.fnType(dart.void, [image_stream.ImageInfo, core.bool])),
-    onChunk: dart.finalFieldType(dart.nullable(dart.fnType(dart.void, [image_stream.ImageChunkEvent]))),
-    onError: dart.finalFieldType(dart.nullable(dart.fnType(dart.void, [core.Object, dart.nullable(core.StackTrace)])))
-  }));
-  dart.defineExtensionMethods(image_stream.ImageStreamListener, ['_equals']);
-  dart.defineExtensionAccessors(image_stream.ImageStreamListener, ['hashCode']);
-  var cumulativeBytesLoaded$ = dart.privateName(image_stream, "ImageChunkEvent.cumulativeBytesLoaded");
-  var expectedTotalBytes$ = dart.privateName(image_stream, "ImageChunkEvent.expectedTotalBytes");
-  const Object_Diagnosticable$36 = class Object_Diagnosticable extends core.Object {};
-  (Object_Diagnosticable$36.new = function() {
-  }).prototype = Object_Diagnosticable$36.prototype;
-  dart.applyMixin(Object_Diagnosticable$36, diagnostics.Diagnosticable);
-  image_stream.ImageChunkEvent = class ImageChunkEvent extends Object_Diagnosticable$36 {
-    get cumulativeBytesLoaded() {
-      return this[cumulativeBytesLoaded$];
-    }
-    set cumulativeBytesLoaded(value) {
-      super.cumulativeBytesLoaded = value;
-    }
-    get expectedTotalBytes() {
-      return this[expectedTotalBytes$];
-    }
-    set expectedTotalBytes(value) {
-      super.expectedTotalBytes = value;
-    }
-    debugFillProperties(properties) {
-      if (properties == null) dart.nullFailed(I[0], 284, 56, "properties");
-      super.debugFillProperties(properties);
-      properties.add(new diagnostics.IntProperty.new("cumulativeBytesLoaded", this.cumulativeBytesLoaded));
-      properties.add(new diagnostics.IntProperty.new("expectedTotalBytes", this.expectedTotalBytes));
-    }
-  };
-  (image_stream.ImageChunkEvent.new = function(opts) {
-    let cumulativeBytesLoaded = opts && 'cumulativeBytesLoaded' in opts ? opts.cumulativeBytesLoaded : null;
-    if (cumulativeBytesLoaded == null) dart.nullFailed(I[0], 262, 19, "cumulativeBytesLoaded");
-    let expectedTotalBytes = opts && 'expectedTotalBytes' in opts ? opts.expectedTotalBytes : null;
-    this[cumulativeBytesLoaded$] = cumulativeBytesLoaded;
-    this[expectedTotalBytes$] = expectedTotalBytes;
-    if (!(dart.notNull(cumulativeBytesLoaded) >= 0)) dart.assertFailed(null, I[0], 264, 15, "cumulativeBytesLoaded >= 0");
-    if (!(expectedTotalBytes == null || dart.notNull(expectedTotalBytes) >= 0)) dart.assertFailed(null, I[0], 265, 15, "expectedTotalBytes == null || expectedTotalBytes >= 0");
-    ;
-  }).prototype = image_stream.ImageChunkEvent.prototype;
-  dart.addTypeTests(image_stream.ImageChunkEvent);
-  dart.addTypeCaches(image_stream.ImageChunkEvent);
-  dart.setLibraryUri(image_stream.ImageChunkEvent, I[1]);
-  dart.setFieldSignature(image_stream.ImageChunkEvent, () => ({
-    __proto__: dart.getFields(image_stream.ImageChunkEvent.__proto__),
-    cumulativeBytesLoaded: dart.finalFieldType(core.int),
-    expectedTotalBytes: dart.finalFieldType(dart.nullable(core.int))
-  }));
-  var _completer$ = dart.privateName(image_stream, "_completer");
-  var _listeners = dart.privateName(image_stream, "_listeners");
-  const Object_Diagnosticable$36$ = class Object_Diagnosticable extends core.Object {};
-  (Object_Diagnosticable$36$.new = function() {
-  }).prototype = Object_Diagnosticable$36$.prototype;
-  dart.applyMixin(Object_Diagnosticable$36$, diagnostics.Diagnosticable);
-  image_stream.ImageStream = class ImageStream extends Object_Diagnosticable$36$ {
-    get completer() {
-      return this[_completer$];
-    }
-    setCompleter(value) {
-      if (value == null) dart.nullFailed(I[0], 334, 42, "value");
-      if (!(this[_completer$] == null)) dart.assertFailed(null, I[0], 335, 12, "_completer == null");
-      this[_completer$] = value;
-      if (this[_listeners] != null) {
-        let initialListeners = dart.nullCheck(this[_listeners]);
-        this[_listeners] = null;
-        initialListeners[$forEach](dart.bind(dart.nullCheck(this[_completer$]), 'addListener'));
+    static lerp(a, b, t) {
+      if (t == null) dart.nullFailed(I[0], 105, 61, "t");
+      if (!(t != null)) dart.assertFailed(null, I[0], 106, 12, "t != null");
+      if (T.BorderN().is(a) && T.BorderN().is(b)) return box_border.Border.lerp(a, b, t);
+      if (T.BorderDirectionalN().is(a) && T.BorderDirectionalN().is(b)) return box_border.BorderDirectional.lerp(a, b, t);
+      if (box_border.Border.is(b) && box_border.BorderDirectional.is(a)) {
+        let c = b;
+        b = a;
+        a = c;
+        t = 1.0 - dart.notNull(t);
       }
-    }
-    addListener(listener) {
-      if (listener == null) dart.nullFailed(I[0], 365, 40, "listener");
-      if (this[_completer$] != null) return dart.nullCheck(this[_completer$]).addListener(listener);
-      this[_listeners] == null ? this[_listeners] = T.JSArrayOfImageStreamListener().of([]) : null;
-      dart.nullCheck(this[_listeners])[$add](listener);
-    }
-    removeListener(listener) {
-      if (listener == null) dart.nullFailed(I[0], 376, 43, "listener");
-      if (this[_completer$] != null) return dart.nullCheck(this[_completer$]).removeListener(listener);
-      if (!(this[_listeners] != null)) dart.assertFailed(null, I[0], 379, 12, "_listeners != null");
-      for (let i = 0; i < dart.notNull(dart.nullCheck(this[_listeners])[$length]); i = i + 1) {
-        if (dart.equals(dart.nullCheck(this[_listeners])[$_get](i), listener)) {
-          dart.nullCheck(this[_listeners])[$removeAt](i);
-          break;
+      if (box_border.Border.is(a) && box_border.BorderDirectional.is(b)) {
+        if (dart.equals(b.start, borders.BorderSide.none) && dart.equals(b.end, borders.BorderSide.none)) {
+          return new box_border.Border.new({top: borders.BorderSide.lerp(a.top, b.top, t), right: borders.BorderSide.lerp(a.right, borders.BorderSide.none, t), bottom: borders.BorderSide.lerp(a.bottom, b.bottom, t), left: borders.BorderSide.lerp(a.left, borders.BorderSide.none, t)});
         }
+        if (dart.equals(a.left, borders.BorderSide.none) && dart.equals(a.right, borders.BorderSide.none)) {
+          return new box_border.BorderDirectional.new({top: borders.BorderSide.lerp(a.top, b.top, t), start: borders.BorderSide.lerp(borders.BorderSide.none, b.start, t), end: borders.BorderSide.lerp(borders.BorderSide.none, b.end, t), bottom: borders.BorderSide.lerp(a.bottom, b.bottom, t)});
+        }
+        if (dart.notNull(t) < 0.5) {
+          return new box_border.Border.new({top: borders.BorderSide.lerp(a.top, b.top, t), right: borders.BorderSide.lerp(a.right, borders.BorderSide.none, dart.notNull(t) * 2.0), bottom: borders.BorderSide.lerp(a.bottom, b.bottom, t), left: borders.BorderSide.lerp(a.left, borders.BorderSide.none, dart.notNull(t) * 2.0)});
+        }
+        return new box_border.BorderDirectional.new({top: borders.BorderSide.lerp(a.top, b.top, t), start: borders.BorderSide.lerp(borders.BorderSide.none, b.start, (dart.notNull(t) - 0.5) * 2.0), end: borders.BorderSide.lerp(borders.BorderSide.none, b.end, (dart.notNull(t) - 0.5) * 2.0), bottom: borders.BorderSide.lerp(a.bottom, b.bottom, t)});
       }
+      dart.throw(new assertions.FlutterError.fromParts(T.JSArrayOfDiagnosticsNode().of([new assertions.ErrorSummary.new("BoxBorder.lerp can only interpolate Border and BorderDirectional classes."), new assertions.ErrorDescription.new("BoxBorder.lerp() was called with two objects of type " + dart.str(dart.runtimeType(a)) + " and " + dart.str(dart.runtimeType(b)) + ":\n" + "  " + dart.str(a) + "\n" + "  " + dart.str(b) + "\n" + "However, only Border and BorderDirectional classes are supported by this method."), new assertions.ErrorHint.new("For a more general interpolation method, consider using ShapeBorder.lerp instead.")])));
     }
-    get key() {
+    getInnerPath(rect, opts) {
       let t0;
-      t0 = this[_completer$];
-      return t0 == null ? this : t0;
+      if (rect == null) dart.nullFailed(I[0], 168, 26, "rect");
+      let textDirection = opts && 'textDirection' in opts ? opts.textDirection : null;
+      if (!(textDirection != null)) dart.assertFailed("The textDirection argument to " + dart.str(this[$runtimeType]) + ".getInnerPath must not be null.", I[0], 169, 12, "textDirection != null");
+      t0 = ui.Path.new();
+      return (() => {
+        t0.addRect(this.dimensions.resolve(textDirection).deflateRect(rect));
+        return t0;
+      })();
     }
-    debugFillProperties(properties) {
-      let t0, t0$, t0$0, t0$1;
-      if (properties == null) dart.nullFailed(I[0], 402, 56, "properties");
-      super.debugFillProperties(properties);
-      properties.add(new (T.ObjectFlagPropertyOfImageStreamCompleter()).new("completer", this[_completer$], {ifPresent: (t0 = this[_completer$], t0 == null ? null : t0.toStringShort()), ifNull: "unresolved"}));
-      properties.add(new (T.ObjectFlagPropertyOfListOfImageStreamListener()).new("listeners", this[_listeners], {ifPresent: dart.str((t0$ = this[_listeners], t0$ == null ? null : t0$[$length])) + " listener" + ((t0$0 = this[_listeners], t0$0 == null ? null : t0$0[$length]) === 1 ? "" : "s"), ifNull: "no listeners", level: this[_completer$] != null ? diagnostics.DiagnosticLevel.hidden : diagnostics.DiagnosticLevel.info}));
-      t0$1 = this[_completer$];
-      t0$1 == null ? null : t0$1.debugFillProperties(properties);
-    }
-  };
-  (image_stream.ImageStream.new = function() {
-    this[_completer$] = null;
-    this[_listeners] = null;
-    ;
-  }).prototype = image_stream.ImageStream.prototype;
-  dart.addTypeTests(image_stream.ImageStream);
-  dart.addTypeCaches(image_stream.ImageStream);
-  dart.setMethodSignature(image_stream.ImageStream, () => ({
-    __proto__: dart.getMethods(image_stream.ImageStream.__proto__),
-    setCompleter: dart.fnType(dart.void, [image_stream.ImageStreamCompleter]),
-    addListener: dart.fnType(dart.void, [image_stream.ImageStreamListener]),
-    removeListener: dart.fnType(dart.void, [image_stream.ImageStreamListener])
-  }));
-  dart.setGetterSignature(image_stream.ImageStream, () => ({
-    __proto__: dart.getGetters(image_stream.ImageStream.__proto__),
-    completer: dart.nullable(image_stream.ImageStreamCompleter),
-    key: core.Object
-  }));
-  dart.setLibraryUri(image_stream.ImageStream, I[1]);
-  dart.setFieldSignature(image_stream.ImageStream, () => ({
-    __proto__: dart.getFields(image_stream.ImageStream.__proto__),
-    [_completer$]: dart.fieldType(dart.nullable(image_stream.ImageStreamCompleter)),
-    [_listeners]: dart.fieldType(dart.nullable(core.List$(image_stream.ImageStreamListener)))
-  }));
-  var _keepAliveHandles = dart.privateName(image_stream, "_keepAliveHandles");
-  var _disposed = dart.privateName(image_stream, "_disposed");
-  var _maybeDispose = dart.privateName(image_stream, "_maybeDispose");
-  image_stream.ImageStreamCompleterHandle = class ImageStreamCompleterHandle extends core.Object {
-    dispose() {
+    getOuterPath(rect, opts) {
       let t0;
-      if (!(this[_completer$] != null)) dart.assertFailed(null, I[0], 442, 12, "_completer != null");
-      if (!(dart.notNull(dart.nullCheck(this[_completer$])[_keepAliveHandles]) > 0)) dart.assertFailed(null, I[0], 443, 12, "_completer!._keepAliveHandles > 0");
-      if (!!dart.test(dart.nullCheck(this[_completer$])[_disposed])) dart.assertFailed(null, I[0], 444, 12, "!_completer!._disposed");
-      t0 = dart.nullCheck(this[_completer$]);
-      t0[_keepAliveHandles] = dart.notNull(t0[_keepAliveHandles]) - 1;
-      dart.nullCheck(this[_completer$])[_maybeDispose]();
-      this[_completer$] = null;
+      if (rect == null) dart.nullFailed(I[0], 175, 26, "rect");
+      let textDirection = opts && 'textDirection' in opts ? opts.textDirection : null;
+      if (!(textDirection != null)) dart.assertFailed("The textDirection argument to " + dart.str(this[$runtimeType]) + ".getOuterPath must not be null.", I[0], 176, 12, "textDirection != null");
+      t0 = ui.Path.new();
+      return (() => {
+        t0.addRect(rect);
+        return t0;
+      })();
+    }
+    static _paintUniformBorderWithRadius(canvas, rect, side, borderRadius) {
+      let t0, t0$;
+      if (canvas == null) dart.nullFailed(I[0], 209, 52, "canvas");
+      if (rect == null) dart.nullFailed(I[0], 209, 65, "rect");
+      if (side == null) dart.nullFailed(I[0], 209, 82, "side");
+      if (borderRadius == null) dart.nullFailed(I[0], 209, 101, "borderRadius");
+      if (!(side.style != borders.BorderStyle.none)) dart.assertFailed(null, I[0], 210, 12, "side.style != BorderStyle.none");
+      let paint = (t0 = ui.Paint.new(), (() => {
+        t0.color = side.color;
+        return t0;
+      })());
+      let outer = borderRadius.toRRect(rect);
+      let width = side.width;
+      if (width === 0.0) {
+        t0$ = paint;
+        (() => {
+          t0$.style = ui.PaintingStyle.stroke;
+          t0$.strokeWidth = 0.0;
+          return t0$;
+        })();
+        canvas.drawRRect(outer, paint);
+      } else {
+        let inner = outer.deflate(width);
+        canvas.drawDRRect(outer, inner, paint);
+      }
+    }
+    static _paintUniformBorderWithCircle(canvas, rect, side) {
+      if (canvas == null) dart.nullFailed(I[0], 226, 52, "canvas");
+      if (rect == null) dart.nullFailed(I[0], 226, 65, "rect");
+      if (side == null) dart.nullFailed(I[0], 226, 82, "side");
+      if (!(side.style != borders.BorderStyle.none)) dart.assertFailed(null, I[0], 227, 12, "side.style != BorderStyle.none");
+      let width = side.width;
+      let paint = side.toPaint();
+      let radius = (dart.notNull(rect.shortestSide) - dart.notNull(width)) / 2.0;
+      canvas.drawCircle(rect.center, radius, paint);
+    }
+    static _paintUniformBorderWithRectangle(canvas, rect, side) {
+      if (canvas == null) dart.nullFailed(I[0], 234, 55, "canvas");
+      if (rect == null) dart.nullFailed(I[0], 234, 68, "rect");
+      if (side == null) dart.nullFailed(I[0], 234, 85, "side");
+      if (!(side.style != borders.BorderStyle.none)) dart.assertFailed(null, I[0], 235, 12, "side.style != BorderStyle.none");
+      let width = side.width;
+      let paint = side.toPaint();
+      canvas.drawRect(rect.deflate(dart.notNull(width) / 2.0), paint);
     }
   };
-  (image_stream.ImageStreamCompleterHandle.__ = function(_completer) {
-    let t0;
-    if (_completer == null) dart.nullFailed(I[0], 431, 58, "_completer");
-    this[_completer$] = _completer;
-    t0 = dart.nullCheck(this[_completer$]);
-    t0[_keepAliveHandles] = dart.notNull(t0[_keepAliveHandles]) + 1;
-  }).prototype = image_stream.ImageStreamCompleterHandle.prototype;
-  dart.addTypeTests(image_stream.ImageStreamCompleterHandle);
-  dart.addTypeCaches(image_stream.ImageStreamCompleterHandle);
-  dart.setMethodSignature(image_stream.ImageStreamCompleterHandle, () => ({
-    __proto__: dart.getMethods(image_stream.ImageStreamCompleterHandle.__proto__),
-    dispose: dart.fnType(dart.void, [])
-  }));
-  dart.setLibraryUri(image_stream.ImageStreamCompleterHandle, I[1]);
-  dart.setFieldSignature(image_stream.ImageStreamCompleterHandle, () => ({
-    __proto__: dart.getFields(image_stream.ImageStreamCompleterHandle.__proto__),
-    [_completer$]: dart.fieldType(dart.nullable(image_stream.ImageStreamCompleter))
-  }));
-  var debugLabel = dart.privateName(image_stream, "ImageStreamCompleter.debugLabel");
-  var _currentImage = dart.privateName(image_stream, "_currentImage");
-  var _currentError = dart.privateName(image_stream, "_currentError");
-  var _hadAtLeastOneListener = dart.privateName(image_stream, "_hadAtLeastOneListener");
-  var _onLastListenerRemovedCallbacks = dart.privateName(image_stream, "_onLastListenerRemovedCallbacks");
-  var _checkDisposed = dart.privateName(image_stream, "_checkDisposed");
-  const Object_Diagnosticable$36$0 = class Object_Diagnosticable extends core.Object {};
-  (Object_Diagnosticable$36$0.new = function() {
-  }).prototype = Object_Diagnosticable$36$0.prototype;
-  dart.applyMixin(Object_Diagnosticable$36$0, diagnostics.Diagnosticable);
-  image_stream.ImageStreamCompleter = class ImageStreamCompleter extends Object_Diagnosticable$36$0 {
-    get debugLabel() {
-      return this[debugLabel];
-    }
-    set debugLabel(value) {
-      this[debugLabel] = value;
-    }
-    get hasListeners() {
-      return this[_listeners][$isNotEmpty];
-    }
-    addListener(listener) {
-      let t2, t1, t0;
-      if (listener == null) dart.nullFailed(I[0], 498, 40, "listener");
-      this[_checkDisposed]();
-      this[_hadAtLeastOneListener] = true;
-      this[_listeners][$add](listener);
-      if (this[_currentImage] != null) {
-        try {
-          t0 = listener;
-          t1 = dart.nullCheck(this[_currentImage]).clone();
-          t2 = true;
-          t0.onImage(t1, t2);
-        } catch (e) {
-          let exception = dart.getThrown(e);
-          let stack = dart.stackTrace(e);
-          if (core.Object.is(exception)) {
-            this.reportError({context: new assertions.ErrorDescription.new("by a synchronously-called image listener"), exception: exception, stack: stack});
-          } else
-            throw e;
-        }
-      }
-      if (this[_currentError] != null && listener.onError != null) {
-        try {
-          dart.nullCheck(listener.onError)(dart.nullCheck(this[_currentError]).exception, dart.nullCheck(this[_currentError]).stack);
-        } catch (e$) {
-          let newException = dart.getThrown(e$);
-          let newStack = dart.stackTrace(e$);
-          if (core.Object.is(newException)) {
-            if (!dart.equals(newException, dart.nullCheck(this[_currentError]).exception)) {
-              assertions.FlutterError.reportError(new assertions.FlutterErrorDetails.new({exception: newException, library: "image resource service", context: new assertions.ErrorDescription.new("by a synchronously-called image error listener"), stack: newStack}));
-            }
-          } else
-            throw e$;
-        }
-      }
-    }
-    keepAlive() {
-      this[_checkDisposed]();
-      return new image_stream.ImageStreamCompleterHandle.__(this);
-    }
-    removeListener(listener) {
-      if (listener == null) dart.nullFailed(I[0], 552, 43, "listener");
-      this[_checkDisposed]();
-      for (let i = 0; i < dart.notNull(this[_listeners][$length]); i = i + 1) {
-        if (dart.equals(this[_listeners][$_get](i), listener)) {
-          this[_listeners][$removeAt](i);
-          break;
-        }
-      }
-      if (dart.test(this[_listeners][$isEmpty])) {
-        let callbacks = this[_onLastListenerRemovedCallbacks][$toList]();
-        for (let callback of callbacks) {
-          callback();
-        }
-        this[_onLastListenerRemovedCallbacks][$clear]();
-        this[_maybeDispose]();
-      }
-    }
-    [_maybeDispose]() {
-      let t2;
-      if (!dart.test(this[_hadAtLeastOneListener]) || dart.test(this[_disposed]) || dart.test(this[_listeners][$isNotEmpty]) || this[_keepAliveHandles] !== 0) {
-        return;
-      }
-      t2 = this[_currentImage];
-      t2 == null ? null : t2.dispose();
-      this[_currentImage] = null;
-      this[_disposed] = true;
-    }
-    [_checkDisposed]() {
-      if (dart.test(this[_disposed])) {
-        dart.throw(new core.StateError.new("Stream has been disposed.\n" + "An ImageStream is considered disposed once at least one listener has " + "been added and subsequently all listeners have been removed and no " + "handles are outstanding from the keepAlive method.\n" + "To resolve this error, maintain at least one listener on the stream, " + "or create an ImageStreamCompleterHandle from the keepAlive " + "method, or create a new stream for the image."));
-      }
-    }
-    addOnLastListenerRemovedCallback(callback) {
-      if (callback == null) dart.nullFailed(I[0], 601, 54, "callback");
-      if (!(callback != null)) dart.assertFailed(null, I[0], 602, 12, "callback != null");
-      this[_checkDisposed]();
-      this[_onLastListenerRemovedCallbacks][$add](callback);
-    }
-    removeOnLastListenerRemovedCallback(callback) {
-      if (callback == null) dart.nullFailed(I[0], 609, 57, "callback");
-      if (!(callback != null)) dart.assertFailed(null, I[0], 610, 12, "callback != null");
-      this[_checkDisposed]();
-      this[_onLastListenerRemovedCallbacks][$remove](callback);
-    }
-    setImage(image) {
-      let t2, t4, t3, t2$;
-      if (image == null) dart.nullFailed(I[0], 617, 27, "image");
-      this[_checkDisposed]();
-      t2 = this[_currentImage];
-      t2 == null ? null : t2.dispose();
-      this[_currentImage] = image;
-      if (dart.test(this[_listeners][$isEmpty])) return;
-      let localListeners = T.ListOfImageStreamListener().from(this[_listeners]);
-      for (let listener of localListeners) {
-        try {
-          t2$ = listener;
-          t3 = image.clone();
-          t4 = false;
-          t2$.onImage(t3, t4);
-        } catch (e) {
-          let exception = dart.getThrown(e);
-          let stack = dart.stackTrace(e);
-          if (core.Object.is(exception)) {
-            this.reportError({context: new assertions.ErrorDescription.new("by an image listener"), exception: exception, stack: stack});
-          } else
-            throw e;
-        }
-      }
-    }
-    reportError(opts) {
-      let context = opts && 'context' in opts ? opts.context : null;
-      let exception = opts && 'exception' in opts ? opts.exception : null;
-      if (exception == null) dart.nullFailed(I[0], 673, 21, "exception");
-      let stack = opts && 'stack' in opts ? opts.stack : null;
-      let informationCollector = opts && 'informationCollector' in opts ? opts.informationCollector : null;
-      let silent = opts && 'silent' in opts ? opts.silent : false;
-      if (silent == null) dart.nullFailed(I[0], 676, 10, "silent");
-      this[_currentError] = new assertions.FlutterErrorDetails.new({exception: exception, stack: stack, library: "image resource service", context: context, informationCollector: informationCollector, silent: silent});
-      let localErrorListeners = this[_listeners][$map](T.ObjectAndStackTraceNToNvoid(), dart.fn(listener => {
-        if (listener == null) dart.nullFailed(I[0], 689, 56, "listener");
-        return listener.onError;
-      }, T.ImageStreamListenerToFn()))[$whereType](T.ObjectAndStackTraceNTovoid())[$toList]();
-      let handled = false;
-      for (let errorListener of localErrorListeners) {
-        try {
-          errorListener(exception, stack);
-          handled = true;
-        } catch (e) {
-          let newException = dart.getThrown(e);
-          let newStack = dart.stackTrace(e);
-          if (core.Object.is(newException)) {
-            if (!dart.equals(newException, exception)) {
-              assertions.FlutterError.reportError(new assertions.FlutterErrorDetails.new({context: new assertions.ErrorDescription.new("when reporting an error to an image listener"), library: "image resource service", exception: newException, stack: newStack}));
-            }
-          } else
-            throw e;
-        }
-      }
-      if (!handled) {
-        assertions.FlutterError.reportError(dart.nullCheck(this[_currentError]));
-      }
-    }
-    reportImageChunkEvent(event) {
-      if (event == null) dart.nullFailed(I[0], 720, 46, "event");
-      this[_checkDisposed]();
-      if (dart.test(this.hasListeners)) {
-        let localListeners = this[_listeners][$map](T.ImageChunkEventToNvoid(), dart.fn(listener => {
-          if (listener == null) dart.nullFailed(I[0], 725, 58, "listener");
-          return listener.onChunk;
-        }, T.ImageStreamListenerToFn$1()))[$whereType](T.ImageChunkEventTovoid())[$toList]();
-        for (let listener of localListeners) {
-          listener(event);
-        }
-      }
-    }
-    debugFillProperties(description) {
-      if (description == null) dart.nullFailed(I[0], 737, 56, "description");
-      super.debugFillProperties(description);
-      description.add(new (T.DiagnosticsPropertyOfImageInfo()).new("current", this[_currentImage], {ifNull: "unresolved", showName: false}));
-      description.add(new (T.ObjectFlagPropertyOfListOfImageStreamListener()).new("listeners", this[_listeners], {ifPresent: dart.str(this[_listeners][$length]) + " listener" + (this[_listeners][$length] === 1 ? "" : "s")}));
-      description.add(new diagnostics.FlagProperty.new("disposed", {value: this[_disposed], ifTrue: "<disposed>"}));
-    }
-  };
-  (image_stream.ImageStreamCompleter.new = function() {
-    this[_listeners] = T.JSArrayOfImageStreamListener().of([]);
-    this[_currentImage] = null;
-    this[_currentError] = null;
-    this[debugLabel] = null;
-    this[_hadAtLeastOneListener] = false;
-    this[_keepAliveHandles] = 0;
-    this[_disposed] = false;
-    this[_onLastListenerRemovedCallbacks] = T.JSArrayOfVoidTovoid().of([]);
+  (box_border.BoxBorder.new = function() {
+    box_border.BoxBorder.__proto__.new.call(this);
     ;
-  }).prototype = image_stream.ImageStreamCompleter.prototype;
-  dart.addTypeTests(image_stream.ImageStreamCompleter);
-  dart.addTypeCaches(image_stream.ImageStreamCompleter);
-  dart.setMethodSignature(image_stream.ImageStreamCompleter, () => ({
-    __proto__: dart.getMethods(image_stream.ImageStreamCompleter.__proto__),
-    addListener: dart.fnType(dart.void, [image_stream.ImageStreamListener]),
-    keepAlive: dart.fnType(image_stream.ImageStreamCompleterHandle, []),
-    removeListener: dart.fnType(dart.void, [image_stream.ImageStreamListener]),
-    [_maybeDispose]: dart.fnType(dart.void, []),
-    [_checkDisposed]: dart.fnType(dart.void, []),
-    addOnLastListenerRemovedCallback: dart.fnType(dart.void, [dart.fnType(dart.void, [])]),
-    removeOnLastListenerRemovedCallback: dart.fnType(dart.void, [dart.fnType(dart.void, [])]),
-    setImage: dart.fnType(dart.void, [image_stream.ImageInfo]),
-    reportError: dart.fnType(dart.void, [], {context: dart.nullable(diagnostics.DiagnosticsNode), informationCollector: dart.nullable(dart.fnType(core.Iterable$(diagnostics.DiagnosticsNode), [])), silent: core.bool, stack: dart.nullable(core.StackTrace)}, {exception: core.Object}),
-    reportImageChunkEvent: dart.fnType(dart.void, [image_stream.ImageChunkEvent])
+  }).prototype = box_border.BoxBorder.prototype;
+  dart.addTypeTests(box_border.BoxBorder);
+  dart.addTypeCaches(box_border.BoxBorder);
+  dart.setMethodSignature(box_border.BoxBorder, () => ({
+    __proto__: dart.getMethods(box_border.BoxBorder.__proto__),
+    add: dart.fnType(dart.nullable(box_border.BoxBorder), [borders.ShapeBorder], {reversed: core.bool}, {}),
+    getInnerPath: dart.fnType(ui.Path, [ui.Rect], {textDirection: dart.nullable(ui.TextDirection)}, {}),
+    getOuterPath: dart.fnType(ui.Path, [ui.Rect], {textDirection: dart.nullable(ui.TextDirection)}, {})
   }));
-  dart.setGetterSignature(image_stream.ImageStreamCompleter, () => ({
-    __proto__: dart.getGetters(image_stream.ImageStreamCompleter.__proto__),
-    hasListeners: core.bool
-  }));
-  dart.setLibraryUri(image_stream.ImageStreamCompleter, I[1]);
-  dart.setFieldSignature(image_stream.ImageStreamCompleter, () => ({
-    __proto__: dart.getFields(image_stream.ImageStreamCompleter.__proto__),
-    [_listeners]: dart.finalFieldType(core.List$(image_stream.ImageStreamListener)),
-    [_currentImage]: dart.fieldType(dart.nullable(image_stream.ImageInfo)),
-    [_currentError]: dart.fieldType(dart.nullable(assertions.FlutterErrorDetails)),
-    debugLabel: dart.fieldType(dart.nullable(core.String)),
-    [_hadAtLeastOneListener]: dart.fieldType(core.bool),
-    [_keepAliveHandles]: dart.fieldType(core.int),
-    [_disposed]: dart.fieldType(core.bool),
-    [_onLastListenerRemovedCallbacks]: dart.finalFieldType(core.List$(dart.fnType(dart.void, [])))
-  }));
-  image_stream.OneFrameImageStreamCompleter = class OneFrameImageStreamCompleter extends image_stream.ImageStreamCompleter {};
-  (image_stream.OneFrameImageStreamCompleter.new = function(image, opts) {
-    if (image == null) dart.nullFailed(I[0], 766, 50, "image");
-    let informationCollector = opts && 'informationCollector' in opts ? opts.informationCollector : null;
-    if (!(image != null)) dart.assertFailed(null, I[0], 767, 16, "image != null");
-    image_stream.OneFrameImageStreamCompleter.__proto__.new.call(this);
-    image.then(dart.void, dart.bind(this, 'setImage'), {onError: dart.fn((error, stack) => {
-        if (error == null) dart.nullFailed(I[0], 768, 49, "error");
-        if (stack == null) dart.nullFailed(I[0], 768, 67, "stack");
-        this.reportError({context: new assertions.ErrorDescription.new("resolving a single-frame image stream"), exception: error, stack: stack, informationCollector: informationCollector, silent: true});
-      }, T.ObjectAndStackTraceToNull())});
-  }).prototype = image_stream.OneFrameImageStreamCompleter.prototype;
-  dart.addTypeTests(image_stream.OneFrameImageStreamCompleter);
-  dart.addTypeCaches(image_stream.OneFrameImageStreamCompleter);
-  dart.setLibraryUri(image_stream.OneFrameImageStreamCompleter, I[1]);
-  var _codec = dart.privateName(image_stream, "_codec");
-  var _nextFrame = dart.privateName(image_stream, "_nextFrame");
-  var __MultiFrameImageStreamCompleter__shownTimestamp = dart.privateName(image_stream, "_#MultiFrameImageStreamCompleter#_shownTimestamp");
-  var __MultiFrameImageStreamCompleter__shownTimestamp_isSet = dart.privateName(image_stream, "_#MultiFrameImageStreamCompleter#_shownTimestamp#isSet");
-  var _frameDuration = dart.privateName(image_stream, "_frameDuration");
-  var _framesEmitted = dart.privateName(image_stream, "_framesEmitted");
-  var _timer = dart.privateName(image_stream, "_timer");
-  var _frameCallbackScheduled = dart.privateName(image_stream, "_frameCallbackScheduled");
-  var _informationCollector = dart.privateName(image_stream, "_informationCollector");
-  var _scale = dart.privateName(image_stream, "_scale");
-  var _handleCodecReady = dart.privateName(image_stream, "_handleCodecReady");
-  var _shownTimestamp = dart.privateName(image_stream, "_shownTimestamp");
-  var _decodeNextFrameAndSchedule = dart.privateName(image_stream, "_decodeNextFrameAndSchedule");
-  var _isFirstFrame = dart.privateName(image_stream, "_isFirstFrame");
-  var _hasFrameDurationPassed = dart.privateName(image_stream, "_hasFrameDurationPassed");
-  var _emitFrame = dart.privateName(image_stream, "_emitFrame");
-  var _scheduleAppFrame = dart.privateName(image_stream, "_scheduleAppFrame");
-  var _handleAppFrame = dart.privateName(image_stream, "_handleAppFrame");
-  image_stream.MultiFrameImageStreamCompleter = class MultiFrameImageStreamCompleter extends image_stream.ImageStreamCompleter {
-    get [_shownTimestamp]() {
-      let t4;
-      return dart.test(this[__MultiFrameImageStreamCompleter__shownTimestamp_isSet]) ? (t4 = this[__MultiFrameImageStreamCompleter__shownTimestamp], t4) : dart.throw(new _internal.LateError.fieldNI("_shownTimestamp"));
+  dart.setLibraryUri(box_border.BoxBorder, I[1]);
+  var top$ = dart.privateName(box_border, "Border.top");
+  var right$ = dart.privateName(box_border, "Border.right");
+  var bottom$ = dart.privateName(box_border, "Border.bottom");
+  var left$ = dart.privateName(box_border, "Border.left");
+  var _name = dart.privateName(borders, "_name");
+  var BorderSide_style = dart.privateName(borders, "BorderSide.style");
+  var BorderSide_width = dart.privateName(borders, "BorderSide.width");
+  var Color_value = dart.privateName(ui, "Color.value");
+  var BorderSide_color = dart.privateName(borders, "BorderSide.color");
+  var _colorIsUniform = dart.privateName(box_border, "_colorIsUniform");
+  var _widthIsUniform = dart.privateName(box_border, "_widthIsUniform");
+  var _styleIsUniform = dart.privateName(box_border, "_styleIsUniform");
+  box_border.Border = class Border extends box_border.BoxBorder {
+    get top() {
+      return this[top$];
     }
-    set [_shownTimestamp](t4) {
-      if (t4 == null) dart.nullFailed(I[0], 869, 17, "null");
-      this[__MultiFrameImageStreamCompleter__shownTimestamp_isSet] = true;
-      this[__MultiFrameImageStreamCompleter__shownTimestamp] = t4;
+    set top(value) {
+      super.top = value;
     }
-    [_handleCodecReady](codec) {
-      if (codec == null) dart.nullFailed(I[0], 879, 35, "codec");
-      this[_codec] = codec;
-      if (!(this[_codec] != null)) dart.assertFailed(null, I[0], 881, 12, "_codec != null");
-      if (dart.test(this.hasListeners)) {
-        this[_decodeNextFrameAndSchedule]();
+    get right() {
+      return this[right$];
+    }
+    set right(value) {
+      super.right = value;
+    }
+    get bottom() {
+      return this[bottom$];
+    }
+    set bottom(value) {
+      super.bottom = value;
+    }
+    get left() {
+      return this[left$];
+    }
+    set left(value) {
+      super.left = value;
+    }
+    static all(opts) {
+      let color = opts && 'color' in opts ? opts.color : C[5] || CT.C5;
+      if (color == null) dart.nullFailed(I[0], 349, 11, "color");
+      let width = opts && 'width' in opts ? opts.width : 1;
+      if (width == null) dart.nullFailed(I[0], 350, 12, "width");
+      let style = opts && 'style' in opts ? opts.style : C[6] || CT.C6;
+      if (style == null) dart.nullFailed(I[0], 351, 17, "style");
+      let side = new borders.BorderSide.new({color: color, width: width, style: style});
+      return new box_border.Border.fromBorderSide(side);
+    }
+    static merge(a, b) {
+      if (a == null) dart.nullFailed(I[0], 364, 30, "a");
+      if (b == null) dart.nullFailed(I[0], 364, 40, "b");
+      if (!(a != null)) dart.assertFailed(null, I[0], 365, 12, "a != null");
+      if (!(b != null)) dart.assertFailed(null, I[0], 366, 12, "b != null");
+      if (!dart.test(borders.BorderSide.canMerge(a.top, b.top))) dart.assertFailed(null, I[0], 367, 12, "BorderSide.canMerge(a.top, b.top)");
+      if (!dart.test(borders.BorderSide.canMerge(a.right, b.right))) dart.assertFailed(null, I[0], 368, 12, "BorderSide.canMerge(a.right, b.right)");
+      if (!dart.test(borders.BorderSide.canMerge(a.bottom, b.bottom))) dart.assertFailed(null, I[0], 369, 12, "BorderSide.canMerge(a.bottom, b.bottom)");
+      if (!dart.test(borders.BorderSide.canMerge(a.left, b.left))) dart.assertFailed(null, I[0], 370, 12, "BorderSide.canMerge(a.left, b.left)");
+      return new box_border.Border.new({top: borders.BorderSide.merge(a.top, b.top), right: borders.BorderSide.merge(a.right, b.right), bottom: borders.BorderSide.merge(a.bottom, b.bottom), left: borders.BorderSide.merge(a.left, b.left)});
+    }
+    get dimensions() {
+      return new edge_insets.EdgeInsets.fromLTRB(this.left.width, this.top.width, this.right.width, this.bottom.width);
+    }
+    get isUniform() {
+      return dart.test(this[_colorIsUniform]) && dart.test(this[_widthIsUniform]) && dart.test(this[_styleIsUniform]);
+    }
+    get [_colorIsUniform]() {
+      let topColor = this.top.color;
+      return dart.equals(this.right.color, topColor) && dart.equals(this.bottom.color, topColor) && dart.equals(this.left.color, topColor);
+    }
+    get [_widthIsUniform]() {
+      let topWidth = this.top.width;
+      return this.right.width == topWidth && this.bottom.width == topWidth && this.left.width == topWidth;
+    }
+    get [_styleIsUniform]() {
+      let topStyle = this.top.style;
+      return this.right.style == topStyle && this.bottom.style == topStyle && this.left.style == topStyle;
+    }
+    add(other, opts) {
+      if (other == null) dart.nullFailed(I[0], 415, 27, "other");
+      let reversed = opts && 'reversed' in opts ? opts.reversed : false;
+      if (reversed == null) dart.nullFailed(I[0], 415, 41, "reversed");
+      if (box_border.Border.is(other) && dart.test(borders.BorderSide.canMerge(this.top, other.top)) && dart.test(borders.BorderSide.canMerge(this.right, other.right)) && dart.test(borders.BorderSide.canMerge(this.bottom, other.bottom)) && dart.test(borders.BorderSide.canMerge(this.left, other.left))) {
+        return box_border.Border.merge(this, other);
       }
+      return null;
     }
-    [_handleAppFrame](timestamp) {
-      if (timestamp == null) dart.nullFailed(I[0], 888, 33, "timestamp");
-      this[_frameCallbackScheduled] = false;
-      if (!dart.test(this.hasListeners)) return;
-      if (!(this[_nextFrame] != null)) dart.assertFailed(null, I[0], 892, 12, "_nextFrame != null");
-      if (dart.test(this[_isFirstFrame]()) || dart.test(this[_hasFrameDurationPassed](timestamp))) {
-        this[_emitFrame](new image_stream.ImageInfo.new({image: dart.nullCheck(this[_nextFrame]).image.clone(), scale: this[_scale], debugLabel: this.debugLabel}));
-        this[_shownTimestamp] = timestamp;
-        this[_frameDuration] = dart.nullCheck(this[_nextFrame]).duration;
-        dart.nullCheck(this[_nextFrame]).image.dispose();
-        this[_nextFrame] = null;
-        let completedCycles = (dart.notNull(this[_framesEmitted]) / dart.notNull(dart.nullCheck(this[_codec]).frameCount))[$truncate]();
-        if (dart.nullCheck(this[_codec]).repetitionCount === -1 || completedCycles <= dart.notNull(dart.nullCheck(this[_codec]).repetitionCount)) {
-          this[_decodeNextFrameAndSchedule]();
-        }
-        return;
-      }
-      let delay = dart.nullCheck(this[_frameDuration])['-'](timestamp['-'](this[_shownTimestamp]));
-      this[_timer] = async.Timer.new(delay['*'](binding.timeDilation), dart.fn(() => {
-        this[_scheduleAppFrame]();
-      }, T.VoidTovoid()));
+    scale(t) {
+      if (t == null) dart.nullFailed(I[0], 427, 23, "t");
+      return new box_border.Border.new({top: this.top.scale(t), right: this.right.scale(t), bottom: this.bottom.scale(t), left: this.left.scale(t)});
     }
-    [_isFirstFrame]() {
-      return this[_frameDuration] == null;
+    lerpFrom(a, t) {
+      if (t == null) dart.nullFailed(I[0], 437, 48, "t");
+      if (box_border.Border.is(a)) return box_border.Border.lerp(a, this, t);
+      return super.lerpFrom(a, t);
     }
-    [_hasFrameDurationPassed](timestamp) {
-      if (timestamp == null) dart.nullFailed(I[0], 919, 41, "timestamp");
-      return timestamp['-'](this[_shownTimestamp])['>='](dart.nullCheck(this[_frameDuration]));
+    lerpTo(b, t) {
+      if (t == null) dart.nullFailed(I[0], 444, 46, "t");
+      if (box_border.Border.is(b)) return box_border.Border.lerp(this, b, t);
+      return super.lerpTo(b, t);
     }
-    [_decodeNextFrameAndSchedule]() {
-      return async.async(dart.void, (function* _decodeNextFrameAndSchedule() {
-        let t5;
-        t5 = this[_nextFrame];
-        t5 == null ? null : t5.image.dispose();
-        this[_nextFrame] = null;
-        try {
-          this[_nextFrame] = (yield dart.nullCheck(this[_codec]).getNextFrame());
-        } catch (e) {
-          let exception = dart.getThrown(e);
-          let stack = dart.stackTrace(e);
-          if (core.Object.is(exception)) {
-            this.reportError({context: new assertions.ErrorDescription.new("resolving an image frame"), exception: exception, stack: stack, informationCollector: this[_informationCollector], silent: true});
-            return;
-          } else
-            throw e;
-        }
-        if (dart.nullCheck(this[_codec]).frameCount === 1) {
-          if (!dart.test(this.hasListeners)) {
+    static lerp(a, b, t) {
+      if (t == null) dart.nullFailed(I[0], 456, 52, "t");
+      if (!(t != null)) dart.assertFailed(null, I[0], 457, 12, "t != null");
+      if (a == null && b == null) return null;
+      if (a == null) return dart.nullCheck(b).scale(t);
+      if (b == null) return a.scale(1.0 - dart.notNull(t));
+      return new box_border.Border.new({top: borders.BorderSide.lerp(a.top, b.top, t), right: borders.BorderSide.lerp(a.right, b.right, t), bottom: borders.BorderSide.lerp(a.bottom, b.bottom, t), left: borders.BorderSide.lerp(a.left, b.left, t)});
+    }
+    paint(canvas, rect, opts) {
+      if (canvas == null) dart.nullFailed(I[0], 493, 12, "canvas");
+      if (rect == null) dart.nullFailed(I[0], 494, 10, "rect");
+      let textDirection = opts && 'textDirection' in opts ? opts.textDirection : null;
+      let shape = opts && 'shape' in opts ? opts.shape : C[0] || CT.C0;
+      if (shape == null) dart.nullFailed(I[0], 496, 14, "shape");
+      let borderRadius = opts && 'borderRadius' in opts ? opts.borderRadius : null;
+      if (dart.test(this.isUniform)) {
+        switch (this.top.style) {
+          case C[4] || CT.C4:
+          {
             return;
           }
-          this[_emitFrame](new image_stream.ImageInfo.new({image: dart.nullCheck(this[_nextFrame]).image.clone(), scale: this[_scale], debugLabel: this.debugLabel}));
-          dart.nullCheck(this[_nextFrame]).image.dispose();
-          this[_nextFrame] = null;
-          return;
+          case C[6] || CT.C6:
+          {
+            switch (shape) {
+              case C[1] || CT.C1:
+              {
+                if (!(borderRadius == null)) dart.assertFailed("A borderRadius can only be given for rectangular boxes.", I[0], 506, 22, "borderRadius == null");
+                box_border.BoxBorder._paintUniformBorderWithCircle(canvas, rect, this.top);
+                break;
+              }
+              case C[0] || CT.C0:
+              {
+                if (borderRadius != null) {
+                  box_border.BoxBorder._paintUniformBorderWithRadius(canvas, rect, this.top, borderRadius);
+                  return;
+                }
+                box_border.BoxBorder._paintUniformBorderWithRectangle(canvas, rect, this.top);
+                break;
+              }
+              default:
+              {
+                dart.throw(new _internal.ReachabilityError.new("`null` encountered as case in a switch expression with a non-nullable enum type."));
+              }
+            }
+            return;
+          }
+          default:
+          {
+            dart.throw(new _internal.ReachabilityError.new("`null` encountered as case in a switch expression with a non-nullable enum type."));
+          }
         }
-        this[_scheduleAppFrame]();
-      }).bind(this));
-    }
-    [_scheduleAppFrame]() {
-      if (dart.test(this[_frameCallbackScheduled])) {
-        return;
       }
-      this[_frameCallbackScheduled] = true;
-      dart.nullCheck(binding.SchedulerBinding.instance).scheduleFrameCallback(dart.bind(this, _handleAppFrame));
+      if (!dart.test(dart.fn(() => {
+        if (borderRadius != null) {
+          dart.throw(new assertions.FlutterError.fromParts((() => {
+            let t0 = T.JSArrayOfDiagnosticsNode().of([new assertions.ErrorSummary.new("A borderRadius can only be given for a uniform Border."), new assertions.ErrorDescription.new("The following is not uniform:")]);
+            if (!dart.test(this[_colorIsUniform])) t0[$add](new assertions.ErrorDescription.new("BorderSide.color"));
+            if (!dart.test(this[_widthIsUniform])) t0[$add](new assertions.ErrorDescription.new("BorderSide.width"));
+            if (!dart.test(this[_styleIsUniform])) t0[$add](new assertions.ErrorDescription.new("BorderSide.style"));
+            return t0;
+          })()));
+        }
+        return true;
+      }, T.VoidTobool())())) dart.assertFailed(null, I[0], 521, 12, "() {\r\n      if (borderRadius != null) {\r\n        throw FlutterError.fromParts(<DiagnosticsNode>[\r\n          ErrorSummary('A borderRadius can only be given for a uniform Border.'),\r\n          ErrorDescription('The following is not uniform:'),\r\n          if (!_colorIsUniform) ErrorDescription('BorderSide.color'),\r\n          if (!_widthIsUniform) ErrorDescription('BorderSide.width'),\r\n          if (!_styleIsUniform) ErrorDescription('BorderSide.style'),\r\n        ]);\r\n      }\r\n      return true;\r\n    }()");
+      if (!dart.test(dart.fn(() => {
+        if (shape != box_border.BoxShape.rectangle) {
+          dart.throw(new assertions.FlutterError.fromParts((() => {
+            let t1 = T.JSArrayOfDiagnosticsNode().of([new assertions.ErrorSummary.new("A Border can only be drawn as a circle if it is uniform"), new assertions.ErrorDescription.new("The following is not uniform:")]);
+            if (!dart.test(this[_colorIsUniform])) t1[$add](new assertions.ErrorDescription.new("BorderSide.color"));
+            if (!dart.test(this[_widthIsUniform])) t1[$add](new assertions.ErrorDescription.new("BorderSide.width"));
+            if (!dart.test(this[_styleIsUniform])) t1[$add](new assertions.ErrorDescription.new("BorderSide.style"));
+            return t1;
+          })()));
+        }
+        return true;
+      }, T.VoidTobool())())) dart.assertFailed(null, I[0], 533, 12, "() {\r\n      if (shape != BoxShape.rectangle) {\r\n        throw FlutterError.fromParts(<DiagnosticsNode>[\r\n          ErrorSummary('A Border can only be drawn as a circle if it is uniform'),\r\n          ErrorDescription('The following is not uniform:'),\r\n          if (!_colorIsUniform) ErrorDescription('BorderSide.color'),\r\n          if (!_widthIsUniform) ErrorDescription('BorderSide.width'),\r\n          if (!_styleIsUniform) ErrorDescription('BorderSide.style'),\r\n        ]);\r\n      }\r\n      return true;\r\n    }()");
+      borders.paintBorder(canvas, rect, {top: this.top, right: this.right, bottom: this.bottom, left: this.left});
     }
-    [_emitFrame](imageInfo) {
-      if (imageInfo == null) dart.nullFailed(I[0], 969, 29, "imageInfo");
-      this.setImage(imageInfo);
-      this[_framesEmitted] = dart.notNull(this[_framesEmitted]) + 1;
+    _equals(other) {
+      if (other == null) return false;
+      if (this === other) return true;
+      if (!dart.equals(dart.runtimeType(other), this[$runtimeType])) return false;
+      return box_border.Border.is(other) && dart.equals(other.top, this.top) && dart.equals(other.right, this.right) && dart.equals(other.bottom, this.bottom) && dart.equals(other.left, this.left);
     }
-    addListener(listener) {
-      if (listener == null) dart.nullFailed(I[0], 975, 40, "listener");
-      if (!dart.test(this.hasListeners) && this[_codec] != null) this[_decodeNextFrameAndSchedule]();
-      super.addListener(listener);
+    get hashCode() {
+      return ui.hashValues(this.top, this.right, this.bottom, this.left);
     }
-    removeListener(listener) {
-      let t6;
-      if (listener == null) dart.nullFailed(I[0], 982, 43, "listener");
-      super.removeListener(listener);
-      if (!dart.test(this.hasListeners)) {
-        t6 = this[_timer];
-        t6 == null ? null : t6.cancel();
-        this[_timer] = null;
-      }
+    toString() {
+      if (dart.test(this.isUniform)) return dart.str(object.objectRuntimeType(this, "Border")) + ".all(" + dart.str(this.top) + ")";
+      let $arguments = (() => {
+        let t2 = T.JSArrayOfString().of([]);
+        if (!dart.equals(this.top, borders.BorderSide.none)) t2[$add]("top: " + dart.str(this.top));
+        if (!dart.equals(this.right, borders.BorderSide.none)) t2[$add]("right: " + dart.str(this.right));
+        if (!dart.equals(this.bottom, borders.BorderSide.none)) t2[$add]("bottom: " + dart.str(this.bottom));
+        if (!dart.equals(this.left, borders.BorderSide.none)) t2[$add]("left: " + dart.str(this.left));
+        return t2;
+      })();
+      return dart.str(object.objectRuntimeType(this, "Border")) + "(" + dart.str($arguments[$join](", ")) + ")";
     }
   };
-  (image_stream.MultiFrameImageStreamCompleter.new = function(opts) {
-    let codec = opts && 'codec' in opts ? opts.codec : null;
-    if (codec == null) dart.nullFailed(I[0], 831, 31, "codec");
-    let scale = opts && 'scale' in opts ? opts.scale : null;
-    if (scale == null) dart.nullFailed(I[0], 832, 21, "scale");
-    let debugLabel = opts && 'debugLabel' in opts ? opts.debugLabel : null;
-    let chunkEvents = opts && 'chunkEvents' in opts ? opts.chunkEvents : null;
-    let informationCollector = opts && 'informationCollector' in opts ? opts.informationCollector : null;
-    this[_codec] = null;
-    this[_nextFrame] = null;
-    this[__MultiFrameImageStreamCompleter__shownTimestamp] = null;
-    this[__MultiFrameImageStreamCompleter__shownTimestamp_isSet] = false;
-    this[_frameDuration] = null;
-    this[_framesEmitted] = 0;
-    this[_timer] = null;
-    this[_frameCallbackScheduled] = false;
-    if (!(codec != null)) dart.assertFailed(null, I[0], 836, 15, "codec != null");
-    this[_informationCollector] = informationCollector;
-    this[_scale] = scale;
-    image_stream.MultiFrameImageStreamCompleter.__proto__.new.call(this);
-    this.debugLabel = debugLabel;
-    codec.then(dart.void, dart.bind(this, _handleCodecReady), {onError: dart.fn((error, stack) => {
-        if (error == null) dart.nullFailed(I[0], 840, 58, "error");
-        if (stack == null) dart.nullFailed(I[0], 840, 76, "stack");
-        this.reportError({context: new assertions.ErrorDescription.new("resolving an image codec"), exception: error, stack: stack, informationCollector: informationCollector, silent: true});
-      }, T.ObjectAndStackTraceToNull())});
-    if (chunkEvents != null) {
-      chunkEvents.listen(dart.bind(this, 'reportImageChunkEvent'), {onError: dart.fn((error, stack) => {
-          if (error == null) dart.nullFailed(I[0], 851, 26, "error");
-          if (stack == null) dart.nullFailed(I[0], 851, 44, "stack");
-          this.reportError({context: new assertions.ErrorDescription.new("loading an image"), exception: error, stack: stack, informationCollector: informationCollector, silent: true});
-        }, T.ObjectAndStackTraceToNull())});
+  (box_border.Border.new = function(opts) {
+    let top = opts && 'top' in opts ? opts.top : C[3] || CT.C3;
+    if (top == null) dart.nullFailed(I[0], 310, 10, "top");
+    let right = opts && 'right' in opts ? opts.right : C[3] || CT.C3;
+    if (right == null) dart.nullFailed(I[0], 311, 10, "right");
+    let bottom = opts && 'bottom' in opts ? opts.bottom : C[3] || CT.C3;
+    if (bottom == null) dart.nullFailed(I[0], 312, 10, "bottom");
+    let left = opts && 'left' in opts ? opts.left : C[3] || CT.C3;
+    if (left == null) dart.nullFailed(I[0], 313, 10, "left");
+    this[top$] = top;
+    this[right$] = right;
+    this[bottom$] = bottom;
+    this[left$] = left;
+    if (!(top != null)) dart.assertFailed(null, I[0], 314, 15, "top != null");
+    if (!(right != null)) dart.assertFailed(null, I[0], 315, 15, "right != null");
+    if (!(bottom != null)) dart.assertFailed(null, I[0], 316, 15, "bottom != null");
+    if (!(left != null)) dart.assertFailed(null, I[0], 317, 15, "left != null");
+    box_border.Border.__proto__.new.call(this);
+    ;
+  }).prototype = box_border.Border.prototype;
+  (box_border.Border.fromBorderSide = function(side) {
+    if (side == null) dart.nullFailed(I[0], 322, 42, "side");
+    if (!(side != null)) dart.assertFailed(null, I[0], 323, 16, "side != null");
+    this[top$] = side;
+    this[right$] = side;
+    this[bottom$] = side;
+    this[left$] = side;
+    box_border.Border.__proto__.new.call(this);
+    ;
+  }).prototype = box_border.Border.prototype;
+  (box_border.Border.symmetric = function(opts) {
+    let vertical = opts && 'vertical' in opts ? opts.vertical : C[3] || CT.C3;
+    if (vertical == null) dart.nullFailed(I[0], 336, 16, "vertical");
+    let horizontal = opts && 'horizontal' in opts ? opts.horizontal : C[3] || CT.C3;
+    if (horizontal == null) dart.nullFailed(I[0], 337, 16, "horizontal");
+    if (!(vertical != null)) dart.assertFailed(null, I[0], 338, 15, "vertical != null");
+    if (!(horizontal != null)) dart.assertFailed(null, I[0], 339, 15, "horizontal != null");
+    this[left$] = vertical;
+    this[top$] = horizontal;
+    this[right$] = vertical;
+    this[bottom$] = horizontal;
+    box_border.Border.__proto__.new.call(this);
+    ;
+  }).prototype = box_border.Border.prototype;
+  dart.addTypeTests(box_border.Border);
+  dart.addTypeCaches(box_border.Border);
+  dart.setMethodSignature(box_border.Border, () => ({
+    __proto__: dart.getMethods(box_border.Border.__proto__),
+    add: dart.fnType(dart.nullable(box_border.Border), [borders.ShapeBorder], {reversed: core.bool}, {}),
+    scale: dart.fnType(box_border.Border, [core.double]),
+    paint: dart.fnType(dart.void, [ui.Canvas, ui.Rect], {borderRadius: dart.nullable(border_radius.BorderRadius), shape: box_border.BoxShape, textDirection: dart.nullable(ui.TextDirection)}, {})
+  }));
+  dart.setGetterSignature(box_border.Border, () => ({
+    __proto__: dart.getGetters(box_border.Border.__proto__),
+    dimensions: edge_insets.EdgeInsetsGeometry,
+    isUniform: core.bool,
+    [_colorIsUniform]: core.bool,
+    [_widthIsUniform]: core.bool,
+    [_styleIsUniform]: core.bool
+  }));
+  dart.setLibraryUri(box_border.Border, I[1]);
+  dart.setFieldSignature(box_border.Border, () => ({
+    __proto__: dart.getFields(box_border.Border.__proto__),
+    top: dart.finalFieldType(borders.BorderSide),
+    right: dart.finalFieldType(borders.BorderSide),
+    bottom: dart.finalFieldType(borders.BorderSide),
+    left: dart.finalFieldType(borders.BorderSide)
+  }));
+  dart.defineExtensionMethods(box_border.Border, ['_equals', 'toString']);
+  dart.defineExtensionAccessors(box_border.Border, ['hashCode']);
+  var top$0 = dart.privateName(box_border, "BorderDirectional.top");
+  var start$ = dart.privateName(box_border, "BorderDirectional.start");
+  var end$ = dart.privateName(box_border, "BorderDirectional.end");
+  var bottom$0 = dart.privateName(box_border, "BorderDirectional.bottom");
+  var _name$0 = dart.privateName(ui, "_name");
+  box_border.BorderDirectional = class BorderDirectional extends box_border.BoxBorder {
+    get top() {
+      return this[top$0];
     }
-  }).prototype = image_stream.MultiFrameImageStreamCompleter.prototype;
-  dart.addTypeTests(image_stream.MultiFrameImageStreamCompleter);
-  dart.addTypeCaches(image_stream.MultiFrameImageStreamCompleter);
-  dart.setMethodSignature(image_stream.MultiFrameImageStreamCompleter, () => ({
-    __proto__: dart.getMethods(image_stream.MultiFrameImageStreamCompleter.__proto__),
-    [_handleCodecReady]: dart.fnType(dart.void, [ui.Codec]),
-    [_handleAppFrame]: dart.fnType(dart.void, [core.Duration]),
-    [_isFirstFrame]: dart.fnType(core.bool, []),
-    [_hasFrameDurationPassed]: dart.fnType(core.bool, [core.Duration]),
-    [_decodeNextFrameAndSchedule]: dart.fnType(async.Future$(dart.void), []),
-    [_scheduleAppFrame]: dart.fnType(dart.void, []),
-    [_emitFrame]: dart.fnType(dart.void, [image_stream.ImageInfo])
+    set top(value) {
+      super.top = value;
+    }
+    get start() {
+      return this[start$];
+    }
+    set start(value) {
+      super.start = value;
+    }
+    get end() {
+      return this[end$];
+    }
+    set end(value) {
+      super.end = value;
+    }
+    get bottom() {
+      return this[bottom$0];
+    }
+    set bottom(value) {
+      super.bottom = value;
+    }
+    static merge(a, b) {
+      if (a == null) dart.nullFailed(I[0], 625, 52, "a");
+      if (b == null) dart.nullFailed(I[0], 625, 73, "b");
+      if (!(a != null)) dart.assertFailed(null, I[0], 626, 12, "a != null");
+      if (!(b != null)) dart.assertFailed(null, I[0], 627, 12, "b != null");
+      if (!dart.test(borders.BorderSide.canMerge(a.top, b.top))) dart.assertFailed(null, I[0], 628, 12, "BorderSide.canMerge(a.top, b.top)");
+      if (!dart.test(borders.BorderSide.canMerge(a.start, b.start))) dart.assertFailed(null, I[0], 629, 12, "BorderSide.canMerge(a.start, b.start)");
+      if (!dart.test(borders.BorderSide.canMerge(a.end, b.end))) dart.assertFailed(null, I[0], 630, 12, "BorderSide.canMerge(a.end, b.end)");
+      if (!dart.test(borders.BorderSide.canMerge(a.bottom, b.bottom))) dart.assertFailed(null, I[0], 631, 12, "BorderSide.canMerge(a.bottom, b.bottom)");
+      return new box_border.BorderDirectional.new({top: borders.BorderSide.merge(a.top, b.top), start: borders.BorderSide.merge(a.start, b.start), end: borders.BorderSide.merge(a.end, b.end), bottom: borders.BorderSide.merge(a.bottom, b.bottom)});
+    }
+    get dimensions() {
+      return new edge_insets.EdgeInsetsDirectional.fromSTEB(this.start.width, this.top.width, this.end.width, this.bottom.width);
+    }
+    get isUniform() {
+      let topColor = this.top.color;
+      if (!dart.equals(this.start.color, topColor) || !dart.equals(this.end.color, topColor) || !dart.equals(this.bottom.color, topColor)) return false;
+      let topWidth = this.top.width;
+      if (this.start.width != topWidth || this.end.width != topWidth || this.bottom.width != topWidth) return false;
+      let topStyle = this.top.style;
+      if (this.start.style != topStyle || this.end.style != topStyle || this.bottom.style != topStyle) return false;
+      return true;
+    }
+    add(other, opts) {
+      if (other == null) dart.nullFailed(I[0], 695, 30, "other");
+      let reversed = opts && 'reversed' in opts ? opts.reversed : false;
+      if (reversed == null) dart.nullFailed(I[0], 695, 44, "reversed");
+      if (box_border.BorderDirectional.is(other)) {
+        let typedOther = other;
+        if (dart.test(borders.BorderSide.canMerge(this.top, typedOther.top)) && dart.test(borders.BorderSide.canMerge(this.start, typedOther.start)) && dart.test(borders.BorderSide.canMerge(this.end, typedOther.end)) && dart.test(borders.BorderSide.canMerge(this.bottom, typedOther.bottom))) {
+          return box_border.BorderDirectional.merge(this, typedOther);
+        }
+        return null;
+      }
+      if (box_border.Border.is(other)) {
+        let typedOther = other;
+        if (!dart.test(borders.BorderSide.canMerge(typedOther.top, this.top)) || !dart.test(borders.BorderSide.canMerge(typedOther.bottom, this.bottom))) return null;
+        if (!dart.equals(this.start, borders.BorderSide.none) || !dart.equals(this.end, borders.BorderSide.none)) {
+          if (!dart.equals(typedOther.left, borders.BorderSide.none) || !dart.equals(typedOther.right, borders.BorderSide.none)) return null;
+          if (!dart.equals(typedOther.left, borders.BorderSide.none)) dart.assertFailed(null, I[0], 716, 16, "typedOther.left == BorderSide.none");
+          if (!dart.equals(typedOther.right, borders.BorderSide.none)) dart.assertFailed(null, I[0], 717, 16, "typedOther.right == BorderSide.none");
+          return new box_border.BorderDirectional.new({top: borders.BorderSide.merge(typedOther.top, this.top), start: this.start, end: this.end, bottom: borders.BorderSide.merge(typedOther.bottom, this.bottom)});
+        }
+        if (!dart.equals(this.start, borders.BorderSide.none)) dart.assertFailed(null, I[0], 725, 14, "start == BorderSide.none");
+        if (!dart.equals(this.end, borders.BorderSide.none)) dart.assertFailed(null, I[0], 726, 14, "end == BorderSide.none");
+        return new box_border.Border.new({top: borders.BorderSide.merge(typedOther.top, this.top), right: typedOther.right, bottom: borders.BorderSide.merge(typedOther.bottom, this.bottom), left: typedOther.left});
+      }
+      return null;
+    }
+    scale(t) {
+      if (t == null) dart.nullFailed(I[0], 738, 34, "t");
+      return new box_border.BorderDirectional.new({top: this.top.scale(t), start: this.start.scale(t), end: this.end.scale(t), bottom: this.bottom.scale(t)});
+    }
+    lerpFrom(a, t) {
+      if (t == null) dart.nullFailed(I[0], 748, 48, "t");
+      if (box_border.BorderDirectional.is(a)) return box_border.BorderDirectional.lerp(a, this, t);
+      return super.lerpFrom(a, t);
+    }
+    lerpTo(b, t) {
+      if (t == null) dart.nullFailed(I[0], 755, 46, "t");
+      if (box_border.BorderDirectional.is(b)) return box_border.BorderDirectional.lerp(this, b, t);
+      return super.lerpTo(b, t);
+    }
+    static lerp(a, b, t) {
+      if (t == null) dart.nullFailed(I[0], 767, 85, "t");
+      if (!(t != null)) dart.assertFailed(null, I[0], 768, 12, "t != null");
+      if (a == null && b == null) return null;
+      if (a == null) return dart.nullCheck(b).scale(t);
+      if (b == null) return a.scale(1.0 - dart.notNull(t));
+      return new box_border.BorderDirectional.new({top: borders.BorderSide.lerp(a.top, b.top, t), end: borders.BorderSide.lerp(a.end, b.end, t), bottom: borders.BorderSide.lerp(a.bottom, b.bottom, t), start: borders.BorderSide.lerp(a.start, b.start, t)});
+    }
+    paint(canvas, rect, opts) {
+      if (canvas == null) dart.nullFailed(I[0], 807, 12, "canvas");
+      if (rect == null) dart.nullFailed(I[0], 808, 10, "rect");
+      let textDirection = opts && 'textDirection' in opts ? opts.textDirection : null;
+      let shape = opts && 'shape' in opts ? opts.shape : C[0] || CT.C0;
+      if (shape == null) dart.nullFailed(I[0], 810, 14, "shape");
+      let borderRadius = opts && 'borderRadius' in opts ? opts.borderRadius : null;
+      if (dart.test(this.isUniform)) {
+        switch (this.top.style) {
+          case C[4] || CT.C4:
+          {
+            return;
+          }
+          case C[6] || CT.C6:
+          {
+            switch (shape) {
+              case C[1] || CT.C1:
+              {
+                if (!(borderRadius == null)) dart.assertFailed("A borderRadius can only be given for rectangular boxes.", I[0], 820, 22, "borderRadius == null");
+                box_border.BoxBorder._paintUniformBorderWithCircle(canvas, rect, this.top);
+                break;
+              }
+              case C[0] || CT.C0:
+              {
+                if (borderRadius != null) {
+                  box_border.BoxBorder._paintUniformBorderWithRadius(canvas, rect, this.top, borderRadius);
+                  return;
+                }
+                box_border.BoxBorder._paintUniformBorderWithRectangle(canvas, rect, this.top);
+                break;
+              }
+              default:
+              {
+                dart.throw(new _internal.ReachabilityError.new("`null` encountered as case in a switch expression with a non-nullable enum type."));
+              }
+            }
+            return;
+          }
+          default:
+          {
+            dart.throw(new _internal.ReachabilityError.new("`null` encountered as case in a switch expression with a non-nullable enum type."));
+          }
+        }
+      }
+      if (!(borderRadius == null)) dart.assertFailed("A borderRadius can only be given for uniform borders.", I[0], 835, 12, "borderRadius == null");
+      if (!(shape == box_border.BoxShape.rectangle)) dart.assertFailed("A border can only be drawn as a circle if it is uniform.", I[0], 836, 12, "shape == BoxShape.rectangle");
+      let left = null;
+      let right = null;
+      if (!(textDirection != null)) dart.assertFailed("Non-uniform BorderDirectional objects require a TextDirection when painting.", I[0], 839, 12, "textDirection != null");
+      switch (dart.nullCheck(textDirection)) {
+        case C[7] || CT.C7:
+        {
+          left = this.end;
+          right = this.start;
+          break;
+        }
+        case C[8] || CT.C8:
+        {
+          left = this.start;
+          right = this.end;
+          break;
+        }
+        default:
+        {
+          dart.throw(new _internal.ReachabilityError.new("`null` encountered as case in a switch expression with a non-nullable enum type."));
+        }
+      }
+      borders.paintBorder(canvas, rect, {top: this.top, left: left, bottom: this.bottom, right: right});
+    }
+    _equals(other) {
+      if (other == null) return false;
+      if (this === other) return true;
+      if (!dart.equals(dart.runtimeType(other), this[$runtimeType])) return false;
+      return box_border.BorderDirectional.is(other) && dart.equals(other.top, this.top) && dart.equals(other.start, this.start) && dart.equals(other.end, this.end) && dart.equals(other.bottom, this.bottom);
+    }
+    get hashCode() {
+      return ui.hashValues(this.top, this.start, this.end, this.bottom);
+    }
+    toString() {
+      let $arguments = (() => {
+        let t3 = T.JSArrayOfString().of([]);
+        if (!dart.equals(this.top, borders.BorderSide.none)) t3[$add]("top: " + dart.str(this.top));
+        if (!dart.equals(this.start, borders.BorderSide.none)) t3[$add]("start: " + dart.str(this.start));
+        if (!dart.equals(this.end, borders.BorderSide.none)) t3[$add]("end: " + dart.str(this.end));
+        if (!dart.equals(this.bottom, borders.BorderSide.none)) t3[$add]("bottom: " + dart.str(this.bottom));
+        return t3;
+      })();
+      return dart.str(object.objectRuntimeType(this, "BorderDirectional")) + "(" + dart.str($arguments[$join](", ")) + ")";
+    }
+  };
+  (box_border.BorderDirectional.new = function(opts) {
+    let top = opts && 'top' in opts ? opts.top : C[3] || CT.C3;
+    if (top == null) dart.nullFailed(I[0], 609, 10, "top");
+    let start = opts && 'start' in opts ? opts.start : C[3] || CT.C3;
+    if (start == null) dart.nullFailed(I[0], 610, 10, "start");
+    let end = opts && 'end' in opts ? opts.end : C[3] || CT.C3;
+    if (end == null) dart.nullFailed(I[0], 611, 10, "end");
+    let bottom = opts && 'bottom' in opts ? opts.bottom : C[3] || CT.C3;
+    if (bottom == null) dart.nullFailed(I[0], 612, 10, "bottom");
+    this[top$0] = top;
+    this[start$] = start;
+    this[end$] = end;
+    this[bottom$0] = bottom;
+    if (!(top != null)) dart.assertFailed(null, I[0], 613, 15, "top != null");
+    if (!(start != null)) dart.assertFailed(null, I[0], 614, 15, "start != null");
+    if (!(end != null)) dart.assertFailed(null, I[0], 615, 15, "end != null");
+    if (!(bottom != null)) dart.assertFailed(null, I[0], 616, 15, "bottom != null");
+    box_border.BorderDirectional.__proto__.new.call(this);
+    ;
+  }).prototype = box_border.BorderDirectional.prototype;
+  dart.addTypeTests(box_border.BorderDirectional);
+  dart.addTypeCaches(box_border.BorderDirectional);
+  dart.setMethodSignature(box_border.BorderDirectional, () => ({
+    __proto__: dart.getMethods(box_border.BorderDirectional.__proto__),
+    scale: dart.fnType(box_border.BorderDirectional, [core.double]),
+    paint: dart.fnType(dart.void, [ui.Canvas, ui.Rect], {borderRadius: dart.nullable(border_radius.BorderRadius), shape: box_border.BoxShape, textDirection: dart.nullable(ui.TextDirection)}, {})
   }));
-  dart.setGetterSignature(image_stream.MultiFrameImageStreamCompleter, () => ({
-    __proto__: dart.getGetters(image_stream.MultiFrameImageStreamCompleter.__proto__),
-    [_shownTimestamp]: core.Duration
+  dart.setGetterSignature(box_border.BorderDirectional, () => ({
+    __proto__: dart.getGetters(box_border.BorderDirectional.__proto__),
+    dimensions: edge_insets.EdgeInsetsGeometry,
+    isUniform: core.bool
   }));
-  dart.setSetterSignature(image_stream.MultiFrameImageStreamCompleter, () => ({
-    __proto__: dart.getSetters(image_stream.MultiFrameImageStreamCompleter.__proto__),
-    [_shownTimestamp]: core.Duration
+  dart.setLibraryUri(box_border.BorderDirectional, I[1]);
+  dart.setFieldSignature(box_border.BorderDirectional, () => ({
+    __proto__: dart.getFields(box_border.BorderDirectional.__proto__),
+    top: dart.finalFieldType(borders.BorderSide),
+    start: dart.finalFieldType(borders.BorderSide),
+    end: dart.finalFieldType(borders.BorderSide),
+    bottom: dart.finalFieldType(borders.BorderSide)
   }));
-  dart.setLibraryUri(image_stream.MultiFrameImageStreamCompleter, I[1]);
-  dart.setFieldSignature(image_stream.MultiFrameImageStreamCompleter, () => ({
-    __proto__: dart.getFields(image_stream.MultiFrameImageStreamCompleter.__proto__),
-    [_codec]: dart.fieldType(dart.nullable(ui.Codec)),
-    [_scale]: dart.finalFieldType(core.double),
-    [_informationCollector]: dart.finalFieldType(dart.nullable(dart.fnType(core.Iterable$(diagnostics.DiagnosticsNode), []))),
-    [_nextFrame]: dart.fieldType(dart.nullable(ui.FrameInfo)),
-    [__MultiFrameImageStreamCompleter__shownTimestamp]: dart.fieldType(dart.nullable(core.Duration)),
-    [__MultiFrameImageStreamCompleter__shownTimestamp_isSet]: dart.fieldType(core.bool),
-    [_frameDuration]: dart.fieldType(dart.nullable(core.Duration)),
-    [_framesEmitted]: dart.fieldType(core.int),
-    [_timer]: dart.fieldType(dart.nullable(async.Timer)),
-    [_frameCallbackScheduled]: dart.fieldType(core.bool)
-  }));
-  dart.trackLibraries("packages/flutter/src/painting/image_stream.dart", {
-    "package:flutter/src/painting/image_stream.dart": image_stream
+  dart.defineExtensionMethods(box_border.BorderDirectional, ['_equals', 'toString']);
+  dart.defineExtensionAccessors(box_border.BorderDirectional, ['hashCode']);
+  dart.trackLibraries("packages/flutter/src/painting/box_border.dart", {
+    "package:flutter/src/painting/box_border.dart": box_border
   }, {
-  }, '{"version":3,"sourceRoot":"","sources":["image_stream.dart"],"names":[],"mappings":"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","file":"../../../../../../../../../../../../C:/packages/flutter/src/painting/image_stream.dart.lib.js"}');
+  }, '{"version":3,"sourceRoot":"","sources":["box_border.dart"],"names":[],"mappings":"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","file":"../../../../../../../../../../../../C:/packages/flutter/src/painting/box_border.dart.lib.js"}');
   // Exports:
   return {
-    src__painting__image_stream: image_stream
+    src__painting__box_border: box_border
   };
 }));
 
-//# sourceMappingURL=image_stream.dart.lib.js.map
+//# sourceMappingURL=box_border.dart.lib.js.map

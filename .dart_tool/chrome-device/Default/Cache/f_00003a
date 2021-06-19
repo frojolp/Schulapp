@@ -1,26 +1,20 @@
-define(['dart_sdk', 'packages/flutter/src/gestures/events.dart', 'packages/flutter/src/foundation/debug.dart', 'packages/flutter/src/services/system_channels.dart', 'packages/flutter/src/foundation/object.dart'], (function load__packages__flutter__src__services__mouse_cursor_dart(dart_sdk, packages__flutter__src__gestures__events$46dart, packages__flutter__src__foundation__debug$46dart, packages__flutter__src__services__system_channels$46dart, packages__flutter__src__foundation__object$46dart) {
+define(['dart_sdk', 'packages/flutter/src/gestures/constants.dart', 'packages/flutter/src/gestures/recognizer.dart', 'packages/flutter/src/gestures/events.dart', 'packages/flutter/src/gestures/arena.dart', 'packages/flutter/src/foundation/debug.dart'], (function load__packages__flutter__src__gestures__tap_dart(dart_sdk, packages__flutter__src__gestures__constants$46dart, packages__flutter__src__gestures__recognizer$46dart, packages__flutter__src__gestures__events$46dart, packages__flutter__src__gestures__arena$46dart, packages__flutter__src__foundation__debug$46dart) {
   'use strict';
   const core = dart_sdk.core;
-  const _js_helper = dart_sdk._js_helper;
-  const async = dart_sdk.async;
+  const ui = dart_sdk.ui;
   const dart = dart_sdk.dart;
   const dartx = dart_sdk.dartx;
+  const constants = packages__flutter__src__gestures__constants$46dart.src__gestures__constants;
+  const recognizer = packages__flutter__src__gestures__recognizer$46dart.src__gestures__recognizer;
   const events = packages__flutter__src__gestures__events$46dart.src__gestures__events;
+  const arena = packages__flutter__src__gestures__arena$46dart.src__gestures__arena;
   const diagnostics = packages__flutter__src__foundation__debug$46dart.src__foundation__diagnostics;
-  const system_channels = packages__flutter__src__services__system_channels$46dart.src__services__system_channels;
-  const object = packages__flutter__src__foundation__object$46dart.src__foundation__object;
-  var mouse_cursor = Object.create(dart.library);
-  var $_get = dartx._get;
-  var $remove = dartx.remove;
-  var $_set = dartx._set;
-  var $runtimeType = dartx.runtimeType;
-  var $hashCode = dartx.hashCode;
+  var tap = Object.create(dart.library);
   dart._checkModuleNullSafetyMode(false);
   var T = {
-    IdentityMapOfint$MouseCursorSession: () => (T.IdentityMapOfint$MouseCursorSession = dart.constFn(_js_helper.IdentityMap$(core.int, mouse_cursor.MouseCursorSession)))(),
-    VoidTobool: () => (T.VoidTobool = dart.constFn(dart.fnType(core.bool, [])))(),
-    IdentityMapOfString$dynamic: () => (T.IdentityMapOfString$dynamic = dart.constFn(_js_helper.IdentityMap$(core.String, dart.dynamic)))(),
-    DiagnosticsPropertyOfString: () => (T.DiagnosticsPropertyOfString = dart.constFn(diagnostics.DiagnosticsProperty$(core.String)))()
+    DiagnosticsPropertyOfOffset: () => (T.DiagnosticsPropertyOfOffset = dart.constFn(diagnostics.DiagnosticsProperty$(ui.Offset)))(),
+    DiagnosticsPropertyOfint: () => (T.DiagnosticsPropertyOfint = dart.constFn(diagnostics.DiagnosticsProperty$(core.int)))(),
+    VoidTovoid: () => (T.VoidTovoid = dart.constFn(dart.fnType(dart.void, [])))()
   };
   const CT = Object.create({
     _: () => (C, CT)
@@ -28,652 +22,483 @@ define(['dart_sdk', 'packages/flutter/src/gestures/events.dart', 'packages/flutt
   dart.defineLazy(CT, {
     get C0() {
       return C[0] = dart.const({
-        __proto__: diagnostics.DiagnosticLevel.prototype,
-        [_name]: "DiagnosticLevel.info",
-        index: 3
-      });
-    },
-    get C1() {
-      return C[1] = dart.const({
-        __proto__: mouse_cursor._DeferringMouseCursor.prototype
-      });
-    },
-    get C2() {
-      return C[2] = dart.const({
-        __proto__: mouse_cursor._NoopMouseCursor.prototype
-      });
-    },
-    get C3() {
-      return C[3] = dart.const({
-        __proto__: mouse_cursor.SystemMouseCursor.prototype,
-        [kind$]: "none"
-      });
-    },
-    get C4() {
-      return C[4] = dart.const({
-        __proto__: mouse_cursor.SystemMouseCursor.prototype,
-        [kind$]: "basic"
-      });
-    },
-    get C5() {
-      return C[5] = dart.const({
-        __proto__: mouse_cursor.SystemMouseCursor.prototype,
-        [kind$]: "click"
-      });
-    },
-    get C6() {
-      return C[6] = dart.const({
-        __proto__: mouse_cursor.SystemMouseCursor.prototype,
-        [kind$]: "forbidden"
-      });
-    },
-    get C7() {
-      return C[7] = dart.const({
-        __proto__: mouse_cursor.SystemMouseCursor.prototype,
-        [kind$]: "wait"
-      });
-    },
-    get C8() {
-      return C[8] = dart.const({
-        __proto__: mouse_cursor.SystemMouseCursor.prototype,
-        [kind$]: "progress"
-      });
-    },
-    get C9() {
-      return C[9] = dart.const({
-        __proto__: mouse_cursor.SystemMouseCursor.prototype,
-        [kind$]: "contextMenu"
-      });
-    },
-    get C10() {
-      return C[10] = dart.const({
-        __proto__: mouse_cursor.SystemMouseCursor.prototype,
-        [kind$]: "help"
-      });
-    },
-    get C11() {
-      return C[11] = dart.const({
-        __proto__: mouse_cursor.SystemMouseCursor.prototype,
-        [kind$]: "text"
-      });
-    },
-    get C12() {
-      return C[12] = dart.const({
-        __proto__: mouse_cursor.SystemMouseCursor.prototype,
-        [kind$]: "verticalText"
-      });
-    },
-    get C13() {
-      return C[13] = dart.const({
-        __proto__: mouse_cursor.SystemMouseCursor.prototype,
-        [kind$]: "cell"
-      });
-    },
-    get C14() {
-      return C[14] = dart.const({
-        __proto__: mouse_cursor.SystemMouseCursor.prototype,
-        [kind$]: "precise"
-      });
-    },
-    get C15() {
-      return C[15] = dart.const({
-        __proto__: mouse_cursor.SystemMouseCursor.prototype,
-        [kind$]: "move"
-      });
-    },
-    get C16() {
-      return C[16] = dart.const({
-        __proto__: mouse_cursor.SystemMouseCursor.prototype,
-        [kind$]: "grab"
-      });
-    },
-    get C17() {
-      return C[17] = dart.const({
-        __proto__: mouse_cursor.SystemMouseCursor.prototype,
-        [kind$]: "grabbing"
-      });
-    },
-    get C18() {
-      return C[18] = dart.const({
-        __proto__: mouse_cursor.SystemMouseCursor.prototype,
-        [kind$]: "noDrop"
-      });
-    },
-    get C19() {
-      return C[19] = dart.const({
-        __proto__: mouse_cursor.SystemMouseCursor.prototype,
-        [kind$]: "alias"
-      });
-    },
-    get C20() {
-      return C[20] = dart.const({
-        __proto__: mouse_cursor.SystemMouseCursor.prototype,
-        [kind$]: "copy"
-      });
-    },
-    get C21() {
-      return C[21] = dart.const({
-        __proto__: mouse_cursor.SystemMouseCursor.prototype,
-        [kind$]: "disappearing"
-      });
-    },
-    get C22() {
-      return C[22] = dart.const({
-        __proto__: mouse_cursor.SystemMouseCursor.prototype,
-        [kind$]: "allScroll"
-      });
-    },
-    get C23() {
-      return C[23] = dart.const({
-        __proto__: mouse_cursor.SystemMouseCursor.prototype,
-        [kind$]: "resizeLeftRight"
-      });
-    },
-    get C24() {
-      return C[24] = dart.const({
-        __proto__: mouse_cursor.SystemMouseCursor.prototype,
-        [kind$]: "resizeUpDown"
-      });
-    },
-    get C25() {
-      return C[25] = dart.const({
-        __proto__: mouse_cursor.SystemMouseCursor.prototype,
-        [kind$]: "resizeUpLeftDownRight"
-      });
-    },
-    get C26() {
-      return C[26] = dart.const({
-        __proto__: mouse_cursor.SystemMouseCursor.prototype,
-        [kind$]: "resizeUpRightDownLeft"
-      });
-    },
-    get C27() {
-      return C[27] = dart.const({
-        __proto__: mouse_cursor.SystemMouseCursor.prototype,
-        [kind$]: "resizeUp"
-      });
-    },
-    get C28() {
-      return C[28] = dart.const({
-        __proto__: mouse_cursor.SystemMouseCursor.prototype,
-        [kind$]: "resizeDown"
-      });
-    },
-    get C29() {
-      return C[29] = dart.const({
-        __proto__: mouse_cursor.SystemMouseCursor.prototype,
-        [kind$]: "resizeLeft"
-      });
-    },
-    get C30() {
-      return C[30] = dart.const({
-        __proto__: mouse_cursor.SystemMouseCursor.prototype,
-        [kind$]: "resizeRight"
-      });
-    },
-    get C31() {
-      return C[31] = dart.const({
-        __proto__: mouse_cursor.SystemMouseCursor.prototype,
-        [kind$]: "resizeUpLeft"
-      });
-    },
-    get C32() {
-      return C[32] = dart.const({
-        __proto__: mouse_cursor.SystemMouseCursor.prototype,
-        [kind$]: "resizeUpRight"
-      });
-    },
-    get C33() {
-      return C[33] = dart.const({
-        __proto__: mouse_cursor.SystemMouseCursor.prototype,
-        [kind$]: "resizeDownLeft"
-      });
-    },
-    get C34() {
-      return C[34] = dart.const({
-        __proto__: mouse_cursor.SystemMouseCursor.prototype,
-        [kind$]: "resizeDownRight"
-      });
-    },
-    get C35() {
-      return C[35] = dart.const({
-        __proto__: mouse_cursor.SystemMouseCursor.prototype,
-        [kind$]: "resizeColumn"
-      });
-    },
-    get C36() {
-      return C[36] = dart.const({
-        __proto__: mouse_cursor.SystemMouseCursor.prototype,
-        [kind$]: "resizeRow"
-      });
-    },
-    get C37() {
-      return C[37] = dart.const({
-        __proto__: mouse_cursor.SystemMouseCursor.prototype,
-        [kind$]: "zoomIn"
-      });
-    },
-    get C38() {
-      return C[38] = dart.const({
-        __proto__: mouse_cursor.SystemMouseCursor.prototype,
-        [kind$]: "zoomOut"
+        __proto__: ui.Offset.prototype,
+        [OffsetBase__dy]: 0,
+        [OffsetBase__dx]: 0
       });
     }
   }, false);
-  var C = Array(39).fill(void 0);
+  var C = [void 0];
   var I = [
-    "file:///E:/OneDrive/_Marius/OneDrive/Dokumente%20Marius/Flutter/flutter/packages/flutter/lib/src/services/mouse_cursor.dart",
-    "package:flutter/src/services/mouse_cursor.dart"
+    "file:///E:/OneDrive/_Marius/OneDrive/Dokumente%20Marius/Flutter/flutter/packages/flutter/lib/src/gestures/tap.dart",
+    "package:flutter/src/gestures/tap.dart"
   ];
-  var fallbackMouseCursor$ = dart.privateName(mouse_cursor, "MouseCursorManager.fallbackMouseCursor");
-  var _lastSession = dart.privateName(mouse_cursor, "_lastSession");
-  mouse_cursor.MouseCursorManager = class MouseCursorManager extends core.Object {
-    get fallbackMouseCursor() {
-      return this[fallbackMouseCursor$];
+  var globalPosition$ = dart.privateName(tap, "TapDownDetails.globalPosition");
+  var kind$ = dart.privateName(tap, "TapDownDetails.kind");
+  var localPosition$ = dart.privateName(tap, "TapDownDetails.localPosition");
+  var OffsetBase__dy = dart.privateName(ui, "OffsetBase._dy");
+  var OffsetBase__dx = dart.privateName(ui, "OffsetBase._dx");
+  tap.TapDownDetails = class TapDownDetails extends core.Object {
+    get globalPosition() {
+      return this[globalPosition$];
     }
-    set fallbackMouseCursor(value) {
-      super.fallbackMouseCursor = value;
+    set globalPosition(value) {
+      super.globalPosition = value;
     }
-    debugDeviceActiveCursor(device) {
-      if (device == null) dart.nullFailed(I[0], 36, 44, "device");
-      let result = null;
-      if (!dart.test(dart.fn(() => {
-        let t0;
-        result = (t0 = this[_lastSession][$_get](device), t0 == null ? null : t0.cursor);
-        return true;
-      }, T.VoidTobool())())) dart.assertFailed(null, I[0], 38, 12, "() {\r\n      result = _lastSession[device]?.cursor;\r\n      return true;\r\n    }()");
-      return result;
-    }
-    handleDeviceCursorUpdate(device, triggeringEvent, cursorCandidates) {
-      let t0, t0$, t0$0;
-      if (device == null) dart.nullFailed(I[0], 56, 9, "device");
-      if (cursorCandidates == null) dart.nullFailed(I[0], 58, 27, "cursorCandidates");
-      if (events.PointerRemovedEvent.is(triggeringEvent)) {
-        this[_lastSession][$remove](device);
-        return;
-      }
-      let lastSession = this[_lastSession][$_get](device);
-      let nextCursor = (t0 = mouse_cursor._DeferringMouseCursor.firstNonDeferred(cursorCandidates), t0 == null ? this.fallbackMouseCursor : t0);
-      if (!!mouse_cursor._DeferringMouseCursor.is(nextCursor)) dart.assertFailed(null, I[0], 68, 12, "nextCursor is! _DeferringMouseCursor");
-      if (dart.equals((t0$ = lastSession, t0$ == null ? null : t0$.cursor), nextCursor)) return;
-      let nextSession = nextCursor.createSession(device);
-      this[_lastSession][$_set](device, nextSession);
-      t0$0 = lastSession;
-      t0$0 == null ? null : t0$0.dispose();
-      nextSession.activate();
-    }
-  };
-  (mouse_cursor.MouseCursorManager.new = function(fallbackMouseCursor) {
-    if (fallbackMouseCursor == null) dart.nullFailed(I[0], 19, 27, "fallbackMouseCursor");
-    this[_lastSession] = new (T.IdentityMapOfint$MouseCursorSession()).new();
-    this[fallbackMouseCursor$] = fallbackMouseCursor;
-    if (!!dart.equals(fallbackMouseCursor, mouse_cursor.MouseCursor.defer)) dart.assertFailed(null, I[0], 20, 14, "fallbackMouseCursor != MouseCursor.defer");
-    ;
-  }).prototype = mouse_cursor.MouseCursorManager.prototype;
-  dart.addTypeTests(mouse_cursor.MouseCursorManager);
-  dart.addTypeCaches(mouse_cursor.MouseCursorManager);
-  dart.setMethodSignature(mouse_cursor.MouseCursorManager, () => ({
-    __proto__: dart.getMethods(mouse_cursor.MouseCursorManager.__proto__),
-    debugDeviceActiveCursor: dart.fnType(dart.nullable(mouse_cursor.MouseCursor), [core.int]),
-    handleDeviceCursorUpdate: dart.fnType(dart.void, [core.int, dart.nullable(events.PointerEvent), core.Iterable$(mouse_cursor.MouseCursor)])
-  }));
-  dart.setLibraryUri(mouse_cursor.MouseCursorManager, I[1]);
-  dart.setFieldSignature(mouse_cursor.MouseCursorManager, () => ({
-    __proto__: dart.getFields(mouse_cursor.MouseCursorManager.__proto__),
-    fallbackMouseCursor: dart.finalFieldType(mouse_cursor.MouseCursor),
-    [_lastSession]: dart.finalFieldType(core.Map$(core.int, mouse_cursor.MouseCursorSession))
-  }));
-  var cursor$ = dart.privateName(mouse_cursor, "MouseCursorSession.cursor");
-  var device$ = dart.privateName(mouse_cursor, "MouseCursorSession.device");
-  mouse_cursor.MouseCursorSession = class MouseCursorSession extends core.Object {
-    get cursor() {
-      return this[cursor$];
-    }
-    set cursor(value) {
-      super.cursor = value;
-    }
-    get device() {
-      return this[device$];
-    }
-    set device(value) {
-      super.device = value;
-    }
-  };
-  (mouse_cursor.MouseCursorSession.new = function(cursor, device) {
-    if (cursor == null) dart.nullFailed(I[0], 103, 27, "cursor");
-    if (device == null) dart.nullFailed(I[0], 103, 40, "device");
-    this[cursor$] = cursor;
-    this[device$] = device;
-    if (!(cursor != null)) dart.assertFailed(null, I[0], 104, 14, "cursor != null");
-    if (!(device != null)) dart.assertFailed(null, I[0], 105, 14, "device != null");
-    ;
-  }).prototype = mouse_cursor.MouseCursorSession.prototype;
-  dart.addTypeTests(mouse_cursor.MouseCursorSession);
-  dart.addTypeCaches(mouse_cursor.MouseCursorSession);
-  dart.setLibraryUri(mouse_cursor.MouseCursorSession, I[1]);
-  dart.setFieldSignature(mouse_cursor.MouseCursorSession, () => ({
-    __proto__: dart.getFields(mouse_cursor.MouseCursorSession.__proto__),
-    cursor: dart.finalFieldType(mouse_cursor.MouseCursor),
-    device: dart.finalFieldType(core.int)
-  }));
-  var _name = dart.privateName(diagnostics, "_name");
-  const Object_Diagnosticable$36 = class Object_Diagnosticable extends core.Object {};
-  (Object_Diagnosticable$36.new = function() {
-  }).prototype = Object_Diagnosticable$36.prototype;
-  dart.applyMixin(Object_Diagnosticable$36, diagnostics.Diagnosticable);
-  mouse_cursor.MouseCursor = class MouseCursor extends Object_Diagnosticable$36 {
-    toString(opts) {
-      let minLevel = opts && 'minLevel' in opts ? opts.minLevel : C[0] || CT.C0;
-      if (minLevel == null) dart.nullFailed(I[0], 228, 36, "minLevel");
-      let debugDescription = this.debugDescription;
-      if (dart.notNull(minLevel.index) >= dart.notNull(diagnostics.DiagnosticLevel.info.index) && debugDescription != null) return debugDescription;
-      return super.toString({minLevel: minLevel});
-    }
-  };
-  (mouse_cursor.MouseCursor.new = function() {
-    ;
-  }).prototype = mouse_cursor.MouseCursor.prototype;
-  dart.addTypeTests(mouse_cursor.MouseCursor);
-  dart.addTypeCaches(mouse_cursor.MouseCursor);
-  dart.setLibraryUri(mouse_cursor.MouseCursor, I[1]);
-  dart.defineExtensionMethods(mouse_cursor.MouseCursor, ['toString']);
-  dart.defineLazy(mouse_cursor.MouseCursor, {
-    /*mouse_cursor.MouseCursor.defer*/get defer() {
-      return C[1] || CT.C1;
-    },
-    /*mouse_cursor.MouseCursor.uncontrolled*/get uncontrolled() {
-      return C[2] || CT.C2;
-    }
-  }, false);
-  mouse_cursor._DeferringMouseCursor = class _DeferringMouseCursor extends mouse_cursor.MouseCursor {
-    createSession(device) {
-      if (device == null) dart.nullFailed(I[0], 265, 40, "device");
-      if (!false) dart.assertFailed("_DeferringMouseCursor can not create a session", I[0], 266, 12, "false");
-      dart.throw(new core.UnimplementedError.new());
-    }
-    get debugDescription() {
-      return "defer";
-    }
-    static firstNonDeferred(cursors) {
-      if (cursors == null) dart.nullFailed(I[0], 274, 62, "cursors");
-      for (let cursor of cursors) {
-        if (!(cursor != null)) dart.assertFailed(null, I[0], 276, 14, "cursor != null");
-        if (!dart.equals(cursor, mouse_cursor.MouseCursor.defer)) return cursor;
-      }
-      return null;
-    }
-  };
-  (mouse_cursor._DeferringMouseCursor.__ = function() {
-    mouse_cursor._DeferringMouseCursor.__proto__.new.call(this);
-    ;
-  }).prototype = mouse_cursor._DeferringMouseCursor.prototype;
-  dart.addTypeTests(mouse_cursor._DeferringMouseCursor);
-  dart.addTypeCaches(mouse_cursor._DeferringMouseCursor);
-  dart.setMethodSignature(mouse_cursor._DeferringMouseCursor, () => ({
-    __proto__: dart.getMethods(mouse_cursor._DeferringMouseCursor.__proto__),
-    createSession: dart.fnType(mouse_cursor.MouseCursorSession, [core.int])
-  }));
-  dart.setGetterSignature(mouse_cursor._DeferringMouseCursor, () => ({
-    __proto__: dart.getGetters(mouse_cursor._DeferringMouseCursor.__proto__),
-    debugDescription: core.String
-  }));
-  dart.setLibraryUri(mouse_cursor._DeferringMouseCursor, I[1]);
-  mouse_cursor._NoopMouseCursorSession = class _NoopMouseCursorSession extends mouse_cursor.MouseCursorSession {
-    activate() {
-      return async.async(dart.void, function* activate() {
-      });
-    }
-    dispose() {
-    }
-  };
-  (mouse_cursor._NoopMouseCursorSession.new = function(cursor, device) {
-    if (cursor == null) dart.nullFailed(I[0], 285, 44, "cursor");
-    if (device == null) dart.nullFailed(I[0], 285, 56, "device");
-    mouse_cursor._NoopMouseCursorSession.__proto__.new.call(this, cursor, device);
-    ;
-  }).prototype = mouse_cursor._NoopMouseCursorSession.prototype;
-  dart.addTypeTests(mouse_cursor._NoopMouseCursorSession);
-  dart.addTypeCaches(mouse_cursor._NoopMouseCursorSession);
-  dart.setMethodSignature(mouse_cursor._NoopMouseCursorSession, () => ({
-    __proto__: dart.getMethods(mouse_cursor._NoopMouseCursorSession.__proto__),
-    activate: dart.fnType(async.Future$(dart.void), []),
-    dispose: dart.fnType(dart.void, [])
-  }));
-  dart.setLibraryUri(mouse_cursor._NoopMouseCursorSession, I[1]);
-  mouse_cursor._NoopMouseCursor = class _NoopMouseCursor extends mouse_cursor.MouseCursor {
-    createSession(device) {
-      if (device == null) dart.nullFailed(I[0], 311, 45, "device");
-      return new mouse_cursor._NoopMouseCursorSession.new(this, device);
-    }
-    get debugDescription() {
-      return "uncontrolled";
-    }
-  };
-  (mouse_cursor._NoopMouseCursor.__ = function() {
-    mouse_cursor._NoopMouseCursor.__proto__.new.call(this);
-    ;
-  }).prototype = mouse_cursor._NoopMouseCursor.prototype;
-  dart.addTypeTests(mouse_cursor._NoopMouseCursor);
-  dart.addTypeCaches(mouse_cursor._NoopMouseCursor);
-  dart.setMethodSignature(mouse_cursor._NoopMouseCursor, () => ({
-    __proto__: dart.getMethods(mouse_cursor._NoopMouseCursor.__proto__),
-    createSession: dart.fnType(mouse_cursor._NoopMouseCursorSession, [core.int])
-  }));
-  dart.setGetterSignature(mouse_cursor._NoopMouseCursor, () => ({
-    __proto__: dart.getGetters(mouse_cursor._NoopMouseCursor.__proto__),
-    debugDescription: core.String
-  }));
-  dart.setLibraryUri(mouse_cursor._NoopMouseCursor, I[1]);
-  mouse_cursor._SystemMouseCursorSession = class _SystemMouseCursorSession extends mouse_cursor.MouseCursorSession {
-    get cursor() {
-      return mouse_cursor.SystemMouseCursor.as(super.cursor);
-    }
-    activate() {
-      return system_channels.SystemChannels.mouseCursor.invokeMethod(dart.void, "activateSystemCursor", new (T.IdentityMapOfString$dynamic()).from(["device", this.device, "kind", this.cursor.kind]));
-    }
-    dispose() {
-    }
-  };
-  (mouse_cursor._SystemMouseCursorSession.new = function(cursor, device) {
-    if (cursor == null) dart.nullFailed(I[0], 318, 47, "cursor");
-    if (device == null) dart.nullFailed(I[0], 318, 59, "device");
-    mouse_cursor._SystemMouseCursorSession.__proto__.new.call(this, cursor, device);
-    ;
-  }).prototype = mouse_cursor._SystemMouseCursorSession.prototype;
-  dart.addTypeTests(mouse_cursor._SystemMouseCursorSession);
-  dart.addTypeCaches(mouse_cursor._SystemMouseCursorSession);
-  dart.setMethodSignature(mouse_cursor._SystemMouseCursorSession, () => ({
-    __proto__: dart.getMethods(mouse_cursor._SystemMouseCursorSession.__proto__),
-    activate: dart.fnType(async.Future$(dart.void), []),
-    dispose: dart.fnType(dart.void, [])
-  }));
-  dart.setGetterSignature(mouse_cursor._SystemMouseCursorSession, () => ({
-    __proto__: dart.getGetters(mouse_cursor._SystemMouseCursorSession.__proto__),
-    cursor: mouse_cursor.SystemMouseCursor
-  }));
-  dart.setLibraryUri(mouse_cursor._SystemMouseCursorSession, I[1]);
-  var kind$ = dart.privateName(mouse_cursor, "SystemMouseCursor.kind");
-  mouse_cursor.SystemMouseCursor = class SystemMouseCursor extends mouse_cursor.MouseCursor {
     get kind() {
       return this[kind$];
     }
     set kind(value) {
       super.kind = value;
     }
+    get localPosition() {
+      return this[localPosition$];
+    }
+    set localPosition(value) {
+      super.localPosition = value;
+    }
+  };
+  (tap.TapDownDetails.new = function(opts) {
+    let t0;
+    let globalPosition = opts && 'globalPosition' in opts ? opts.globalPosition : C[0] || CT.C0;
+    if (globalPosition == null) dart.nullFailed(I[0], 25, 10, "globalPosition");
+    let localPosition = opts && 'localPosition' in opts ? opts.localPosition : null;
+    let kind = opts && 'kind' in opts ? opts.kind : null;
+    this[globalPosition$] = globalPosition;
+    this[kind$] = kind;
+    if (!(globalPosition != null)) dart.assertFailed(null, I[0], 28, 15, "globalPosition != null");
+    this[localPosition$] = (t0 = localPosition, t0 == null ? globalPosition : t0);
+    ;
+  }).prototype = tap.TapDownDetails.prototype;
+  dart.addTypeTests(tap.TapDownDetails);
+  dart.addTypeCaches(tap.TapDownDetails);
+  dart.setLibraryUri(tap.TapDownDetails, I[1]);
+  dart.setFieldSignature(tap.TapDownDetails, () => ({
+    __proto__: dart.getFields(tap.TapDownDetails.__proto__),
+    globalPosition: dart.finalFieldType(ui.Offset),
+    kind: dart.finalFieldType(dart.nullable(ui.PointerDeviceKind)),
+    localPosition: dart.finalFieldType(ui.Offset)
+  }));
+  var globalPosition$0 = dart.privateName(tap, "TapUpDetails.globalPosition");
+  var localPosition$0 = dart.privateName(tap, "TapUpDetails.localPosition");
+  var kind$0 = dart.privateName(tap, "TapUpDetails.kind");
+  tap.TapUpDetails = class TapUpDetails extends core.Object {
+    get globalPosition() {
+      return this[globalPosition$0];
+    }
+    set globalPosition(value) {
+      super.globalPosition = value;
+    }
+    get localPosition() {
+      return this[localPosition$0];
+    }
+    set localPosition(value) {
+      super.localPosition = value;
+    }
+    get kind() {
+      return this[kind$0];
+    }
+    set kind(value) {
+      super.kind = value;
+    }
+  };
+  (tap.TapUpDetails.new = function(opts) {
+    let t0;
+    let kind = opts && 'kind' in opts ? opts.kind : null;
+    if (kind == null) dart.nullFailed(I[0], 62, 19, "kind");
+    let globalPosition = opts && 'globalPosition' in opts ? opts.globalPosition : C[0] || CT.C0;
+    if (globalPosition == null) dart.nullFailed(I[0], 63, 10, "globalPosition");
+    let localPosition = opts && 'localPosition' in opts ? opts.localPosition : null;
+    this[kind$0] = kind;
+    this[globalPosition$0] = globalPosition;
+    if (!(globalPosition != null)) dart.assertFailed(null, I[0], 65, 15, "globalPosition != null");
+    this[localPosition$0] = (t0 = localPosition, t0 == null ? globalPosition : t0);
+    ;
+  }).prototype = tap.TapUpDetails.prototype;
+  dart.addTypeTests(tap.TapUpDetails);
+  dart.addTypeCaches(tap.TapUpDetails);
+  dart.setLibraryUri(tap.TapUpDetails, I[1]);
+  dart.setFieldSignature(tap.TapUpDetails, () => ({
+    __proto__: dart.getFields(tap.TapUpDetails.__proto__),
+    globalPosition: dart.finalFieldType(ui.Offset),
+    localPosition: dart.finalFieldType(ui.Offset),
+    kind: dart.finalFieldType(ui.PointerDeviceKind)
+  }));
+  var _sentTapDown = dart.privateName(tap, "_sentTapDown");
+  var _wonArenaForPrimaryPointer = dart.privateName(tap, "_wonArenaForPrimaryPointer");
+  var _down = dart.privateName(tap, "_down");
+  var _up = dart.privateName(tap, "_up");
+  var _reset = dart.privateName(tap, "_reset");
+  var _checkUp = dart.privateName(tap, "_checkUp");
+  var _checkCancel = dart.privateName(tap, "_checkCancel");
+  var _checkDown = dart.privateName(tap, "_checkDown");
+  tap.BaseTapGestureRecognizer = class BaseTapGestureRecognizer extends recognizer.PrimaryPointerGestureRecognizer {
+    addAllowedPointer(event) {
+      if (event == null) dart.nullFailed(I[0], 191, 43, "event");
+      if (!(event != null)) dart.assertFailed(null, I[0], 192, 12, "event != null");
+      if (this.state == recognizer.GestureRecognizerState.ready) {
+        if (this[_down] != null && this[_up] != null) {
+          if (!(dart.nullCheck(this[_down]).pointer == dart.nullCheck(this[_up]).pointer)) dart.assertFailed(null, I[0], 197, 16, "_down!.pointer == _up!.pointer");
+          this[_reset]();
+        }
+        if (!(this[_down] == null && this[_up] == null)) dart.assertFailed(null, I[0], 201, 14, "_down == null && _up == null");
+        this[_down] = event;
+      }
+      if (this[_down] != null) {
+        super.addAllowedPointer(event);
+      }
+    }
+    startTrackingPointer(pointer, transform = null) {
+      if (pointer == null) dart.nullFailed(I[0], 219, 33, "pointer");
+      if (!(this[_down] != null)) dart.assertFailed(null, I[0], 222, 12, "_down != null");
+      super.startTrackingPointer(pointer, transform);
+    }
+    handlePrimaryPointer(event) {
+      if (event == null) dart.nullFailed(I[0], 227, 42, "event");
+      if (events.PointerUpEvent.is(event)) {
+        this[_up] = event;
+        this[_checkUp]();
+      } else if (events.PointerCancelEvent.is(event)) {
+        this.resolve(arena.GestureDisposition.rejected);
+        if (dart.test(this[_sentTapDown])) {
+          this[_checkCancel](event, "");
+        }
+        this[_reset]();
+      } else if (event.buttons != dart.nullCheck(this[_down]).buttons) {
+        this.resolve(arena.GestureDisposition.rejected);
+        this.stopTrackingPointer(dart.nullCheck(this.primaryPointer));
+      }
+    }
+    resolve(disposition) {
+      if (disposition == null) dart.nullFailed(I[0], 244, 35, "disposition");
+      if (dart.test(this[_wonArenaForPrimaryPointer]) && disposition == arena.GestureDisposition.rejected) {
+        if (!dart.test(this[_sentTapDown])) dart.assertFailed(null, I[0], 249, 14, "_sentTapDown");
+        this[_checkCancel](null, "spontaneous");
+        this[_reset]();
+      }
+      super.resolve(disposition);
+    }
+    didExceedDeadline() {
+      this[_checkDown]();
+    }
+    acceptGesture(pointer) {
+      if (pointer == null) dart.nullFailed(I[0], 262, 26, "pointer");
+      super.acceptGesture(pointer);
+      if (pointer == this.primaryPointer) {
+        this[_checkDown]();
+        this[_wonArenaForPrimaryPointer] = true;
+        this[_checkUp]();
+      }
+    }
+    rejectGesture(pointer) {
+      if (pointer == null) dart.nullFailed(I[0], 272, 26, "pointer");
+      super.rejectGesture(pointer);
+      if (pointer == this.primaryPointer) {
+        if (!(this.state != recognizer.GestureRecognizerState.possible)) dart.assertFailed(null, I[0], 276, 14, "state != GestureRecognizerState.possible");
+        if (dart.test(this[_sentTapDown])) this[_checkCancel](null, "forced");
+        this[_reset]();
+      }
+    }
+    [_checkDown]() {
+      if (dart.test(this[_sentTapDown])) {
+        return;
+      }
+      this.handleTapDown({down: dart.nullCheck(this[_down])});
+      this[_sentTapDown] = true;
+    }
+    [_checkUp]() {
+      if (!dart.test(this[_wonArenaForPrimaryPointer]) || this[_up] == null) {
+        return;
+      }
+      if (!(dart.nullCheck(this[_up]).pointer == dart.nullCheck(this[_down]).pointer)) dart.assertFailed(null, I[0], 295, 12, "_up!.pointer == _down!.pointer");
+      this.handleTapUp({down: dart.nullCheck(this[_down]), up: dart.nullCheck(this[_up])});
+      this[_reset]();
+    }
+    [_checkCancel](event, note) {
+      if (note == null) dart.nullFailed(I[0], 300, 55, "note");
+      this.handleTapCancel({down: dart.nullCheck(this[_down]), cancel: event, reason: note});
+    }
+    [_reset]() {
+      this[_sentTapDown] = false;
+      this[_wonArenaForPrimaryPointer] = false;
+      this[_up] = null;
+      this[_down] = null;
+    }
     get debugDescription() {
-      return dart.str(object.objectRuntimeType(this, "SystemMouseCursor")) + "(" + dart.str(this.kind) + ")";
-    }
-    createSession(device) {
-      if (device == null) dart.nullFailed(I[0], 384, 47, "device");
-      return new mouse_cursor._SystemMouseCursorSession.new(this, device);
-    }
-    _equals(other) {
-      if (other == null) return false;
-      if (!dart.equals(dart.runtimeType(other), this[$runtimeType])) return false;
-      return mouse_cursor.SystemMouseCursor.is(other) && other.kind == this.kind;
-    }
-    get hashCode() {
-      return dart.hashCode(this.kind);
+      return "base tap";
     }
     debugFillProperties(properties) {
-      if (properties == null) dart.nullFailed(I[0], 398, 56, "properties");
+      let t0, t0$, t0$0, t0$1;
+      if (properties == null) dart.nullFailed(I[0], 315, 56, "properties");
       super.debugFillProperties(properties);
-      properties.add(new (T.DiagnosticsPropertyOfString()).new("kind", this.kind, {level: diagnostics.DiagnosticLevel.debug}));
+      properties.add(new diagnostics.FlagProperty.new("wonArenaForPrimaryPointer", {value: this[_wonArenaForPrimaryPointer], ifTrue: "won arena"}));
+      properties.add(new (T.DiagnosticsPropertyOfOffset()).new("finalPosition", (t0 = this[_up], t0 == null ? null : t0.position), {defaultValue: null}));
+      properties.add(new (T.DiagnosticsPropertyOfOffset()).new("finalLocalPosition", (t0$ = this[_up], t0$ == null ? null : t0$.localPosition), {defaultValue: (t0$0 = this[_up], t0$0 == null ? null : t0$0.position)}));
+      properties.add(new (T.DiagnosticsPropertyOfint()).new("button", (t0$1 = this[_down], t0$1 == null ? null : t0$1.buttons), {defaultValue: null}));
+      properties.add(new diagnostics.FlagProperty.new("sentTapDown", {value: this[_sentTapDown], ifTrue: "sent tap down"}));
     }
   };
-  (mouse_cursor.SystemMouseCursor.__ = function(opts) {
-    let kind = opts && 'kind' in opts ? opts.kind : null;
-    if (kind == null) dart.nullFailed(I[0], 371, 19, "kind");
-    this[kind$] = kind;
-    if (!(kind != null)) dart.assertFailed(null, I[0], 372, 15, "kind != null");
-    mouse_cursor.SystemMouseCursor.__proto__.new.call(this);
+  (tap.BaseTapGestureRecognizer.new = function(opts) {
+    let debugOwner = opts && 'debugOwner' in opts ? opts.debugOwner : null;
+    this[_sentTapDown] = false;
+    this[_wonArenaForPrimaryPointer] = false;
+    this[_down] = null;
+    this[_up] = null;
+    tap.BaseTapGestureRecognizer.__proto__.new.call(this, {deadline: constants.kPressTimeout, debugOwner: debugOwner});
     ;
-  }).prototype = mouse_cursor.SystemMouseCursor.prototype;
-  dart.addTypeTests(mouse_cursor.SystemMouseCursor);
-  dart.addTypeCaches(mouse_cursor.SystemMouseCursor);
-  dart.setMethodSignature(mouse_cursor.SystemMouseCursor, () => ({
-    __proto__: dart.getMethods(mouse_cursor.SystemMouseCursor.__proto__),
-    createSession: dart.fnType(mouse_cursor._SystemMouseCursorSession, [core.int])
+  }).prototype = tap.BaseTapGestureRecognizer.prototype;
+  dart.addTypeTests(tap.BaseTapGestureRecognizer);
+  dart.addTypeCaches(tap.BaseTapGestureRecognizer);
+  dart.setMethodSignature(tap.BaseTapGestureRecognizer, () => ({
+    __proto__: dart.getMethods(tap.BaseTapGestureRecognizer.__proto__),
+    handlePrimaryPointer: dart.fnType(dart.void, [events.PointerEvent]),
+    [_checkDown]: dart.fnType(dart.void, []),
+    [_checkUp]: dart.fnType(dart.void, []),
+    [_checkCancel]: dart.fnType(dart.void, [dart.nullable(events.PointerCancelEvent), core.String]),
+    [_reset]: dart.fnType(dart.void, [])
   }));
-  dart.setGetterSignature(mouse_cursor.SystemMouseCursor, () => ({
-    __proto__: dart.getGetters(mouse_cursor.SystemMouseCursor.__proto__),
+  dart.setGetterSignature(tap.BaseTapGestureRecognizer, () => ({
+    __proto__: dart.getGetters(tap.BaseTapGestureRecognizer.__proto__),
     debugDescription: core.String
   }));
-  dart.setLibraryUri(mouse_cursor.SystemMouseCursor, I[1]);
-  dart.setFieldSignature(mouse_cursor.SystemMouseCursor, () => ({
-    __proto__: dart.getFields(mouse_cursor.SystemMouseCursor.__proto__),
-    kind: dart.finalFieldType(core.String)
+  dart.setLibraryUri(tap.BaseTapGestureRecognizer, I[1]);
+  dart.setFieldSignature(tap.BaseTapGestureRecognizer, () => ({
+    __proto__: dart.getFields(tap.BaseTapGestureRecognizer.__proto__),
+    [_sentTapDown]: dart.fieldType(core.bool),
+    [_wonArenaForPrimaryPointer]: dart.fieldType(core.bool),
+    [_down]: dart.fieldType(dart.nullable(events.PointerDownEvent)),
+    [_up]: dart.fieldType(dart.nullable(events.PointerUpEvent))
   }));
-  dart.defineExtensionMethods(mouse_cursor.SystemMouseCursor, ['_equals']);
-  dart.defineExtensionAccessors(mouse_cursor.SystemMouseCursor, ['hashCode']);
-  mouse_cursor.SystemMouseCursors = class SystemMouseCursors extends core.Object {
-    static __() {
-      return dart.throw(new core.Error.new());
+  var onTapDown = dart.privateName(tap, "TapGestureRecognizer.onTapDown");
+  var onTapUp = dart.privateName(tap, "TapGestureRecognizer.onTapUp");
+  var onTap = dart.privateName(tap, "TapGestureRecognizer.onTap");
+  var onTapCancel = dart.privateName(tap, "TapGestureRecognizer.onTapCancel");
+  var onSecondaryTap = dart.privateName(tap, "TapGestureRecognizer.onSecondaryTap");
+  var onSecondaryTapDown = dart.privateName(tap, "TapGestureRecognizer.onSecondaryTapDown");
+  var onSecondaryTapUp = dart.privateName(tap, "TapGestureRecognizer.onSecondaryTapUp");
+  var onSecondaryTapCancel = dart.privateName(tap, "TapGestureRecognizer.onSecondaryTapCancel");
+  var onTertiaryTapDown = dart.privateName(tap, "TapGestureRecognizer.onTertiaryTapDown");
+  var onTertiaryTapUp = dart.privateName(tap, "TapGestureRecognizer.onTertiaryTapUp");
+  var onTertiaryTapCancel = dart.privateName(tap, "TapGestureRecognizer.onTertiaryTapCancel");
+  tap.TapGestureRecognizer = class TapGestureRecognizer extends tap.BaseTapGestureRecognizer {
+    get onTapDown() {
+      return this[onTapDown];
+    }
+    set onTapDown(value) {
+      this[onTapDown] = value;
+    }
+    get onTapUp() {
+      return this[onTapUp];
+    }
+    set onTapUp(value) {
+      this[onTapUp] = value;
+    }
+    get onTap() {
+      return this[onTap];
+    }
+    set onTap(value) {
+      this[onTap] = value;
+    }
+    get onTapCancel() {
+      return this[onTapCancel];
+    }
+    set onTapCancel(value) {
+      this[onTapCancel] = value;
+    }
+    get onSecondaryTap() {
+      return this[onSecondaryTap];
+    }
+    set onSecondaryTap(value) {
+      this[onSecondaryTap] = value;
+    }
+    get onSecondaryTapDown() {
+      return this[onSecondaryTapDown];
+    }
+    set onSecondaryTapDown(value) {
+      this[onSecondaryTapDown] = value;
+    }
+    get onSecondaryTapUp() {
+      return this[onSecondaryTapUp];
+    }
+    set onSecondaryTapUp(value) {
+      this[onSecondaryTapUp] = value;
+    }
+    get onSecondaryTapCancel() {
+      return this[onSecondaryTapCancel];
+    }
+    set onSecondaryTapCancel(value) {
+      this[onSecondaryTapCancel] = value;
+    }
+    get onTertiaryTapDown() {
+      return this[onTertiaryTapDown];
+    }
+    set onTertiaryTapDown(value) {
+      this[onTertiaryTapDown] = value;
+    }
+    get onTertiaryTapUp() {
+      return this[onTertiaryTapUp];
+    }
+    set onTertiaryTapUp(value) {
+      this[onTertiaryTapUp] = value;
+    }
+    get onTertiaryTapCancel() {
+      return this[onTertiaryTapCancel];
+    }
+    set onTertiaryTapCancel(value) {
+      this[onTertiaryTapCancel] = value;
+    }
+    isPointerAllowed(event) {
+      if (event == null) dart.nullFailed(I[0], 541, 42, "event");
+      switch (event.buttons) {
+        case 1:
+        {
+          if (this.onTapDown == null && this.onTap == null && this.onTapUp == null && this.onTapCancel == null) return false;
+          break;
+        }
+        case 2:
+        {
+          if (this.onSecondaryTap == null && this.onSecondaryTapDown == null && this.onSecondaryTapUp == null && this.onSecondaryTapCancel == null) return false;
+          break;
+        }
+        case 4:
+        {
+          if (this.onTertiaryTapDown == null && this.onTertiaryTapUp == null && this.onTertiaryTapCancel == null) return false;
+          break;
+        }
+        default:
+        {
+          return false;
+        }
+      }
+      return super.isPointerAllowed(event);
+    }
+    handleTapDown(opts) {
+      let down = opts && 'down' in opts ? opts.down : null;
+      if (down == null) dart.nullFailed(I[0], 571, 49, "down");
+      let details = new tap.TapDownDetails.new({globalPosition: down.position, localPosition: down.localPosition, kind: this.getKindForPointer(down.pointer)});
+      switch (down.buttons) {
+        case 1:
+        {
+          if (this.onTapDown != null) this.invokeCallback(dart.void, "onTapDown", dart.fn(() => dart.nullCheck(this.onTapDown)(details), T.VoidTovoid()));
+          break;
+        }
+        case 2:
+        {
+          if (this.onSecondaryTapDown != null) this.invokeCallback(dart.void, "onSecondaryTapDown", dart.fn(() => dart.nullCheck(this.onSecondaryTapDown)(details), T.VoidTovoid()));
+          break;
+        }
+        case 4:
+        {
+          if (this.onTertiaryTapDown != null) this.invokeCallback(dart.void, "onTertiaryTapDown", dart.fn(() => dart.nullCheck(this.onTertiaryTapDown)(details), T.VoidTovoid()));
+          break;
+        }
+        default:
+      }
+    }
+    handleTapUp(opts) {
+      let down = opts && 'down' in opts ? opts.down : null;
+      if (down == null) dart.nullFailed(I[0], 596, 48, "down");
+      let up = opts && 'up' in opts ? opts.up : null;
+      if (up == null) dart.nullFailed(I[0], 596, 78, "up");
+      let details = new tap.TapUpDetails.new({kind: up.kind, globalPosition: up.position, localPosition: up.localPosition});
+      switch (down.buttons) {
+        case 1:
+        {
+          if (this.onTapUp != null) this.invokeCallback(dart.void, "onTapUp", dart.fn(() => dart.nullCheck(this.onTapUp)(details), T.VoidTovoid()));
+          if (this.onTap != null) this.invokeCallback(dart.void, "onTap", dart.nullCheck(this.onTap));
+          break;
+        }
+        case 2:
+        {
+          if (this.onSecondaryTapUp != null) this.invokeCallback(dart.void, "onSecondaryTapUp", dart.fn(() => dart.nullCheck(this.onSecondaryTapUp)(details), T.VoidTovoid()));
+          if (this.onSecondaryTap != null) this.invokeCallback(dart.void, "onSecondaryTap", dart.fn(() => dart.nullCheck(this.onSecondaryTap)(), T.VoidTovoid()));
+          break;
+        }
+        case 4:
+        {
+          if (this.onTertiaryTapUp != null) this.invokeCallback(dart.void, "onTertiaryTapUp", dart.fn(() => dart.nullCheck(this.onTertiaryTapUp)(details), T.VoidTovoid()));
+          break;
+        }
+        default:
+      }
+    }
+    handleTapCancel(opts) {
+      let down = opts && 'down' in opts ? opts.down : null;
+      if (down == null) dart.nullFailed(I[0], 625, 52, "down");
+      let cancel = opts && 'cancel' in opts ? opts.cancel : null;
+      let reason = opts && 'reason' in opts ? opts.reason : null;
+      if (reason == null) dart.nullFailed(I[0], 625, 102, "reason");
+      let note = reason === "" ? reason : dart.str(reason) + " ";
+      switch (down.buttons) {
+        case 1:
+        {
+          if (this.onTapCancel != null) this.invokeCallback(dart.void, dart.str(note) + "onTapCancel", dart.nullCheck(this.onTapCancel));
+          break;
+        }
+        case 2:
+        {
+          if (this.onSecondaryTapCancel != null) this.invokeCallback(dart.void, dart.str(note) + "onSecondaryTapCancel", dart.nullCheck(this.onSecondaryTapCancel));
+          break;
+        }
+        case 4:
+        {
+          if (this.onTertiaryTapCancel != null) this.invokeCallback(dart.void, dart.str(note) + "onTertiaryTapCancel", dart.nullCheck(this.onTertiaryTapCancel));
+          break;
+        }
+        default:
+      }
+    }
+    get debugDescription() {
+      return "tap";
     }
   };
-  (mouse_cursor.SystemMouseCursors[dart.mixinNew] = function() {
-  }).prototype = mouse_cursor.SystemMouseCursors.prototype;
-  dart.addTypeTests(mouse_cursor.SystemMouseCursors);
-  dart.addTypeCaches(mouse_cursor.SystemMouseCursors);
-  dart.setLibraryUri(mouse_cursor.SystemMouseCursors, I[1]);
-  dart.defineLazy(mouse_cursor.SystemMouseCursors, {
-    /*mouse_cursor.SystemMouseCursors.none*/get none() {
-      return C[3] || CT.C3;
-    },
-    /*mouse_cursor.SystemMouseCursors.basic*/get basic() {
-      return C[4] || CT.C4;
-    },
-    /*mouse_cursor.SystemMouseCursors.click*/get click() {
-      return C[5] || CT.C5;
-    },
-    /*mouse_cursor.SystemMouseCursors.forbidden*/get forbidden() {
-      return C[6] || CT.C6;
-    },
-    /*mouse_cursor.SystemMouseCursors.wait*/get wait() {
-      return C[7] || CT.C7;
-    },
-    /*mouse_cursor.SystemMouseCursors.progress*/get progress() {
-      return C[8] || CT.C8;
-    },
-    /*mouse_cursor.SystemMouseCursors.contextMenu*/get contextMenu() {
-      return C[9] || CT.C9;
-    },
-    /*mouse_cursor.SystemMouseCursors.help*/get help() {
-      return C[10] || CT.C10;
-    },
-    /*mouse_cursor.SystemMouseCursors.text*/get text() {
-      return C[11] || CT.C11;
-    },
-    /*mouse_cursor.SystemMouseCursors.verticalText*/get verticalText() {
-      return C[12] || CT.C12;
-    },
-    /*mouse_cursor.SystemMouseCursors.cell*/get cell() {
-      return C[13] || CT.C13;
-    },
-    /*mouse_cursor.SystemMouseCursors.precise*/get precise() {
-      return C[14] || CT.C14;
-    },
-    /*mouse_cursor.SystemMouseCursors.move*/get move() {
-      return C[15] || CT.C15;
-    },
-    /*mouse_cursor.SystemMouseCursors.grab*/get grab() {
-      return C[16] || CT.C16;
-    },
-    /*mouse_cursor.SystemMouseCursors.grabbing*/get grabbing() {
-      return C[17] || CT.C17;
-    },
-    /*mouse_cursor.SystemMouseCursors.noDrop*/get noDrop() {
-      return C[18] || CT.C18;
-    },
-    /*mouse_cursor.SystemMouseCursors.alias*/get alias() {
-      return C[19] || CT.C19;
-    },
-    /*mouse_cursor.SystemMouseCursors.copy*/get copy() {
-      return C[20] || CT.C20;
-    },
-    /*mouse_cursor.SystemMouseCursors.disappearing*/get disappearing() {
-      return C[21] || CT.C21;
-    },
-    /*mouse_cursor.SystemMouseCursors.allScroll*/get allScroll() {
-      return C[22] || CT.C22;
-    },
-    /*mouse_cursor.SystemMouseCursors.resizeLeftRight*/get resizeLeftRight() {
-      return C[23] || CT.C23;
-    },
-    /*mouse_cursor.SystemMouseCursors.resizeUpDown*/get resizeUpDown() {
-      return C[24] || CT.C24;
-    },
-    /*mouse_cursor.SystemMouseCursors.resizeUpLeftDownRight*/get resizeUpLeftDownRight() {
-      return C[25] || CT.C25;
-    },
-    /*mouse_cursor.SystemMouseCursors.resizeUpRightDownLeft*/get resizeUpRightDownLeft() {
-      return C[26] || CT.C26;
-    },
-    /*mouse_cursor.SystemMouseCursors.resizeUp*/get resizeUp() {
-      return C[27] || CT.C27;
-    },
-    /*mouse_cursor.SystemMouseCursors.resizeDown*/get resizeDown() {
-      return C[28] || CT.C28;
-    },
-    /*mouse_cursor.SystemMouseCursors.resizeLeft*/get resizeLeft() {
-      return C[29] || CT.C29;
-    },
-    /*mouse_cursor.SystemMouseCursors.resizeRight*/get resizeRight() {
-      return C[30] || CT.C30;
-    },
-    /*mouse_cursor.SystemMouseCursors.resizeUpLeft*/get resizeUpLeft() {
-      return C[31] || CT.C31;
-    },
-    /*mouse_cursor.SystemMouseCursors.resizeUpRight*/get resizeUpRight() {
-      return C[32] || CT.C32;
-    },
-    /*mouse_cursor.SystemMouseCursors.resizeDownLeft*/get resizeDownLeft() {
-      return C[33] || CT.C33;
-    },
-    /*mouse_cursor.SystemMouseCursors.resizeDownRight*/get resizeDownRight() {
-      return C[34] || CT.C34;
-    },
-    /*mouse_cursor.SystemMouseCursors.resizeColumn*/get resizeColumn() {
-      return C[35] || CT.C35;
-    },
-    /*mouse_cursor.SystemMouseCursors.resizeRow*/get resizeRow() {
-      return C[36] || CT.C36;
-    },
-    /*mouse_cursor.SystemMouseCursors.zoomIn*/get zoomIn() {
-      return C[37] || CT.C37;
-    },
-    /*mouse_cursor.SystemMouseCursors.zoomOut*/get zoomOut() {
-      return C[38] || CT.C38;
-    }
-  }, false);
-  dart.trackLibraries("packages/flutter/src/services/mouse_cursor.dart", {
-    "package:flutter/src/services/mouse_cursor.dart": mouse_cursor
+  (tap.TapGestureRecognizer.new = function(opts) {
+    let debugOwner = opts && 'debugOwner' in opts ? opts.debugOwner : null;
+    this[onTapDown] = null;
+    this[onTapUp] = null;
+    this[onTap] = null;
+    this[onTapCancel] = null;
+    this[onSecondaryTap] = null;
+    this[onSecondaryTapDown] = null;
+    this[onSecondaryTapUp] = null;
+    this[onSecondaryTapCancel] = null;
+    this[onTertiaryTapDown] = null;
+    this[onTertiaryTapUp] = null;
+    this[onTertiaryTapCancel] = null;
+    tap.TapGestureRecognizer.__proto__.new.call(this, {debugOwner: debugOwner});
+    ;
+  }).prototype = tap.TapGestureRecognizer.prototype;
+  dart.addTypeTests(tap.TapGestureRecognizer);
+  dart.addTypeCaches(tap.TapGestureRecognizer);
+  dart.setMethodSignature(tap.TapGestureRecognizer, () => ({
+    __proto__: dart.getMethods(tap.TapGestureRecognizer.__proto__),
+    handleTapDown: dart.fnType(dart.void, [], {}, {down: events.PointerDownEvent}),
+    handleTapUp: dart.fnType(dart.void, [], {}, {down: events.PointerDownEvent, up: events.PointerUpEvent}),
+    handleTapCancel: dart.fnType(dart.void, [], {cancel: dart.nullable(events.PointerCancelEvent)}, {down: events.PointerDownEvent, reason: core.String})
+  }));
+  dart.setLibraryUri(tap.TapGestureRecognizer, I[1]);
+  dart.setFieldSignature(tap.TapGestureRecognizer, () => ({
+    __proto__: dart.getFields(tap.TapGestureRecognizer.__proto__),
+    onTapDown: dart.fieldType(dart.nullable(dart.fnType(dart.void, [tap.TapDownDetails]))),
+    onTapUp: dart.fieldType(dart.nullable(dart.fnType(dart.void, [tap.TapUpDetails]))),
+    onTap: dart.fieldType(dart.nullable(dart.fnType(dart.void, []))),
+    onTapCancel: dart.fieldType(dart.nullable(dart.fnType(dart.void, []))),
+    onSecondaryTap: dart.fieldType(dart.nullable(dart.fnType(dart.void, []))),
+    onSecondaryTapDown: dart.fieldType(dart.nullable(dart.fnType(dart.void, [tap.TapDownDetails]))),
+    onSecondaryTapUp: dart.fieldType(dart.nullable(dart.fnType(dart.void, [tap.TapUpDetails]))),
+    onSecondaryTapCancel: dart.fieldType(dart.nullable(dart.fnType(dart.void, []))),
+    onTertiaryTapDown: dart.fieldType(dart.nullable(dart.fnType(dart.void, [tap.TapDownDetails]))),
+    onTertiaryTapUp: dart.fieldType(dart.nullable(dart.fnType(dart.void, [tap.TapUpDetails]))),
+    onTertiaryTapCancel: dart.fieldType(dart.nullable(dart.fnType(dart.void, [])))
+  }));
+  dart.trackLibraries("packages/flutter/src/gestures/tap.dart", {
+    "package:flutter/src/gestures/tap.dart": tap
   }, {
-  }, '{"version":3,"sourceRoot":"","sources":["mouse_cursor.dart"],"names":[],"mappings":"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","file":"../../../../../../../../../../../../C:/packages/flutter/src/services/mouse_cursor.dart.lib.js"}');
+  }, '{"version":3,"sourceRoot":"","sources":["tap.dart"],"names":[],"mappings":"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","file":"../../../../../../../../../../../../C:/packages/flutter/src/gestures/tap.dart.lib.js"}');
   // Exports:
   return {
-    src__services__mouse_cursor: mouse_cursor
+    src__gestures__tap: tap
   };
 }));
 
-//# sourceMappingURL=mouse_cursor.dart.lib.js.map
+//# sourceMappingURL=tap.dart.lib.js.map

@@ -7,6 +7,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:carousel_pro/carousel_pro.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter_notenapp/Lehrerliste.dart';
 
 Color esssblau = Color(0xff3d6795);
 Color esssrot = Color(0xffe23c4e);
@@ -88,7 +89,7 @@ class TodoApp extends StatelessWidget {
                 child: Center(
                     child: CupertinoButton(
                   minSize: 250,
-                  onPressed: () => navigateToGradesApp(context),
+                  onPressed: () => navigateToLehrerApp(context),
                   color: esssblau,
                   child: Text("Lehrerliste",
                       textAlign: TextAlign.center,
@@ -181,7 +182,7 @@ class TodoApp extends StatelessWidget {
                 Icons.keyboard_arrow_right,
                 color: esssrot,
               ),
-              onTap: () => navigateToGradesApp(context),
+              onTap: () => navigateToLehrerApp(context),
             ),
             Divider(
               thickness: (1.5),
@@ -229,8 +230,7 @@ class TodoApp extends StatelessWidget {
   }
 
   void navigateToLehrerApp(BuildContext context) {
-    Navigator.push(
-        context, MaterialPageRoute(builder: (context) => new GradeApp()));
+    Navigator.push(context, MaterialPageRoute(builder: (context) => new App()));
   }
 
   void navigateToGradesApp(BuildContext context) {

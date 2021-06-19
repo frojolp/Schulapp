@@ -1,68 +1,27 @@
-define(['dart_sdk', 'packages/flutter/src/animation/curves.dart', 'packages/flutter/src/painting/box_fit.dart', 'packages/flutter/src/widgets/widget_span.dart', 'packages/flutter/src/widgets/page_view.dart', 'packages/flutter/src/painting/_network_image_web.dart', 'packages/flutter/src/painting/box_decoration.dart', 'packages/flutter/src/painting/border_radius.dart', 'packages/flutter/src/painting/decoration_image.dart', 'packages/flutter/src/painting/gradient.dart', 'packages/flutter/src/painting/alignment.dart', 'packages/flutter/src/material/colors.dart', 'packages/flutter/src/widgets/fade_in_image.dart', 'packages/flutter/src/painting/edge_insets.dart', 'packages/flutter/src/material/icon_button.dart', 'packages/flutter/src/rendering/flex.dart'], (function load__packages__carousel_pro__src__carousel_pro_dart(dart_sdk, packages__flutter__src__animation__curves$46dart, packages__flutter__src__painting__box_fit$46dart, packages__flutter__src__widgets__widget_span$46dart, packages__flutter__src__widgets__page_view$46dart, packages__flutter__src__painting___network_image_web$46dart, packages__flutter__src__painting__box_decoration$46dart, packages__flutter__src__painting__border_radius$46dart, packages__flutter__src__painting__decoration_image$46dart, packages__flutter__src__painting__gradient$46dart, packages__flutter__src__painting__alignment$46dart, packages__flutter__src__material__colors$46dart, packages__flutter__src__widgets__fade_in_image$46dart, packages__flutter__src__painting__edge_insets$46dart, packages__flutter__src__material__icon_button$46dart, packages__flutter__src__rendering__flex$46dart) {
+define(['dart_sdk', 'packages/flutter/src/painting/edge_insets.dart', 'packages/flutter/src/animation/curves.dart', 'packages/flutter/src/material/icon_button.dart', 'packages/flutter/src/widgets/widget_span.dart', 'packages/flutter/src/painting/box_decoration.dart', 'packages/flutter/src/painting/box_border.dart', 'packages/flutter/src/widgets/implicit_animations.dart', 'packages/flutter/src/painting/decoration.dart'], (function load__packages__flutter__src__material__drawer_header_dart(dart_sdk, packages__flutter__src__painting__edge_insets$46dart, packages__flutter__src__animation__curves$46dart, packages__flutter__src__material__icon_button$46dart, packages__flutter__src__widgets__widget_span$46dart, packages__flutter__src__painting__box_decoration$46dart, packages__flutter__src__painting__box_border$46dart, packages__flutter__src__widgets__implicit_animations$46dart, packages__flutter__src__painting__decoration$46dart) {
   'use strict';
   const core = dart_sdk.core;
-  const ui = dart_sdk.ui;
-  const async = dart_sdk.async;
-  const _interceptors = dart_sdk._interceptors;
-  const math = dart_sdk.math;
   const dart = dart_sdk.dart;
   const dartx = dart_sdk.dartx;
-  const curves = packages__flutter__src__animation__curves$46dart.src__animation__curves;
-  const box_fit = packages__flutter__src__painting__box_fit$46dart.src__painting__box_fit;
-  const framework = packages__flutter__src__widgets__widget_span$46dart.src__widgets__framework;
-  const container = packages__flutter__src__widgets__widget_span$46dart.src__widgets__container;
-  const widget_inspector = packages__flutter__src__widgets__widget_span$46dart.src__widgets__widget_inspector;
-  const basic = packages__flutter__src__widgets__widget_span$46dart.src__widgets__basic;
-  const scroll_physics = packages__flutter__src__widgets__widget_span$46dart.src__widgets__scroll_physics;
-  const gesture_detector = packages__flutter__src__widgets__widget_span$46dart.src__widgets__gesture_detector;
-  const transitions = packages__flutter__src__widgets__widget_span$46dart.src__widgets__transitions;
-  const page_view = packages__flutter__src__widgets__page_view$46dart.src__widgets__page_view;
-  const image_provider = packages__flutter__src__painting___network_image_web$46dart.src__painting__image_provider;
-  const box_decoration = packages__flutter__src__painting__box_decoration$46dart.src__painting__box_decoration;
-  const border_radius = packages__flutter__src__painting__border_radius$46dart.src__painting__border_radius;
-  const decoration_image = packages__flutter__src__painting__decoration_image$46dart.src__painting__decoration_image;
-  const gradient = packages__flutter__src__painting__gradient$46dart.src__painting__gradient;
-  const alignment = packages__flutter__src__painting__alignment$46dart.src__painting__alignment;
-  const colors = packages__flutter__src__material__colors$46dart.src__material__colors;
-  const fade_in_image = packages__flutter__src__widgets__fade_in_image$46dart.src__widgets__fade_in_image;
   const edge_insets = packages__flutter__src__painting__edge_insets$46dart.src__painting__edge_insets;
-  const material = packages__flutter__src__material__icon_button$46dart.src__material__material;
-  const ink_well = packages__flutter__src__material__icon_button$46dart.src__material__ink_well;
-  const flex = packages__flutter__src__rendering__flex$46dart.src__rendering__flex;
-  var carousel_pro = Object.create(dart.library);
-  var $toString = dartx.toString;
-  var $isNotEmpty = dartx.isNotEmpty;
-  var $round = dartx.round;
-  var $length = dartx.length;
-  var $map = dartx.map;
-  var $toList = dartx.toList;
-  var $contains = dartx.contains;
-  var $abs = dartx.abs;
+  const curves = packages__flutter__src__animation__curves$46dart.src__animation__curves;
+  const debug = packages__flutter__src__material__icon_button$46dart.src__material__debug;
+  const theme$ = packages__flutter__src__material__icon_button$46dart.src__material__theme;
+  const divider = packages__flutter__src__material__icon_button$46dart.src__material__divider;
+  const debug$ = packages__flutter__src__widgets__widget_span$46dart.src__widgets__debug;
+  const media_query = packages__flutter__src__widgets__widget_span$46dart.src__widgets__media_query;
+  const container = packages__flutter__src__widgets__widget_span$46dart.src__widgets__container;
+  const text = packages__flutter__src__widgets__widget_span$46dart.src__widgets__text;
+  const widget_inspector = packages__flutter__src__widgets__widget_span$46dart.src__widgets__widget_inspector;
+  const framework = packages__flutter__src__widgets__widget_span$46dart.src__widgets__framework;
+  const box_decoration = packages__flutter__src__painting__box_decoration$46dart.src__painting__box_decoration;
+  const box_border = packages__flutter__src__painting__box_border$46dart.src__painting__box_border;
+  const implicit_animations = packages__flutter__src__widgets__implicit_animations$46dart.src__widgets__implicit_animations;
+  const decoration = packages__flutter__src__painting__decoration$46dart.src__painting__decoration;
+  var drawer_header = Object.create(dart.library);
   dart._checkModuleNullSafetyMode(false);
   var T = {
-    DotPositionL: () => (T.DotPositionL = dart.constFn(dart.legacy(carousel_pro.DotPosition)))(),
-    TimerL: () => (T.TimerL = dart.constFn(dart.legacy(async.Timer)))(),
-    TimerLToNull: () => (T.TimerLToNull = dart.constFn(dart.fnType(core.Null, [T.TimerL()])))(),
-    WidgetL: () => (T.WidgetL = dart.constFn(dart.legacy(framework.Widget)))(),
-    ObjectL: () => (T.ObjectL = dart.constFn(dart.legacy(core.Object)))(),
-    ImageProviderOfObjectL: () => (T.ImageProviderOfObjectL = dart.constFn(image_provider.ImageProvider$(T.ObjectL())))(),
-    ImageProviderLOfObjectL: () => (T.ImageProviderLOfObjectL = dart.constFn(dart.legacy(T.ImageProviderOfObjectL())))(),
-    doubleL: () => (T.doubleL = dart.constFn(dart.legacy(core.double)))(),
-    JSArrayOfdoubleL: () => (T.JSArrayOfdoubleL = dart.constFn(_interceptors.JSArray$(T.doubleL())))(),
-    ColorL: () => (T.ColorL = dart.constFn(dart.legacy(ui.Color)))(),
-    JSArrayOfColorL: () => (T.JSArrayOfColorL = dart.constFn(_interceptors.JSArray$(T.ColorL())))(),
-    _LocationL: () => (T._LocationL = dart.constFn(dart.legacy(widget_inspector._Location)))(),
-    FadeInImageL: () => (T.FadeInImageL = dart.constFn(dart.legacy(fade_in_image.FadeInImage)))(),
-    dynamicToWidgetL: () => (T.dynamicToWidgetL = dart.constFn(dart.fnType(T.WidgetL(), [dart.dynamic])))(),
-    ImageProviderOfObject: () => (T.ImageProviderOfObject = dart.constFn(image_provider.ImageProvider$(core.Object)))(),
-    JSArrayOfWidgetL: () => (T.JSArrayOfWidgetL = dart.constFn(_interceptors.JSArray$(T.WidgetL())))(),
-    JSArrayOfDotPositionL: () => (T.JSArrayOfDotPositionL = dart.constFn(_interceptors.JSArray$(T.DotPositionL())))(),
-    intL: () => (T.intL = dart.constFn(dart.legacy(core.int)))(),
-    intLToNull: () => (T.intLToNull = dart.constFn(dart.fnType(core.Null, [T.intL()])))(),
-    VoidTovoid: () => (T.VoidTovoid = dart.constFn(dart.fnType(dart.void, [])))(),
-    BuildContextL: () => (T.BuildContextL = dart.constFn(dart.legacy(framework.BuildContext)))(),
-    BuildContextLToWidgetL: () => (T.BuildContextLToWidgetL = dart.constFn(dart.fnType(T.WidgetL(), [T.BuildContextL()])))(),
-    ListOfWidgetL: () => (T.ListOfWidgetL = dart.constFn(core.List$(T.WidgetL())))()
+    _LocationL: () => (T._LocationL = dart.constFn(dart.legacy(widget_inspector._Location)))()
   };
   const CT = Object.create({
     _: () => (C, CT)
@@ -70,159 +29,193 @@ define(['dart_sdk', 'packages/flutter/src/animation/curves.dart', 'packages/flut
   dart.defineLazy(CT, {
     get C0() {
       return C[0] = dart.const({
-        __proto__: carousel_pro.DotPosition.prototype,
-        [_name$]: "DotPosition.topLeft",
-        index: 0
+        __proto__: edge_insets.EdgeInsets.prototype,
+        [EdgeInsets_bottom]: 8,
+        [EdgeInsets_right]: 0,
+        [EdgeInsets_top]: 0,
+        [EdgeInsets_left]: 0
       });
     },
     get C1() {
       return C[1] = dart.const({
-        __proto__: carousel_pro.DotPosition.prototype,
-        [_name$]: "DotPosition.topCenter",
-        index: 1
+        __proto__: edge_insets.EdgeInsets.prototype,
+        [EdgeInsets_bottom]: 8,
+        [EdgeInsets_right]: 16,
+        [EdgeInsets_top]: 16,
+        [EdgeInsets_left]: 16
       });
     },
     get C2() {
       return C[2] = dart.const({
-        __proto__: carousel_pro.DotPosition.prototype,
-        [_name$]: "DotPosition.topRight",
-        index: 2
+        __proto__: core.Duration.prototype,
+        [Duration__duration]: 250000
       });
     },
     get C3() {
       return C[3] = dart.const({
-        __proto__: carousel_pro.DotPosition.prototype,
-        [_name$]: "DotPosition.bottomLeft",
-        index: 3
-      });
-    },
-    get C4() {
-      return C[4] = dart.const({
-        __proto__: carousel_pro.DotPosition.prototype,
-        [_name$]: "DotPosition.bottomCenter",
-        index: 4
-      });
-    },
-    get C5() {
-      return C[5] = dart.const({
-        __proto__: carousel_pro.DotPosition.prototype,
-        [_name$]: "DotPosition.bottomRight",
-        index: 5
+        __proto__: curves.Cubic.prototype,
+        [Cubic_d]: 1,
+        [Cubic_c]: 0.2,
+        [Cubic_b]: 0,
+        [Cubic_a]: 0.4
       });
     },
     get C6() {
-      return C[6] = dart.constList([C[0] || CT.C0, C[1] || CT.C1, C[2] || CT.C2, C[3] || CT.C3, C[4] || CT.C4, C[5] || CT.C5], T.DotPositionL());
+      return C[6] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "context",
+        [_Location_column]: 13,
+        [_Location_line]: 96,
+        [_Location_file]: null
+      });
     },
     get C7() {
       return C[7] = dart.const({
-        __proto__: curves.Cubic.prototype,
-        [Cubic_d]: 1,
-        [Cubic_c]: 0.25,
-        [Cubic_b]: 0.1,
-        [Cubic_a]: 0.25
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "removeTop",
+        [_Location_column]: 13,
+        [_Location_line]: 97,
+        [_Location_file]: null
       });
     },
     get C8() {
       return C[8] = dart.const({
-        __proto__: core.Duration.prototype,
-        [Duration__duration]: 300000
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 13,
+        [_Location_line]: 98,
+        [_Location_file]: null
       });
     },
-    get C9() {
-      return C[9] = dart.const({
-        __proto__: ui.Color.prototype,
-        [Color_value]: 4294967295.0
-      });
+    get C5() {
+      return C[5] = dart.constList([C[6] || CT.C6, C[7] || CT.C7, C[8] || CT.C8], T._LocationL());
     },
-    get C10() {
-      return C[10] = dart.const({
-        __proto__: box_fit.BoxFit.prototype,
-        [_name]: "BoxFit.cover",
-        index: 2
+    get C4() {
+      return C[4] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[5] || CT.C5,
+        [_Location_name]: null,
+        [_Location_column]: 29,
+        [_Location_line]: 95,
+        [_Location_file]: "file:///E:/OneDrive/_Marius/OneDrive/Dokumente%20Marius/Flutter/flutter/packages/flutter/lib/src/material/drawer_header.dart"
       });
     },
     get C11() {
       return C[11] = dart.const({
-        __proto__: core.Duration.prototype,
-        [Duration__duration]: 3000000
-      });
-    },
-    get C14() {
-      return C[14] = dart.const({
         __proto__: widget_inspector._Location.prototype,
         [_Location_parameterLocations]: null,
-        [_Location_name]: "decoration",
-        [_Location_column]: 27,
-        [_Location_line]: 192,
+        [_Location_name]: "style",
+        [_Location_column]: 11,
+        [_Location_line]: 94,
         [_Location_file]: null
       });
-    },
-    get C13() {
-      return C[13] = dart.constList([C[14] || CT.C14], T._LocationL());
     },
     get C12() {
       return C[12] = dart.const({
         __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[13] || CT.C13,
-        [_Location_name]: null,
-        [_Location_column]: 25,
-        [_Location_line]: 191,
-        [_Location_file]: "file:///E:/OneDrive/_Marius/OneDrive/Dokumente%20Marius/Flutter/flutter/.pub-cache/hosted/pub.dartlang.org/carousel_pro-1.0.0/lib/src/carousel_pro.dart"
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 11,
+        [_Location_line]: 95,
+        [_Location_file]: null
       });
     },
-    get C16() {
-      return C[16] = dart.constList([], T._LocationL());
+    get C10() {
+      return C[10] = dart.constList([C[11] || CT.C11, C[12] || CT.C12], T._LocationL());
+    },
+    get C9() {
+      return C[9] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[10] || CT.C10,
+        [_Location_name]: null,
+        [_Location_column]: 39,
+        [_Location_line]: 93,
+        [_Location_file]: "file:///E:/OneDrive/_Marius/OneDrive/Dokumente%20Marius/Flutter/flutter/packages/flutter/lib/src/material/drawer_header.dart"
+      });
     },
     get C15() {
       return C[15] = dart.const({
         __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[16] || CT.C16,
-        [_Location_name]: null,
-        [_Location_column]: 25,
-        [_Location_line]: 210,
-        [_Location_file]: "file:///E:/OneDrive/_Marius/OneDrive/Dokumente%20Marius/Flutter/flutter/.pub-cache/hosted/pub.dartlang.org/carousel_pro-1.0.0/lib/src/carousel_pro.dart"
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "padding",
+        [_Location_column]: 9,
+        [_Location_line]: 89,
+        [_Location_file]: null
+      });
+    },
+    get C16() {
+      return C[16] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "decoration",
+        [_Location_column]: 9,
+        [_Location_line]: 90,
+        [_Location_file]: null
+      });
+    },
+    get C17() {
+      return C[17] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "duration",
+        [_Location_column]: 9,
+        [_Location_line]: 91,
+        [_Location_file]: null
+      });
+    },
+    get C18() {
+      return C[18] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "curve",
+        [_Location_column]: 9,
+        [_Location_line]: 92,
+        [_Location_file]: null
       });
     },
     get C19() {
       return C[19] = dart.const({
         __proto__: widget_inspector._Location.prototype,
         [_Location_parameterLocations]: null,
-        [_Location_name]: "decoration",
-        [_Location_column]: 19,
-        [_Location_line]: 178,
+        [_Location_name]: "child",
+        [_Location_column]: 9,
+        [_Location_line]: 93,
         [_Location_file]: null
       });
     },
-    get C20() {
-      return C[20] = dart.const({
+    get C14() {
+      return C[14] = dart.constList([C[15] || CT.C15, C[16] || CT.C16, C[17] || CT.C17, C[18] || CT.C18, C[19] || CT.C19], T._LocationL());
+    },
+    get C13() {
+      return C[13] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[14] || CT.C14,
+        [_Location_name]: null,
+        [_Location_column]: 14,
+        [_Location_line]: 88,
+        [_Location_file]: "file:///E:/OneDrive/_Marius/OneDrive/Dokumente%20Marius/Flutter/flutter/packages/flutter/lib/src/material/drawer_header.dart"
+      });
+    },
+    get C22() {
+      return C[22] = dart.const({
         __proto__: widget_inspector._Location.prototype,
         [_Location_parameterLocations]: null,
-        [_Location_name]: "child",
-        [_Location_column]: 19,
-        [_Location_line]: 190,
+        [_Location_name]: "height",
+        [_Location_column]: 7,
+        [_Location_line]: 81,
         [_Location_file]: null
-      });
-    },
-    get C18() {
-      return C[18] = dart.constList([C[19] || CT.C19, C[20] || CT.C20], T._LocationL());
-    },
-    get C17() {
-      return C[17] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[18] || CT.C18,
-        [_Location_name]: null,
-        [_Location_column]: 24,
-        [_Location_line]: 177,
-        [_Location_file]: "file:///E:/OneDrive/_Marius/OneDrive/Dokumente%20Marius/Flutter/flutter/.pub-cache/hosted/pub.dartlang.org/carousel_pro-1.0.0/lib/src/carousel_pro.dart"
       });
     },
     get C23() {
       return C[23] = dart.const({
         __proto__: widget_inspector._Location.prototype,
         [_Location_parameterLocations]: null,
-        [_Location_name]: "decoration",
-        [_Location_column]: 23,
-        [_Location_line]: 220,
+        [_Location_name]: "margin",
+        [_Location_column]: 7,
+        [_Location_line]: 82,
         [_Location_file]: null
       });
     },
@@ -230,1264 +223,157 @@ define(['dart_sdk', 'packages/flutter/src/animation/curves.dart', 'packages/flut
       return C[24] = dart.const({
         __proto__: widget_inspector._Location.prototype,
         [_Location_parameterLocations]: null,
-        [_Location_name]: "child",
-        [_Location_column]: 23,
-        [_Location_line]: 235,
+        [_Location_name]: "decoration",
+        [_Location_column]: 7,
+        [_Location_line]: 83,
         [_Location_file]: null
       });
-    },
-    get C22() {
-      return C[22] = dart.constList([C[23] || CT.C23, C[24] || CT.C24], T._LocationL());
-    },
-    get C21() {
-      return C[21] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[22] || CT.C22,
-        [_Location_name]: null,
-        [_Location_column]: 26,
-        [_Location_line]: 219,
-        [_Location_file]: "file:///E:/OneDrive/_Marius/OneDrive/Dokumente%20Marius/Flutter/flutter/.pub-cache/hosted/pub.dartlang.org/carousel_pro-1.0.0/lib/src/carousel_pro.dart"
-      });
-    },
-    get C27() {
-      return C[27] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "borderRadius",
-        [_Location_column]: 19,
-        [_Location_line]: 214,
-        [_Location_file]: null
-      });
-    },
-    get C28() {
-      return C[28] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "child",
-        [_Location_column]: 19,
-        [_Location_line]: 219,
-        [_Location_file]: null
-      });
-    },
-    get C26() {
-      return C[26] = dart.constList([C[27] || CT.C27, C[28] || CT.C28], T._LocationL());
     },
     get C25() {
       return C[25] = dart.const({
         __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[26] || CT.C26,
-        [_Location_name]: null,
-        [_Location_column]: 24,
-        [_Location_line]: 213,
-        [_Location_file]: "file:///E:/OneDrive/_Marius/OneDrive/Dokumente%20Marius/Flutter/flutter/.pub-cache/hosted/pub.dartlang.org/carousel_pro-1.0.0/lib/src/carousel_pro.dart"
-      });
-    },
-    get C31() {
-      return C[31] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "decoration",
-        [_Location_column]: 29,
-        [_Location_line]: 259,
-        [_Location_file]: null
-      });
-    },
-    get C30() {
-      return C[30] = dart.constList([C[31] || CT.C31], T._LocationL());
-    },
-    get C29() {
-      return C[29] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[30] || CT.C30,
-        [_Location_name]: null,
-        [_Location_column]: 27,
-        [_Location_line]: 258,
-        [_Location_file]: "file:///E:/OneDrive/_Marius/OneDrive/Dokumente%20Marius/Flutter/flutter/.pub-cache/hosted/pub.dartlang.org/carousel_pro-1.0.0/lib/src/carousel_pro.dart"
-      });
-    },
-    get C32() {
-      return C[32] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[16] || CT.C16,
-        [_Location_name]: null,
-        [_Location_column]: 27,
-        [_Location_line]: 277,
-        [_Location_file]: "file:///E:/OneDrive/_Marius/OneDrive/Dokumente%20Marius/Flutter/flutter/.pub-cache/hosted/pub.dartlang.org/carousel_pro-1.0.0/lib/src/carousel_pro.dart"
-      });
-    },
-    get C35() {
-      return C[35] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "decoration",
-        [_Location_column]: 21,
-        [_Location_line]: 245,
-        [_Location_file]: null
-      });
-    },
-    get C36() {
-      return C[36] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
         [_Location_parameterLocations]: null,
         [_Location_name]: "child",
-        [_Location_column]: 21,
-        [_Location_line]: 257,
-        [_Location_file]: null
-      });
-    },
-    get C34() {
-      return C[34] = dart.constList([C[35] || CT.C35, C[36] || CT.C36], T._LocationL());
-    },
-    get C33() {
-      return C[33] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[34] || CT.C34,
-        [_Location_name]: null,
-        [_Location_column]: 19,
-        [_Location_line]: 244,
-        [_Location_file]: "file:///E:/OneDrive/_Marius/OneDrive/Dokumente%20Marius/Flutter/flutter/.pub-cache/hosted/pub.dartlang.org/carousel_pro-1.0.0/lib/src/carousel_pro.dart"
-      });
-    },
-    get C39() {
-      return C[39] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "physics",
-        [_Location_column]: 17,
-        [_Location_line]: 315,
-        [_Location_file]: null
-      });
-    },
-    get C40() {
-      return C[40] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "controller",
-        [_Location_column]: 17,
-        [_Location_line]: 316,
-        [_Location_file]: null
-      });
-    },
-    get C41() {
-      return C[41] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "children",
-        [_Location_column]: 17,
-        [_Location_line]: 317,
-        [_Location_file]: null
-      });
-    },
-    get C42() {
-      return C[42] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "onPageChanged",
-        [_Location_column]: 17,
-        [_Location_line]: 318,
-        [_Location_file]: null
-      });
-    },
-    get C38() {
-      return C[38] = dart.constList([C[39] || CT.C39, C[40] || CT.C40, C[41] || CT.C41, C[42] || CT.C42], T._LocationL());
-    },
-    get C37() {
-      return C[37] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[38] || CT.C38,
-        [_Location_name]: null,
-        [_Location_column]: 33,
-        [_Location_line]: 314,
-        [_Location_file]: "file:///E:/OneDrive/_Marius/OneDrive/Dokumente%20Marius/Flutter/flutter/.pub-cache/hosted/pub.dartlang.org/carousel_pro-1.0.0/lib/src/carousel_pro.dart"
-      });
-    },
-    get C45() {
-      return C[45] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "child",
-        [_Location_column]: 17,
-        [_Location_line]: 332,
-        [_Location_file]: null
-      });
-    },
-    get C46() {
-      return C[46] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "onTap",
-        [_Location_column]: 17,
-        [_Location_line]: 333,
-        [_Location_file]: null
-      });
-    },
-    get C44() {
-      return C[44] = dart.constList([C[45] || CT.C45, C[46] || CT.C46], T._LocationL());
-    },
-    get C43() {
-      return C[43] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[44] || CT.C44,
-        [_Location_name]: null,
-        [_Location_column]: 22,
-        [_Location_line]: 331,
-        [_Location_file]: "file:///E:/OneDrive/_Marius/OneDrive/Dokumente%20Marius/Flutter/flutter/.pub-cache/hosted/pub.dartlang.org/carousel_pro-1.0.0/lib/src/carousel_pro.dart"
-      });
-    },
-    get C49() {
-      return C[49] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "builder",
-        [_Location_column]: 13,
-        [_Location_line]: 313,
-        [_Location_file]: null
-      });
-    },
-    get C48() {
-      return C[48] = dart.constList([C[49] || CT.C49], T._LocationL());
-    },
-    get C47() {
-      return C[47] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[48] || CT.C48,
-        [_Location_name]: null,
-        [_Location_column]: 18,
-        [_Location_line]: 312,
-        [_Location_file]: "file:///E:/OneDrive/_Marius/OneDrive/Dokumente%20Marius/Flutter/flutter/.pub-cache/hosted/pub.dartlang.org/carousel_pro-1.0.0/lib/src/carousel_pro.dart"
-      });
-    },
-    get C52() {
-      return C[52] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "child",
-        [_Location_column]: 11,
-        [_Location_line]: 312,
-        [_Location_file]: null
-      });
-    },
-    get C51() {
-      return C[51] = dart.constList([C[52] || CT.C52], T._LocationL());
-    },
-    get C50() {
-      return C[50] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[51] || CT.C51,
-        [_Location_name]: null,
-        [_Location_column]: 9,
-        [_Location_line]: 311,
-        [_Location_file]: "file:///E:/OneDrive/_Marius/OneDrive/Dokumente%20Marius/Flutter/flutter/.pub-cache/hosted/pub.dartlang.org/carousel_pro-1.0.0/lib/src/carousel_pro.dart"
-      });
-    },
-    get C55() {
-      return C[55] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "controller",
-        [_Location_column]: 23,
-        [_Location_line]: 364,
-        [_Location_file]: null
-      });
-    },
-    get C56() {
-      return C[56] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "itemCount",
-        [_Location_column]: 23,
-        [_Location_line]: 365,
-        [_Location_file]: null
-      });
-    },
-    get C57() {
-      return C[57] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "color",
-        [_Location_column]: 23,
-        [_Location_line]: 366,
-        [_Location_file]: null
-      });
-    },
-    get C58() {
-      return C[58] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "increasedColor",
-        [_Location_column]: 23,
-        [_Location_line]: 367,
-        [_Location_file]: null
-      });
-    },
-    get C59() {
-      return C[59] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "dotSize",
-        [_Location_column]: 23,
-        [_Location_line]: 368,
-        [_Location_file]: null
-      });
-    },
-    get C60() {
-      return C[60] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "dotSpacing",
-        [_Location_column]: 23,
-        [_Location_line]: 369,
-        [_Location_file]: null
-      });
-    },
-    get C61() {
-      return C[61] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "dotIncreaseSize",
-        [_Location_column]: 23,
-        [_Location_line]: 370,
-        [_Location_file]: null
-      });
-    },
-    get C62() {
-      return C[62] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "onPageSelected",
-        [_Location_column]: 23,
-        [_Location_line]: 371,
-        [_Location_file]: null
-      });
-    },
-    get C54() {
-      return C[54] = dart.constList([C[55] || CT.C55, C[56] || CT.C56, C[57] || CT.C57, C[58] || CT.C58, C[59] || CT.C59, C[60] || CT.C60, C[61] || CT.C61, C[62] || CT.C62], T._LocationL());
-    },
-    get C53() {
-      return C[53] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[54] || CT.C54,
-        [_Location_name]: null,
-        [_Location_column]: 28,
-        [_Location_line]: 363,
-        [_Location_file]: "file:///E:/OneDrive/_Marius/OneDrive/Dokumente%20Marius/Flutter/flutter/.pub-cache/hosted/pub.dartlang.org/carousel_pro-1.0.0/lib/src/carousel_pro.dart"
-      });
-    },
-    get C65() {
-      return C[65] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "child",
-        [_Location_column]: 21,
-        [_Location_line]: 363,
-        [_Location_file]: null
-      });
-    },
-    get C64() {
-      return C[64] = dart.constList([C[65] || CT.C65], T._LocationL());
-    },
-    get C63() {
-      return C[63] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[64] || CT.C64,
-        [_Location_name]: null,
-        [_Location_column]: 26,
-        [_Location_line]: 362,
-        [_Location_file]: "file:///E:/OneDrive/_Marius/OneDrive/Dokumente%20Marius/Flutter/flutter/.pub-cache/hosted/pub.dartlang.org/carousel_pro-1.0.0/lib/src/carousel_pro.dart"
-      });
-    },
-    get C68() {
-      return C[68] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "decoration",
-        [_Location_column]: 19,
-        [_Location_line]: 345,
-        [_Location_file]: null
-      });
-    },
-    get C69() {
-      return C[69] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "padding",
-        [_Location_column]: 19,
-        [_Location_line]: 361,
-        [_Location_file]: null
-      });
-    },
-    get C70() {
-      return C[70] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "child",
-        [_Location_column]: 19,
-        [_Location_line]: 362,
-        [_Location_file]: null
-      });
-    },
-    get C67() {
-      return C[67] = dart.constList([C[68] || CT.C68, C[69] || CT.C69, C[70] || CT.C70], T._LocationL());
-    },
-    get C66() {
-      return C[66] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[67] || CT.C67,
-        [_Location_name]: null,
-        [_Location_column]: 24,
-        [_Location_line]: 344,
-        [_Location_file]: "file:///E:/OneDrive/_Marius/OneDrive/Dokumente%20Marius/Flutter/flutter/.pub-cache/hosted/pub.dartlang.org/carousel_pro-1.0.0/lib/src/carousel_pro.dart"
-      });
-    },
-    get C73() {
-      return C[73] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "bottom",
-        [_Location_column]: 17,
-        [_Location_line]: 340,
-        [_Location_file]: null
-      });
-    },
-    get C74() {
-      return C[74] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "top",
-        [_Location_column]: 17,
-        [_Location_line]: 341,
-        [_Location_file]: null
-      });
-    },
-    get C75() {
-      return C[75] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "left",
-        [_Location_column]: 17,
-        [_Location_line]: 342,
-        [_Location_file]: null
-      });
-    },
-    get C76() {
-      return C[76] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "right",
-        [_Location_column]: 17,
-        [_Location_line]: 343,
-        [_Location_file]: null
-      });
-    },
-    get C77() {
-      return C[77] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "child",
-        [_Location_column]: 17,
-        [_Location_line]: 344,
-        [_Location_file]: null
-      });
-    },
-    get C72() {
-      return C[72] = dart.constList([C[73] || CT.C73, C[74] || CT.C74, C[75] || CT.C75, C[76] || CT.C76, C[77] || CT.C77], T._LocationL());
-    },
-    get C71() {
-      return C[71] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[72] || CT.C72,
-        [_Location_name]: null,
-        [_Location_column]: 15,
-        [_Location_line]: 339,
-        [_Location_file]: "file:///E:/OneDrive/_Marius/OneDrive/Dokumente%20Marius/Flutter/flutter/.pub-cache/hosted/pub.dartlang.org/carousel_pro-1.0.0/lib/src/carousel_pro.dart"
-      });
-    },
-    get C78() {
-      return C[78] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[16] || CT.C16,
-        [_Location_name]: null,
-        [_Location_column]: 15,
-        [_Location_line]: 382,
-        [_Location_file]: "file:///E:/OneDrive/_Marius/OneDrive/Dokumente%20Marius/Flutter/flutter/.pub-cache/hosted/pub.dartlang.org/carousel_pro-1.0.0/lib/src/carousel_pro.dart"
-      });
-    },
-    get C81() {
-      return C[81] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "children",
         [_Location_column]: 7,
-        [_Location_line]: 310,
+        [_Location_line]: 88,
         [_Location_file]: null
       });
     },
-    get C80() {
-      return C[80] = dart.constList([C[81] || CT.C81], T._LocationL());
+    get C21() {
+      return C[21] = dart.constList([C[22] || CT.C22, C[23] || CT.C23, C[24] || CT.C24, C[25] || CT.C25], T._LocationL());
     },
-    get C79() {
-      return C[79] = dart.const({
+    get C20() {
+      return C[20] = dart.const({
         __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[80] || CT.C80,
+        [_Location_parameterLocations]: C[21] || CT.C21,
         [_Location_name]: null,
         [_Location_column]: 12,
-        [_Location_line]: 309,
-        [_Location_file]: "file:///E:/OneDrive/_Marius/OneDrive/Dokumente%20Marius/Flutter/flutter/.pub-cache/hosted/pub.dartlang.org/carousel_pro-1.0.0/lib/src/carousel_pro.dart"
-      });
-    },
-    get C84() {
-      return C[84] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "onTap",
-        [_Location_column]: 15,
-        [_Location_line]: 444,
-        [_Location_file]: null
-      });
-    },
-    get C83() {
-      return C[83] = dart.constList([C[84] || CT.C84], T._LocationL());
-    },
-    get C82() {
-      return C[82] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[83] || CT.C83,
-        [_Location_name]: null,
-        [_Location_column]: 20,
-        [_Location_line]: 443,
-        [_Location_file]: "file:///E:/OneDrive/_Marius/OneDrive/Dokumente%20Marius/Flutter/flutter/.pub-cache/hosted/pub.dartlang.org/carousel_pro-1.0.0/lib/src/carousel_pro.dart"
-      });
-    },
-    get C87() {
-      return C[87] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "width",
-        [_Location_column]: 13,
-        [_Location_line]: 441,
-        [_Location_file]: null
-      });
-    },
-    get C88() {
-      return C[88] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "height",
-        [_Location_column]: 13,
-        [_Location_line]: 442,
-        [_Location_file]: null
-      });
-    },
-    get C89() {
-      return C[89] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "child",
-        [_Location_column]: 13,
-        [_Location_line]: 443,
-        [_Location_file]: null
-      });
-    },
-    get C86() {
-      return C[86] = dart.constList([C[87] || CT.C87, C[88] || CT.C88, C[89] || CT.C89], T._LocationL());
-    },
-    get C85() {
-      return C[85] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[86] || CT.C86,
-        [_Location_name]: null,
-        [_Location_column]: 18,
-        [_Location_line]: 440,
-        [_Location_file]: "file:///E:/OneDrive/_Marius/OneDrive/Dokumente%20Marius/Flutter/flutter/.pub-cache/hosted/pub.dartlang.org/carousel_pro-1.0.0/lib/src/carousel_pro.dart"
-      });
-    },
-    get C92() {
-      return C[92] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "color",
-        [_Location_column]: 11,
-        [_Location_line]: 438,
-        [_Location_file]: null
-      });
-    },
-    get C93() {
-      return C[93] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "type",
-        [_Location_column]: 11,
-        [_Location_line]: 439,
-        [_Location_file]: null
-      });
-    },
-    get C94() {
-      return C[94] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "child",
-        [_Location_column]: 11,
-        [_Location_line]: 440,
-        [_Location_file]: null
-      });
-    },
-    get C91() {
-      return C[91] = dart.constList([C[92] || CT.C92, C[93] || CT.C93, C[94] || CT.C94], T._LocationL());
-    },
-    get C90() {
-      return C[90] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[91] || CT.C91,
-        [_Location_name]: null,
-        [_Location_column]: 16,
-        [_Location_line]: 437,
-        [_Location_file]: "file:///E:/OneDrive/_Marius/OneDrive/Dokumente%20Marius/Flutter/flutter/.pub-cache/hosted/pub.dartlang.org/carousel_pro-1.0.0/lib/src/carousel_pro.dart"
-      });
-    },
-    get C97() {
-      return C[97] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "child",
-        [_Location_column]: 9,
-        [_Location_line]: 437,
-        [_Location_file]: null
-      });
-    },
-    get C96() {
-      return C[96] = dart.constList([C[97] || CT.C97], T._LocationL());
-    },
-    get C95() {
-      return C[95] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[96] || CT.C96,
-        [_Location_name]: null,
-        [_Location_column]: 14,
-        [_Location_line]: 436,
-        [_Location_file]: "file:///E:/OneDrive/_Marius/OneDrive/Dokumente%20Marius/Flutter/flutter/.pub-cache/hosted/pub.dartlang.org/carousel_pro-1.0.0/lib/src/carousel_pro.dart"
-      });
-    },
-    get C100() {
-      return C[100] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "width",
-        [_Location_column]: 7,
-        [_Location_line]: 435,
-        [_Location_file]: null
-      });
-    },
-    get C101() {
-      return C[101] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "child",
-        [_Location_column]: 7,
-        [_Location_line]: 436,
-        [_Location_file]: null
-      });
-    },
-    get C99() {
-      return C[99] = dart.constList([C[100] || CT.C100, C[101] || CT.C101], T._LocationL());
-    },
-    get C98() {
-      return C[98] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[99] || CT.C99,
-        [_Location_name]: null,
-        [_Location_column]: 12,
-        [_Location_line]: 434,
-        [_Location_file]: "file:///E:/OneDrive/_Marius/OneDrive/Dokumente%20Marius/Flutter/flutter/.pub-cache/hosted/pub.dartlang.org/carousel_pro-1.0.0/lib/src/carousel_pro.dart"
-      });
-    },
-    get C104() {
-      return C[104] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "mainAxisAlignment",
-        [_Location_column]: 7,
-        [_Location_line]: 454,
-        [_Location_file]: null
-      });
-    },
-    get C105() {
-      return C[105] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "children",
-        [_Location_column]: 7,
-        [_Location_line]: 455,
-        [_Location_file]: null
-      });
-    },
-    get C103() {
-      return C[103] = dart.constList([C[104] || CT.C104, C[105] || CT.C105], T._LocationL());
-    },
-    get C102() {
-      return C[102] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[103] || CT.C103,
-        [_Location_name]: null,
-        [_Location_column]: 12,
-        [_Location_line]: 453,
-        [_Location_file]: "file:///E:/OneDrive/_Marius/OneDrive/Dokumente%20Marius/Flutter/flutter/.pub-cache/hosted/pub.dartlang.org/carousel_pro-1.0.0/lib/src/carousel_pro.dart"
+        [_Location_line]: 80,
+        [_Location_file]: "file:///E:/OneDrive/_Marius/OneDrive/Dokumente%20Marius/Flutter/flutter/packages/flutter/lib/src/material/drawer_header.dart"
       });
     }
   }, false);
-  var C = Array(106).fill(void 0);
-  var I = ["package:carousel_pro/src/carousel_pro.dart"];
-  var _name$ = dart.privateName(carousel_pro, "_name");
-  carousel_pro.DotPosition = class DotPosition extends core.Object {
-    toString() {
-      return this[_name$];
-    }
-  };
-  (carousel_pro.DotPosition.new = function(index, _name) {
-    this.index = index;
-    this[_name$] = _name;
-    ;
-  }).prototype = carousel_pro.DotPosition.prototype;
-  dart.addTypeTests(carousel_pro.DotPosition);
-  dart.addTypeCaches(carousel_pro.DotPosition);
-  dart.setMethodSignature(carousel_pro.DotPosition, () => ({
-    __proto__: dart.getMethods(carousel_pro.DotPosition.__proto__),
-    toString: dart.fnType(dart.legacy(core.String), []),
-    [$toString]: dart.fnType(dart.legacy(core.String), [])
-  }));
-  dart.setLibraryUri(carousel_pro.DotPosition, I[0]);
-  dart.setFieldSignature(carousel_pro.DotPosition, () => ({
-    __proto__: dart.getFields(carousel_pro.DotPosition.__proto__),
-    index: dart.finalFieldType(dart.legacy(core.int)),
-    [_name$]: dart.finalFieldType(dart.legacy(core.String))
-  }));
-  dart.defineExtensionMethods(carousel_pro.DotPosition, ['toString']);
-  carousel_pro.DotPosition.topLeft = C[0] || CT.C0;
-  carousel_pro.DotPosition.topCenter = C[1] || CT.C1;
-  carousel_pro.DotPosition.topRight = C[2] || CT.C2;
-  carousel_pro.DotPosition.bottomLeft = C[3] || CT.C3;
-  carousel_pro.DotPosition.bottomCenter = C[4] || CT.C4;
-  carousel_pro.DotPosition.bottomRight = C[5] || CT.C5;
-  carousel_pro.DotPosition.values = C[6] || CT.C6;
-  var images$ = dart.privateName(carousel_pro, "Carousel.images");
-  var defaultImage$ = dart.privateName(carousel_pro, "Carousel.defaultImage");
-  var animationCurve$ = dart.privateName(carousel_pro, "Carousel.animationCurve");
-  var animationDuration$ = dart.privateName(carousel_pro, "Carousel.animationDuration");
-  var dotSize$ = dart.privateName(carousel_pro, "Carousel.dotSize");
-  var dotIncreaseSize$ = dart.privateName(carousel_pro, "Carousel.dotIncreaseSize");
-  var dotSpacing$ = dart.privateName(carousel_pro, "Carousel.dotSpacing");
-  var dotColor$ = dart.privateName(carousel_pro, "Carousel.dotColor");
-  var dotBgColor$ = dart.privateName(carousel_pro, "Carousel.dotBgColor");
-  var dotIncreasedColor$ = dart.privateName(carousel_pro, "Carousel.dotIncreasedColor");
-  var showIndicator$ = dart.privateName(carousel_pro, "Carousel.showIndicator");
-  var indicatorBgPadding$ = dart.privateName(carousel_pro, "Carousel.indicatorBgPadding");
-  var boxFit$ = dart.privateName(carousel_pro, "Carousel.boxFit");
-  var borderRadius$ = dart.privateName(carousel_pro, "Carousel.borderRadius");
-  var radius$ = dart.privateName(carousel_pro, "Carousel.radius");
-  var dotPosition$ = dart.privateName(carousel_pro, "Carousel.dotPosition");
-  var dotHorizontalPadding$ = dart.privateName(carousel_pro, "Carousel.dotHorizontalPadding");
-  var dotVerticalPadding$ = dart.privateName(carousel_pro, "Carousel.dotVerticalPadding");
-  var moveIndicatorFromBottom$ = dart.privateName(carousel_pro, "Carousel.moveIndicatorFromBottom");
-  var noRadiusForIndicator$ = dart.privateName(carousel_pro, "Carousel.noRadiusForIndicator");
-  var overlayShadow$ = dart.privateName(carousel_pro, "Carousel.overlayShadow");
-  var overlayShadowColors$ = dart.privateName(carousel_pro, "Carousel.overlayShadowColors");
-  var overlayShadowSize$ = dart.privateName(carousel_pro, "Carousel.overlayShadowSize");
-  var autoplay$ = dart.privateName(carousel_pro, "Carousel.autoplay");
-  var autoplayDuration$ = dart.privateName(carousel_pro, "Carousel.autoplayDuration");
-  var onImageTap$ = dart.privateName(carousel_pro, "Carousel.onImageTap");
-  var onImageChange$ = dart.privateName(carousel_pro, "Carousel.onImageChange");
+  var C = Array(26).fill(void 0);
+  var I = [
+    "file:///E:/OneDrive/_Marius/OneDrive/Dokumente%20Marius/Flutter/flutter/packages/flutter/lib/src/material/drawer_header.dart",
+    "package:flutter/src/material/drawer_header.dart"
+  ];
+  var decoration$ = dart.privateName(drawer_header, "DrawerHeader.decoration");
+  var padding$ = dart.privateName(drawer_header, "DrawerHeader.padding");
+  var margin$ = dart.privateName(drawer_header, "DrawerHeader.margin");
+  var duration$ = dart.privateName(drawer_header, "DrawerHeader.duration");
+  var curve$ = dart.privateName(drawer_header, "DrawerHeader.curve");
+  var child$ = dart.privateName(drawer_header, "DrawerHeader.child");
+  var EdgeInsets_bottom = dart.privateName(edge_insets, "EdgeInsets.bottom");
+  var EdgeInsets_right = dart.privateName(edge_insets, "EdgeInsets.right");
+  var EdgeInsets_top = dart.privateName(edge_insets, "EdgeInsets.top");
+  var EdgeInsets_left = dart.privateName(edge_insets, "EdgeInsets.left");
+  var Duration__duration = dart.privateName(core, "Duration._duration");
   var Cubic_d = dart.privateName(curves, "Cubic.d");
   var Cubic_c = dart.privateName(curves, "Cubic.c");
   var Cubic_b = dart.privateName(curves, "Cubic.b");
   var Cubic_a = dart.privateName(curves, "Cubic.a");
-  var Duration__duration = dart.privateName(core, "Duration._duration");
-  var Color_value = dart.privateName(ui, "Color.value");
-  var _name = dart.privateName(box_fit, "_name");
-  carousel_pro.Carousel = class Carousel extends framework.StatefulWidget {
-    get images() {
-      return this[images$];
-    }
-    set images(value) {
-      super.images = value;
-    }
-    get defaultImage() {
-      return this[defaultImage$];
-    }
-    set defaultImage(value) {
-      super.defaultImage = value;
-    }
-    get animationCurve() {
-      return this[animationCurve$];
-    }
-    set animationCurve(value) {
-      super.animationCurve = value;
-    }
-    get animationDuration() {
-      return this[animationDuration$];
-    }
-    set animationDuration(value) {
-      super.animationDuration = value;
-    }
-    get dotSize() {
-      return this[dotSize$];
-    }
-    set dotSize(value) {
-      super.dotSize = value;
-    }
-    get dotIncreaseSize() {
-      return this[dotIncreaseSize$];
-    }
-    set dotIncreaseSize(value) {
-      super.dotIncreaseSize = value;
-    }
-    get dotSpacing() {
-      return this[dotSpacing$];
-    }
-    set dotSpacing(value) {
-      super.dotSpacing = value;
-    }
-    get dotColor() {
-      return this[dotColor$];
-    }
-    set dotColor(value) {
-      super.dotColor = value;
-    }
-    get dotBgColor() {
-      return this[dotBgColor$];
-    }
-    set dotBgColor(value) {
-      super.dotBgColor = value;
-    }
-    get dotIncreasedColor() {
-      return this[dotIncreasedColor$];
-    }
-    set dotIncreasedColor(value) {
-      super.dotIncreasedColor = value;
-    }
-    get showIndicator() {
-      return this[showIndicator$];
-    }
-    set showIndicator(value) {
-      super.showIndicator = value;
-    }
-    get indicatorBgPadding() {
-      return this[indicatorBgPadding$];
-    }
-    set indicatorBgPadding(value) {
-      super.indicatorBgPadding = value;
-    }
-    get boxFit() {
-      return this[boxFit$];
-    }
-    set boxFit(value) {
-      super.boxFit = value;
-    }
-    get borderRadius() {
-      return this[borderRadius$];
-    }
-    set borderRadius(value) {
-      super.borderRadius = value;
-    }
-    get radius() {
-      return this[radius$];
-    }
-    set radius(value) {
-      super.radius = value;
-    }
-    get dotPosition() {
-      return this[dotPosition$];
-    }
-    set dotPosition(value) {
-      super.dotPosition = value;
-    }
-    get dotHorizontalPadding() {
-      return this[dotHorizontalPadding$];
-    }
-    set dotHorizontalPadding(value) {
-      super.dotHorizontalPadding = value;
-    }
-    get dotVerticalPadding() {
-      return this[dotVerticalPadding$];
-    }
-    set dotVerticalPadding(value) {
-      super.dotVerticalPadding = value;
-    }
-    get moveIndicatorFromBottom() {
-      return this[moveIndicatorFromBottom$];
-    }
-    set moveIndicatorFromBottom(value) {
-      super.moveIndicatorFromBottom = value;
-    }
-    get noRadiusForIndicator() {
-      return this[noRadiusForIndicator$];
-    }
-    set noRadiusForIndicator(value) {
-      super.noRadiusForIndicator = value;
-    }
-    get overlayShadow() {
-      return this[overlayShadow$];
-    }
-    set overlayShadow(value) {
-      super.overlayShadow = value;
-    }
-    get overlayShadowColors() {
-      return this[overlayShadowColors$];
-    }
-    set overlayShadowColors(value) {
-      super.overlayShadowColors = value;
-    }
-    get overlayShadowSize() {
-      return this[overlayShadowSize$];
-    }
-    set overlayShadowSize(value) {
-      super.overlayShadowSize = value;
-    }
-    get autoplay() {
-      return this[autoplay$];
-    }
-    set autoplay(value) {
-      super.autoplay = value;
-    }
-    get autoplayDuration() {
-      return this[autoplayDuration$];
-    }
-    set autoplayDuration(value) {
-      super.autoplayDuration = value;
-    }
-    get onImageTap() {
-      return this[onImageTap$];
-    }
-    set onImageTap(value) {
-      super.onImageTap = value;
-    }
-    get onImageChange() {
-      return this[onImageChange$];
-    }
-    set onImageChange(value) {
-      super.onImageChange = value;
-    }
-    createState() {
-      return new carousel_pro.CarouselState.new();
-    }
-  };
-  (carousel_pro.Carousel.new = function(opts) {
-    let images = opts && 'images' in opts ? opts.images : null;
-    let animationCurve = opts && 'animationCurve' in opts ? opts.animationCurve : C[7] || CT.C7;
-    let animationDuration = opts && 'animationDuration' in opts ? opts.animationDuration : C[8] || CT.C8;
-    let dotSize = opts && 'dotSize' in opts ? opts.dotSize : 8;
-    let dotSpacing = opts && 'dotSpacing' in opts ? opts.dotSpacing : 25;
-    let dotIncreaseSize = opts && 'dotIncreaseSize' in opts ? opts.dotIncreaseSize : 2;
-    let dotColor = opts && 'dotColor' in opts ? opts.dotColor : C[9] || CT.C9;
-    let dotBgColor = opts && 'dotBgColor' in opts ? opts.dotBgColor : null;
-    let dotIncreasedColor = opts && 'dotIncreasedColor' in opts ? opts.dotIncreasedColor : C[9] || CT.C9;
-    let showIndicator = opts && 'showIndicator' in opts ? opts.showIndicator : true;
-    let indicatorBgPadding = opts && 'indicatorBgPadding' in opts ? opts.indicatorBgPadding : 20;
-    let boxFit = opts && 'boxFit' in opts ? opts.boxFit : C[10] || CT.C10;
-    let borderRadius = opts && 'borderRadius' in opts ? opts.borderRadius : false;
-    let radius = opts && 'radius' in opts ? opts.radius : null;
-    let dotPosition = opts && 'dotPosition' in opts ? opts.dotPosition : C[4] || CT.C4;
-    let dotHorizontalPadding = opts && 'dotHorizontalPadding' in opts ? opts.dotHorizontalPadding : 0;
-    let dotVerticalPadding = opts && 'dotVerticalPadding' in opts ? opts.dotVerticalPadding : 0;
-    let moveIndicatorFromBottom = opts && 'moveIndicatorFromBottom' in opts ? opts.moveIndicatorFromBottom : 0;
-    let noRadiusForIndicator = opts && 'noRadiusForIndicator' in opts ? opts.noRadiusForIndicator : false;
-    let overlayShadow = opts && 'overlayShadow' in opts ? opts.overlayShadow : false;
-    let overlayShadowColors = opts && 'overlayShadowColors' in opts ? opts.overlayShadowColors : null;
-    let overlayShadowSize = opts && 'overlayShadowSize' in opts ? opts.overlayShadowSize : 0.5;
-    let autoplay = opts && 'autoplay' in opts ? opts.autoplay : true;
-    let autoplayDuration = opts && 'autoplayDuration' in opts ? opts.autoplayDuration : C[11] || CT.C11;
-    let onImageTap = opts && 'onImageTap' in opts ? opts.onImageTap : null;
-    let onImageChange = opts && 'onImageChange' in opts ? opts.onImageChange : null;
-    let defaultImage = opts && 'defaultImage' in opts ? opts.defaultImage : null;
-    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
-    this[images$] = images;
-    this[animationCurve$] = animationCurve;
-    this[animationDuration$] = animationDuration;
-    this[dotSize$] = dotSize;
-    this[dotSpacing$] = dotSpacing;
-    this[dotIncreaseSize$] = dotIncreaseSize;
-    this[dotColor$] = dotColor;
-    this[dotBgColor$] = dotBgColor;
-    this[dotIncreasedColor$] = dotIncreasedColor;
-    this[showIndicator$] = showIndicator;
-    this[indicatorBgPadding$] = indicatorBgPadding;
-    this[boxFit$] = boxFit;
-    this[borderRadius$] = borderRadius;
-    this[radius$] = radius;
-    this[dotPosition$] = dotPosition;
-    this[dotHorizontalPadding$] = dotHorizontalPadding;
-    this[dotVerticalPadding$] = dotVerticalPadding;
-    this[moveIndicatorFromBottom$] = moveIndicatorFromBottom;
-    this[noRadiusForIndicator$] = noRadiusForIndicator;
-    this[overlayShadow$] = overlayShadow;
-    this[overlayShadowColors$] = overlayShadowColors;
-    this[overlayShadowSize$] = overlayShadowSize;
-    this[autoplay$] = autoplay;
-    this[autoplayDuration$] = autoplayDuration;
-    this[onImageTap$] = onImageTap;
-    this[onImageChange$] = onImageChange;
-    this[defaultImage$] = defaultImage;
-    carousel_pro.Carousel.__proto__.new.call(this, {$creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
-    ;
-  }).prototype = carousel_pro.Carousel.prototype;
-  dart.addTypeTests(carousel_pro.Carousel);
-  dart.addTypeCaches(carousel_pro.Carousel);
-  dart.setMethodSignature(carousel_pro.Carousel, () => ({
-    __proto__: dart.getMethods(carousel_pro.Carousel.__proto__),
-    createState: dart.fnType(dart.legacy(framework.State$(dart.legacy(framework.StatefulWidget))), [])
-  }));
-  dart.setLibraryUri(carousel_pro.Carousel, I[0]);
-  dart.setFieldSignature(carousel_pro.Carousel, () => ({
-    __proto__: dart.getFields(carousel_pro.Carousel.__proto__),
-    images: dart.finalFieldType(dart.legacy(core.List)),
-    defaultImage: dart.finalFieldType(dart.dynamic),
-    animationCurve: dart.finalFieldType(dart.legacy(curves.Curve)),
-    animationDuration: dart.finalFieldType(dart.legacy(core.Duration)),
-    dotSize: dart.finalFieldType(dart.legacy(core.double)),
-    dotIncreaseSize: dart.finalFieldType(dart.legacy(core.double)),
-    dotSpacing: dart.finalFieldType(dart.legacy(core.double)),
-    dotColor: dart.finalFieldType(dart.legacy(ui.Color)),
-    dotBgColor: dart.finalFieldType(dart.legacy(ui.Color)),
-    dotIncreasedColor: dart.finalFieldType(dart.legacy(ui.Color)),
-    showIndicator: dart.finalFieldType(dart.legacy(core.bool)),
-    indicatorBgPadding: dart.finalFieldType(dart.legacy(core.double)),
-    boxFit: dart.finalFieldType(dart.legacy(box_fit.BoxFit)),
-    borderRadius: dart.finalFieldType(dart.legacy(core.bool)),
-    radius: dart.finalFieldType(dart.legacy(ui.Radius)),
-    dotPosition: dart.finalFieldType(dart.legacy(carousel_pro.DotPosition)),
-    dotHorizontalPadding: dart.finalFieldType(dart.legacy(core.double)),
-    dotVerticalPadding: dart.finalFieldType(dart.legacy(core.double)),
-    moveIndicatorFromBottom: dart.finalFieldType(dart.legacy(core.double)),
-    noRadiusForIndicator: dart.finalFieldType(dart.legacy(core.bool)),
-    overlayShadow: dart.finalFieldType(dart.legacy(core.bool)),
-    overlayShadowColors: dart.finalFieldType(dart.legacy(ui.Color)),
-    overlayShadowSize: dart.finalFieldType(dart.legacy(core.double)),
-    autoplay: dart.finalFieldType(dart.legacy(core.bool)),
-    autoplayDuration: dart.finalFieldType(dart.legacy(core.Duration)),
-    onImageTap: dart.finalFieldType(dart.legacy(dart.fnType(dart.void, [dart.legacy(core.int)]))),
-    onImageChange: dart.finalFieldType(dart.legacy(dart.fnType(dart.void, [dart.legacy(core.int), dart.legacy(core.int)])))
-  }));
-  var timer = dart.privateName(carousel_pro, "CarouselState.timer");
-  var _currentImageIndex = dart.privateName(carousel_pro, "_currentImageIndex");
-  var _controller = dart.privateName(carousel_pro, "_controller");
   var _Location_parameterLocations = dart.privateName(widget_inspector, "_Location.parameterLocations");
   var _Location_name = dart.privateName(widget_inspector, "_Location.name");
   var _Location_column = dart.privateName(widget_inspector, "_Location.column");
   var _Location_line = dart.privateName(widget_inspector, "_Location.line");
   var _Location_file = dart.privateName(widget_inspector, "_Location.file");
-  carousel_pro.CarouselState = class CarouselState extends framework.State$(dart.legacy(carousel_pro.Carousel)) {
-    get timer() {
-      return this[timer];
+  drawer_header.DrawerHeader = class DrawerHeader extends framework.StatelessWidget {
+    get decoration() {
+      return this[decoration$];
     }
-    set timer(value) {
-      this[timer] = value;
+    set decoration(value) {
+      super.decoration = value;
     }
-    initState() {
-      super.initState();
-      if (this.widget.images != null && dart.test(this.widget.images[$isNotEmpty])) {
-        if (dart.test(this.widget.autoplay)) {
-          this.timer = async.Timer.periodic(this.widget.autoplayDuration, dart.fn(_ => {
-            if (dart.test(this[_controller].hasClients)) {
-              if (this[_controller].page[$round]() === dart.notNull(this.widget.images[$length]) - 1) {
-                this[_controller].animateToPage(0, {duration: this.widget.animationDuration, curve: this.widget.animationCurve});
-              } else {
-                this[_controller].nextPage({duration: this.widget.animationDuration, curve: this.widget.animationCurve});
-              }
-            }
-          }, T.TimerLToNull()));
-        }
-      }
+    get padding() {
+      return this[padding$];
     }
-    dispose() {
-      let t0;
-      this[_controller].dispose();
-      this[_controller] = null;
-      t0 = this.timer;
-      t0 == null ? null : t0.cancel();
-      this.timer = null;
-      super.dispose();
+    set padding(value) {
+      super.padding = value;
     }
-    build(context) {
-      let listImages = this.widget.images != null && dart.test(this.widget.images[$isNotEmpty]) ? this.widget.images[$map](T.WidgetL(), dart.fn(netImage => {
-        if (T.ImageProviderLOfObjectL().is(netImage)) {
-          return new container.Container.new({decoration: new box_decoration.BoxDecoration.new({borderRadius: dart.test(this.widget.borderRadius) ? new border_radius.BorderRadius.all(this.widget.radius != null ? this.widget.radius : new ui.Radius.circular(8.0)) : null, image: new decoration_image.DecorationImage.new({image: netImage, fit: this.widget.boxFit})}), child: dart.test(this.widget.overlayShadow) ? new container.Container.new({decoration: new box_decoration.BoxDecoration.new({gradient: new gradient.LinearGradient.new({begin: alignment.Alignment.bottomCenter, end: alignment.Alignment.center, stops: T.JSArrayOfdoubleL().of([0.0, this.widget.overlayShadowSize]), colors: T.JSArrayOfColorL().of([this.widget.overlayShadowColors != null ? this.widget.overlayShadowColors.withOpacity(1.0) : colors.Colors.grey._get(800).withOpacity(1.0), this.widget.overlayShadowColors != null ? this.widget.overlayShadowColors.withOpacity(0.0) : colors.Colors.grey._get(800).withOpacity(0.0)])})}), $creationLocationd_0dea112b090073317d4: C[12] || CT.C12}) : new container.Container.new({$creationLocationd_0dea112b090073317d4: C[15] || CT.C15}), $creationLocationd_0dea112b090073317d4: C[17] || CT.C17});
-        } else if (T.FadeInImageL().is(netImage)) {
-          return new basic.ClipRRect.new({borderRadius: dart.test(this.widget.borderRadius) ? new border_radius.BorderRadius.all(this.widget.radius != null ? this.widget.radius : new ui.Radius.circular(8.0)) : null, child: new container.Container.new({decoration: new box_decoration.BoxDecoration.new({gradient: new gradient.LinearGradient.new({begin: alignment.Alignment.bottomCenter, end: alignment.Alignment.center, stops: T.JSArrayOfdoubleL().of([0.0, this.widget.overlayShadowSize]), colors: T.JSArrayOfColorL().of([this.widget.overlayShadowColors != null ? this.widget.overlayShadowColors.withOpacity(1.0) : colors.Colors.grey._get(800).withOpacity(1.0), this.widget.overlayShadowColors != null ? this.widget.overlayShadowColors.withOpacity(0.0) : colors.Colors.grey._get(800).withOpacity(0.0)])})}), child: netImage, $creationLocationd_0dea112b090073317d4: C[21] || CT.C21}), $creationLocationd_0dea112b090073317d4: C[25] || CT.C25});
-        } else {
-          return T.WidgetL().as(netImage);
-        }
-      }, T.dynamicToWidgetL()))[$toList]() : T.JSArrayOfWidgetL().of([T.WidgetL().as(T.ImageProviderLOfObjectL().is(this.widget.defaultImage) ? new container.Container.new({decoration: new box_decoration.BoxDecoration.new({borderRadius: dart.test(this.widget.borderRadius) ? new border_radius.BorderRadius.all(this.widget.radius != null ? this.widget.radius : new ui.Radius.circular(8.0)) : null, image: new decoration_image.DecorationImage.new({image: T.ImageProviderOfObject().as(this.widget.defaultImage), fit: this.widget.boxFit})}), child: dart.test(this.widget.overlayShadow) ? new container.Container.new({decoration: new box_decoration.BoxDecoration.new({gradient: new gradient.LinearGradient.new({begin: alignment.Alignment.bottomCenter, end: alignment.Alignment.center, stops: T.JSArrayOfdoubleL().of([0.0, this.widget.overlayShadowSize]), colors: T.JSArrayOfColorL().of([this.widget.overlayShadowColors != null ? this.widget.overlayShadowColors.withOpacity(1.0) : colors.Colors.grey._get(800).withOpacity(1.0), this.widget.overlayShadowColors != null ? this.widget.overlayShadowColors.withOpacity(0.0) : colors.Colors.grey._get(800).withOpacity(0.0)])})}), $creationLocationd_0dea112b090073317d4: C[29] || CT.C29}) : new container.Container.new({$creationLocationd_0dea112b090073317d4: C[32] || CT.C32}), $creationLocationd_0dea112b090073317d4: C[33] || CT.C33}) : this.widget.defaultImage)]);
-      let bottom = dart.test(T.JSArrayOfDotPositionL().of([carousel_pro.DotPosition.bottomLeft, carousel_pro.DotPosition.bottomCenter, carousel_pro.DotPosition.bottomRight])[$contains](this.widget.dotPosition)) ? this.widget.dotVerticalPadding : null;
-      let top = dart.test(T.JSArrayOfDotPositionL().of([carousel_pro.DotPosition.topLeft, carousel_pro.DotPosition.topCenter, carousel_pro.DotPosition.topRight])[$contains](this.widget.dotPosition)) ? this.widget.dotVerticalPadding : null;
-      let left = dart.test(T.JSArrayOfDotPositionL().of([carousel_pro.DotPosition.topLeft, carousel_pro.DotPosition.bottomLeft])[$contains](this.widget.dotPosition)) ? this.widget.dotHorizontalPadding : null;
-      let right = dart.test(T.JSArrayOfDotPositionL().of([carousel_pro.DotPosition.topRight, carousel_pro.DotPosition.bottomRight])[$contains](this.widget.dotPosition)) ? this.widget.dotHorizontalPadding : null;
-      if (left == null && right == null) {
-        left = right = 0.0;
-      }
-      return new basic.Stack.new({children: T.JSArrayOfWidgetL().of([new container.Container.new({child: new basic.Builder.new({builder: dart.fn(_ => {
-                let pageView = new page_view.PageView.new({physics: new scroll_physics.AlwaysScrollableScrollPhysics.new(), controller: this[_controller], children: listImages, onPageChanged: dart.fn(currentPage => {
-                    let t2, t1, t0;
-                    if (this.widget.onImageChange != null) {
-                      t0 = this.widget;
-                      t1 = this[_currentImageIndex];
-                      t2 = currentPage;
-                      t0.onImageChange(t1, t2);
-                    }
-                    this[_currentImageIndex] = currentPage;
-                  }, T.intLToNull()), $creationLocationd_0dea112b090073317d4: C[37] || CT.C37});
-                if (this.widget.onImageTap == null) {
-                  return pageView;
-                }
-                return new gesture_detector.GestureDetector.new({child: pageView, onTap: dart.fn(() => {
-                    let t1, t0;
-                    t0 = this.widget;
-                    t1 = this[_currentImageIndex];
-                    return t0.onImageTap(t1);
-                  }, T.VoidTovoid()), $creationLocationd_0dea112b090073317d4: C[43] || CT.C43});
-              }, T.BuildContextLToWidgetL()), $creationLocationd_0dea112b090073317d4: C[47] || CT.C47}), $creationLocationd_0dea112b090073317d4: C[50] || CT.C50}), dart.test(this.widget.showIndicator) ? new basic.Positioned.new({bottom: bottom, top: top, left: left, right: right, child: new container.Container.new({decoration: new box_decoration.BoxDecoration.new({color: this.widget.dotBgColor == null ? colors.Colors.grey._get(800).withOpacity(0.5) : this.widget.dotBgColor, borderRadius: dart.test(this.widget.borderRadius) ? dart.test(this.widget.noRadiusForIndicator) ? null : new border_radius.BorderRadius.only({bottomLeft: this.widget.radius != null ? this.widget.radius : new ui.Radius.circular(8.0), bottomRight: this.widget.radius != null ? this.widget.radius : new ui.Radius.circular(8.0)}) : null}), padding: new edge_insets.EdgeInsets.all(this.widget.indicatorBgPadding), child: new basic.Center.new({child: new carousel_pro.DotsIndicator.new({controller: this[_controller], itemCount: listImages[$length], color: this.widget.dotColor, increasedColor: this.widget.dotIncreasedColor, dotSize: this.widget.dotSize, dotSpacing: this.widget.dotSpacing, dotIncreaseSize: this.widget.dotIncreaseSize, onPageSelected: dart.fn(page => {
-                    this[_controller].animateToPage(page, {duration: this.widget.animationDuration, curve: this.widget.animationCurve});
-                  }, T.intLToNull()), $creationLocationd_0dea112b090073317d4: C[53] || CT.C53}), $creationLocationd_0dea112b090073317d4: C[63] || CT.C63}), $creationLocationd_0dea112b090073317d4: C[66] || CT.C66}), $creationLocationd_0dea112b090073317d4: C[71] || CT.C71}) : new container.Container.new({$creationLocationd_0dea112b090073317d4: C[78] || CT.C78})]), $creationLocationd_0dea112b090073317d4: C[79] || CT.C79});
+    get margin() {
+      return this[margin$];
     }
-  };
-  (carousel_pro.CarouselState.new = function() {
-    this[timer] = null;
-    this[_currentImageIndex] = 0;
-    this[_controller] = new page_view.PageController.new();
-    carousel_pro.CarouselState.__proto__.new.call(this);
-    ;
-  }).prototype = carousel_pro.CarouselState.prototype;
-  dart.addTypeTests(carousel_pro.CarouselState);
-  dart.addTypeCaches(carousel_pro.CarouselState);
-  dart.setMethodSignature(carousel_pro.CarouselState, () => ({
-    __proto__: dart.getMethods(carousel_pro.CarouselState.__proto__),
-    build: dart.fnType(dart.legacy(framework.Widget), [dart.legacy(framework.BuildContext)])
-  }));
-  dart.setLibraryUri(carousel_pro.CarouselState, I[0]);
-  dart.setFieldSignature(carousel_pro.CarouselState, () => ({
-    __proto__: dart.getFields(carousel_pro.CarouselState.__proto__),
-    timer: dart.fieldType(dart.legacy(async.Timer)),
-    [_currentImageIndex]: dart.fieldType(dart.legacy(core.int)),
-    [_controller]: dart.fieldType(dart.legacy(page_view.PageController))
-  }));
-  var controller$ = dart.privateName(carousel_pro, "DotsIndicator.controller");
-  var itemCount$ = dart.privateName(carousel_pro, "DotsIndicator.itemCount");
-  var onPageSelected$ = dart.privateName(carousel_pro, "DotsIndicator.onPageSelected");
-  var color$ = dart.privateName(carousel_pro, "DotsIndicator.color");
-  var increasedColor$ = dart.privateName(carousel_pro, "DotsIndicator.increasedColor");
-  var dotSize$0 = dart.privateName(carousel_pro, "DotsIndicator.dotSize");
-  var dotIncreaseSize$0 = dart.privateName(carousel_pro, "DotsIndicator.dotIncreaseSize");
-  var dotSpacing$0 = dart.privateName(carousel_pro, "DotsIndicator.dotSpacing");
-  var _buildDot = dart.privateName(carousel_pro, "_buildDot");
-  carousel_pro.DotsIndicator = class DotsIndicator extends transitions.AnimatedWidget {
-    get controller() {
-      return this[controller$];
+    set margin(value) {
+      super.margin = value;
     }
-    set controller(value) {
-      super.controller = value;
+    get duration() {
+      return this[duration$];
     }
-    get itemCount() {
-      return this[itemCount$];
+    set duration(value) {
+      super.duration = value;
     }
-    set itemCount(value) {
-      super.itemCount = value;
+    get curve() {
+      return this[curve$];
     }
-    get onPageSelected() {
-      return this[onPageSelected$];
+    set curve(value) {
+      super.curve = value;
     }
-    set onPageSelected(value) {
-      super.onPageSelected = value;
+    get child() {
+      return this[child$];
     }
-    get color() {
-      return this[color$];
-    }
-    set color(value) {
-      super.color = value;
-    }
-    get increasedColor() {
-      return this[increasedColor$];
-    }
-    set increasedColor(value) {
-      super.increasedColor = value;
-    }
-    get dotSize() {
-      return this[dotSize$0];
-    }
-    set dotSize(value) {
-      super.dotSize = value;
-    }
-    get dotIncreaseSize() {
-      return this[dotIncreaseSize$0];
-    }
-    set dotIncreaseSize(value) {
-      super.dotIncreaseSize = value;
-    }
-    get dotSpacing() {
-      return this[dotSpacing$0];
-    }
-    set dotSpacing(value) {
-      super.dotSpacing = value;
-    }
-    [_buildDot](index) {
-      let t0;
-      let selectedness = curves.Curves.easeOut.transform(math.max(T.doubleL(), 0.0, 1.0 - (dart.notNull((t0 = this.controller.page, t0 == null ? this.controller.initialPage : t0)) - dart.notNull(index))[$abs]()));
-      let zoom = 1.0 + (dart.notNull(this.dotIncreaseSize) - 1.0) * dart.notNull(selectedness);
-      let dotColor = zoom > 1.0 ? this.increasedColor : this.color;
-      return new container.Container.new({width: this.dotSpacing, child: new basic.Center.new({child: new material.Material.new({color: dotColor, type: material.MaterialType.circle, child: new container.Container.new({width: dart.notNull(this.dotSize) * zoom, height: dart.notNull(this.dotSize) * zoom, child: new ink_well.InkWell.new({onTap: dart.fn(() => {
-                  let t0;
-                  t0 = index;
-                  return this.onPageSelected(t0);
-                }, T.VoidTovoid()), $creationLocationd_0dea112b090073317d4: C[82] || CT.C82}), $creationLocationd_0dea112b090073317d4: C[85] || CT.C85}), $creationLocationd_0dea112b090073317d4: C[90] || CT.C90}), $creationLocationd_0dea112b090073317d4: C[95] || CT.C95}), $creationLocationd_0dea112b090073317d4: C[98] || CT.C98});
+    set child(value) {
+      super.child = value;
     }
     build(context) {
-      return new basic.Row.new({mainAxisAlignment: flex.MainAxisAlignment.center, children: T.ListOfWidgetL().generate(this.itemCount, dart.bind(this, _buildDot)), $creationLocationd_0dea112b090073317d4: C[102] || CT.C102});
+      if (context == null) dart.nullFailed(I[0], 75, 29, "context");
+      if (!dart.test(debug.debugCheckHasMaterial(context))) dart.assertFailed(null, I[0], 76, 12, "debugCheckHasMaterial(context)");
+      if (!dart.test(debug$.debugCheckHasMediaQuery(context))) dart.assertFailed(null, I[0], 77, 12, "debugCheckHasMediaQuery(context)");
+      let theme = theme$.Theme.of(context);
+      let statusBarHeight = media_query.MediaQuery.of(context).padding.top;
+      return new container.Container.new({height: dart.notNull(statusBarHeight) + 161, margin: this.margin, decoration: new box_decoration.BoxDecoration.new({border: new box_border.Border.new({bottom: divider.Divider.createBorderSide(context)})}), child: new implicit_animations.AnimatedContainer.new({padding: this.padding.add(new edge_insets.EdgeInsets.only({top: statusBarHeight})), decoration: this.decoration, duration: this.duration, curve: this.curve, child: this.child == null ? null : new text.DefaultTextStyle.new({style: dart.nullCheck(theme.textTheme.bodyText1), child: media_query.MediaQuery.removePadding({context: context, removeTop: true, child: dart.nullCheck(this.child), $creationLocationd_0dea112b090073317d4: C[4] || CT.C4}), $creationLocationd_0dea112b090073317d4: C[9] || CT.C9}), $creationLocationd_0dea112b090073317d4: C[13] || CT.C13}), $creationLocationd_0dea112b090073317d4: C[20] || CT.C20});
     }
   };
-  (carousel_pro.DotsIndicator.new = function(opts) {
-    let controller = opts && 'controller' in opts ? opts.controller : null;
-    let itemCount = opts && 'itemCount' in opts ? opts.itemCount : null;
-    let onPageSelected = opts && 'onPageSelected' in opts ? opts.onPageSelected : null;
-    let color = opts && 'color' in opts ? opts.color : null;
-    let increasedColor = opts && 'increasedColor' in opts ? opts.increasedColor : null;
-    let dotSize = opts && 'dotSize' in opts ? opts.dotSize : null;
-    let dotIncreaseSize = opts && 'dotIncreaseSize' in opts ? opts.dotIncreaseSize : null;
-    let dotSpacing = opts && 'dotSpacing' in opts ? opts.dotSpacing : null;
+  (drawer_header.DrawerHeader.new = function(opts) {
+    let key = opts && 'key' in opts ? opts.key : null;
+    let decoration = opts && 'decoration' in opts ? opts.decoration : null;
+    let margin = opts && 'margin' in opts ? opts.margin : C[0] || CT.C0;
+    let padding = opts && 'padding' in opts ? opts.padding : C[1] || CT.C1;
+    if (padding == null) dart.nullFailed(I[0], 35, 10, "padding");
+    let duration = opts && 'duration' in opts ? opts.duration : C[2] || CT.C2;
+    if (duration == null) dart.nullFailed(I[0], 36, 10, "duration");
+    let curve = opts && 'curve' in opts ? opts.curve : C[3] || CT.C3;
+    if (curve == null) dart.nullFailed(I[0], 37, 10, "curve");
+    let child = opts && 'child' in opts ? opts.child : null;
     let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
-    this[controller$] = controller;
-    this[itemCount$] = itemCount;
-    this[onPageSelected$] = onPageSelected;
-    this[color$] = color;
-    this[increasedColor$] = increasedColor;
-    this[dotSize$0] = dotSize;
-    this[dotIncreaseSize$0] = dotIncreaseSize;
-    this[dotSpacing$0] = dotSpacing;
-    carousel_pro.DotsIndicator.__proto__.new.call(this, {listenable: controller, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    this[decoration$] = decoration;
+    this[margin$] = margin;
+    this[padding$] = padding;
+    this[duration$] = duration;
+    this[curve$] = curve;
+    this[child$] = child;
+    drawer_header.DrawerHeader.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
     ;
-  }).prototype = carousel_pro.DotsIndicator.prototype;
-  dart.addTypeTests(carousel_pro.DotsIndicator);
-  dart.addTypeCaches(carousel_pro.DotsIndicator);
-  dart.setMethodSignature(carousel_pro.DotsIndicator, () => ({
-    __proto__: dart.getMethods(carousel_pro.DotsIndicator.__proto__),
-    [_buildDot]: dart.fnType(dart.legacy(framework.Widget), [dart.legacy(core.int)]),
-    build: dart.fnType(dart.legacy(framework.Widget), [dart.legacy(framework.BuildContext)])
+  }).prototype = drawer_header.DrawerHeader.prototype;
+  dart.addTypeTests(drawer_header.DrawerHeader);
+  dart.addTypeCaches(drawer_header.DrawerHeader);
+  dart.setMethodSignature(drawer_header.DrawerHeader, () => ({
+    __proto__: dart.getMethods(drawer_header.DrawerHeader.__proto__),
+    build: dart.fnType(framework.Widget, [framework.BuildContext])
   }));
-  dart.setLibraryUri(carousel_pro.DotsIndicator, I[0]);
-  dart.setFieldSignature(carousel_pro.DotsIndicator, () => ({
-    __proto__: dart.getFields(carousel_pro.DotsIndicator.__proto__),
-    controller: dart.finalFieldType(dart.legacy(page_view.PageController)),
-    itemCount: dart.finalFieldType(dart.legacy(core.int)),
-    onPageSelected: dart.finalFieldType(dart.legacy(dart.fnType(dart.void, [dart.legacy(core.int)]))),
-    color: dart.finalFieldType(dart.legacy(ui.Color)),
-    increasedColor: dart.finalFieldType(dart.legacy(ui.Color)),
-    dotSize: dart.finalFieldType(dart.legacy(core.double)),
-    dotIncreaseSize: dart.finalFieldType(dart.legacy(core.double)),
-    dotSpacing: dart.finalFieldType(dart.legacy(core.double))
+  dart.setLibraryUri(drawer_header.DrawerHeader, I[1]);
+  dart.setFieldSignature(drawer_header.DrawerHeader, () => ({
+    __proto__: dart.getFields(drawer_header.DrawerHeader.__proto__),
+    decoration: dart.finalFieldType(dart.nullable(decoration.Decoration)),
+    padding: dart.finalFieldType(edge_insets.EdgeInsetsGeometry),
+    margin: dart.finalFieldType(dart.nullable(edge_insets.EdgeInsetsGeometry)),
+    duration: dart.finalFieldType(core.Duration),
+    curve: dart.finalFieldType(curves.Curve),
+    child: dart.finalFieldType(dart.nullable(framework.Widget))
   }));
-  dart.trackLibraries("packages/carousel_pro/src/carousel_pro.dart", {
-    "package:carousel_pro/src/carousel_pro.dart": carousel_pro
+  dart.defineLazy(drawer_header, {
+    /*drawer_header._kDrawerHeaderHeight*/get _kDrawerHeaderHeight() {
+      return 161;
+    }
+  }, false);
+  dart.trackLibraries("packages/flutter/src/material/drawer_header.dart", {
+    "package:flutter/src/material/drawer_header.dart": drawer_header
   }, {
-  }, '{"version":3,"sourceRoot":"","sources":["carousel_pro.dart"],"names":[],"mappings":"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","file":"../../../../../../../../../../../../../C:/packages/carousel_pro/src/carousel_pro.dart.lib.js"}');
+  }, '{"version":3,"sourceRoot":"","sources":["drawer_header.dart"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;IA8CoB;;;;;;IAQO;;;;;;IAGC;;;;;;IAGX;;;;;;IAGH;;;;;;IAQE;;;;;;;UAGY;AACxB,qBAAO,4BAAsB,OAAO;AACpC,qBAAO,+BAAwB,OAAO;AACtB,kBAAc,gBAAG,OAAO;AAC3B,4BAA6B,AAAY,AAAQ,0BAAjB,OAAO;AACpD,YAAO,sCACmB,aAAhB,eAAe,iBACf,yBACI,8CACF,mCACU,iCAAiB,OAAO,cAGrC,wDACI,AAAQ,iBAAe,sCAAU,eAAe,iBAC7C,2BACF,sBACH,mBACA,AAAM,qBAAU,OAAO,sCACI,eAAzB,AAAM,AAAU,KAAX,8BACM,+CACP,OAAO,aACL,aACC,eAAL;IAKjB;;;QAvEO;QACA;QACA;QACA;;QACA;;QACA;;QACS;;IALT;IACA;IACA;IACA;IACA;IACS;AACX,8DAAW,GAAG;;EAAC;;;;;;;;;;;;;;;;;;MA5BT,kCAAoB","file":"../../../../../../../../../../../../C:/packages/flutter/src/material/drawer_header.dart.lib.js"}');
   // Exports:
   return {
-    src__carousel_pro: carousel_pro
+    src__material__drawer_header: drawer_header
   };
 }));
 
-//# sourceMappingURL=carousel_pro.dart.lib.js.map
+//# sourceMappingURL=drawer_header.dart.lib.js.map

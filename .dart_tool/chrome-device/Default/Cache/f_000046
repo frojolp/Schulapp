@@ -1,23 +1,24 @@
-define(['dart_sdk', 'packages/flutter/src/animation/animation_controller.dart', 'packages/flutter/src/animation/curves.dart', 'packages/flutter/src/foundation/change_notifier.dart', 'packages/flutter/src/animation/listener_helpers.dart', 'packages/flutter/src/widgets/widget_span.dart'], (function load__packages__flutter__src__material__tab_controller_dart(dart_sdk, packages__flutter__src__animation__animation_controller$46dart, packages__flutter__src__animation__curves$46dart, packages__flutter__src__foundation__change_notifier$46dart, packages__flutter__src__animation__listener_helpers$46dart, packages__flutter__src__widgets__widget_span$46dart) {
+define(['dart_sdk', 'packages/flutter/src/services/system_channels.dart'], (function load__packages__flutter__src__services__system_chrome_dart(dart_sdk, packages__flutter__src__services__system_channels$46dart) {
   'use strict';
   const core = dart_sdk.core;
-  const _internal = dart_sdk._internal;
-  const math = dart_sdk.math;
+  const _js_helper = dart_sdk._js_helper;
+  const ui = dart_sdk.ui;
+  const async = dart_sdk.async;
+  const _interceptors = dart_sdk._interceptors;
   const dart = dart_sdk.dart;
   const dartx = dart_sdk.dartx;
-  const animation_controller = packages__flutter__src__animation__animation_controller$46dart.src__animation__animation_controller;
-  const curves = packages__flutter__src__animation__curves$46dart.src__animation__curves;
-  const change_notifier = packages__flutter__src__foundation__change_notifier$46dart.src__foundation__change_notifier;
-  const animation = packages__flutter__src__animation__listener_helpers$46dart.src__animation__animation;
-  const framework = packages__flutter__src__widgets__widget_span$46dart.src__widgets__framework;
-  const ticker_provider = packages__flutter__src__widgets__widget_span$46dart.src__widgets__ticker_provider;
-  const widget_inspector = packages__flutter__src__widgets__widget_span$46dart.src__widgets__widget_inspector;
-  var tab_controller = Object.create(dart.library);
-  var $toDouble = dartx.toDouble;
+  const system_channels = packages__flutter__src__services__system_channels$46dart.src__services__system_channels;
+  var system_chrome = Object.create(dart.library);
+  var $toString = dartx.toString;
+  var $runtimeType = dartx.runtimeType;
+  var $add = dartx.add;
   dart._checkModuleNullSafetyMode(false);
   var T = {
+    DeviceOrientationL: () => (T.DeviceOrientationL = dart.constFn(dart.legacy(system_chrome.DeviceOrientation)))(),
+    SystemUiOverlayL: () => (T.SystemUiOverlayL = dart.constFn(dart.legacy(system_chrome.SystemUiOverlay)))(),
+    IdentityMapOfString$dynamic: () => (T.IdentityMapOfString$dynamic = dart.constFn(_js_helper.IdentityMap$(core.String, dart.dynamic)))(),
     VoidTovoid: () => (T.VoidTovoid = dart.constFn(dart.fnType(dart.void, [])))(),
-    _LocationL: () => (T._LocationL = dart.constFn(dart.legacy(widget_inspector._Location)))()
+    JSArrayOfString: () => (T.JSArrayOfString = dart.constFn(_interceptors.JSArray$(core.String)))()
   };
   const CT = Object.create({
     _: () => (C, CT)
@@ -25,425 +26,377 @@ define(['dart_sdk', 'packages/flutter/src/animation/animation_controller.dart', 
   dart.defineLazy(CT, {
     get C0() {
       return C[0] = dart.const({
-        __proto__: core.Duration.prototype,
-        [Duration__duration]: 300000
+        __proto__: system_chrome.DeviceOrientation.prototype,
+        [_name$]: "DeviceOrientation.portraitUp",
+        index: 0
       });
     },
     get C1() {
       return C[1] = dart.const({
-        __proto__: curves.Cubic.prototype,
-        [Cubic_d]: 1,
-        [Cubic_c]: 0.25,
-        [Cubic_b]: 0.1,
-        [Cubic_a]: 0.25
+        __proto__: system_chrome.DeviceOrientation.prototype,
+        [_name$]: "DeviceOrientation.landscapeLeft",
+        index: 1
+      });
+    },
+    get C2() {
+      return C[2] = dart.const({
+        __proto__: system_chrome.DeviceOrientation.prototype,
+        [_name$]: "DeviceOrientation.portraitDown",
+        index: 2
+      });
+    },
+    get C3() {
+      return C[3] = dart.const({
+        __proto__: system_chrome.DeviceOrientation.prototype,
+        [_name$]: "DeviceOrientation.landscapeRight",
+        index: 3
       });
     },
     get C4() {
-      return C[4] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "controller",
-        [_Location_column]: 7,
-        [_Location_line]: 441,
-        [_Location_file]: null
-      });
+      return C[4] = dart.constList([C[0] || CT.C0, C[1] || CT.C1, C[2] || CT.C2, C[3] || CT.C3], T.DeviceOrientationL());
     },
     get C5() {
       return C[5] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "enabled",
-        [_Location_column]: 7,
-        [_Location_line]: 442,
-        [_Location_file]: null
+        __proto__: system_chrome.SystemUiOverlay.prototype,
+        [_name$]: "SystemUiOverlay.top",
+        index: 0
       });
     },
     get C6() {
       return C[6] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "child",
-        [_Location_column]: 7,
-        [_Location_line]: 443,
-        [_Location_file]: null
+        __proto__: system_chrome.SystemUiOverlay.prototype,
+        [_name$]: "SystemUiOverlay.bottom",
+        index: 1
       });
     },
-    get C3() {
-      return C[3] = dart.constList([C[4] || CT.C4, C[5] || CT.C5, C[6] || CT.C6], T._LocationL());
+    get C7() {
+      return C[7] = dart.constList([C[5] || CT.C5, C[6] || CT.C6], T.SystemUiOverlayL());
     },
-    get C2() {
-      return C[2] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[3] || CT.C3,
-        [_Location_name]: null,
-        [_Location_column]: 12,
-        [_Location_line]: 440,
-        [_Location_file]: "file:///E:/OneDrive/_Marius/OneDrive/Dokumente%20Marius/Flutter/flutter/packages/flutter/lib/src/material/tab_controller.dart"
+    get C9() {
+      return C[9] = dart.const({
+        __proto__: ui.Brightness.prototype,
+        [_name]: "Brightness.light",
+        index: 1
+      });
+    },
+    get C10() {
+      return C[10] = dart.const({
+        __proto__: ui.Brightness.prototype,
+        [_name]: "Brightness.dark",
+        index: 0
+      });
+    },
+    get C11() {
+      return C[11] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4278190080.0
+      });
+    },
+    get C8() {
+      return C[8] = dart.const({
+        __proto__: system_chrome.SystemUiOverlayStyle.prototype,
+        [statusBarIconBrightness$]: C[9] || CT.C9,
+        [statusBarBrightness$]: C[10] || CT.C10,
+        [statusBarColor$]: null,
+        [systemNavigationBarIconBrightness$]: C[9] || CT.C9,
+        [systemNavigationBarDividerColor$]: null,
+        [systemNavigationBarColor$]: C[11] || CT.C11
+      });
+    },
+    get C12() {
+      return C[12] = dart.const({
+        __proto__: system_chrome.SystemUiOverlayStyle.prototype,
+        [statusBarIconBrightness$]: C[10] || CT.C10,
+        [statusBarBrightness$]: C[9] || CT.C9,
+        [statusBarColor$]: null,
+        [systemNavigationBarIconBrightness$]: C[9] || CT.C9,
+        [systemNavigationBarDividerColor$]: null,
+        [systemNavigationBarColor$]: C[11] || CT.C11
       });
     }
   }, false);
-  var C = Array(7).fill(void 0);
+  var C = Array(13).fill(void 0);
   var I = [
-    "file:///E:/OneDrive/_Marius/OneDrive/Dokumente%20Marius/Flutter/flutter/packages/flutter/lib/src/material/tab_controller.dart",
-    "package:flutter/src/material/tab_controller.dart"
+    "file:///E:/OneDrive/_Marius/OneDrive/Dokumente%20Marius/Flutter/flutter/packages/flutter/lib/src/services/system_chrome.dart",
+    "package:flutter/src/services/system_chrome.dart"
   ];
-  var length$ = dart.privateName(tab_controller, "TabController.length");
-  var _indexIsChangingCount = dart.privateName(tab_controller, "_indexIsChangingCount");
-  var _index = dart.privateName(tab_controller, "_index");
-  var _previousIndex = dart.privateName(tab_controller, "_previousIndex");
-  var _animationController = dart.privateName(tab_controller, "_animationController");
-  var _copyWith = dart.privateName(tab_controller, "_copyWith");
-  var _changeIndex = dart.privateName(tab_controller, "_changeIndex");
-  var Duration__duration = dart.privateName(core, "Duration._duration");
-  var Cubic_d = dart.privateName(curves, "Cubic.d");
-  var Cubic_c = dart.privateName(curves, "Cubic.c");
-  var Cubic_b = dart.privateName(curves, "Cubic.b");
-  var Cubic_a = dart.privateName(curves, "Cubic.a");
-  tab_controller.TabController = class TabController extends change_notifier.ChangeNotifier {
-    get length() {
-      return this[length$];
+  var _name$ = dart.privateName(system_chrome, "_name");
+  system_chrome.DeviceOrientation = class DeviceOrientation extends core.Object {
+    toString() {
+      return this[_name$];
     }
-    set length(value) {
-      super.length = value;
+  };
+  (system_chrome.DeviceOrientation.new = function(index, _name) {
+    if (index == null) dart.nullFailed(I[0], 31, 6, "index");
+    if (_name == null) dart.nullFailed(I[0], 31, 6, "_name");
+    this.index = index;
+    this[_name$] = _name;
+    ;
+  }).prototype = system_chrome.DeviceOrientation.prototype;
+  dart.addTypeTests(system_chrome.DeviceOrientation);
+  dart.addTypeCaches(system_chrome.DeviceOrientation);
+  dart.setLibraryUri(system_chrome.DeviceOrientation, I[1]);
+  dart.setFieldSignature(system_chrome.DeviceOrientation, () => ({
+    __proto__: dart.getFields(system_chrome.DeviceOrientation.__proto__),
+    index: dart.finalFieldType(core.int),
+    [_name$]: dart.finalFieldType(core.String)
+  }));
+  dart.defineExtensionMethods(system_chrome.DeviceOrientation, ['toString']);
+  system_chrome.DeviceOrientation.portraitUp = C[0] || CT.C0;
+  system_chrome.DeviceOrientation.landscapeLeft = C[1] || CT.C1;
+  system_chrome.DeviceOrientation.portraitDown = C[2] || CT.C2;
+  system_chrome.DeviceOrientation.landscapeRight = C[3] || CT.C3;
+  system_chrome.DeviceOrientation.values = C[4] || CT.C4;
+  var label$ = dart.privateName(system_chrome, "ApplicationSwitcherDescription.label");
+  var primaryColor$ = dart.privateName(system_chrome, "ApplicationSwitcherDescription.primaryColor");
+  system_chrome.ApplicationSwitcherDescription = class ApplicationSwitcherDescription extends core.Object {
+    get label() {
+      return this[label$];
     }
-    [_copyWith](opts) {
-      let t0, t0$, t0$0;
-      let index = opts && 'index' in opts ? opts.index : null;
-      let length = opts && 'length' in opts ? opts.length : null;
-      let previousIndex = opts && 'previousIndex' in opts ? opts.previousIndex : null;
-      return new tab_controller.TabController.__({index: (t0 = index, t0 == null ? this[_index] : t0), length: (t0$ = length, t0$ == null ? this.length : t0$), animationController: this[_animationController], previousIndex: (t0$0 = previousIndex, t0$0 == null ? this[_previousIndex] : t0$0)});
+    set label(value) {
+      super.label = value;
     }
-    get animation() {
-      let t0;
-      t0 = this[_animationController];
-      return t0 == null ? null : t0.view;
+    get primaryColor() {
+      return this[primaryColor$];
     }
-    [_changeIndex](value, opts) {
-      if (value == null) dart.nullFailed(I[0], 210, 25, "value");
-      let duration = opts && 'duration' in opts ? opts.duration : null;
-      let curve = opts && 'curve' in opts ? opts.curve : null;
-      if (!(value != null)) dart.assertFailed(null, I[0], 211, 12, "value != null");
-      if (!(dart.notNull(value) >= 0 && (dart.notNull(value) < dart.notNull(this.length) || this.length === 0))) dart.assertFailed(null, I[0], 212, 12, "value >= 0 && (value < length || length == 0)");
-      if (!(duration != null || curve == null)) dart.assertFailed(null, I[0], 213, 12, "duration != null || curve == null");
-      if (!(dart.notNull(this[_indexIsChangingCount]) >= 0)) dart.assertFailed(null, I[0], 214, 12, "_indexIsChangingCount >= 0");
-      if (value == this[_index] || dart.notNull(this.length) < 2) return;
-      this[_previousIndex] = this.index;
-      this[_index] = value;
-      if (duration != null) {
-        this[_indexIsChangingCount] = dart.notNull(this[_indexIsChangingCount]) + 1;
-        this.notifyListeners();
-        dart.nullCheck(this[_animationController]).animateTo(this[_index][$toDouble](), {duration: duration, curve: dart.nullCheck(curve)}).whenCompleteOrCancel(dart.fn(() => {
-          if (this[_animationController] != null) {
-            this[_indexIsChangingCount] = dart.notNull(this[_indexIsChangingCount]) - 1;
-            this.notifyListeners();
-          }
-        }, T.VoidTovoid()));
-      } else {
-        this[_indexIsChangingCount] = dart.notNull(this[_indexIsChangingCount]) + 1;
-        dart.nullCheck(this[_animationController]).value = this[_index][$toDouble]();
-        this[_indexIsChangingCount] = dart.notNull(this[_indexIsChangingCount]) - 1;
-        this.notifyListeners();
+    set primaryColor(value) {
+      super.primaryColor = value;
+    }
+  };
+  (system_chrome.ApplicationSwitcherDescription.new = function(opts) {
+    let label = opts && 'label' in opts ? opts.label : null;
+    let primaryColor = opts && 'primaryColor' in opts ? opts.primaryColor : null;
+    this[label$] = label;
+    this[primaryColor$] = primaryColor;
+    ;
+  }).prototype = system_chrome.ApplicationSwitcherDescription.prototype;
+  dart.addTypeTests(system_chrome.ApplicationSwitcherDescription);
+  dart.addTypeCaches(system_chrome.ApplicationSwitcherDescription);
+  dart.setLibraryUri(system_chrome.ApplicationSwitcherDescription, I[1]);
+  dart.setFieldSignature(system_chrome.ApplicationSwitcherDescription, () => ({
+    __proto__: dart.getFields(system_chrome.ApplicationSwitcherDescription.__proto__),
+    label: dart.finalFieldType(dart.nullable(core.String)),
+    primaryColor: dart.finalFieldType(dart.nullable(core.int))
+  }));
+  system_chrome.SystemUiOverlay = class SystemUiOverlay extends core.Object {
+    toString() {
+      return this[_name$];
+    }
+  };
+  (system_chrome.SystemUiOverlay.new = function(index, _name) {
+    if (index == null) dart.nullFailed(I[0], 74, 6, "index");
+    if (_name == null) dart.nullFailed(I[0], 74, 6, "_name");
+    this.index = index;
+    this[_name$] = _name;
+    ;
+  }).prototype = system_chrome.SystemUiOverlay.prototype;
+  dart.addTypeTests(system_chrome.SystemUiOverlay);
+  dart.addTypeCaches(system_chrome.SystemUiOverlay);
+  dart.setLibraryUri(system_chrome.SystemUiOverlay, I[1]);
+  dart.setFieldSignature(system_chrome.SystemUiOverlay, () => ({
+    __proto__: dart.getFields(system_chrome.SystemUiOverlay.__proto__),
+    index: dart.finalFieldType(core.int),
+    [_name$]: dart.finalFieldType(core.String)
+  }));
+  dart.defineExtensionMethods(system_chrome.SystemUiOverlay, ['toString']);
+  system_chrome.SystemUiOverlay.top = C[5] || CT.C5;
+  system_chrome.SystemUiOverlay.bottom = C[6] || CT.C6;
+  system_chrome.SystemUiOverlay.values = C[7] || CT.C7;
+  var systemNavigationBarColor$ = dart.privateName(system_chrome, "SystemUiOverlayStyle.systemNavigationBarColor");
+  var systemNavigationBarDividerColor$ = dart.privateName(system_chrome, "SystemUiOverlayStyle.systemNavigationBarDividerColor");
+  var systemNavigationBarIconBrightness$ = dart.privateName(system_chrome, "SystemUiOverlayStyle.systemNavigationBarIconBrightness");
+  var statusBarColor$ = dart.privateName(system_chrome, "SystemUiOverlayStyle.statusBarColor");
+  var statusBarBrightness$ = dart.privateName(system_chrome, "SystemUiOverlayStyle.statusBarBrightness");
+  var statusBarIconBrightness$ = dart.privateName(system_chrome, "SystemUiOverlayStyle.statusBarIconBrightness");
+  var _toMap = dart.privateName(system_chrome, "_toMap");
+  var _name = dart.privateName(ui, "_name");
+  var Color_value = dart.privateName(ui, "Color.value");
+  system_chrome.SystemUiOverlayStyle = class SystemUiOverlayStyle extends core.Object {
+    get systemNavigationBarColor() {
+      return this[systemNavigationBarColor$];
+    }
+    set systemNavigationBarColor(value) {
+      super.systemNavigationBarColor = value;
+    }
+    get systemNavigationBarDividerColor() {
+      return this[systemNavigationBarDividerColor$];
+    }
+    set systemNavigationBarDividerColor(value) {
+      super.systemNavigationBarDividerColor = value;
+    }
+    get systemNavigationBarIconBrightness() {
+      return this[systemNavigationBarIconBrightness$];
+    }
+    set systemNavigationBarIconBrightness(value) {
+      super.systemNavigationBarIconBrightness = value;
+    }
+    get statusBarColor() {
+      return this[statusBarColor$];
+    }
+    set statusBarColor(value) {
+      super.statusBarColor = value;
+    }
+    get statusBarBrightness() {
+      return this[statusBarBrightness$];
+    }
+    set statusBarBrightness(value) {
+      super.statusBarBrightness = value;
+    }
+    get statusBarIconBrightness() {
+      return this[statusBarIconBrightness$];
+    }
+    set statusBarIconBrightness(value) {
+      super.statusBarIconBrightness = value;
+    }
+    [_toMap]() {
+      let t0, t0$, t0$0, t0$1, t0$2, t0$3;
+      return new (T.IdentityMapOfString$dynamic()).from(["systemNavigationBarColor", (t0 = this.systemNavigationBarColor, t0 == null ? null : t0.value), "systemNavigationBarDividerColor", (t0$ = this.systemNavigationBarDividerColor, t0$ == null ? null : t0$.value), "statusBarColor", (t0$0 = this.statusBarColor, t0$0 == null ? null : t0$0.value), "statusBarBrightness", (t0$1 = this.statusBarBrightness, t0$1 == null ? null : dart.toString(t0$1)), "statusBarIconBrightness", (t0$2 = this.statusBarIconBrightness, t0$2 == null ? null : dart.toString(t0$2)), "systemNavigationBarIconBrightness", (t0$3 = this.systemNavigationBarIconBrightness, t0$3 == null ? null : dart.toString(t0$3))]);
+    }
+    toString() {
+      return dart.toString(this[_toMap]());
+    }
+    copyWith(opts) {
+      let t0, t0$, t0$0, t0$1, t0$2, t0$3;
+      let systemNavigationBarColor = opts && 'systemNavigationBarColor' in opts ? opts.systemNavigationBarColor : null;
+      let systemNavigationBarDividerColor = opts && 'systemNavigationBarDividerColor' in opts ? opts.systemNavigationBarDividerColor : null;
+      let statusBarColor = opts && 'statusBarColor' in opts ? opts.statusBarColor : null;
+      let statusBarBrightness = opts && 'statusBarBrightness' in opts ? opts.statusBarBrightness : null;
+      let statusBarIconBrightness = opts && 'statusBarIconBrightness' in opts ? opts.statusBarIconBrightness : null;
+      let systemNavigationBarIconBrightness = opts && 'systemNavigationBarIconBrightness' in opts ? opts.systemNavigationBarIconBrightness : null;
+      return new system_chrome.SystemUiOverlayStyle.new({systemNavigationBarColor: (t0 = systemNavigationBarColor, t0 == null ? this.systemNavigationBarColor : t0), systemNavigationBarDividerColor: (t0$ = systemNavigationBarDividerColor, t0$ == null ? this.systemNavigationBarDividerColor : t0$), statusBarColor: (t0$0 = statusBarColor, t0$0 == null ? this.statusBarColor : t0$0), statusBarIconBrightness: (t0$1 = statusBarIconBrightness, t0$1 == null ? this.statusBarIconBrightness : t0$1), statusBarBrightness: (t0$2 = statusBarBrightness, t0$2 == null ? this.statusBarBrightness : t0$2), systemNavigationBarIconBrightness: (t0$3 = systemNavigationBarIconBrightness, t0$3 == null ? this.systemNavigationBarIconBrightness : t0$3)});
+    }
+    get hashCode() {
+      return ui.hashValues(this.systemNavigationBarColor, this.systemNavigationBarDividerColor, this.statusBarColor, this.statusBarBrightness, this.statusBarIconBrightness, this.systemNavigationBarIconBrightness);
+    }
+    _equals(other) {
+      if (other == null) return false;
+      if (!dart.equals(dart.runtimeType(other), this[$runtimeType])) return false;
+      return system_chrome.SystemUiOverlayStyle.is(other) && dart.equals(other.systemNavigationBarColor, this.systemNavigationBarColor) && dart.equals(other.systemNavigationBarDividerColor, this.systemNavigationBarDividerColor) && dart.equals(other.statusBarColor, this.statusBarColor) && other.statusBarIconBrightness == this.statusBarIconBrightness && other.statusBarBrightness == this.statusBarBrightness && other.systemNavigationBarIconBrightness == this.systemNavigationBarIconBrightness;
+    }
+  };
+  (system_chrome.SystemUiOverlayStyle.new = function(opts) {
+    let systemNavigationBarColor = opts && 'systemNavigationBarColor' in opts ? opts.systemNavigationBarColor : null;
+    let systemNavigationBarDividerColor = opts && 'systemNavigationBarDividerColor' in opts ? opts.systemNavigationBarDividerColor : null;
+    let systemNavigationBarIconBrightness = opts && 'systemNavigationBarIconBrightness' in opts ? opts.systemNavigationBarIconBrightness : null;
+    let statusBarColor = opts && 'statusBarColor' in opts ? opts.statusBarColor : null;
+    let statusBarBrightness = opts && 'statusBarBrightness' in opts ? opts.statusBarBrightness : null;
+    let statusBarIconBrightness = opts && 'statusBarIconBrightness' in opts ? opts.statusBarIconBrightness : null;
+    this[systemNavigationBarColor$] = systemNavigationBarColor;
+    this[systemNavigationBarDividerColor$] = systemNavigationBarDividerColor;
+    this[systemNavigationBarIconBrightness$] = systemNavigationBarIconBrightness;
+    this[statusBarColor$] = statusBarColor;
+    this[statusBarBrightness$] = statusBarBrightness;
+    this[statusBarIconBrightness$] = statusBarIconBrightness;
+    ;
+  }).prototype = system_chrome.SystemUiOverlayStyle.prototype;
+  dart.addTypeTests(system_chrome.SystemUiOverlayStyle);
+  dart.addTypeCaches(system_chrome.SystemUiOverlayStyle);
+  dart.setMethodSignature(system_chrome.SystemUiOverlayStyle, () => ({
+    __proto__: dart.getMethods(system_chrome.SystemUiOverlayStyle.__proto__),
+    [_toMap]: dart.fnType(core.Map$(core.String, dart.dynamic), []),
+    copyWith: dart.fnType(system_chrome.SystemUiOverlayStyle, [], {statusBarBrightness: dart.nullable(ui.Brightness), statusBarColor: dart.nullable(ui.Color), statusBarIconBrightness: dart.nullable(ui.Brightness), systemNavigationBarColor: dart.nullable(ui.Color), systemNavigationBarDividerColor: dart.nullable(ui.Color), systemNavigationBarIconBrightness: dart.nullable(ui.Brightness)}, {})
+  }));
+  dart.setLibraryUri(system_chrome.SystemUiOverlayStyle, I[1]);
+  dart.setFieldSignature(system_chrome.SystemUiOverlayStyle, () => ({
+    __proto__: dart.getFields(system_chrome.SystemUiOverlayStyle.__proto__),
+    systemNavigationBarColor: dart.finalFieldType(dart.nullable(ui.Color)),
+    systemNavigationBarDividerColor: dart.finalFieldType(dart.nullable(ui.Color)),
+    systemNavigationBarIconBrightness: dart.finalFieldType(dart.nullable(ui.Brightness)),
+    statusBarColor: dart.finalFieldType(dart.nullable(ui.Color)),
+    statusBarBrightness: dart.finalFieldType(dart.nullable(ui.Brightness)),
+    statusBarIconBrightness: dart.finalFieldType(dart.nullable(ui.Brightness))
+  }));
+  dart.defineExtensionMethods(system_chrome.SystemUiOverlayStyle, ['toString', '_equals']);
+  dart.defineExtensionAccessors(system_chrome.SystemUiOverlayStyle, ['hashCode']);
+  dart.defineLazy(system_chrome.SystemUiOverlayStyle, {
+    /*system_chrome.SystemUiOverlayStyle.light*/get light() {
+      return C[8] || CT.C8;
+    },
+    /*system_chrome.SystemUiOverlayStyle.dark*/get dark() {
+      return C[12] || CT.C12;
+    }
+  }, false);
+  system_chrome.SystemChrome = class SystemChrome extends core.Object {
+    static setPreferredOrientations(orientations) {
+      if (orientations == null) dart.nullFailed(I[0], 241, 72, "orientations");
+      return async.async(dart.void, function* setPreferredOrientations() {
+        yield system_channels.SystemChannels.platform.invokeMethod(dart.void, "SystemChrome.setPreferredOrientations", system_chrome._stringify(orientations));
+      });
+    }
+    static setApplicationSwitcherDescription(description) {
+      if (description == null) dart.nullFailed(I[0], 253, 88, "description");
+      return async.async(dart.void, function* setApplicationSwitcherDescription() {
+        yield system_channels.SystemChannels.platform.invokeMethod(dart.void, "SystemChrome.setApplicationSwitcherDescription", new (T.IdentityMapOfString$dynamic()).from(["label", description.label, "primaryColor", description.primaryColor]));
+      });
+    }
+    static setEnabledSystemUIOverlays(overlays) {
+      if (overlays == null) dart.nullFailed(I[0], 285, 72, "overlays");
+      return async.async(dart.void, function* setEnabledSystemUIOverlays() {
+        yield system_channels.SystemChannels.platform.invokeMethod(dart.void, "SystemChrome.setEnabledSystemUIOverlays", system_chrome._stringify(overlays));
+      });
+    }
+    static restoreSystemUIOverlays() {
+      return async.async(dart.void, function* restoreSystemUIOverlays() {
+        yield system_channels.SystemChannels.platform.invokeMethod(dart.void, "SystemChrome.restoreSystemUIOverlays", null);
+      });
+    }
+    static setSystemUIOverlayStyle(style) {
+      if (style == null) dart.nullFailed(I[0], 394, 60, "style");
+      if (!(style != null)) dart.assertFailed(null, I[0], 395, 12, "style != null");
+      if (system_chrome.SystemChrome._pendingStyle != null) {
+        system_chrome.SystemChrome._pendingStyle = style;
+        return;
       }
-    }
-    get index() {
-      return this[_index];
-    }
-    set index(value) {
-      if (value == null) dart.nullFailed(I[0], 249, 17, "value");
-      this[_changeIndex](value);
-    }
-    get previousIndex() {
-      return this[_previousIndex];
-    }
-    get indexIsChanging() {
-      return this[_indexIsChangingCount] !== 0;
-    }
-    animateTo(value, opts) {
-      if (value == null) dart.nullFailed(I[0], 273, 22, "value");
-      let duration = opts && 'duration' in opts ? opts.duration : C[0] || CT.C0;
-      if (duration == null) dart.nullFailed(I[0], 273, 40, "duration");
-      let curve = opts && 'curve' in opts ? opts.curve : C[1] || CT.C1;
-      if (curve == null) dart.nullFailed(I[0], 273, 77, "curve");
-      this[_changeIndex](value, {duration: duration, curve: curve});
-    }
-    get offset() {
-      return dart.notNull(dart.nullCheck(this[_animationController]).value) - this[_index][$toDouble]();
-    }
-    set offset(value) {
-      if (value == null) dart.nullFailed(I[0], 286, 21, "value");
-      if (!(value != null)) dart.assertFailed(null, I[0], 287, 12, "value != null");
-      if (!(dart.notNull(value) >= -1.0 && dart.notNull(value) <= 1.0)) dart.assertFailed(null, I[0], 288, 12, "value >= -1.0 && value <= 1.0");
-      if (!!dart.test(this.indexIsChanging)) dart.assertFailed(null, I[0], 289, 12, "!indexIsChanging");
-      if (value == this.offset) return;
-      dart.nullCheck(this[_animationController]).value = dart.notNull(value) + this[_index][$toDouble]();
-    }
-    dispose() {
-      let t0;
-      t0 = this[_animationController];
-      t0 == null ? null : t0.dispose();
-      this[_animationController] = null;
-      super.dispose();
-    }
-  };
-  (tab_controller.TabController.new = function(opts) {
-    let initialIndex = opts && 'initialIndex' in opts ? opts.initialIndex : 0;
-    if (initialIndex == null) dart.nullFailed(I[0], 149, 23, "initialIndex");
-    let length = opts && 'length' in opts ? opts.length : null;
-    if (length == null) dart.nullFailed(I[0], 149, 55, "length");
-    let vsync = opts && 'vsync' in opts ? opts.vsync : null;
-    if (vsync == null) dart.nullFailed(I[0], 149, 87, "vsync");
-    this[_indexIsChangingCount] = 0;
-    this[length$] = length;
-    if (!(length != null && dart.notNull(length) >= 0)) dart.assertFailed(null, I[0], 150, 14, "length != null && length >= 0");
-    if (!(initialIndex != null && dart.notNull(initialIndex) >= 0 && (length === 0 || dart.notNull(initialIndex) < dart.notNull(length)))) dart.assertFailed(null, I[0], 151, 14, "initialIndex != null && initialIndex >= 0 && (length == 0 || initialIndex < length)");
-    this[_index] = initialIndex;
-    this[_previousIndex] = initialIndex;
-    this[_animationController] = new animation_controller.AnimationController.unbounded({value: initialIndex[$toDouble](), vsync: vsync});
-    tab_controller.TabController.__proto__.new.call(this);
-    ;
-  }).prototype = tab_controller.TabController.prototype;
-  (tab_controller.TabController.__ = function(opts) {
-    let index = opts && 'index' in opts ? opts.index : null;
-    if (index == null) dart.nullFailed(I[0], 162, 18, "index");
-    let previousIndex = opts && 'previousIndex' in opts ? opts.previousIndex : null;
-    if (previousIndex == null) dart.nullFailed(I[0], 163, 18, "previousIndex");
-    let animationController = opts && 'animationController' in opts ? opts.animationController : null;
-    let length = opts && 'length' in opts ? opts.length : null;
-    if (length == null) dart.nullFailed(I[0], 165, 19, "length");
-    this[_indexIsChangingCount] = 0;
-    this[length$] = length;
-    this[_index] = index;
-    this[_previousIndex] = previousIndex;
-    this[_animationController] = animationController;
-    tab_controller.TabController.__proto__.new.call(this);
-    ;
-  }).prototype = tab_controller.TabController.prototype;
-  dart.addTypeTests(tab_controller.TabController);
-  dart.addTypeCaches(tab_controller.TabController);
-  dart.setMethodSignature(tab_controller.TabController, () => ({
-    __proto__: dart.getMethods(tab_controller.TabController.__proto__),
-    [_copyWith]: dart.fnType(tab_controller.TabController, [], {}, {index: dart.nullable(core.int), length: dart.nullable(core.int), previousIndex: dart.nullable(core.int)}),
-    [_changeIndex]: dart.fnType(dart.void, [core.int], {curve: dart.nullable(curves.Curve), duration: dart.nullable(core.Duration)}, {}),
-    animateTo: dart.fnType(dart.void, [core.int], {curve: curves.Curve, duration: core.Duration}, {})
-  }));
-  dart.setGetterSignature(tab_controller.TabController, () => ({
-    __proto__: dart.getGetters(tab_controller.TabController.__proto__),
-    animation: dart.nullable(animation.Animation$(core.double)),
-    index: core.int,
-    previousIndex: core.int,
-    indexIsChanging: core.bool,
-    offset: core.double
-  }));
-  dart.setSetterSignature(tab_controller.TabController, () => ({
-    __proto__: dart.getSetters(tab_controller.TabController.__proto__),
-    index: core.int,
-    offset: core.double
-  }));
-  dart.setLibraryUri(tab_controller.TabController, I[1]);
-  dart.setFieldSignature(tab_controller.TabController, () => ({
-    __proto__: dart.getFields(tab_controller.TabController.__proto__),
-    [_animationController]: dart.fieldType(dart.nullable(animation_controller.AnimationController)),
-    length: dart.finalFieldType(core.int),
-    [_index]: dart.fieldType(core.int),
-    [_previousIndex]: dart.fieldType(core.int),
-    [_indexIsChangingCount]: dart.fieldType(core.int)
-  }));
-  var controller$ = dart.privateName(tab_controller, "_TabControllerScope.controller");
-  var enabled$ = dart.privateName(tab_controller, "_TabControllerScope.enabled");
-  tab_controller._TabControllerScope = class _TabControllerScope extends framework.InheritedWidget {
-    get controller() {
-      return this[controller$];
-    }
-    set controller(value) {
-      super.controller = value;
-    }
-    get enabled() {
-      return this[enabled$];
-    }
-    set enabled(value) {
-      super.enabled = value;
-    }
-    updateShouldNotify(old) {
-      tab_controller._TabControllerScope.as(old);
-      if (old == null) dart.nullFailed(I[0], 315, 47, "old");
-      return this.enabled != old.enabled || !dart.equals(this.controller, old.controller);
-    }
-  };
-  (tab_controller._TabControllerScope.new = function(opts) {
-    let key = opts && 'key' in opts ? opts.key : null;
-    let controller = opts && 'controller' in opts ? opts.controller : null;
-    if (controller == null) dart.nullFailed(I[0], 306, 19, "controller");
-    let enabled = opts && 'enabled' in opts ? opts.enabled : null;
-    if (enabled == null) dart.nullFailed(I[0], 307, 19, "enabled");
-    let child = opts && 'child' in opts ? opts.child : null;
-    if (child == null) dart.nullFailed(I[0], 308, 21, "child");
-    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
-    this[controller$] = controller;
-    this[enabled$] = enabled;
-    tab_controller._TabControllerScope.__proto__.new.call(this, {key: key, child: child, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
-    ;
-  }).prototype = tab_controller._TabControllerScope.prototype;
-  dart.addTypeTests(tab_controller._TabControllerScope);
-  dart.addTypeCaches(tab_controller._TabControllerScope);
-  dart.setMethodSignature(tab_controller._TabControllerScope, () => ({
-    __proto__: dart.getMethods(tab_controller._TabControllerScope.__proto__),
-    updateShouldNotify: dart.fnType(core.bool, [dart.nullable(core.Object)])
-  }));
-  dart.setLibraryUri(tab_controller._TabControllerScope, I[1]);
-  dart.setFieldSignature(tab_controller._TabControllerScope, () => ({
-    __proto__: dart.getFields(tab_controller._TabControllerScope.__proto__),
-    controller: dart.finalFieldType(tab_controller.TabController),
-    enabled: dart.finalFieldType(core.bool)
-  }));
-  var length$0 = dart.privateName(tab_controller, "DefaultTabController.length");
-  var initialIndex$ = dart.privateName(tab_controller, "DefaultTabController.initialIndex");
-  var child$ = dart.privateName(tab_controller, "DefaultTabController.child");
-  tab_controller.DefaultTabController = class DefaultTabController extends framework.StatefulWidget {
-    get length() {
-      return this[length$0];
-    }
-    set length(value) {
-      super.length = value;
-    }
-    get initialIndex() {
-      return this[initialIndex$];
-    }
-    set initialIndex(value) {
-      super.initialIndex = value;
-    }
-    get child() {
-      return this[child$];
-    }
-    set child(value) {
-      super.child = value;
-    }
-    static of(context) {
-      let t0;
-      if (context == null) dart.nullFailed(I[0], 410, 41, "context");
-      let scope = context.dependOnInheritedWidgetOfExactType(tab_controller._TabControllerScope);
-      t0 = scope;
-      return t0 == null ? null : t0.controller;
-    }
-    createState() {
-      return new tab_controller._DefaultTabControllerState.new();
-    }
-  };
-  (tab_controller.DefaultTabController.new = function(opts) {
-    let key = opts && 'key' in opts ? opts.key : null;
-    let length = opts && 'length' in opts ? opts.length : null;
-    if (length == null) dart.nullFailed(I[0], 375, 19, "length");
-    let initialIndex = opts && 'initialIndex' in opts ? opts.initialIndex : 0;
-    if (initialIndex == null) dart.nullFailed(I[0], 376, 10, "initialIndex");
-    let child = opts && 'child' in opts ? opts.child : null;
-    if (child == null) dart.nullFailed(I[0], 377, 19, "child");
-    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
-    this[length$0] = length;
-    this[initialIndex$] = initialIndex;
-    this[child$] = child;
-    if (!(initialIndex != null)) dart.assertFailed(null, I[0], 378, 15, "initialIndex != null");
-    if (!(dart.notNull(length) >= 0)) dart.assertFailed(null, I[0], 379, 15, "length >= 0");
-    if (!(length === 0 || dart.notNull(initialIndex) >= 0 && dart.notNull(initialIndex) < dart.notNull(length))) dart.assertFailed(null, I[0], 380, 15, "length == 0 || (initialIndex >= 0 && initialIndex < length)");
-    tab_controller.DefaultTabController.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
-    ;
-  }).prototype = tab_controller.DefaultTabController.prototype;
-  dart.addTypeTests(tab_controller.DefaultTabController);
-  dart.addTypeCaches(tab_controller.DefaultTabController);
-  dart.setMethodSignature(tab_controller.DefaultTabController, () => ({
-    __proto__: dart.getMethods(tab_controller.DefaultTabController.__proto__),
-    createState: dart.fnType(tab_controller._DefaultTabControllerState, [])
-  }));
-  dart.setLibraryUri(tab_controller.DefaultTabController, I[1]);
-  dart.setFieldSignature(tab_controller.DefaultTabController, () => ({
-    __proto__: dart.getFields(tab_controller.DefaultTabController.__proto__),
-    length: dart.finalFieldType(core.int),
-    initialIndex: dart.finalFieldType(core.int),
-    child: dart.finalFieldType(framework.Widget)
-  }));
-  var ___DefaultTabControllerState__controller = dart.privateName(tab_controller, "_#_DefaultTabControllerState#_controller");
-  var ___DefaultTabControllerState__controller_isSet = dart.privateName(tab_controller, "_#_DefaultTabControllerState#_controller#isSet");
-  var _controller = dart.privateName(tab_controller, "_controller");
-  var _Location_parameterLocations = dart.privateName(widget_inspector, "_Location.parameterLocations");
-  var _Location_name = dart.privateName(widget_inspector, "_Location.name");
-  var _Location_column = dart.privateName(widget_inspector, "_Location.column");
-  var _Location_line = dart.privateName(widget_inspector, "_Location.line");
-  var _Location_file = dart.privateName(widget_inspector, "_Location.file");
-  const State_SingleTickerProviderStateMixin$36 = class State_SingleTickerProviderStateMixin extends framework.State$(tab_controller.DefaultTabController) {};
-  (State_SingleTickerProviderStateMixin$36.new = function() {
-    ticker_provider.SingleTickerProviderStateMixin$(tab_controller.DefaultTabController)[dart.mixinNew].call(this);
-    State_SingleTickerProviderStateMixin$36.__proto__.new.call(this);
-  }).prototype = State_SingleTickerProviderStateMixin$36.prototype;
-  dart.applyMixin(State_SingleTickerProviderStateMixin$36, ticker_provider.SingleTickerProviderStateMixin$(tab_controller.DefaultTabController));
-  tab_controller._DefaultTabControllerState = class _DefaultTabControllerState extends State_SingleTickerProviderStateMixin$36 {
-    get [_controller]() {
-      let t0;
-      return dart.test(this[___DefaultTabControllerState__controller_isSet]) ? (t0 = this[___DefaultTabControllerState__controller], t0) : dart.throw(new _internal.LateError.fieldNI("_controller"));
-    }
-    set [_controller](t0) {
-      if (t0 == null) dart.nullFailed(I[0], 420, 22, "null");
-      this[___DefaultTabControllerState__controller_isSet] = true;
-      this[___DefaultTabControllerState__controller] = t0;
-    }
-    initState() {
-      super.initState();
-      this[_controller] = new tab_controller.TabController.new({vsync: this, length: this.widget.length, initialIndex: this.widget.initialIndex});
-    }
-    dispose() {
-      this[_controller].dispose();
-      super.dispose();
-    }
-    build(context) {
-      if (context == null) dart.nullFailed(I[0], 439, 29, "context");
-      return new tab_controller._TabControllerScope.new({controller: this[_controller], enabled: ticker_provider.TickerMode.of(context), child: this.widget.child, $creationLocationd_0dea112b090073317d4: C[2] || CT.C2});
-    }
-    didUpdateWidget(oldWidget) {
-      tab_controller.DefaultTabController.as(oldWidget);
-      if (oldWidget == null) dart.nullFailed(I[0], 448, 45, "oldWidget");
-      super.didUpdateWidget(oldWidget);
-      if (oldWidget.length != this.widget.length) {
-        let newIndex = null;
-        let previousIndex = this[_controller].previousIndex;
-        if (dart.notNull(this[_controller].index) >= dart.notNull(this.widget.length)) {
-          newIndex = math.max(core.int, 0, dart.notNull(this.widget.length) - 1);
-          previousIndex = this[_controller].index;
+      if (dart.equals(style, system_chrome.SystemChrome._latestStyle)) {
+        return;
+      }
+      system_chrome.SystemChrome._pendingStyle = style;
+      async.scheduleMicrotask(dart.fn(() => {
+        if (!(system_chrome.SystemChrome._pendingStyle != null)) dart.assertFailed(null, I[0], 408, 14, "_pendingStyle != null");
+        if (!dart.equals(system_chrome.SystemChrome._pendingStyle, system_chrome.SystemChrome._latestStyle)) {
+          system_channels.SystemChannels.platform.invokeMethod(dart.void, "SystemChrome.setSystemUIOverlayStyle", dart.nullCheck(system_chrome.SystemChrome._pendingStyle)[_toMap]());
+          system_chrome.SystemChrome._latestStyle = system_chrome.SystemChrome._pendingStyle;
         }
-        this[_controller] = this[_controller][_copyWith]({length: this.widget.length, index: newIndex, previousIndex: previousIndex});
-      }
+        system_chrome.SystemChrome._pendingStyle = null;
+      }, T.VoidTovoid()));
+    }
+    static get latestStyle() {
+      return system_chrome.SystemChrome._latestStyle;
     }
   };
-  (tab_controller._DefaultTabControllerState.new = function() {
-    this[___DefaultTabControllerState__controller] = null;
-    this[___DefaultTabControllerState__controller_isSet] = false;
-    tab_controller._DefaultTabControllerState.__proto__.new.call(this);
+  (system_chrome.SystemChrome.__ = function() {
     ;
-  }).prototype = tab_controller._DefaultTabControllerState.prototype;
-  dart.addTypeTests(tab_controller._DefaultTabControllerState);
-  dart.addTypeCaches(tab_controller._DefaultTabControllerState);
-  dart.setMethodSignature(tab_controller._DefaultTabControllerState, () => ({
-    __proto__: dart.getMethods(tab_controller._DefaultTabControllerState.__proto__),
-    build: dart.fnType(framework.Widget, [framework.BuildContext])
-  }));
-  dart.setGetterSignature(tab_controller._DefaultTabControllerState, () => ({
-    __proto__: dart.getGetters(tab_controller._DefaultTabControllerState.__proto__),
-    [_controller]: tab_controller.TabController
-  }));
-  dart.setSetterSignature(tab_controller._DefaultTabControllerState, () => ({
-    __proto__: dart.getSetters(tab_controller._DefaultTabControllerState.__proto__),
-    [_controller]: tab_controller.TabController
-  }));
-  dart.setLibraryUri(tab_controller._DefaultTabControllerState, I[1]);
-  dart.setFieldSignature(tab_controller._DefaultTabControllerState, () => ({
-    __proto__: dart.getFields(tab_controller._DefaultTabControllerState.__proto__),
-    [___DefaultTabControllerState__controller]: dart.fieldType(dart.nullable(tab_controller.TabController)),
-    [___DefaultTabControllerState__controller_isSet]: dart.fieldType(core.bool)
-  }));
-  dart.trackLibraries("packages/flutter/src/material/tab_controller.dart", {
-    "package:flutter/src/material/tab_controller.dart": tab_controller
+  }).prototype = system_chrome.SystemChrome.prototype;
+  dart.addTypeTests(system_chrome.SystemChrome);
+  dart.addTypeCaches(system_chrome.SystemChrome);
+  dart.setLibraryUri(system_chrome.SystemChrome, I[1]);
+  dart.defineLazy(system_chrome.SystemChrome, {
+    /*system_chrome.SystemChrome._pendingStyle*/get _pendingStyle() {
+      return null;
+    },
+    set _pendingStyle(_) {},
+    /*system_chrome.SystemChrome._latestStyle*/get _latestStyle() {
+      return null;
+    },
+    set _latestStyle(_) {}
+  }, false);
+  system_chrome._stringify = function _stringify(list) {
+    if (list == null) dart.nullFailed(I[0], 213, 39, "list");
+    return (() => {
+      let t0 = T.JSArrayOfString().of([]);
+      for (let item of list)
+        t0[$add](dart.toString(item));
+      return t0;
+    })();
+  };
+  dart.trackLibraries("packages/flutter/src/services/system_chrome.dart", {
+    "package:flutter/src/services/system_chrome.dart": system_chrome
   }, {
-  }, '{"version":3,"sourceRoot":"","sources":["tab_controller.dart"],"names":[],"mappings":"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","file":"../../../../../../../../../../../../C:/packages/flutter/src/material/tab_controller.dart.lib.js"}');
+  }, '{"version":3,"sourceRoot":"","sources":["system_chrome.dart"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;IAgDA;;;QAlBK;;;;;EAkBL;;;;;;;;;;;;;;;;;;IAagB;;;;;;IAMH;;;;;;;;QATiC;QAAY;IAAZ;IAAY;;EAAe;;;;;;;;;;;;IAuBzE;;;QARK;;;;;EAQL;;;;;;;;;;;;;;;;;;;;;;;IAoBe;;;;;;IAKA;;;;;;IAOK;;;;;;IAKL;;;;;;IAKK;;;;;;IAKA;;;;;;;;AA0BhB,YAAwB,6CACtB,8EAA4B,OAA0B,WACtD,8FAAmC,OAAiC,YACpE,8DAAkB,OAAgB,aAClC,wEAAuB,OAAqB,sBAC5C,gFAA2B,OAAyB,sBACpD,oGAAqC,OAAmC;IAE5E;;AAGqB,YAAS,eAAT;IAAmB;;;UAI/B;UACA;UACA;UACK;UACA;UACA;AAEZ,YAAO,wEAC8C,KAAzB,wBAAwB,EAAxB,aAAiC,uEACM,MAAhC,+BAA+B,EAA/B,cAAwC,8DAC1C,OAAf,cAAc,EAAd,eAAuB,uDACU,OAAxB,uBAAuB,EAAvB,eAAgC,4DAChB,OAApB,mBAAmB,EAAnB,eAA4B,sEACoB,OAAlC,iCAAiC,EAAjC,eAA0C;IAEjF;;AAIE,YAAO,eACL,+BACA,sCACA,qBACA,0BACA,8BACA;IAEJ;;UAGwB;AACtB,uBAAU,iBAAN,KAAK,GAAgB,qBACvB,MAAO;AACT,YAAa,AAMT,uCANG,KAAK,KAC0B,YAA/B,AAAM,KAAD,2BAA6B,kCACI,YAAtC,AAAM,KAAD,kCAAoC,yCACpB,YAArB,AAAM,KAAD,iBAAmB,wBACxB,AAAM,AAAwB,KAAzB,4BAA4B,gCACjC,AAAM,AAAoB,KAArB,wBAAwB,4BAC7B,AAAM,AAAkC,KAAnC,sCAAsC;IACpD;;;QAvHO;QACA;QACA;QACA;QACA;QACA;IALA;IACA;IACA;IACA;IACA;IACA;;EACL;;;;;;;;;;;;;;;;;;;;;MAoCgC,wCAAK;;;MAWL,uCAAI;;;;;;UAiG+B;AAAzB;AAIzC,QAHD,MAAqB,AAAS,gEAC5B,yCACA,yBAAW,YAAY;MAE3B;;;UAOqF;AAAhC;AAOlD,QAND,MAAqB,AAAS,gEAC5B,kDACiB,4CACf,SAAS,AAAY,WAAD,QACpB,gBAAgB,AAAY,WAAD;MAGjC;;;UAwBqE;AAAvB;AAI3C,QAHD,MAAqB,AAAS,gEAC5B,2CACA,yBAAW,QAAQ;MAEvB;;;AAW2C;AAIxC,QAHD,MAAqB,AAAS,gEAC5B,wCACA;MAEJ;;;UAwFyD;AACvD,YAAO,AAAM,KAAD;AACZ,UAAI;AAEmB,QAArB,2CAAgB,KAAK;AACrB;;AAEF,UAAU,YAAN,KAAK,EAAI;AAGX;;AAEmB,MAArB,2CAAgB,KAAK;AAWnB,MAVF,wBAAkB;AAChB,cAAO,AAAc;AACrB,yBAAI,0CAAiB;AAIlB,UAHc,AAAS,gEACtB,wCACa,AAAE,eAAf;AAE0B,UAA5B,0CAAe;;AAEG,QAApB,2CAAgB;;IAEpB;;AAMgD;IAAY;;;;EA1M5C;;;;;MAsMa,wCAAa;;;;MAKb,uCAAY;;;;;;QApNL;AAAS,UAAQ;;AACrD,eAAmB,OAAQ,KAAI;AAAO,+BAAL,IAAI;;;EACtC","file":"../../../../../../../../../../../../C:/packages/flutter/src/services/system_chrome.dart.lib.js"}');
   // Exports:
   return {
-    src__material__tab_controller: tab_controller
+    src__services__system_chrome: system_chrome
   };
 }));
 
-//# sourceMappingURL=tab_controller.dart.lib.js.map
+//# sourceMappingURL=system_chrome.dart.lib.js.map
